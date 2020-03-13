@@ -1,0 +1,151 @@
+<div id="bikerProfile" class="page-layout carded fullwidth" fusePerfectScrollbar>
+    <div class="top-bg accent"></div>
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <b> Biker Stories</b>
+                </span>
+                <!-- <p style="margin-top:90px;margin-left:-145px" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    < Maximum Posted User </p> <br> -->
+            </div>
+        </div> <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                <div fxLayout="column" style="margin-left:20px;">
+                    <p class="card-heading">Profile </p>
+                </div>
+                <div fxLayout="column" style="margin-right: 20px;margin-top:19px;">
+                    <!-- <button mat-raised-button [routerLink]="''" class="add-product-button fuse-white mt-24 mt-md-0">
+                        <span> Create </span>
+                    </button> -->
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div class="content" style="width:100%;padding:40px !important;">
+                    <img src="{{pic || 'assets/images/profile/default-avatar.png' }}" (error)="onImgError($event)" style="width:100px;height:100px;border-radius:50%" alt="" >
+                    <div style="margin-left:95px !important;">
+                        <h2 style="margin-left:65px !important;">
+                            <b>{{firstname}} {{lastname}}</b>
+                        </h2>
+                        <!-- <div style="margin-left:65 !important;">
+                            <div class=" border-right" appearance="outline" fxFlex="25" class="pr-4"
+                                style="margin-top:50px;">
+                                <span class="name" style="color:#000000;"> <b>1400</b>&nbsp;&nbsp;
+                                    <span style="color:#858585;">Posts</span>
+                                </span>
+                            </div>
+                            <mat-divider [vertical]="true" style="height:50px;margin-top:35px;"></mat-divider>
+                            <div appearance="outline" fxFlex="25" class="pr-4" style="margin-top:50px;">
+                                <span class="name" style="color:#000000;"><b>19500</b>&nbsp;&nbsp;
+                                    <span style="color:#858585;">Followers</span>
+                                </span>
+                            </div>
+                            <mat-divider [vertical]="true" style="height:50px;margin-top:35px;color:#eee;">
+                            </mat-divider>
+                            <div appearance="outline" fxFlex="25" class="pr-4" style="margin-top:50px;">
+                                <span class="name" style="color:#000000;"><b>7300</b>&nbsp;&nbsp;
+                                    <span style="color:#858585;">Following</span>
+                                </span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <hr>
+                <div class="content" style="padding:40px;">
+                    <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                        fxLayoutAlign.gt-sm="space-between">
+                        <div fxLayout="column" style="margin-bottom:20px;margin-left:3px;">
+                            <p class="card-heading">Stories</p>
+                        </div>
+                        <div fxLayout="column" style="margin-right: 20px;margin-top:19px;"></div>
+                    </div>
+                    <div>
+                            <div class="cards">
+
+                                    <!-- CARD 1 -->
+                                    <div class="card" *ngFor="let story of getstoriesbyID">
+
+                                        <!-- PREVIEW -->
+                                        <div class="card-preview">
+
+                                            <div class="fuse-cards" (click)="sendUserId()">
+                                                <!-- <div class="topright-bike">₹ {{ads.Price}}/-</div> -->
+                                                <!-- <img class="bikeImage" src="assets/images/cards/bikeads.png"> -->
+                                                <!-- <img class="bikeImage" src="{{ads.ImageURLs}}"> -->
+                                                <mat-carousel timings="250ms ease-in" [autoplay]="false"
+                                                interval="2000" color="warn" maxWidth="100" maxHeight="200"
+                                                proportion="25" slides="5" [loop]="true" [hideArrows]="true"
+                                                [hideIndicators]="false" [useKeyboard]="true"
+                                                [useMouseWheel]="false" orientation="ltr">
+                                                <mat-carousel-slide #matCarouselSlide
+                                                    *ngFor="let slide of story.ImageURLs; let i = index"
+                                                    [image]="slide" [hideOverlay]="true">
+                    
+                                                </mat-carousel-slide>
+                                            </mat-carousel> 
+                                               
+
+                                            </div>
+
+                                        </div>
+                                        <!-- / PREVIEW -->
+
+                                    </div>
+                                    <!-- / CARD 1 -->
+
+                    
+              
+
+                                </div>
+                            <!-- <mat-carousel timings="250ms ease-in" [autoplay]="false"
+                            interval="2000" color="warn" maxWidth="100" maxHeight="200"
+                            proportion="25" slides="5" [loop]="true" [hideArrows]="true"
+                            [hideIndicators]="false" [useKeyboard]="true"
+                            [useMouseWheel]="false" orientation="ltr">
+                            <mat-carousel-slide #matCarouselSlide
+                                *ngFor="let slide of profile.Images; let i = index"
+                                [image]="slide" [hideOverlay]="true">
+
+                            </mat-carousel-slide>
+                        </mat-carousel> -->
+                        <!-- <img src="assets/images/profile/a-walk-amongst-friends-small.jpg" alt="Cinque Terre"
+                            [routerLink]="'/apps/e-commerce/biker-post'" style="cursor:pointer;" width="600"
+                            height="400">
+                        <img src="assets/images/profile/braies-lake-small.jpg" alt="Forest"
+                            [routerLink]="'/apps/e-commerce/biker-post'" style="cursor:pointer;" width="600"
+                            height="400">
+                        <img src="assets/images/profile/fall-glow-small.jpg" alt="Northern Lights"
+                            [routerLink]="'/apps/e-commerce/biker-post'" style="cursor:pointer;" width="600"
+                            height="400">
+                        <img src="assets/images/profile/lago-di-braies-small.jpg" alt="Mountains"
+                            [routerLink]="'/apps/e-commerce/biker-post'" style="cursor:pointer;" width="600"
+                            height="400">
+                        <img src="assets/images/profile/a-walk-amongst-friends-small.jpg"
+                            [routerLink]="'/apps/e-commerce/biker-post'" alt="Cinque Terre" style="cursor:pointer;"
+                            width="600" height="400">
+                        <img src="assets/images/profile/braies-lake-small.jpg" alt="Forest"
+                            [routerLink]="'/apps/e-commerce/biker-post'" style="cursor:pointer;" width="600"
+                            height="400"> -->
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!-- / CONTENT CARD -->
+        <br>
+
+    </div>
+    <!-- / CENTER -->
+</div>

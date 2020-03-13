@@ -1,0 +1,1227 @@
+<div id="profile" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent first"
+      fxLayout="col"
+      fxLayoutAlign="start start"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="start center"
+      style="margin-left:30px;"
+    >
+      <!-- APP TITLE -->
+      <div
+        class="logo"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        style="margin-right:185px;"
+      >
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          {{ selectedUserDetails.FirstName }} {{ selectedUserDetails.LastName }}
+          <p
+            style="font-size:12px;cursor:pointer;"
+            [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+            [routerLink]="'/apps/e-commerce/users'"
+          >
+            < Users
+          </p>
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card" style="margin-top:-25px;" fusePerfectScrollbar>
+      <div class="row">
+        <div
+          class="column"
+          style="height:630px;background-color:#fff;width:20%;border-right:2px solid #eee;"
+        >
+          <div class="user" fxLayout="column">
+            <div class="avatar-container">
+              <!-- <img class="avatar" src="assets/images/cards/profile.png"> -->
+              <img
+                class="avatar"
+                src="{{
+                  selectedUserDetails.ProfilePic ||
+                    'assets/images/profile/default-avatar.png'
+                }}"
+                (error)="onImgError($event)"
+              />
+            </div>
+            <div class="h3 username" style="margin-top:175px;">
+              <b
+                >{{ selectedUserDetails.FirstName }}
+                {{ selectedUserDetails.LastName }}</b
+              >
+            </div>
+            <div class="h5 email hint-text mt-8" style="color:#f79726;">
+              {{ selectedUserDetails.City }}
+            </div>
+            <!-- <div style="margin-top:5px;">
+                                <mat-icon aria-hidden="false" aria-label="strength"
+                                    style="font-size:15px;color:#EF5827;">
+                                    star
+                                </mat-icon>
+                                <mat-icon aria-hidden="false" aria-label="strength"
+                                    style="font-size:15px;color:#EF5827;">
+                                    star
+                                </mat-icon>
+                                <mat-icon aria-hidden="false" aria-label="strength"
+                                    style="font-size:15px;color:#EF5827;">
+                                    star
+                                </mat-icon>
+                            </div> -->
+          </div>
+        </div>
+        <div class="column" style="background-color:#fff;width:80%">
+          <mat-tab-group style="width:780px;margin-left:-10px;">
+            <mat-tab label="General Details">
+              <div class="row">
+                <div
+                  class="column"
+                  style="background-color: #fff;width:70%;height:570px;border-right:2px solid #eee;"
+                >
+                  <div class="" style="padding:10px 0 10px 25px;">
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      style="line-height:10px;"
+                    >
+                      <div fxFlex="50">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          First Name
+                        </p>
+                        <span *ngIf="selectedUserDetails.FirstName !== ''">{{
+                          selectedUserDetails.FirstName
+                        }}</span>
+                        <span
+                          ><button
+                            *ngIf="
+                              selectedUserDetails.FirstName == '' ||
+                              selectedUserDetails.FirstName == null
+                            "
+                            class="pendingbtn"
+                          >
+                            Pending
+                          </button></span
+                        >
+                      </div>
+                      <div fxFlex="40">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          Last Name
+                        </p>
+                        <span *ngIf="selectedUserDetails.LastName !== ''">{{
+                          selectedUserDetails.LastName
+                        }}</span>
+                        <span
+                          ><button
+                            *ngIf="
+                              selectedUserDetails.LastName == '' ||
+                              selectedUserDetails.LastName == null
+                            "
+                            class="pendingbtn"
+                          >
+                            Pending
+                          </button></span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      style="line-height:10px;margin-top:20px;"
+                    >
+                      <div fxFlex="50">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          Mobile Number
+                        </p>
+                        <span *ngIf="selectedUserDetails.MobileNumber !== ''">{{
+                          selectedUserDetails.MobileNumber
+                        }}</span>
+                        <span
+                          ><button
+                            *ngIf="
+                              selectedUserDetails.MobileNumber == '' ||
+                              selectedUserDetails.MobileNumber == null
+                            "
+                            class="pendingbtn"
+                          >
+                            Pending
+                          </button></span
+                        >
+                      </div>
+                      <div fxFlex="40">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          Email
+                        </p>
+                        <span *ngIf="selectedUserDetails.EmailID !== ''">{{
+                          selectedUserDetails.EmailID
+                        }}</span>
+                        <span
+                          ><button
+                            *ngIf="
+                              selectedUserDetails.EmailID == '' ||
+                              selectedUserDetails.EmailID == null
+                            "
+                            class="pendingbtn"
+                          >
+                            Pending
+                          </button></span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      style="line-height:10px;margin-top:20px;"
+                    >
+                      <div fxFlex="50">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          DOB
+                        </p>
+                        <span *ngIf="selectedUserDetails.DOB !== ''">{{
+                          selectedUserDetails.DOB | date: " d MMM yyyy"
+                        }}</span>
+                        <span
+                          ><button
+                            *ngIf="
+                              selectedUserDetails.DOB == '' ||
+                              selectedUserDetails.DOB == null
+                            "
+                            class="pendingbtn"
+                          >
+                            Pending
+                          </button></span
+                        >
+                      </div>
+                      <div fxFlex="40">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          City
+                        </p>
+                        <span *ngIf="selectedUserDetails.City !== ''">{{
+                          selectedUserDetails.City
+                        }}</span>
+                        <span
+                          ><button
+                            *ngIf="
+                              selectedUserDetails.City == '' ||
+                              selectedUserDetails.City == null
+                            "
+                            class="pendingbtn"
+                          >
+                            Pending
+                          </button></span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      style="line-height:10px;margin-top:20px;"
+                    >
+                      <div fxFlex="50">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          Country
+                        </p>
+                        <span>India</span>
+                      </div>
+                      <div fxFlex="40">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          Gender
+                        </p>
+                        <span *ngIf="selectedUserDetails.Gender !== ''">{{
+                          selectedUserDetails.Gender
+                        }}</span>
+                        <span
+                          ><button
+                            *ngIf="
+                              selectedUserDetails.Gender == '' ||
+                              selectedUserDetails.Gender == null
+                            "
+                            class="pendingbtn"
+                          >
+                            Pending
+                          </button></span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      style="line-height:10px;margin-top:20px;"
+                    >
+                      <div fxFlex="50">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          Rating
+                        </p>
+                        <span *ngIf="selectedUserDetails.AvgRating !== ''">{{
+                          selectedUserDetails.AvgRating
+                        }}</span>
+                        <span>
+                          <button
+                            *ngIf="selectedUserDetails.AvgRating == null"
+                            class="pendingbtn"
+                          >
+                            Pending
+                          </button></span
+                        >
+                      </div>
+                      <div fxFlex="40">
+                        <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                          Plan
+                        </p>
+                        <span
+                          >{{ selectedUserDetails.Tenure }} Months Plan</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="column" style="background-color: #fff;width:20%;">
+                  <div
+                    fxLayout="column"
+                    fxLayoutAlign="start"
+                    fxLayout.gt-sm="column"
+                    flex-md="33"
+                  >
+                    <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                      <div
+                        class="fuse-card mb-32"
+                        [ngClass.gt-sm]="'mb-0 mr-32'"
+                      >
+                        <div
+                          class=" pb-0"
+                          fxLayout="row wrap"
+                          fxLayoutAlign="start end"
+                          style="padding-top:15px;padding-left:40px;"
+                        >
+                          <div class="">
+                            <div
+                              class="font-size-22 line-height-1"
+                              style="text-align: center;font-size:30px;"
+                            >
+                              {{ selectedUserDetails.RidesCount || 0 }}
+                            </div>
+                            <div
+                              class="h3 secondary-text"
+                              style="text-align: center;font-size:12px;margin-top:13px;"
+                            >
+                              Number of Rides
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                      <div
+                        class="fuse-card mb-32"
+                        [ngClass.gt-sm]="'mb-0 mr-32'"
+                      >
+                        <div
+                          class=" pb-0"
+                          fxLayout="row wrap"
+                          fxLayoutAlign="start end"
+                          style="padding-top:15px;padding-left:40px;"
+                        >
+                          <div class="">
+                            <div
+                              class="font-size-22 line-height-1"
+                              style="text-align: center;font-size:30px;"
+                            >
+                              {{
+                                selectedUserDetails.DistanceTravel.toFixed(2) ||
+                                  0
+                              }}
+                            </div>
+                            <div
+                              class="h3 secondary-text"
+                              style="text-align: center;font-size:12px;margin-top:13px;"
+                            >
+                              Number of KMS Done
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                      <div
+                        class="fuse-card mb-32"
+                        [ngClass.gt-sm]="'mb-0 mr-32'"
+                      >
+                        <div
+                          class=" pb-0"
+                          fxLayout="row wrap"
+                          fxLayoutAlign="start end"
+                          style="padding-top:15px;padding-left:40px;"
+                        >
+                          <div class="">
+                            <div
+                              class="font-size-22 line-height-1"
+                              style="text-align: center;font-size:30px;"
+                            >
+                              {{ selectedUserDetails.HoursTravelled }} Hrs
+                            </div>
+                            <div
+                              class="h3 secondary-text"
+                              style="text-align: center;font-size:12px;margin-top:13px;"
+                            >
+                              Number of Riding Hours
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                      <div
+                        class="fuse-card mb-32"
+                        [ngClass.gt-sm]="'mb-0 mr-32'"
+                      >
+                        <div
+                          class=" pb-0"
+                          fxLayout="row wrap"
+                          fxLayoutAlign="start end"
+                          style="padding-top:15px;padding-left:65px;"
+                        >
+                          <div class="">
+                            <div
+                              class="font-size-22 line-height-1"
+                              style="text-align: center;font-size:30px;"
+                            >
+                              {{ selectedUserDetails.Following || 0 }}
+                            </div>
+                            <div
+                              class="h3 secondary-text"
+                              style="text-align: center;font-size:12px;margin-top:13px;"
+                            >
+                              Following
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                      <div
+                        class="fuse-card mb-32"
+                        [ngClass.gt-sm]="'mb-0 mr-32'"
+                      >
+                        <div
+                          class=" pb-0"
+                          fxLayout="row wrap"
+                          fxLayoutAlign="start end"
+                          style="padding-top:15px;padding-left:60px;"
+                        >
+                          <div class="">
+                            <div
+                              class="font-size-22 line-height-1"
+                              style="text-align: center;font-size:30px;"
+                            >
+                              {{ selectedUserDetails.Followers || 0 }}
+                            </div>
+                            <div
+                              class="h3 secondary-text"
+                              style="text-align: center;font-size:12px;margin-top:13px;"
+                            >
+                              Followers
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Bikes">
+              <div class="contentp tab-content p-24" fusePerfectScrollbar>
+                <div
+                  style="text-align: center;padding:100px"
+                  *ngIf="
+                    getuserprofile != undefined && getuserprofile.length == 0
+                  "
+                >
+                  No Bikes Found
+                </div>
+                <div
+                  fxLayout="row"
+                  *ngIf="
+                    getuserprofile != undefined && getuserprofile.length != 0
+                  "
+                >
+                  <div class="cards">
+                    <!-- CARD 1 -->
+                    <div class="card" *ngFor="let profile of getuserprofile">
+                      <!-- PREVIEW -->
+                      <div class="card-preview">
+                        <div class="fuse-cards">
+                          <!-- <img class="bikeImage" src="assets/images/cards/bike.png"> -->
+                          <mat-carousel
+                            timings="250ms ease-in"
+                            [autoplay]="false"
+                            interval="2000"
+                            color="warn"
+                            maxWidth="100"
+                            maxHeight="200"
+                            proportion="25"
+                            slides="5"
+                            [loop]="true"
+                            [hideArrows]="true"
+                            [hideIndicators]="false"
+                            [useKeyboard]="true"
+                            [useMouseWheel]="false"
+                            orientation="ltr"
+                          >
+                            <mat-carousel-slide
+                              #matCarouselSlide
+                              *ngFor="
+                                let slide of profile.Images;
+                                let i = index
+                              "
+                              [image]="slide"
+                              [hideOverlay]="true"
+                            >
+                            </mat-carousel-slide>
+                          </mat-carousel>
+
+                          <div class="p-16">
+                            <div
+                              class=""
+                              style="cursor:pointer"
+                              (click)="
+                                getBikeID(profile);
+                                profile.isShow = !profile.isShow
+                              "
+                            >
+                              <b>{{ profile.BikeBrand }} {{ profile.Model }}</b>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- / PREVIEW -->
+                      <div
+                        *ngIf="profile.isShow"
+                        class=""
+                        style="padding:10px 0 10px 25px;"
+                      >
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          style="line-height:10px;"
+                        >
+                          <div fxFlex="100">
+                            <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                              Brand
+                            </p>
+                            <span *ngIf="profile.BikeBrand !== ''">
+                              {{ profile.BikeBrand }}
+                            </span>
+                            <button
+                              *ngIf="
+                                profile.BikeBrand == '' ||
+                                profile.BikeBrand == null
+                              "
+                              class="pendingbtn"
+                            >
+                              Pending
+                            </button>
+                          </div>
+                          <div fxFlex="1">
+                            <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                              Registration
+                            </p>
+                            <!-- <span>
+                                                                {{selectedUserDetails.City}}
+                                                            </span> -->
+
+                            <span *ngIf="profile.BikeNumber !== ''">
+                              {{ profile.BikeNumber }}</span
+                            >
+                            <span
+                              *ngIf="
+                                profile.BikeNumber == '' ||
+                                profile.BikeNumber == null
+                              "
+                              ><button class="pendingbtn">Pending</button></span
+                            >
+                          </div>
+                        </div>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          style="line-height:10px;margin-top:20px;"
+                        >
+                          <div fxFlex="100">
+                            <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                              Model
+                            </p>
+                            <span
+                              style="line-height: 20px;"
+                              *ngIf="profile.Model !== ''"
+                            >
+                              {{ profile.Model }}
+                            </span>
+                            <span
+                              *ngIf="
+                                profile.Model == '' || profile.Model == null
+                              "
+                              ><button class="pendingbtn">Pending</button></span
+                            >
+                          </div>
+                          <div fxFlex="1">
+                            <div style="display: inline;">
+                              <p
+                                style="font-size:15px;color:rgba(0,0,0,0.54);"
+                                #myRC
+                              >
+                                RC
+                                <span
+                                  *ngIf="profile.IsRCvalid == 1"
+                                  style="margin-left:40px;margin-top:-15px;"
+                                  class="tickbg"
+                                >
+                                  <span class="tick"> </span>
+                                </span>
+                              </p>
+                            </div>
+                            <span
+                              (click)="
+                                openDialog(
+                                  profile.RegistrationCertificate,
+                                  myRC.innerText,
+                                  profile
+                                );
+                                getBikeID(profile)
+                              "
+                              style="line-height: 20px;color:#f79726;cursor:pointer;"
+                              *ngIf="profile.RegistrationCertificate != ''"
+                            >
+                              View
+                            </span>
+                            <span
+                              *ngIf="
+                                profile.RegistrationCertificate == '' ||
+                                profile.RegistrationCertificate == null
+                              "
+                              ><button class="pendingbtn">Pending</button></span
+                            >
+                          </div>
+                        </div>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          style="line-height:10px;margin-top:20px;"
+                        >
+                          <div fxFlex="100">
+                            <p
+                              style="font-size:15px;color:rgba(0,0,0,0.54);"
+                              #myInsurance
+                            >
+                              Insurance
+                            </p>
+                            <span
+                              (click)="
+                                openDialog(
+                                  profile.InsuranceDocuments,
+                                  myInsurance.innerText,
+                                  profile
+                                );
+                                getBikeID(profile)
+                              "
+                              style="line-height: 20px;color:#f79726;cursor:pointer;"
+                              *ngIf="profile.InsuranceDocuments != ''"
+                            >
+                              View
+                            </span>
+                            <span
+                              *ngIf="
+                                profile.InsuranceDocuments == '' ||
+                                profile.InsuranceDocuments == null
+                              "
+                              ><button class="pendingbtn">Pending</button></span
+                            >
+                          </div>
+                          <div fxFlex="1">
+                            <p
+                              style="font-size:15px;color:rgba(0,0,0,0.54);"
+                              #myPUC
+                            >
+                              PUC
+                            </p>
+                            <span
+                              (click)="
+                                openDialog(
+                                  profile.PUC,
+                                  myPUC.innerText,
+                                  profile
+                                );
+                                getBikeID(profile)
+                              "
+                              style="line-height: 20px;color:#f79726;cursor:pointer;"
+                              *ngIf="profile.PUC != ''"
+                            >
+                              View
+                            </span>
+                            <span
+                              *ngIf="profile.PUC == '' || profile.PUC == null"
+                            >
+                              <button class="pendingbtn">Pending</button></span
+                            >
+                          </div>
+                        </div>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          style="line-height:10px;margin-top:20px;"
+                        >
+                          <div fxFlex="100">
+                            <p
+                              style="font-size:15px;color:rgba(0,0,0,0.54);"
+                              #myLicense
+                            >
+                              Driving License
+                              <span
+                                *ngIf="profile.IsBikeLicencevalid == 1"
+                                style="margin-left:120px;margin-top:-15px;"
+                                class="tickbg"
+                              >
+                                <span class="tick"> </span>
+                              </span>
+                            </p>
+                            <span
+                              (click)="
+                                openDialog(
+                                  profile.DrivingLicense,
+                                  myLicense.innerText,
+                                  profile
+                                );
+                                getBikeID(profile)
+                              "
+                              style="line-height: 20px;color:#f79726;cursor:pointer;"
+                              *ngIf="profile.DrivingLicense != ''"
+                            >
+                              View
+                            </span>
+                            <span
+                              *ngIf="
+                                profile.DrivingLicense == '' ||
+                                profile.DrivingLicense == null
+                              "
+                              ><button class="pendingbtn">Pending</button></span
+                            >
+                          </div>
+                          <div fxFlex="1">
+                            <p
+                              style="font-size:15px;color:rgba(0,0,0,0.54);"
+                              #myAadhar
+                            >
+                              Aadharcard
+                              <span
+                                *ngIf="profile.IsIDCardvalid == 1"
+                                style="margin-left:100px;margin-top:-15px;"
+                                class="tickbg"
+                              >
+                                <span class="tick"> </span>
+                              </span>
+                            </p>
+                            <i
+                              class="fa fa-check-circle"
+                              style="font-size:24px"
+                            ></i>
+                            <span
+                              (click)="
+                                openDialog(
+                                  profile.GovtIDCard,
+                                  myAadhar.innerText,
+                                  profile
+                                );
+                                getBikeID(profile)
+                              "
+                              style="line-height: 20px;color:#f79726;cursor:pointer;"
+                              *ngIf="profile.GovtIDCard != ''"
+                            >
+                              View
+                            </span>
+                            <span
+                              *ngIf="
+                                profile.GovtIDCard == '' ||
+                                profile.GovtIDCard == null
+                              "
+                              ><button class="pendingbtn">Pending</button></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Emergency Info">
+              <div class="" style="padding:10px 0 10px 25px;">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  style="line-height:10px;"
+                >
+                  <div fxFlex="40">
+                    <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                      Blood Group
+                    </p>
+                    <span *ngIf="selectedUserDetails.BloodGroup !== ''">
+                      {{ selectedUserDetails.BloodGroup }}
+                    </span>
+                    <button
+                      *ngIf="
+                        selectedUserDetails.BloodGroup == '' ||
+                        selectedUserDetails.BloodGroup == null
+                      "
+                      class="pendingbtn"
+                    >
+                      Pending
+                    </button>
+                  </div>
+                  <div fxFlex="40">
+                    <p style="font-size:15px;color:rgba(0,0,0,0.54);">City</p>
+                    <!-- <span>
+                                                {{selectedUserDetails.City}}
+                                            </span> -->
+
+                    <span *ngIf="selectedUserDetails.City !== ''">
+                      {{ selectedUserDetails.City }}</span
+                    >
+                    <span
+                      *ngIf="
+                        selectedUserDetails.City == '' ||
+                        selectedUserDetails.City == null
+                      "
+                      ><button class="pendingbtn">Pending</button></span
+                    >
+                  </div>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  style="line-height:10px;margin-top:20px;"
+                >
+                  <div fxFlex="40">
+                    <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                      Contact 1
+                    </p>
+                    <span
+                      style="line-height: 20px;"
+                      *ngIf="
+                        selectedUserDetails.Contact1Name !== '' ||
+                        selectedUserDetails.Contact1 !== ''
+                      "
+                    >
+                      {{ selectedUserDetails.Contact1Name }} <br />
+                      {{ selectedUserDetails.Contact1 }}
+                    </span>
+                    <span
+                      *ngIf="
+                        selectedUserDetails.Contact1Name == '' ||
+                        selectedUserDetails.Contact1Name == null ||
+                        selectedUserDetails.Contact1 == '' ||
+                        selectedUserDetails.Contact1 == null
+                      "
+                      ><button class="pendingbtn">Pending</button></span
+                    >
+                  </div>
+                  <div fxFlex="40">
+                    <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                      Contact 2
+                    </p>
+                    <span
+                      style="line-height: 20px;"
+                      *ngIf="
+                        selectedUserDetails.Contact2Name !== '' ||
+                        selectedUserDetails.Contact2 !== ''
+                      "
+                    >
+                      {{ selectedUserDetails.Contact2Name }} <br />
+                      {{ selectedUserDetails.Contact2 }}
+                    </span>
+                    <span
+                      *ngIf="
+                        selectedUserDetails.Contact2Name == '' ||
+                        selectedUserDetails.Contact2Name == null ||
+                        selectedUserDetails.Contact2 == '' ||
+                        selectedUserDetails.Contact2 == null
+                      "
+                      ><button class="pendingbtn">Pending</button></span
+                    >
+                  </div>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  style="line-height:10px;margin-top:20px;"
+                >
+                  <div fxFlex="40">
+                    <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                      Address
+                    </p>
+                    <span
+                      style="line-height: 20px;"
+                      *ngIf="selectedUserDetails.Address !== ''"
+                    >
+                      <address>
+                        {{ selectedUserDetails.Address }}
+                      </address>
+                    </span>
+                    <span
+                      *ngIf="
+                        selectedUserDetails.Address == '' ||
+                        selectedUserDetails.Address == null
+                      "
+                      ><button class="pendingbtn">Pending</button></span
+                    >
+                  </div>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  style="line-height:10px;margin-top:20px;"
+                >
+                  <div fxFlex="80">
+                    <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                      Medical Conditions &nbsp;&nbsp;
+                      <!-- <button class="pendingbtn">Pending</button>-->
+                    </p>
+                    <span *ngIf="selectedUserDetails.MedicalConditions !== ''">
+                      {{ selectedUserDetails.MedicalConditions }}
+                    </span>
+                    <button
+                      *ngIf="
+                        selectedUserDetails.MedicalConditions == '' ||
+                        selectedUserDetails.MedicalConditions == null
+                      "
+                      class="pendingbtn"
+                    >
+                      Pending
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Payment History">
+              <div class="mat-elevation-z8">
+                <table
+                  mat-table
+                  [dataSource]="dataSource"
+                  style="width:100% !important;height:auto !important;"
+                >
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="year">
+                    <th mat-header-cell *matHeaderCellDef>Year</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.StartDate | date: "yyyy" }}
+                    </td>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="month">
+                    <th mat-header-cell *matHeaderCellDef>Month</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.StartDate | date: "MMMM" }}
+                    </td>
+                  </ng-container>
+
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef>Date</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.StartDate | date: " d MMM yyyy" }}
+                    </td>
+                  </ng-container>
+
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="plan">
+                    <th mat-header-cell *matHeaderCellDef>Plan</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.PlanDuration }} months plan
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef>Amount</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.AmountPaid }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="validity">
+                    <th mat-header-cell *matHeaderCellDef>Validity</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.ExpiryDate | date: " d MMM yyyy" }}
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                  ></tr>
+                </table>
+
+                <mat-paginator
+                  #paginator
+                  [length]="dataSource.data.length"
+                  [pageIndex]="0"
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                >
+                </mat-paginator>
+                <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+              </div>
+            </mat-tab>
+            <mat-tab label="Ads">
+              <div class="contentp tab-content p-24" fusePerfectScrollbar>
+                <div
+                  style="text-align: center;padding:100px"
+                  *ngIf="getuserads != undefined && getuserads.length == 0"
+                >
+                  No Ads Found
+                </div>
+                <div
+                  class="cards"
+                  *ngIf="getuserads != undefined && getuserads.length != 0"
+                >
+                  <!-- CARD 1 -->
+                  <div class="card" *ngFor="let ads of getuserads">
+                    <!-- PREVIEW -->
+                    <div class="card-preview">
+                      <div class="fuse-cards">
+                        <div class="topright-bike">₹ {{ ads.Price }}/-</div>
+                        <!-- <img class="bikeImage" src="assets/images/cards/bikeads.png"> -->
+                        <!-- <img class="bikeImage" src="{{ads.ImageURLs}}"> -->
+                        <mat-carousel
+                          timings="250ms ease-in"
+                          [autoplay]="false"
+                          interval="2000"
+                          color="warn"
+                          maxWidth="100"
+                          maxHeight="200"
+                          proportion="25"
+                          slides="5"
+                          [loop]="true"
+                          [hideArrows]="true"
+                          [hideIndicators]="true"
+                          [useKeyboard]="true"
+                          [useMouseWheel]="false"
+                          orientation="ltr"
+                        >
+                          <mat-carousel-slide
+                            #matCarouselSlide
+                            *ngFor="let slide of ads.ImageURLs; let i = index"
+                            [image]="slide"
+                            [hideOverlay]="true"
+                          >
+                          </mat-carousel-slide>
+                        </mat-carousel>
+
+                        <!-- <div class="topright-bike">₹ {{ads.Price}}/-</div> -->
+                        <div
+                          class=""
+                          style="padding:0px 5px 5px 5px;flex-direction:column !important;"
+                        >
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                            fxFlex="1 0 auto"
+                          >
+                            <div
+                              fxFlex="70"
+                              class="pr-4"
+                              *ngIf="ads.BrandID != null"
+                            >
+                              <h5>
+                                <b>{{ ads.BrandName }}</b>
+                              </h5>
+                            </div>
+                            <div
+                              fxFlex="70"
+                              class="pr-4"
+                              *ngIf="ads.BrandID == null"
+                            >
+                              <h5>
+                                <b>{{ ads.Description }}</b>
+                              </h5>
+                            </div>
+                            <div fxFlex="30" class="pr-4">
+                              <p style="font-size:11px;">
+                                {{ ads.CreatedAt | date: "dd MMM yyyy" }}
+                              </p>
+                            </div>
+                          </div>
+                          <br />
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                            fxFlex="1 0 auto"
+                            style="margin-top:-32px;"
+                            *ngIf="ads.BrandID != null"
+                          >
+                            <div
+                              fxFlex="50"
+                              class="pr-4"
+                              style="font-size:11px;margin-right:40px;"
+                            >
+                              <span>Model No :</span>
+                              <span style="color:rgba(0,0,0,0.54)">
+                                {{ ads.ModelName }}</span
+                              >
+                            </div>
+                            <div
+                              fxFlex="50"
+                              class="pr-4"
+                              style="font-size:11px;"
+                            >
+                              <span>Driven :</span>
+                              <span style="color:rgba(0,0,0,0.54)"
+                                >{{ ads.KMdriven }} Kms</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                            fxFlex="1 0 auto"
+                            style="margin-top:4px;"
+                            *ngIf="ads.BrandID != null"
+                          >
+                            <div
+                              fxFlex="50"
+                              class="pr-4"
+                              style="font-size:11px;margin-right:40px;"
+                            >
+                              <span>Mfg :</span>
+                              <span style="color:rgba(0,0,0,0.54)">
+                                {{ ads.ManufacturedYear }}</span
+                              >
+                            </div>
+                            <div
+                              fxFlex="50"
+                              class="pr-4"
+                              style="font-size:11px;"
+                            >
+                              <span>Reg :</span>
+                              <span style="color:rgba(0,0,0,0.54)">{{
+                                ads.RegistrationYear
+                              }}</span>
+                            </div>
+                          </div>
+                          <div
+                            fxLayout="row"
+                            *ngIf="ads.BrandID == null"
+                            fxLayoutAlign="start center"
+                            fxFlex="1 0 auto"
+                            style="margin-top:-32px;"
+                          >
+                            <div
+                              fxFlex="80"
+                              class="pr-4"
+                              style="font-size:11px;margin-right:40px;"
+                            >
+                              <span>Purchased on :</span>
+                              <span style="color:rgba(0,0,0,0.54)">
+                                {{
+                                  ads.PurchaseDate | date: "dd MMM yyyy"
+                                }}</span
+                              >
+                            </div>
+                          </div>
+                          <!-- <div fxLayout="row" fxLayoutAlign="start end"
+                                                            class="btnmainDiv">
+                                                            <div appearance="outline" fxFlex="50" class="editiconDiv">
+                                                                <img src="assets/icons/writing.svg"
+                                                                    style="padding-top:7px;">
+                                                            </div>
+                                                            <div appearance="outline" fxFlex="50"
+                                                                style="text-align: center;">
+                                                                <img src="assets/icons/rubbish-bin.svg">
+                                                            </div>
+                                                        </div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- / PREVIEW -->
+                  </div>
+                  <!-- / CARD 1 -->
+
+                  <!-- CARD 2 -->
+                  <!-- <div class="card">
+
+                                           
+                                            <div class="card-preview">
+
+                                                <div class="fuse-cards">
+
+                                                    <img class="bikeImage" src="assets/images/cards/userjacket.png">
+                                                    <div class="topright-product">₹ 7000/-</div>
+                                                    <div class=""
+                                                        style="padding:0px 5px 5px 5px;flex-direction:column !important;">
+                                                        <div fxLayout="row" fxLayoutAlign="start center"
+                                                            fxFlex="1 0 auto">
+                                                            <div fxFlex="70" class="pr-4">
+                                                                <h5><b>One Piece Leather Suit</b></h5>
+                                                            </div>
+                                                            <div fxFlex="30" class="pr-4">
+                                                                <p style="font-size:11px;"> 22 Jul 2019</p>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div fxLayout="row" fxLayoutAlign="start center"
+                                                            fxFlex="1 0 auto" style="margin-top:-32px;">
+                                                            <div fxFlex="80" class="pr-4"
+                                                                style="font-size:11px;margin-right:40px;">
+                                                                <span>Purchased on :</span>
+                                                                <span style="color:rgba(0,0,0,0.54)">
+                                                                    5 Jul 2017</span>
+                                                            </div>
+                                                        </div>
+                                                        <div fxLayout="row" fxLayoutAlign="start end"
+                                                            class="btnmainDiv">
+                                                            <div appearance="outline" fxFlex="50" class="editiconDiv">
+                                                                <img src="assets/icons/writing.svg"
+                                                                    style="padding-top:7px;">
+                                                            </div>
+                                                            <div appearance="outline" fxFlex="50"
+                                                                style="text-align: center;">
+                                                                <img src="assets/icons/rubbish-bin.svg">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                           
+
+                                        </div> -->
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

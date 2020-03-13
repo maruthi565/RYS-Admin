@@ -1,0 +1,172 @@
+<div class="dialog-content-wrapper" style="margin-top:-20px;">
+    <mat-toolbar class=" m-0" style="background-image: url('assets/images/cards/berikImage.png')">
+      <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="title dialog-title"></span>
+        <button mat-icon-button (click)="matDialogRef.close()" class="close" aria-label="Close dialog">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+  
+  
+        <div name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <div appearance="outline" fxFlex="50" class="pr-4">
+                    <img src="assets/images/cards/beriklogo.png" width="80" height="80">
+                </div>
+                <div appearance="outline" fxFlex="20" class="pr-4"></div>
+                <div appearance="outline" fxFlex="30" class="pr-4">
+                    <p style="margin-right:-50px;font-size:12px;color: rgb(149, 149, 149) !important;">Valid upto 29 Aug 2019</p>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <div appearance="outline" fxFlex="50" class="pr-4">
+                        <p>One Piece Leather Suit</p>
+                </div>
+                <div appearance="outline" fxFlex="20" class="pr-4"></div>
+                <div appearance="outline" fxFlex="30" class="pr-4"></div>
+            </div>
+            
+            
+        <!-- <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-15px">
+          <p><b>Upto 80% Discount on any bike repairs + 10% cashback</b></p>
+        </div> -->
+        <!-- <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-30px">
+                <h6 style="display:inline-block"> Voucher Value <span style="color:#FB8E0B"> &#x20b9;
+                        2,000</span>
+                </h6>
+            </div> -->
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" 
+            style="margin-top:-25px;margin-left:9px;margin-right:110px;font-size:10px;color: rgb(149, 149, 149) !important;">
+            <h6 style="display:inline-block"> <b><span
+                        style="color:#E8411F;text-decoration: line-through"> <span
+                            style="color:#000;">&#x20b9;
+                            24,000</span></span></b>&nbsp;&nbsp; <span> <b>&#x20b9;
+                    12,000</b></span>
+            </h6>
+        </div>
+        
+        <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-10px;">
+          <div fxLayout="column" fxFlex.gt-sm="50">
+            <div class="circle" style="padding-left:10px;padding-top:7px;">
+                <img src="assets/icons/location.svg" width="17" height="17">
+            </div>
+            <span style="margin-left:52px;margin-top:-50px;">
+              <h4><b>Store Address</b></h4>
+              <p style="margin-top: -18px;font-size:12px;color:#959595">Driver Cafe,ORR,Hyderabad</p>
+            </span>
+          </div>
+          <div fxLayout="column" fxFlex.gt-sm="50">
+            <h4><b>Terms & Conditions</b></h4>
+            <div style="font-size:13px;color:#959595;margin-top:-20px;">
+              <p> 1. This Product is available in select cities (Hyderabad,Bangalore and Chennai)</p>
+              <p> 2. Sizes Available (XS, S, M and L)</p>
+              <p> 3. please check size chart befor purchasing</p>
+            </div>
+          </div>
+        </div>
+        <div class="row" fxLayout="row" fxLayout.gt-sm="row">
+          <div fxLayout="column" fxFlex.gt-sm="50" style="margin-top:-82px;">
+                <div class="circle" style="padding-left:12px;padding-top: 10px;">
+                        <!-- <mat-icon class="icon" style="color:#E8411F;">local_phone</mat-icon> -->
+                        <img src="assets/icons/phone-receiver.svg" width="17" height="17">
+                    </div>
+            <span style="margin-left:52px;margin-top:-50px;">
+              <h4><b>Contact</b></h4>
+              <div style="margin-top: -18px;font-size:12px;color:#959595">
+                <p>9908292726</p>
+                <p style="margin-top:-8px;">Kawasakiservice@gmail.com</p>
+              </div>
+  
+            </span>
+          </div>
+        </div>
+        <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:15px;">
+          <div fxLayout="column" fxFlex.gt-sm="19"></div>
+          <div fxLayout="column" fxFlex.gt-sm="30" style="margin-right:50px;">
+            <button mat-raised-button class="add-product-button fuse-red mt-24 mt-md-0">
+              <span style="color:black;">Reject</span>
+            </button>
+          </div>
+          <div fxLayout="column" fxFlex.gt-sm="30">
+            <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">
+              <span>Accept</span>
+            </button>
+          </div>
+          <div fxLayout="column" fxFlex.gt-sm="20"></div>
+        </div>
+        <br>
+       
+        
+  
+  
+        <!-- 
+            <mat-form-field appearance="outline" [fxShow]="showExtraToFields">
+                <mat-label>Bcc</mat-label>
+                <input matInput name="bcc" formControlName="bcc" type="email">
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+                <mat-label>Subject</mat-label>
+                <input matInput name="subject" formControlName="subject">
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+                <mat-label>Message</mat-label>
+                <textarea matInput name="message" formControlName="message" rows="6">
+                </textarea>
+            </mat-form-field>
+  
+            <div class="attachment-list">
+  
+                <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <span class="filename">attachment-2.doc</span>
+                        <span class="size ml-4">(12 Kb)</span>
+                    </div>
+  
+                    <button mat-icon-button aria-label="Delete attachment">
+                        <mat-icon class="s-16">close</mat-icon>
+                    </button>
+                </div>
+  
+                <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <span class="filename">attachment-1.jpg</span>
+                        <span class="size ml-4">(350 Kb)</span>
+                    </div>
+  
+                    <button mat-icon-button aria-label="Delete attachment">
+                        <mat-icon class="s-16">close</mat-icon>
+                    </button>
+                </div>
+            </div> -->
+      </div>
+  
+    </div>
+  
+    <!-- <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+            <button mat-raised-button
+                    color="accent"
+                    (click)="matDialogRef.close(['send',composeForm])"
+                    class="save-button"
+                    [disabled]="composeForm.invalid"
+                    aria-label="SAVE">
+                SEND
+            </button>
+  
+            <button mat-icon-button matTooltip="Attach a file">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+        </div>
+  
+        <button mat-icon-button (click)="matDialogRef.close(['delete',composeForm])"
+                aria-label="Delete"
+                matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+        </button> 
+    </div> -->
+  </div>

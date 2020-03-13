@@ -1,0 +1,507 @@
+<div id="createEvent" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                                shopping_basket
+                            </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          <b> Create Event</b>
+        </span>
+        <p
+          style="margin-top:90px;margin-left:-135px;cursor:pointer;"
+          [routerLink]="'/apps/e-commerce/events'"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          < Events
+        </p>
+        <br />
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card" fusePerfectScrollbar>
+      <form
+        name="createEventForm"
+        [formGroup]="createEventForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="space-between"
+          style="border-bottom:1px solid #EFEFEF !important;"
+        >
+          <div fxLayout="column" style="margin-left:20px;">
+            <p class="card-heading"><b>Create Event</b></p>
+          </div>
+          <div fxLayout="column" style="margin-right: 20px;margin-top:19px;">
+            <button
+              type="submit"
+              mat-raised-button
+              class="add-product-button fuse-white mt-24 mt-md-0"
+            >
+              <span> Create </span>
+            </button>
+          </div>
+        </div>
+        <div class="tab-content p-24">
+          <div class="compose-form" fxLayout="column" fxFlex>
+            <p><b>Event Detail</b></p>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Event Name</mat-label>
+                <input
+                  matInput
+                  name="name"
+                  formControlName="EventName"
+                  type="text"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Event Description</mat-label>
+                <textarea
+                  matInput
+                  name="description"
+                  formControlName="EventDescription"
+                  rows="5"
+                  required
+                ></textarea>
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="15">
+                <mat-label>Start Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="EventStartDate"
+                  required
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                  style="width:1.0em !important;color:#f79726 !important;"
+                >
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="15">
+                <mat-label>End Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerTo"
+                  formControlName="EventEndDate"
+                  required
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerTo"
+                  style="width:1.9em !important;color:#f79726 !important;"
+                >
+                </mat-datepicker-toggle>
+                <mat-datepicker #pickerTo></mat-datepicker>
+                <!-- <small *ngIf="createRideForm.hasError('notValid')">Not valid</small> -->
+              </mat-form-field>
+              <!-- <div fxFlex="30">
+                                <div class="file-upload">
+                                    <div class="image-upload-wrap">
+                                        <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                            accept="image/*" />
+                                        <div class="drag-text" style="height:80px">
+                                            <h3 style="font-size:20px !important;">+</h3>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <!-- <mat-label>Image</mat-label> -->
+              <div class="file-upload" style="margin-top:-55px;" fxFlex="30">
+                <div class="image-upload-wrap">
+                  <input class="file-upload-input" (click)="onChange()" />
+                  <div class="drag-text" style="height:55px">
+                    <h3 style="font-size:20px !important;">
+                      +
+                      <span
+                        style="font-size:12px;color:#00000099;text-transform: capitalize;"
+                        >Upload Image</span
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div appearance="outline" fxFlex="30" class="radio-btn">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button
+                    [checked]="isCheck"
+                    (change)="radioChange($event)"
+                    >Use Default Image</mat-radio-button
+                  >
+                </mat-radio-group>
+              </div>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="15"
+                class="startTime"
+              >
+                <mat-label>Start Time</mat-label>
+                <input
+                  matInput
+                  formControlName="EventStartTime"
+                  placeholder="Event Start Time"
+                  type="time"
+                  step="1"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="15" class="endTime">
+                <mat-label>End Time</mat-label>
+                <input
+                  matInput
+                  formControlName="EventEndTime"
+                  placeholder="Event End Time"
+                  type="time"
+                  step="1"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <br />
+
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <img
+                *ngFor="let url of htmlUrls"
+                [src]="url"
+                width="200"
+                height="200"
+              /><br />
+              <!-- <img [src]="previewUrl"  /> -->
+            </div>
+            <br />
+            <p><b>Select Country</b></p>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-select
+                  formControlName="CountryID"
+                  style="margin-right:10px;"
+                >
+                  <mat-option
+                    *ngFor="let country of getcountries"
+                    [value]="country.CountryID"
+                    required
+                  >
+                    {{ country.CountryName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Organiser Name</mat-label>
+                <input
+                  matInput
+                  name="name"
+                  formControlName="OrganiserName"
+                  type="text"
+                  required
+                />
+              </mat-form-field>
+              <div fxFlex="30"></div>
+            </div>
+            <p><b>Location & Venue</b></p>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Location</mat-label>
+                <input
+                  matInput
+                  name="location"
+                  formControlName="Location"
+                  type="text"
+                />
+                <span
+                  matSuffix
+                  style="color:#f79726;font-size:12px;"
+                  (click)="openDialog('startLocation', null)"
+                  >Pin Location</span
+                >
+              </mat-form-field>
+              <div appearance="outline" fxFlex="30"></div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Venue</mat-label>
+                <input
+                  matInput
+                  name="venue"
+                  formControlName="Venue"
+                  type="text"
+                />
+                <span
+                  matSuffix
+                  style="color:#f79726;font-size:12px;"
+                  (click)="openDialog('venue', null)"
+                  >Pin Location</span
+                >
+              </mat-form-field>
+              <div appearance="outline" fxFlex="30"></div>
+            </div>
+            <br />
+            <p><b>Select Invite Type</b></p>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                style="width:100px;"
+              >
+                <mat-label>Brand & Model</mat-label>
+                <mat-select formControlName="BikeModels" #singleSelect multiple>
+                  <mat-select-search
+                    [formControl]="bikeFilterCtrl"
+                  ></mat-select-search>
+                  <mat-optgroup
+                    *ngFor="let bike of filteredBikes | async"
+                    [label]="bike.BrandName"
+                  >
+                    <mat-option
+                      *ngFor="let item of bike.BikeModels"
+                      [value]="item"
+                      (click)="tosslePerOne(allSelected.viewValue)"
+                    >
+                      {{ item.ModelName }}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-select>
+              </mat-form-field>
+
+              <!--  <mat-form-field appearance="outline" fxFlex="30">
+                                    <mat-label>Brand & Model</mat-label>
+                                    <mat-select formControlName="BrandModels" multiple>
+                                        <mat-option *ngFor="let brandAndModel of brandsAndModals" [value]="brandAndModel.BrandID">
+                                            {{brandAndModel.BrandName}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field> -->
+
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Search city</mat-label>
+                <input
+                  matInput
+                  formControlName="InviteCities"
+                  type="text"
+                  (keydown.enter)="$event.preventDefault()"
+                  placeholder="Search city"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="off"
+                  type="text"
+                  #eventCitySearch
+                />
+              </mat-form-field>
+
+              <div appearance="outline" fxFlex="30"></div>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              style="display: none;"
+            >
+              <div appearance="outline" fxFlex="35">
+                <mat-checkbox
+                  #allSelected
+                  (click)="toggleAllSelection()"
+                  formControlName="isSelected"
+                  >Select all Bike Brands & Models
+                </mat-checkbox>
+              </div>
+              <div appearance="outline" fxFlex="10"></div>
+              <div appearance="outline" fxFlex="50"></div>
+            </div>
+            <br />
+            <p><b>Paid/Free Event</b></p>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-radio-group
+                aria-label="Select an option"
+                formControlName="EventType"
+              >
+                <mat-radio-button
+                  #paid
+                  value="Paid"
+                  class="events"
+                  [checked]="isPaid"
+                  (change)="(0)"
+                  >Paid Event
+                </mat-radio-button>
+                <mat-radio-button
+                  #free
+                  value="Free"
+                  class="events"
+                  (change)="(0)"
+                  >Free Event</mat-radio-button
+                >
+              </mat-radio-group>
+            </div>
+            <br />
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              *ngIf="paid.checked"
+            >
+              <mat-form-field
+                appearance="outline"
+                fxFlex="18"
+                style="margin-right:10px"
+              >
+                <mat-label>Sale Start Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker1"
+                  placeholder="StartDate"
+                  formControlName="SaleStartDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker1"
+                  style="width:1.0em !important;color:#f79726 !important;"
+                >
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="18"
+                style="margin-right: 60px;"
+              >
+                <mat-label>Sale End Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerTo2"
+                  placeholder="EndDate"
+                  formControlName="SaleEndDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerTo2"
+                  style="width:1.9em !important;color:#f79726 !important;"
+                >
+                </mat-datepicker-toggle>
+                <mat-datepicker #pickerTo2></mat-datepicker>
+              </mat-form-field>
+              <div appearance="outline" fxFlex="30"></div>
+              <div appearance="outline" fxFlex="30"></div>
+            </div>
+            <br />
+            <p *ngIf="paid.checked"><b>Ticket Segments</b></p>
+            <div formArrayName="TicketsSegments" *ngIf="paid.checked">
+              <div
+                *ngFor="
+                  let ticketSegment of createEventForm.get('TicketsSegments')
+                    .controls;
+                  let i = index
+                "
+              >
+                <div fxLayout="row" fxFlex="85" [formGroupName]="i">
+                  <div class="fuse-card auto-width">
+                    <p style="color:red;padding-left:10px;">
+                      Ticket Segment {{ i + 1 }}
+                    </p>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="space-between"
+                      class="tickets"
+                    >
+                      <mat-form-field
+                        appearance="outline"
+                        fxFlex="45"
+                        style="margin-right:10px;"
+                      >
+                        <mat-label>Ticket Class</mat-label>
+                        <input
+                          matInput
+                          name="premium"
+                          formControlName="TicketClass"
+                          type="text"
+                        />
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" fxFlex="45">
+                        <mat-label>Ticket Price</mat-label>
+                        <input
+                          matInput
+                          name="price"
+                          formControlName="Price"
+                          type="text"
+                        />
+                      </mat-form-field>
+                      <div appearance="outline" fxFlex="0"></div>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="space-between"
+                      class="description"
+                    >
+                      <mat-form-field appearance="outline" fxFlex="95">
+                        <mat-label>Description</mat-label>
+                        <textarea
+                          matInput
+                          name="descrip"
+                          formControlName="Description"
+                          rows="4"
+                        ></textarea>
+                      </mat-form-field>
+                      <div appearance="outline" fxFlex="5"></div>
+                    </div>
+                  </div>
+                  <div class="appearance" fxFlex="10">
+                    <h3
+                      class="plusbtn"
+                      (click)="
+                        addNewTicketSegment(
+                          createEventForm.get('TicketsSegments')
+                        )
+                      "
+                    >
+                      <b>+</b>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p><b>On Demand Event</b></p>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <div appearance="outline" fxFlex="35">
+                <p>Will be home page on demand event display</p>
+              </div>
+              <div appearance="outline" fxFlex="10">
+                <mat-slide-toggle
+                  formControlName="checked"
+                  class="slideToggle"
+                ></mat-slide-toggle>
+              </div>
+              <div appearance="outline" fxFlex="50"></div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

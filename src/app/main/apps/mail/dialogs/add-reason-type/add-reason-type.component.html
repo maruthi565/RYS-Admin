@@ -1,0 +1,65 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Add Reason Type</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+        <!-- <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
+            <mat-form-field appearance="outline">
+                <mat-label>Reason 1</mat-label>
+                <input matInput name="reason1" formControlName="reason1" type="text" value="Sold through RYS">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Reason 2</mat-label>
+                <input matInput name="reason2" formControlName="reason2" type="text" value="Decided not to sell">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Reason 3</mat-label>
+                <input matInput name="reason3" formControlName="reason3" type="text" value="Sold through other">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <div appearance="outline" fxFlex="50" class="pr-4"></div>
+                <div appearance="outline" fxFlex="40" class="pr-4"></div>
+                <div appearance="outline" fxFlex="10" class="pr-4">
+                    <h1 class="plus"> + </h1>
+                </div>
+            </div>
+            <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="send">
+                    <button mat-raised-button style="padding: 0 50px !important;"
+                        (click)="matDialogRef.close(['send',composeForm])"
+                        class="add-product-button fuse-white mt-24 mt-md-0">
+                        <span>Save</span>
+                    </button>
+                </div>
+            </div>
+        </form> -->
+        <form name="reasonForm" [formGroup]="reasonForm" class="compose-form" fxLayout="column" fxFlex>
+
+            <div fxLayout="column" fxLayoutAlign="start center" fxFlex="1 0 auto" formArrayName="ReasonTitle">
+                <div  *ngFor="let reason of reasonForm.get('ReasonTitle')['controls']; index as i">
+                <div [formGroupName]="i">
+                 <mat-form-field appearance="outline" class="pr-4">
+                    <mat-label>Reason {{i + 1}} </mat-label>
+                    <input matInput name="types" (keyup)="onKey($event, reason)" formControlName="ReasonTitle" type="text">
+                </mat-form-field>
+                </div>
+            </div>
+            </div>
+            <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center" style="margin-left:125px;">
+                <div>
+                    <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="onAddReason()">
+                        <span>Save</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

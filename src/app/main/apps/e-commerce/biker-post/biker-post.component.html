@@ -1,0 +1,189 @@
+<div id="bikerPost" class="page-layout carded fullwidth" fusePerfectScrollbar>
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent first" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Biker Posts
+                </span>
+                <p style="margin-top:90px;margin-left:-130px" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    < Profile
+                </p>
+            </div>
+            <!-- / APP TITLE -->
+            <!-- ADD BUTTON -->
+            <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW PRODUCT</span>
+            </button> -->
+            <!-- / ADD BUTTON -->
+            <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" flex-md="33">
+              
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+
+                    <div class="fuse-card auto-width mb-32" style="height:60% !important;width:92% !important; margin-top:25px !important;" [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16">
+                                <div class="h3 secondary-text">Total Posts</div>
+                                <div class="font-size-22 line-height-1">
+                                    10,000
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+
+                    <div class="fuse-card auto-width mb-32" style="height:60% !important;width:92% !important; margin-top:25px !important;" [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16">
+                                <div class="h3 secondary-text">Maximum Posted Users</div>
+                                <div class="font-size-22 line-height-1">
+                                    30
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+               
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+
+                    <div class="fuse-card auto-width mb-32" style="height:60% !important;width:92% !important; margin-top:25px !important;" [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="">
+                                <div class="h3 secondary-text">Top Liked Posts</div>
+                                <div class="font-size-22 line-height-1 mt-5">
+                                    100
+                                    <span id="icon" style="margin-left: 5px;">
+                                       
+                                        <img src="assets/icons/target.svg" width="40" height="40">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+             
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+
+                        <div class="fuse-card auto-width mb-32" style="height:60% !important;width:92% !important; margin-top:25px !important;" [ngClass.gt-sm]="'mb-0 mr-32'">
+    
+                            <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+    
+                                <div class="">
+                                    <div class="h3 secondary-text">Top Commented Posts</div>
+                                    <div class="font-size-22 line-height-1 mt-5">
+                                        1000
+                                        <span id="icon" style="margin-left:5px;">
+                                           <img src="assets/icons/target.svg" width="40" height="40">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                <br>
+
+            </div> -->
+
+        </div>
+      
+
+       
+        <div class="content-card">
+            <div class="p-24">
+                <div style="margin-top:-20px;">
+                    <h2>Posts</h2>
+                </div>
+                <div class="one" *ngFor = "let story of getstoriesbyUserID">
+                    <div>
+                        <div style="float:left;">
+                            <img class="avatar mr-0 mr-sm-16" src="{{story.ProfilePic  || 'assets/images/profile/default-avatar.png'}}" (error)="onImgError($event)">
+                            <p class="name"> <b> {{story.FirstName}} {{story.LastName}}</b><br>
+                                <span>{{story.Location}}</span>
+                            </p>
+                        </div>  
+                        <div style="float:right;">
+                            <mat-icon  [matMenuTriggerFor]="shareMenus" aria-hidden="false" aria-label="strength" class="shareicon">
+                                share
+                            </mat-icon>
+                            &nbsp;&nbsp;&nbsp;
+                        </div>    
+                        <mat-menu style="min-width: 230px !important;" #shareMenus="matMenu" [overlapTrigger]="false">
+                            <div> 
+                                <h4 style="float:left;padding:0px 10px 10px 10px;"><b>Share</b></h4>
+                                <button mat-icon-button  style="float:right;color:#f79726;" class="close" aria-label="Close dialog">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </div>
+                            <button mat-menu-item style="border-top:1px solid #0000001f;">
+                                <img src="assets/icons/facebook-8.svg" width="30" height="30" style="margin-top:10px;margin-right:10px;">
+                                <span>   Facebook</span>
+                            </button>
+                            <button mat-menu-item class="">
+                                <img src="assets/icons/instagram-5.svg" width="30" height="30" style="margin-top:10px;margin-right:10px;">
+                                <span>Instagram</span>
+                            </button>
+                        </mat-menu>    
+                    </div>
+                    <div>
+                        <!-- <img src="assets/images/cards/bikerstories.png"> -->
+                        <mat-carousel timings="250ms ease-in" [autoplay]="false" interval="2000" color="warn" maxWidth="auto"
+                        maxHeight="auto" proportion="25" slides="5" [loop]="true" [hideArrows]="false"
+                        [hideIndicators]="false" [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
+                        <mat-carousel-slide #postmatCarouselSlide *ngFor="let slide of story.ImageURLs; let i = index" [image]="slide"
+                            [hideOverlay]="true" style="height:450px !important;">
+    
+                        </mat-carousel-slide>
+                    </mat-carousel>
+                    </div>
+                    <h5><b>{{story.Caption}}</b></h5>
+                    <div>
+                        <div appearance="outline" fxFlex="5" class="pr-4" class="commenticons">
+                            <img src="assets/icons/heart-3.svg"> <span style="margin-left:5px">{{story.LikesCount}}</span>
+                        </div>
+                        <div appearance="outline" fxFlex="80" class="pr-4" class="commenticons"> 
+                            <img src="assets/icons/chat-3.svg"> <span style="margin-left:5px">{{story.CommentsCount}}</span>
+                        </div>
+                        <div appearance="outline" fxFlex="20" class="pl-4" style="float:right;" class="commenticons">
+                            <p>{{story.CreatedAt | date : " d MMM yyyy"}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Abbott.jpg">
+                        <p class="name"> Liked by <strong>Sukesh</strong> and <strong> 115 others</strong><br>
+                            <span style="margin-top:5px;"><strong style="margin-right:20px;">Akshay Mukrjee</strong> Wow Beautiful Bike and amazing view</span>
+                        </p> -->
+                        <p style="color:#c3bebe;margin-left:60px;cursor:pointer;" (click)="setStoryId(story)" >View all {{story.CommentsCount}} Comments</p>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

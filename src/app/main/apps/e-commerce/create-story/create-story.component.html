@@ -1,0 +1,166 @@
+<div id="createStory" class="page-layout carded fullwidth" fusePerfectScrollbar>
+    <div class="top-bg accent"></div>
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <b> Create Story</b>
+                </span>
+                <p style="margin-top:90px;margin-left:-145px;cursor:pointer;" [routerLink]="'/apps/e-commerce/biker-stories'" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    < Biker Stories 
+                </p><br>
+            </div>
+        </div> <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+                <form name="addStoryForm" [formGroup]="addStoryForm" >
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                <div fxLayout="column" style="margin-left:20px;">
+                    <p class="card-heading"><b>Create Story</b> </p>
+                </div>
+                <div fxLayout="column" style="margin-right: 20px;margin-top:19px;">
+                    <button mat-raised-button (click)="onAddStory()" class="add-product-button fuse-white mt-24 mt-md-0">
+                        <span> Create </span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tab-content">
+
+                <!-- <img src="assets/images/cards/rideview.png"> -->
+                <div class="compose-form" fxLayout="column" fxFlex>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <div class="file-upload2" fxFlex="100">
+                            <div class="image-upload-wrap">
+                                    <input class="file-upload-input" type='file' name="ImageURLs" id="file" (change)="onChange($event)"
+                                    accept="image/png, image/jpeg" multiple>
+                                    
+                                <div class="drag-text" style="height:165px;margin-top:75px;">
+                                    <h3 style="font-size:30px !important;">+ <br><span style=" font-size: 16px;
+                                    color: rgba(0,0,0,0.54);">Upload Banner Image</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row" *ngFor='let url of htmlUrls;let i =index;'  class="wrapper" fxLayoutAlign="space-between">
+                        
+                            <img   style="margin-left:60px;margin-bottom:10px" [src]="url" width="400" height="400" ><br/>
+                            <!-- <span class="close"></span> -->
+                            <button mat-raised-button type="button" style="height: 35px;top: 45%;right: 35%;" class="add-product-button fuse-white mt-24 mt-md-0" (click)="removeImage(i)">Remove</button>
+                            <!-- <button mat-icon-button (click)="removeSelectedFile(i)">delete</button> -->
+                            <!-- <img [src]="previewUrl"  /> -->
+                        
+                        </div>
+                    <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between" fxFlex="100">
+                        <div fxLayout="column" style="width:100%;padding:5px 20px 5px 20px;">
+                            <p class="card-heading"><b>write a caption</b> </p>   
+                            <textarea placeholder="write upto 1000 characters" formControlName="Caption"></textarea>
+                            <!-- <mat-form-field appearance="legacy" fxFlex="100" style="background-color: #eee;border-radius:5px;">
+                                <mat-label></mat-label>
+                                    <input matInput placeholder="write upto 1000 characters" style="margin-left:10px;font-size:15px;">
+                                <textarea type="textarea" matInput name="description" formControlName="description" rows="5"></textarea>
+                            </mat-form-field> -->
+                        </div>
+                    </div>
+                    <div fxLayout="column"  style="padding:5px 20px 5px 20px;" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between" fxFlex="100">
+                            <mat-form-field appearance="outline" fxFlex="30">
+                                    <mat-label>Location</mat-label>
+                                    <input matInput name="name" formControlName="Location" type="text" required>
+                                </mat-form-field>
+                        </div>
+                    <!-- <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between" fxFlex="100">
+                        <div fxLayout="column" style="width:100%;padding:5px 20px 5px 20px;">
+                            <p class="card-heading"><b>Add Location</b> </p>   
+                            <div class="fuse-card-story auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+                                <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" style="margin:20px;">
+                                        <div appearance="outline" fxFlex="50" class="pr-4">
+                                           
+                                        </div>
+                        
+                                        <div appearance="outline" fxFlex="50" class="pl-4" style="text-align:right;">
+                                            <h3 class="plus-sign"> + </h3>
+                                        </div>
+                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between" fxFlex="100">
+                        <div fxLayout="column" style="width:100%;padding:5px 20px 5px 20px;">
+                            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" style="margin:20px;">
+                                    <div class="fuse-card-story auto-width mb-32 p-16" [ngClass.gt-sm]="'mb-0 mr-32'" fxFlex="50">
+                                        <div fxFlex="30" class="socioicon">
+                                            <img src="assets/icons/facebook-8.svg">  
+                                        </div>
+                                        <div fxFlex="30">
+                                            <h3> <b>Facebook</b></h3>  
+                                        </div>
+                                        <div fxFlex="30" class="sociofield">
+                                            <mat-slide-toggle [(ngModel)]="check1" [ngModelOptions]="{standalone: true}"></mat-slide-toggle>
+                                        </div>
+                                    </div>
+                                    <div appearance="outline" fxFlex="50" class="pl-4"></div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>  -->
+                    <!-- <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between" fxFlex="100" style="margin-top:-30px;">
+                        <div fxLayout="column" style="width:100%;padding:5px 20px 5px 20px;">
+                            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" style="margin:20px;">
+                                    <div class="fuse-card-story auto-width mb-32 p-16" [ngClass.gt-sm]="'mb-0 mr-32'" fxFlex="50">
+                                        <div fxFlex="30" class="socioicon">
+                                            <img src="assets/icons/twitter-48.png">  
+                                        </div>
+                                        <div fxFlex="30">
+                                            <h3> <b>Twitter</b></h3>  
+                                        </div>
+                                        <div fxFlex="30" class="sociofield">
+                                            <mat-slide-toggle [(ngModel)]="check2" [ngModelOptions]="{standalone: true}"></mat-slide-toggle>
+                                        </div>
+                                    </div>
+                                    <div appearance="outline" fxFlex="50" class="pl-4"></div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div> -->
+                    <!-- <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between" fxFlex="100" style="margin-top:-30px;">
+                        <div fxLayout="column" style="width:100%;padding:5px 20px 5px 20px;">
+                            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" style="margin:20px;">
+                                    <div class="fuse-card-story auto-width mb-32 p-16" [ngClass.gt-sm]="'mb-0 mr-32'" fxFlex="50">
+                                        <div fxFlex="30" class="socioicon">
+                                            <img src="assets/icons/instagram-5.svg">  
+                                        </div>
+                                        <div fxFlex="30">
+                                            <h3> <b>Instagram</b></h3>  
+                                        </div>
+                                        <div fxFlex="30" class="sociofield">
+                                            <mat-slide-toggle [(ngModel)]="check3" [ngModelOptions]="{standalone: true}"></mat-slide-toggle>
+                                        </div>
+                                    </div>
+                                    <div appearance="outline" fxFlex="50" class="pl-4"></div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </form>
+        </div>
+        <!-- / CONTENT CARD -->
+        <br>
+
+    </div>
+    <!-- / CENTER -->
+</div>

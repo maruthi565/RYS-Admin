@@ -1,0 +1,87 @@
+<div id="sendMessage" class="page-layout carded fullwidth" fusePerfectScrollbar>
+  <div class="top-bg accent"></div>
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          <b> Message</b>
+        </span>
+        <p
+          style="margin-top:90px;margin-left:-100px"
+          [routerLink]="'/apps/e-commerce/users'"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          < Users
+        </p>
+        <br />
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between"
+        style="margin-bottom:15px;border-bottom:1px solid #EFEFEF !important;"
+      >
+        <div fxLayout="column" style="margin-left:20px;">
+          <p class="card-heading" style="color:#6E6E81;">To :</p>
+          <span fxLayout="column" style="margin-left: 45px;margin-top: -40px;"
+            ><b> {{ result.join(", ") }}</b>
+          </span>
+        </div>
+      </div>
+      <div class="tab-content">
+        <form
+          name="sendMessageForm"
+          [formGroup]="sendMessageForm"
+          class="compose-form"
+          fxLayout="column"
+          fxFlex
+        >
+          <textarea
+            formControlName="Message"
+            placeholder="Type Your Message Here.."
+          ></textarea>
+          <div
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between"
+            style="border-top:1px solid #EFEFEF !important;margin-bottom:15px;"
+          >
+            <div fxLayout="column" style="margin-left:20px;"></div>
+            <div fxLayout="column" style="margin-right: 20px; margin-top:10px;">
+              <button
+                mat-raised-button
+                (click)="OnSendMessage()"
+                class="send-btn add-product-button fuse-white mt-24 mt-md-0"
+              >
+                <span> Send </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- / CONTENT CARD -->
+    <br />
+  </div>
+  <!-- / CENTER -->
+</div>

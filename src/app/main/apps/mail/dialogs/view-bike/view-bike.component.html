@@ -1,0 +1,182 @@
+<div class="dialog-content-wrapper" id="viewBike">
+  <!-- <div class="top-right-orange">₹ 1,50,000/-</div> -->
+
+  <!-- <mat-toolbar class=" m-0" style="background-image: url('assets/images/cards/ninja.jpg')"> -->
+  <mat-toolbar class="m-0">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title"></span>
+
+      <button
+        mat-icon-button
+        (click)="matDialogRef.close()"
+        class="close"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <div class="compose-form" fxLayout="column" fxFlex>
+      <div style="margin-top:-20px;">
+        <mat-carousel
+          timings="250ms ease-in"
+          [autoplay]="false"
+          interval="2000"
+          color="warn"
+          maxWidth="100"
+          maxHeight="200"
+          proportion="25"
+          slides="5"
+          [loop]="true"
+          [hideArrows]="true"
+          [hideIndicators]="false"
+          [useKeyboard]="true"
+          [useMouseWheel]="false"
+          orientation="ltr"
+        >
+          <mat-carousel-slide
+            #matCarouselSlide
+            *ngFor="let slide of fromPage.ImageURLs; let i = index"
+            [image]="slide"
+            [hideOverlay]="true"
+          >
+          </mat-carousel-slide>
+        </mat-carousel>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+        <div appearance="outline" fxFlex="80" class="pr-4">
+          <h4>
+            <b>{{ fromPage.BrandName }} {{ fromPage.ModelName }}</b>
+          </h4>
+        </div>
+        <div appearance="outline" fxFlex="20" class="pr-4">
+          <p>Posted On</p>
+          <p class="date">{{ fromPage.CreatedAt | date: "d MMM yyyy" }}</p>
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex="1 0 auto"
+        style="margin-top:-20px"
+      >
+        <div appearance="outline" fxFlex="70" class="pr-4" fxLayout="row">
+          <h4>Model No :</h4>
+          <span style="margin-top:23px;margin-left:10px;color:rgba(0,0,0,0.54)">
+            {{ fromPage.ModelName }}</span
+          >
+        </div>
+        <div appearance="outline" fxFlex="30" class="pr-4" fxLayout="row">
+          <h4>Mfg Year :</h4>
+          <span
+            style="margin-top:22px;margin-left:10px;color:rgba(0,0,0,0.54)"
+            >{{ fromPage.ManufacturedYear }}</span
+          >
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex="1 0 auto"
+        style="margin-top:-25px;"
+      >
+        <div
+          appearance="outline"
+          fxFlex="90"
+          class="pr-4"
+          style="margin-top:-10px;"
+        >
+          <h4>Reg :</h4>
+          <p style="margin-top:-38px;margin-left:40px;color:rgba(0,0,0,0.54)">
+            {{ fromPage.RegistrationYear }}
+          </p>
+        </div>
+        <div appearance="outline" fxFlex="40" class="pr-4">
+          <h4>Driven :{{ fromPage.KMdriven }} KM</h4>
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex="1 0 auto"
+        style="margin-top:-20px;"
+      >
+        <div appearance="outline" fxFlex="80" class="pr-4">
+          <p>Posted By</p>
+          <span>
+            <img
+              class="avatar mr-0 mr-sm-16"
+              src="{{
+                fromPage.ProfilePic ||
+                  'assets/images/profile/default-avatar.png'
+              }}"
+              (error)="onImgError($event)"
+            />
+            <p class="text-truncates">
+              <b
+                >{{ fromPage.FirstName }}<span>{{ fromPage.LastName }}</span></b
+              >
+            </p>
+          </span>
+        </div>
+        <div appearance="outline" fxFlex="40" class="pr-4">
+          <div class="circle">
+            <mat-icon class="icon" style="color:#E8411F;">store</mat-icon>
+          </div>
+          <span>
+            <h4 style="margin-left:60px;margin-top:-30px;">
+              {{ fromPage.Location }}
+            </h4>
+          </span>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start end" style="margin-top:38px;">
+        <div appearance="outline" fxFlex="50">
+          <button
+            mat-raised-button
+            style="margin-left:-10px;padding: 0px 90px !important;"
+            (click)="OnRejectBike(fromPage)"
+            class="add-product-button fuse-decline"
+          >
+            <span>Decline</span>
+          </button>
+        </div>
+        <div appearance="outline" fxFlex="50">
+          <button
+            mat-raised-button
+            style="padding: 0px 90px !important;"
+            (click)="OnAcceptBike(fromPage)"
+            class="add-product-button fuse-accept"
+          >
+            <span>Accept</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+          <button mat-raised-button
+                  color="accent"
+                  (click)="matDialogRef.close(['send',composeForm])"
+                  class="save-button"
+                  [disabled]="composeForm.invalid"
+                  aria-label="SAVE">
+              SEND
+          </button>
+
+          <button mat-icon-button matTooltip="Attach a file">
+              <mat-icon>attach_file</mat-icon>
+          </button>
+      </div>
+
+      <button mat-icon-button (click)="matDialogRef.close(['delete',composeForm])"
+              aria-label="Delete"
+              matTooltip="Delete">
+          <mat-icon>delete</mat-icon>
+      </button> 
+  </div> -->
+</div>

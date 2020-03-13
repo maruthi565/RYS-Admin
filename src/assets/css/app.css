@@ -1,0 +1,107 @@
+body.theme-default .mat-flat-button.mat-accent, body.theme-default .mat-raised-button.mat-accent, body.theme-default .mat-fab.mat-accent, body.theme-default .mat-mini-fab.mat-accent .mat-badge-accent{
+    background-color: #f3a535;
+}
+/* body.theme-default .accent {
+    background-color: #000 !important;
+    color: white !important;
+} */
+/* body.theme-default .fuse-card {
+    background: white;
+    border-color: rgba(0, 0, 0, 0.12);
+    width:93%;
+    height:60%;
+    margin-right: 10px;
+} */
+body.theme-default .accent .secondary-text{
+    color: rgb(149, 149, 149) !important;
+    font-size: 11px;
+    margin-top:-8px;
+}
+
+.fuse-card   .font-size-30 {
+    font-size: 30px !important;
+    color: #000 !important;
+}
+.fuse-card .mt-8 {
+    margin-top:16px !important;
+}
+
+.center > .header .search-wrapper .search input {
+    width: 100%;
+    height: 41px;
+    min-height: 41px;
+    max-height: 42px;
+    padding: 0 50px;
+}
+body.theme-default .header .search-wrapper {
+    background: white;
+    border-radius: 10px !important;
+}
+body.theme-default .header .search-wrapper .search input{
+    background: white;
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 10px;
+}
+body.theme-default .page-layout.carded.fullwidth > .center > .content-card {
+    background: white;
+    border-radius: 8px 8px 0 0;
+    margin-top: 20px;
+}
+.fuse-white{
+    background-color: #faa831 !important;
+    color:#fff !important;
+}
+.page-layout.carded > .top-bg {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 240px;
+    background-color:black !important;
+}
+.page-layout.carded.fullwidth > .center > .header {
+    height: 136px !important;
+    min-height: 136px !important;
+    max-height: 136px !important;
+    background-color: black !important;
+}
+.mat-select-arrow {
+    color: #fff !important;
+}
+.mat-form-field-underline {
+    background-color:#fff !important;
+}
+@media screen and (max-width: 959px) {
+e-commerce-products #products .top-bg {
+    height: 37% !important;
+}
+}
+
+@media screen and (max-width: 969px) {
+    .example-card {
+        max-width: 305px !important;
+    }
+    }
+    fuse-sidebar {
+        width: 240px;
+        min-width: 240px;
+        max-width: 240px;
+    }
+    .material2 .nav .nav-item .nav-link {
+        height: 40px;
+        padding: 0 12px 0 24px;
+        border-radius: 0 0 0 0;
+        margin-right: 0px;
+    }
+    body.theme-default .accent {
+        background-color: #fba731 !important;
+        color: white !important;
+    }   
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+        background-color: #f79726 !important;
+    } 
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color: #ffd29a;
+    }
+    

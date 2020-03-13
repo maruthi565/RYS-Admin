@@ -1,0 +1,507 @@
+<div id="events" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent first"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          Events
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+      <!-- ADD BUTTON -->
+      <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW PRODUCT</span>
+            </button> -->
+      <!-- / ADD BUTTON -->
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start"
+        fxLayout.gt-sm="row"
+        flex-md="33"
+        *ngFor="let count of infocountboxes"
+      >
+        <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start"> -->
+        <!--Widget 1-->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16">
+                <div class="h3 secondary-text">Total Events</div>
+                <div class="font-size-22 line-height-1 mt-8">
+                  {{ count.TotalEvents }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---  / Widget -->
+        <!-- Widget 2 -->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="py-8 mh-16 border-top"
+              fxLayout="row wrap"
+              fxLayoutAlign="start center"
+            >
+              <div
+                class="py-8 border-right"
+                fxLayout="column"
+                fxLayoutAlign="center center"
+                fxFlex="100"
+                fxFlex.gt-sm="50"
+              >
+                <span
+                  class="h3"
+                  style="color:rgba(0,0,0,0.54) !important;font-size: 11px;margin-top:-5px;"
+                  >Paid Events</span
+                >
+                <span
+                  class="font-size-22 mat-display-1 mb-0"
+                  style="color:#000000 !important;"
+                >
+                  {{ count.PaidEvents }}
+                </span>
+              </div>
+
+              <div
+                class="py-8"
+                fxLayout="column"
+                fxLayoutAlign="center center"
+                fxFlex="100"
+                fxFlex.gt-sm="50"
+              >
+                <span
+                  class="h3"
+                  style="color:rgba(0,0,0,0.54) !important;font-size: 11px;margin-top:-5px;"
+                  >Free Events</span
+                >
+                <span
+                  class="font-size-22 mat-display-1 mb-0"
+                  style="color:#000000 !important;"
+                >
+                  {{ count.FreeEvents }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Widget 2 -->
+
+        <!-- Widget 3 -->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16">
+                <div class="h3 secondary-text">Total Tickets Sold</div>
+                <div class="font-size-22 line-height-1 mt-8">
+                  {{ count.TotalTicketsSold }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Widget 3 -->
+
+        <!-- Widget 4 -->
+        <!-- <div class="widget col" fxLayout="column" fxFlex="100" fxFlex.gt-sm="34">
+
+                    <div class="fuse-card auto-width">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end"> -->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16">
+                <div class="h3 secondary-text">Total Revenue from Events</div>
+                <div class="font-size-22 line-height-1 mt-5">
+                  <span>&#x20b9;</span> {{ count.TotalRevenuefromEvents }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Widget 4 -->
+        <br />
+      </div>
+    </div>
+    <div class="row col-md-12">
+      <div class="center">
+        <div
+          class="header accent"
+          id="last"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="space-between center"
+          style="background-color:black !important;"
+        >
+          <!-- SEARCH -->
+          <div class="search-wrapper mx-32 mx-md-0">
+            <div
+              class="search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <input
+                [(ngModel)]="searchTerm"
+                (input)="filterEventsByName($event)"
+                placeholder="Search Event Name"
+              />
+            </div>
+          </div>
+          <div class="custom-wrapper mx-32 mx-md-0">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-form-field style="width:100px;">
+                <mat-label style="color:#fff;">Brand </mat-label>
+                <mat-select
+                  class="simplified"
+                  [(ngModel)]="selectedBrand"
+                  (selectionChange)="brandSelectionChange($event)"
+                >
+                  <mat-option
+                    *ngFor="let brand of bikeBrands"
+                    [value]="brand.BrandID"
+                  >
+                    {{ brand.BrandName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="custom-wrapper mx-32 mx-md-0">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-form-field style="width:200px">
+                <mat-label style="color:#fff;">Search city</mat-label>
+                <input
+                  matInput
+                  (keyup)="keyPress($event)"
+                  [(ngModel)]="selectedCity"
+                  type="text"
+                  (keydown.enter)="$event.preventDefault()"
+                  placeholder="Search city"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="off"
+                  type="text"
+                  #eventsCitySearch
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="custom-wrapper mx-32 mx-md-0">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-form-field style="width:100px;">
+                <input
+                  matInput
+                  [(ngModel)]="selectedDate"
+                  (dateChange)="dateSelectionChange()"
+                  [matDatepicker]="picker"
+                  placeholder="Date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="custom-wrapper mx-32 mx-md-0">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <button
+                mat-raised-button
+                (click)="exportToExcel()"
+                class="add-product-button fuse-black mt-24 mt-md-0"
+              >
+                <span>Export</span>
+              </button>
+            </div>
+          </div>
+          <div class="custom-wrapper mx-32 mx-md-0">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="btn"
+            >
+              <button
+                mat-raised-button
+                [routerLink]="'/apps/e-commerce/create-event'"
+                class="add-product-button fuse-white mt-24 mt-md-0"
+              >
+                <span>Create Event</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+
+    <div class="content-card">
+      <!-- <div  style="text-align: center;padding:100px" *ngIf="!dataSource || !dataSource.data || dataSource.data.length ==0">No Records Found</div> -->
+      <div
+        style="text-align: center;padding:100px"
+        *ngIf="dataSource.data != undefined && dataSource.data.length === 0"
+      >
+        No Records Found
+      </div>
+
+      <!-- <div *ngIf="dataSource && dataSource.data && dataSource.data !=0"> -->
+      <mat-table
+        class="events-table"
+        mat-table
+        [dataSource]="dataSource"
+        *ngIf="dataSource.data != undefined && dataSource.data.length != 0"
+        matSort
+        [@animateStagger]="{ value: '50' }"
+        fusePerfectScrollbar
+      >
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+              [aria-label]="checkboxLabel()"
+            >
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox
+              (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)"
+              [aria-label]="checkboxLabel(row)"
+            >
+            </mat-checkbox>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="id" style="display:none;">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="display:none;"
+            >ID</mat-header-cell
+          >
+          <mat-cell *matCellDef="let product" style="display:none;">
+            <p class="text-truncate">{{ product.id }}</p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- UserName Column -->
+        <ng-container matColumnDef="organised">
+          <mat-header-cell fxFlex="12%" *matHeaderCellDef
+            >Organised By User</mat-header-cell
+          >
+          <mat-cell fxFlex="12%" *matCellDef="let product">
+            <b>
+              <b>
+                <p class="text-truncate">
+                  {{ product.OrganiserName }}
+                </p>
+              </b>
+            </b>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Bike Column -->
+        <ng-container matColumnDef="event">
+          <mat-header-cell fxFlex="12%" *matHeaderCellDef mat-sort-header
+            >Event Name</mat-header-cell
+          >
+          <mat-cell
+            fxFlex="12%"
+            *matCellDef="let product"
+            (click)="setSelectedEvent(product)"
+            style="margin-right:25px;"
+          >
+            <p>
+              <b>{{ product.EventName }}</b>
+            </p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- City Column -->
+        <ng-container matColumnDef="location">
+          <mat-header-cell fxFlex="12%" *matHeaderCellDef
+            >Location</mat-header-cell
+          >
+          <mat-cell
+            fxFlex="12%"
+            *matCellDef="let product"
+            style="margin-left:-20px;"
+          >
+            <p class="category text-truncate">
+              <b>{{ product.City }}</b>
+              <!-- // <b>{{ product.InviteCities }}</b> -->
+            </p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+          <mat-cell *matCellDef="let product" style="margin-left:-20px;">
+            <p class="category text-truncate">
+              <b>{{ product.EventStartDate | date: " d MMM yyyy" }}</b>
+            </p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="invites">
+          <mat-header-cell *matHeaderCellDef> Invites </mat-header-cell>
+          <mat-cell *matCellDef="let product" style="margin-left:20px;">
+            <p class="price text-truncate">
+              <!-- {{product.priceTaxIncl | currency:'USD':'symbol'}} -->
+              <b>{{ product.InviteesCount }}</b>
+            </p>
+          </mat-cell>
+        </ng-container>
+        <!---Status-->
+        <ng-container matColumnDef="going">
+          <mat-header-cell *matHeaderCellDef style="margin-left:10px"
+            >Going</mat-header-cell
+          >
+          <mat-cell *matCellDef="let product">
+            <p class="category text-truncate">
+              <b>{{ product.InviteesAccepted }}</b>
+            </p>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="paid">
+          <mat-header-cell *matHeaderCellDef>Paid/Free Event</mat-header-cell>
+          <mat-cell *matCellDef="let product">
+            <p class="price text-truncate">
+              <!-- {{product.priceTaxIncl | currency:'USD':'symbol'}} -->
+              <b>{{ product.EventType }}</b>
+            </p>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="sold">
+          <mat-header-cell *matHeaderCellDef>Tickets Sold</mat-header-cell>
+          <mat-cell *matCellDef="let product">
+            <p class="category text-truncate">
+              <b>{{ product.TicketsSold }}</b>
+            </p>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+          <mat-cell *matCellDef="let product">
+            <mat-icon
+              aria-hidden="true"
+              aria-label="edit"
+              class="actionicons"
+              (click)="editEvent(product)"
+            >
+              edit</mat-icon
+            >
+            <mat-icon
+              aria-hidden="true"
+              aria-label="delete"
+              class="actionicons"
+              (click)="deleteEvent(product)"
+            >
+              delete_outline
+            </mat-icon>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="demand">
+          <mat-header-cell *matHeaderCellDef>On Demand</mat-header-cell>
+          <mat-cell *matCellDef="let event">
+            <mat-slide-toggle
+              [checked]="event.OnDemand == 1"
+            ></mat-slide-toggle>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          class="product"
+          (click)="selection.toggle(row)"
+        >
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator
+        #paginator
+        [length]="dataSource.data.length"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      >
+      </mat-paginator>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

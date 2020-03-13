@@ -1,0 +1,117 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Edit</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+        <form name="editBikeForm" [formGroup]="editBikeForm" class="compose-form" fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <div class="file-upload-edit-userpost-bike">
+                            <div class="image-upload-wrap-edit-userpost-bike">
+                                <input class="file-upload-input-edit-userpost-bike" name="ImageURLs" type='file' disabled="true" (change)="onChange($event)" accept="image/*" multiple/>
+                                <div class="drag-text-edit-userpost-bike" style="height:110px">
+                                    <h3 style="font-size:30px !important;">+</h3>
+                                    
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <div><p> Note: You cannot edit Images</p></div>
+            <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top:20px;">
+                        
+                    <img *ngFor='let url of images'  [src]="url" width="200" height="200"><br/>
+                    <!-- <img [src]="previewUrl"  /> -->
+                
+                </div>
+            <br>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" class="pr-4">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="Title" >
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <!-- <mat-form-field appearance="outline" fxFlex="30"> -->
+                                <mat-label>Brand</mat-label>
+                            <mat-select formControlName="BrandID"  (selectionChange)="onDropdownChange($event)"  style="margin-right:10px;">
+                                
+                                <mat-option *ngFor="let brand of getbikebrand" [value]="brand.BrandID" required>
+                                    {{brand.BrandName}}
+                                </mat-option>
+                            </mat-select>
+                        <!-- </mat-form-field> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                            <mat-label>Model</mat-label>
+                            <mat-select formControlName="ModelID"  style="margin-right:10px;">
+                                
+                                <mat-option *ngFor="let model of getbikemodel" [value]="model.BikeModelID" required>
+                                    {{model.ModelName}}
+                                </mat-option>
+                            </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                        <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                               <mat-label>Select Country</mat-label>
+                                <mat-select formControlName="CountryID"  style="margin-right:10px;">
+                                        <mat-option *ngFor="let country of countries" [value]="country.CountryID" required>
+                                            {{country.CountryName}}
+                                        </mat-option>
+                                    </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                                    <mat-label>Location</mat-label>
+                                    <input matInput formControlName="Location">
+                            </mat-form-field>
+                    </div> 
+                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                                    <mat-label>MFG</mat-label>
+                                    <input matInput formControlName="ManufacturedYear">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                                        <mat-label>Registration Year</mat-label>
+                                        <input matInput formControlName="RegistrationYear">
+                                    </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                                <mat-label>Driven</mat-label>
+                                <input matInput formControlName="KMdriven">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                                    <mat-label>Price</mat-label>
+                                    <input matInput formControlName="Price" name="price">
+                                </mat-form-field>
+                           
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                                        <mat-label>Email ID</mat-label>
+                                        <input matInput formControlName="Email" type="email" name="email">
+                                    </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                                    <mat-label>Contact Number</mat-label>
+                                    <input matInput formControlName="Contact" name="price">
+                                </mat-form-field>
+                        </div>
+                <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <button mat-raised-button style="padding: 0 50px !important;"
+                            (click)="onEditUserBike()"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

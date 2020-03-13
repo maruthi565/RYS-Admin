@@ -1,0 +1,105 @@
+@import "src/@fuse/scss/fuse";
+ @import "src/assets/css/app";
+@import "src/assets/css/bike-images";
+
+e-commerce-bike-images {
+
+    #bikeImages {
+
+        .top-bg {
+
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                .search-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+                .custom-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .custom-search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+                    }
+                }
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+
+    .content {
+    
+        .cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .card {
+                display: flex;
+                align-items: flex-start;
+                padding: 20px 20px 20px 20px;
+                // margin-bottom: 96px;
+
+                .card-preview {
+                    display: flex;
+                    min-width: 220px;
+                }
+
+                .card-source {
+                    display: none;
+                }
+            }
+        }
+
+       
+    }
+}
+

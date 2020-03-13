@@ -1,0 +1,98 @@
+<div id="notification" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent first"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          Notifications
+        </span>
+      </div>
+      <!-- <mat-form-field style="width:80px" fxLayout="column">
+                <mat-select class="simplified" value="brand">
+                    <mat-option value="brand">Brand</mat-option>
+                    <mat-option value="yesterday">1</mat-option>
+                    <mat-option value="7days">2</mat-option>
+                    <mat-option value="28days">3</mat-option>
+                    <mat-option value="90days">4</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field style="width:80px" fxLayout="column">
+                <mat-select class="simplified" value="City">
+                    <mat-option value="City">City</mat-option>
+                    <mat-option value="yesterday">1</mat-option>
+                    <mat-option value="7days">2</mat-option>
+                    <mat-option value="28days">3</mat-option>
+                    <mat-option value="90days">4</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field style="width:80px" fxLayout="column">
+                <input matInput [matDatepicker]="picker" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <div class="content p-24" fusePerfectScrollbar>
+        <div
+          class="file-details"
+          [@animate]="{ value: '*', params: { delay: '200ms' } }"
+        >
+          <table>
+            <tr class="type">
+              <th>App Notifications</th>
+              <td>
+                <mat-icon aria-hidden="true" aria-label="edit"> edit</mat-icon
+                >&nbsp;Edit
+              </td>
+            </tr>
+
+            <tr class="size">
+              <th>Ride Completed Notification</th>
+              <td>
+                <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>
+              </td>
+            </tr>
+
+            <tr class="location">
+              <th>Ride Created</th>
+              <td>
+                <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>
+              </td>
+            </tr>
+
+            <tr class="owner">
+              <th>You are invited for Ride</th>
+              <td>
+                <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

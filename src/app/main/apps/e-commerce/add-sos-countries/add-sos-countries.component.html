@@ -1,0 +1,194 @@
+<div id="addSosCountries" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          <b> SOS For Countries </b>
+          <br />
+        </span>
+        <p
+          style="margin-top:70px;margin-left:-190px;cursor:pointer;"
+          [routerLink]="'/apps/e-commerce/sos-contacts'"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          < SOS Contacts
+        </p>
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card" fusePerfectScrollbar>
+      <form name="addSosContactsForm" [formGroup]="addSosContactsForm">
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="space-between"
+          style="border-bottom:1px solid #EFEFEF !important;"
+        >
+          <div fxLayout="column" style="margin-left:20px;">
+            <p class="card-heading"><b>Add New </b></p>
+          </div>
+          <div fxLayout="column" style="margin-right: 20px;margin-top:19px;">
+            <button
+              mat-raised-button
+              (click)="onAddSosContacts()"
+              class="submit-button fuse-white mt-24 mt-md-0"
+            >
+              <span> Submit</span>
+            </button>
+          </div>
+        </div>
+        <div class="tab-content p-24">
+          <div class="compose-form" fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                style="margin-right:30px;"
+              >
+                <mat-label>Select Country</mat-label>
+                <mat-select formControlName="CountryID" required>
+                  <mat-option
+                    *ngFor="let country of getcountries"
+                    [value]="country.CountryID"
+                  >
+                    {{ country.CountryName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Ambulance</mat-label>
+                <input
+                  matInput
+                  name="mail"
+                  formControlName="Ambulance"
+                  type="tel"
+                  required
+                />
+              </mat-form-field>
+              <div fxFlex="30" style="margin-right: 80px;">
+                <!-- <mat-label style="margin-left:85px;color:#878795">Profile Image</mat-label>
+                                <div class="file-upload">
+                                    <div class="image-upload-wrap">
+                                        <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                            accept="image/*" />
+                                        <div class="drag-text">
+                                            <h3 style="font-size:15px">+</h3>
+                                        </div>
+                                    </div>
+                                  
+                                </div> -->
+              </div>
+            </div>
+            <!-- <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top:-80px">
+                        <mat-form-field appearance="outline" fxFlex="61">
+                            <mat-label>About</mat-label>
+                            <textarea matInput name="about" formControlName="about" rows="5"></textarea>
+                        </mat-form-field>
+                    </div> -->
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Police</mat-label>
+                <input
+                  matInput
+                  name="contact"
+                  formControlName="Police"
+                  type="tel"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                style="margin-right:45px;"
+              >
+                <mat-label>NHAI</mat-label>
+                <input
+                  matInput
+                  name="mail"
+                  formControlName="NHAI"
+                  type="tel"
+                  required
+                />
+              </mat-form-field>
+              <div
+                appearance="outline"
+                fxFlex="30"
+                style="color:#878795;"
+              ></div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="60">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Third Party RSA</mat-label>
+                <input
+                  matInput
+                  name="ThirdPartyRSA"
+                  formControlName="ThirdPartyRSA"
+                  type="tel"
+                  required
+                />
+              </mat-form-field>
+              <!-- <div appearance="outline" fxFlex="30" style="margin-right:62px;">
+                                    <mat-label>NHAI</mat-label>
+                                    <input matInput name="mail" formControlName="NHAI" type="tel">
+                                </div> -->
+              <div
+                appearance="outline"
+                fxFlex="30"
+                style="color:#878795;"
+              ></div>
+            </div>
+            <!-- <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="60">
+                            <mat-form-field appearance="outline" fxFlex="30">
+                                <mat-label>My RSA</mat-label>
+                                <input matInput name="contact" formControlName="myrsa" type="tel">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="30" style="margin-right:62px;">
+                                <mat-label>Third Party RSA</mat-label>
+                                <input matInput name="mail" formControlName="thirdpartyrsa" type="tel">
+                            </mat-form-field>
+                            <div appearance="outline" fxFlex="30" style="color:#878795;">
+                            </div>
+                        </div> -->
+            <!-- <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="60" style="margin-top:-70px;">
+                            <mat-form-field appearance="outline" fxFlex="30">
+                                <mat-label>Password</mat-label>
+                                <input matInput name="address" formControlName="Password" type="password">
+                            </mat-form-field>
+                            <div appearance="outline" fxFlex="30" style="margin-right:62px;">
+
+                            </div>
+                            <div appearance="outline" fxFlex="30" style="color:#878795">
+
+                            </div>
+                        </div> -->
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

@@ -1,0 +1,855 @@
+<div
+  id="bikerStories"
+  class="page-layout carded fullwidth"
+  fusePerfectScrollbar
+>
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent first"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          Biker Stories
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+      <!-- ADD BUTTON -->
+      <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW PRODUCT</span>
+            </button> -->
+      <!-- / ADD BUTTON -->
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start"
+        fxLayout.gt-sm="row"
+        flex-md="33"
+      >
+        <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start"> -->
+        <!--Widget 1-->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            style="height:60% !important;width:92% !important; margin-top:25px !important;"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16" *ngIf="showCountBox">
+                <div class="h3 secondary-text">Total Posts</div>
+                <div
+                  class="font-size-22 line-height-1"
+                  style="margin-top:15px;"
+                >
+                  {{ infocountboxes.Total_Posts }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---  / Widget -->
+
+        <!-- Widget 3 -->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            style="height:60% !important;width:92% !important; margin-top:25px !important;"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16" *ngIf="showCountBox">
+                <div class="h3 secondary-text">Maximum Posted Users</div>
+                <div class="font-size-22 line-height-1">
+                  {{ infocountboxes.Total_Maximumposted_Posts }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Widget 3 -->
+
+        <!-- Widget 4 -->
+        <!-- <div class="widget col" fxLayout="column" fxFlex="100" fxFlex.gt-sm="34">
+
+                    <div class="fuse-card auto-width">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end"> -->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            style="height:60% !important;width:92% !important; margin-top:25px !important;"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="" *ngIf="showCountBox">
+                <div class="h3 secondary-text">Top Liked Posts</div>
+                <div
+                  class="font-size-22 line-height-1 mt-5"
+                  style="margin-top:15px;"
+                >
+                  {{ infocountboxes.Total_TopLiked_Posts }}
+                  <span id="icon" style="margin-left: 5px;">
+                    <!-- <mat-icon aria-hidden="false" aria-label="strength" class="peopleicon">
+                                            people_outline
+                                        </mat-icon> -->
+                    <img src="assets/icons/target.svg" width="40" height="40" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Widget 4 -->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            style="height:60% !important;width:92% !important; margin-top:25px !important;"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div *ngIf="showCountBox">
+                <div class="h3 secondary-text">Top Commented Posts</div>
+                <div
+                  class="font-size-22 line-height-1 mt-5"
+                  style="margin-top:15px;"
+                >
+                  {{ infocountboxes.Total_TopComments_Posts }}
+                  <span id="icon" style="margin-left:5px;">
+                    <img src="assets/icons/target.svg" width="40" height="40" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+    <div class="row col-md-12">
+      <div class="center">
+        <div
+          class="header accent"
+          id="last"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="space-between center"
+          style="background-color:black !important;"
+        >
+          <!-- SEARCH -->
+          <div class="search-wrapper mx-32 mx-md-0">
+            <div
+              class="search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <input
+                [(ngModel)]="searchTerm"
+                (input)="filterBikerStoriesByName($event)"
+                placeholder="Search User"
+              />
+            </div>
+          </div>
+          <!-- <div class="custom-wrapper mx-32 mx-md-0">
+                        <div class="custom-search" fxLayout="row" fxLayoutAlign="start center">
+                            <mat-form-field style="width:100px;">
+                                <mat-select class="simplified" value="Brand">
+                                    <mat-option value="Brand">Brand</mat-option>
+                                    <mat-option value="yesterday">1</mat-option>
+                                    <mat-option value="7days">2</mat-option>
+                                    <mat-option value="28days">3</mat-option>
+                                    <mat-option value="90days">4</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div> -->
+          <div class="custom-wrapper mx-32 mx-md-0">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <!-- <mat-form-field style="width:100px;">
+                                <mat-select class="simplified" value="City">
+                                    <mat-option value="City">City</mat-option>
+                                    <mat-option value="yesterday">1</mat-option>
+                                    <mat-option value="7days">2</mat-option>
+                                    <mat-option value="28days">3</mat-option>
+                                    <mat-option value="90days">4</mat-option>
+                                </mat-select>
+                            </mat-form-field> -->
+              <mat-form-field style="width:200px" fxLayout="column">
+                <mat-label>Search city</mat-label>
+                <input
+                  matInput
+                  [(ngModel)]="selectedCity"
+                  type="text"
+                  (keydown.enter)="$event.preventDefault()"
+                  placeholder="Search city"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="off"
+                  type="text"
+                  #bikerStoriesCitySearch
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="custom-wrapper mx-32 mx-md-0">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-form-field style="width:130px;">
+                <input
+                  matInput
+                  [(ngModel)]="selectedDate"
+                  (dateChange)="dateSelectionChange()"
+                  [matDatepicker]="picker"
+                  placeholder="Date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- <div class="custom-wrapper mx-32 mx-md-0">
+                        <div class="custom-search" fxLayout="row" fxLayoutAlign="start center">
+                            <button mat-raised-button class="add-product-button fuse-black mt-24 mt-md-0">
+                                <span>Export</span>
+                            </button>
+                        </div>
+                    </div> -->
+          <div class="custom-wrapper mx-32 mx-md-0">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="btn"
+            >
+              <button
+                mat-raised-button
+                class="add-product-button fuse-white mt-24 mt-md-0"
+                [routerLink]="'/apps/e-commerce/create-story'"
+              >
+                <span>Create Story</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <mat-tab-group
+        (selectedIndexChange)="selected.setValue($event)"
+        [selectedIndex]="selected.value"
+        (selectedTabChange)="tabClick($event)"
+      >
+        <mat-tab label="Stories Feed">
+          <div class="p-24">
+            <div>
+              <h2><b>Stories Feed</b></h2>
+            </div>
+            <div
+              style="text-align: center;padding:100px"
+              *ngIf="storiesData.length === 0"
+            >
+              No Records Found
+            </div>
+            <div *ngIf="storiesData.length != 0">
+              <div class="one" *ngFor="let story of storiesData">
+                <div>
+                  <div
+                    style="float:left;cursor:pointer;"
+                    (click)="setUserProfileStory(story)"
+                  >
+                    <img
+                      class="avatar mr-0 mr-sm-16"
+                      src="{{
+                        story.ProfilePic ||
+                          'assets/images/profile/default-avatar.png'
+                      }}"
+                      (error)="onImgError($event)"
+                    />
+                    <p style="cursor:pointer" class="name">
+                      <b> {{ story.FirstName }} {{ story.LastName }}</b
+                      ><br />
+                      <span style="cursor:pointer">{{ story.Location }}</span>
+                    </p>
+                  </div>
+                  <div style="float:right;">
+                    <mat-icon
+                      [matMenuTriggerFor]="shareMenus"
+                      aria-hidden="false"
+                      aria-label="strength"
+                      class="shareicon"
+                    >
+                      share
+                    </mat-icon>
+                    &nbsp;&nbsp;&nbsp;
+                    <mat-icon
+                      aria-hidden="false"
+                      aria-label="strength"
+                      class="shareicon"
+                      (click)="deleteStory(story)"
+                    >
+                      delete_outline
+                    </mat-icon>
+                  </div>
+                  <mat-menu
+                    style="min-width: 230px !important;"
+                    #shareMenus="matMenu"
+                    [overlapTrigger]="false"
+                  >
+                    <div>
+                      <h4 style="float:left;padding:0px 10px 10px 10px;">
+                        <b>Share</b>
+                      </h4>
+                      <button
+                        mat-icon-button
+                        style="float:right;color:#f79726;"
+                        class="close"
+                        aria-label="Close dialog"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </div>
+                    <button
+                      mat-menu-item
+                      style="border-top:1px solid #0000001f;"
+                      (click)="generateURL(story)"
+                    >
+                      <img
+                        src="assets/icons/facebook-8.svg"
+                        width="30"
+                        height="30"
+                        style="margin-top:10px;margin-right:10px;"
+                      />
+                      <span> Facebook</span>
+                    </button>
+                    <button
+                      mat-menu-item
+                      class=""
+                      (click)="generateTwitterURL(story)"
+                    >
+                      <img
+                        src="assets/images/twitter-2.svg"
+                        width="30"
+                        height="30"
+                        style="margin-top:10px;margin-right:10px;"
+                      />
+                      <span>Twitter</span>
+                    </button>
+                  </mat-menu>
+                </div>
+                <div style="margin-top:10px !important; ">
+                  <!-- <img src="assets/images/cards/bikerstories.png"> -->
+                  <mat-carousel
+                    timings="250ms ease-in"
+                    [autoplay]="false"
+                    interval="2000"
+                    color="warn"
+                    maxWidth="auto"
+                    maxHeight="auto"
+                    proportion="25"
+                    slides="5"
+                    [loop]="true"
+                    [hideArrows]="story.ImageURLs.length == 1 ? true : false"
+                    [hideIndicators]="false"
+                    [useKeyboard]="true"
+                    [useMouseWheel]="false"
+                    orientation="ltr"
+                  >
+                    <mat-carousel-slide
+                      #matCarouselSlide
+                      *ngFor="let slide of story.ImageURLs; let i = index"
+                      [image]="slide"
+                      [hideOverlay]="true"
+                      style="height:450px !important;"
+                    >
+                    </mat-carousel-slide>
+                  </mat-carousel>
+                </div>
+                <h5>
+                  <b>{{ story.Caption }}</b>
+                </h5>
+                <div>
+                  <div
+                    appearance="outline"
+                    fxFlex="5"
+                    class="pr-4"
+                    class="commenticons"
+                    style="cursor:pointer"
+                  >
+                    <img src="assets/icons/heart-3.svg" />
+                    <span style="margin-left:5px">{{ story.LikesCount }}</span>
+                  </div>
+                  <div
+                    appearance="outline"
+                    fxFlex="80"
+                    class="pr-4"
+                    class="commenticons"
+                  >
+                    <img src="assets/icons/chat-3.svg" />
+                    <span style="margin-left:5px" (click)="setStoryId(story)">{{
+                      story.CommentsCount
+                    }}</span>
+                  </div>
+                  <div
+                    appearance="outline"
+                    fxFlex="20"
+                    class="pl-4"
+                    style="float:right;"
+                    class="commenticons"
+                  >
+                    <p>{{ story.CreatedAt | date: " d MMM yyyy" }}</p>
+                  </div>
+                </div>
+                <div *ngIf="story.CommentsCount > 0">
+                  <!-- <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Abbott.jpg">
+                                    <p class="name"> Liked by <strong>Sukesh</strong> and <strong> 115 others</strong><br>
+                                        <span style="margin-top:5px;"><strong style="margin-right:20px;">Akshay Mukrjee</strong> Wow Beautiful Bike and amazing view</span>
+                                    </p> -->
+                  <p
+                    style="color:#c3bebe;margin-top:-10px;cursor:pointer"
+                    (click)="setStoryId(story)"
+                  >
+                    View all {{ story.CommentsCount }} Comments
+                  </p>
+                </div>
+              </div>
+            </div>
+            <br />
+          </div>
+        </mat-tab>
+        <mat-tab label="Maximum Posted User">
+          <div class="p-24">
+            <div>
+              <h2
+                appearance="outline"
+                fxFlex="90"
+                class="pr-4"
+                style="float:left;"
+              >
+                <b>Maximum Posted User</b>
+              </h2>
+              <!-- <mat-checkbox appearance="outline" fxFlex="20" class="pr-4" style="float:right;">Select all</mat-checkbox> -->
+            </div>
+
+            <br />
+            <!-- <div  style="text-align: center;padding:100px" *ngIf = "maximumposteduser.length === 0">No Records Found</div>   -->
+            <!-- <div *ngIf = "maximumposteduser.length != 0"> -->
+            <div
+              *ngFor="let details of maximumposteduser; index as i"
+              style="border:1px solid #0000001f;padding:15px 15px 15px 15px;border-radius:5px;cursor:pointer;margin-bottom:15px;"
+              [routerLink]="'/apps/e-commerce/biker-profile'"
+            >
+              <!-- <div appearance="outline" fxFlex="5" class="pr-4" style="color:#0000001f;margin-top:18px;">
+                                    <mat-checkbox > </mat-checkbox>
+                            </div> -->
+              <div (click)="setUserProfileStory(details)">
+                <div appearance="outline" fxFlex="5" class="pr-4">
+                  <h1>
+                    <b> #{{ i + 1 }} </b>
+                  </h1>
+                </div>
+                <div
+                  appearance="outline"
+                  fxFlex="22"
+                  class="pr-4"
+                  style="margin-top:11px;"
+                >
+                  <img
+                    class="avatar mr-0 mr-sm-16"
+                    src="{{
+                      details.ProfilePic ||
+                        'assets/images/profile/default-avatar.png'
+                    }}"
+                    (error)="onImgError($event)"
+                  />
+                  <p class="name">
+                    <b> {{ details.FirstName }} {{ details.LastName }}</b
+                    ><br />
+                    <span style="color:#e95130;">{{
+                      details.BikeModel | titlecase
+                    }}</span>
+                    <span>
+                      <mat-icon
+                        aria-hidden="false"
+                        aria-label="strength"
+                        style="font-size:15px;color:#0000001f;"
+                      >
+                        near_me </mat-icon
+                      >{{ details.City }}
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class=" border-right"
+                  appearance="outline"
+                  fxFlex="14"
+                  class="pr-4"
+                  style="margin-top:50px;"
+                >
+                  <p class="name" style="color:#858585;">
+                    Total Kms<br />
+                    <span style="color:#000000;"
+                      ><b>{{ details.DistanceTravel.toFixed(2) }}</b></span
+                    >
+                  </p>
+                </div>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div
+                  appearance="outline"
+                  fxFlex="15"
+                  class="pr-4"
+                  style="margin-top:50px;"
+                >
+                  <p class="name" style="color:#858585;">
+                    No Of Rides<br />
+                    <span style="color:#000000;"
+                      ><b>{{ details.RidesCount }}</b></span
+                    >
+                  </p>
+                </div>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div
+                  appearance="outline"
+                  fxFlex="17"
+                  class="pr-4"
+                  style="margin-top:50px;"
+                >
+                  <p class="name" style="color:#858585;">
+                    Rating<br />
+                    <span>
+                      <mat-icon
+                        aria-hidden="false"
+                        aria-label="strength"
+                        style="font-size:15px;color:#e95130;"
+                      >
+                        star
+                      </mat-icon>
+                      <b style="color:#000000;">{{ details.AvgRating }}</b>
+                    </span>
+                  </p>
+                </div>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div
+                  appearance="outline"
+                  fxFlex="13"
+                  class="pr-4"
+                  style="margin-top:50px;"
+                >
+                  <p class="name" style="color:#858585;">
+                    Posts <br />
+                    <span style="color:#000000;"
+                      ><b>{{ details.PostCount }}</b></span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- </div> -->
+            <br />
+            <br />
+          </div>
+        </mat-tab>
+        <mat-tab label="Top Liked Posts">
+          <div style="padding:10px;">
+            <div>
+              <h2
+                appearance="outline"
+                fxFlex="90"
+                class="pr-4"
+                style="float:left;"
+              >
+                <b>Top Liked Posts </b>
+              </h2>
+              <!-- <mat-checkbox appearance="outline" fxFlex="20" class="pr-4" style="float:right;">Select all</mat-checkbox> -->
+            </div>
+            <br />
+            <!-- <div  style="text-align: center;padding:100px" *ngIf = "toplikedpost.length === 0">No Records Found</div> 
+                        <div *ngIf = "toplikedpost.length != 0">  -->
+            <div
+              *ngFor="let likedpost of toplikedpost; index as i"
+              style="border:1px solid #0000001f;padding:15px 15px 15px 15px;border-radius:5px;margin-bottom:15px;"
+              [routerLink]="'/apps/e-commerce/biker-profile'"
+            >
+              <!-- <div appearance="outline" fxFlex="3" class="pr-4" style="color:#0000001f;margin-top:18px;">
+                                <mat-checkbox > </mat-checkbox>
+                        </div> -->
+              <div (click)="setUserProfileStory(likedpost)">
+                <div appearance="outline" fxFlex="5" class="pr-4">
+                  <h1>
+                    <b> #{{ i + 1 }} </b>
+                  </h1>
+                </div>
+                <div
+                  appearance="outline"
+                  fxFlex="21"
+                  class="pr-4"
+                  style="margin-top:11px;"
+                >
+                  <img
+                    class="avatar mr-0 mr-sm-16"
+                    src="{{
+                      likedpost.ProfilePic ||
+                        'assets/images/profile/default-avatar.png'
+                    }}"
+                    (error)="onImgError($event)"
+                  />
+                  <p class="name">
+                    <b> {{ likedpost.FirstName }} {{ likedpost.LastName }}</b
+                    ><br />
+                    <span style="color:#e95130;">{{
+                      likedpost.BikeModel
+                    }}</span>
+                    <span>
+                      <mat-icon
+                        aria-hidden="false"
+                        aria-label="strength"
+                        style="font-size:15px;color:#0000001f;"
+                      >
+                        near_me </mat-icon
+                      >{{ likedpost.City }}
+                    </span>
+                  </p>
+                </div>
+                <!-- <div class=" border-right" appearance="outline" fxFlex="10" class="pr-4" style="margin-top:50px;">
+                        
+                            <p class="name" style="color:#858585;"> Posts<br>
+                                <span style="color:#000000;"><b>1400</b></span>
+                            </p>
+
+                        </div> -->
+                <mat-divider [vertical]="true"></mat-divider>
+                <!-- <div appearance="outline" fxFlex="14" class="pr-4" style="margin-top:50px;"> 
+                            <p class="name" style="color:#858585;">No Of Rides<br>
+                                <span style="color:#000000;"><b>35</b></span>
+                            </p>
+                        </div>
+                        <mat-divider [vertical]="true"></mat-divider>
+                        <div appearance="outline" fxFlex="12" class="pr-4" style="margin-top:50px;">
+                            <p class="name" style="color:#858585;">Rating<br>
+                                <span>
+                                    <mat-icon aria-hidden="false" aria-label="strength" style="font-size:15px;color:#e95130;">
+                                         star
+                                    </mat-icon>
+                                    <b style="color:#000000;">{{likedpost.AvgRating}}</b>
+                                </span>
+                            </p>
+                        </div>
+                        <mat-divider [vertical]="true"></mat-divider>
+                        <div appearance="outline" fxFlex="12" class="pr-4" style="margin-top:50px;">         
+                            <p class="name" style="color:#858585;">Posts <br>
+                                <span style="color:#000000;"><b>1400</b></span>
+                            </p>
+                        </div> -->
+                <div
+                  appearance="outline"
+                  *ngFor="let image of likedpost.ImageURLs"
+                  fxFlex="50"
+                  class="pr-4"
+                  style="margin-left:10px;"
+                >
+                  <img
+                    [src]="image"
+                    style="width:100px !important;height:100px  !important;"
+                  />
+                </div>
+                <!-- <div appearance="outline" fxFlex="4" class="pr-4" style="margin-left:10px;">
+                            <img src="assets/images/avatars/andrew.jpg" width="50" height="50">
+                        </div>
+                        <div appearance="outline" fxFlex="4" class="pr-4" style="margin-left:10px;">
+                            <img src="assets/images/avatars/Arnold.jpg" width="50" height="50">
+                        </div> -->
+              </div>
+              <!-- </div> -->
+              <br />
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Top Commented Posts">
+          <div style="padding:24px;">
+            <div>
+              <h2
+                appearance="outline"
+                fxFlex="90"
+                class="pr-4"
+                style="float:left;"
+              >
+                <b>Top Commented Posts</b>
+              </h2>
+              <!-- <mat-checkbox appearance="outline" fxFlex="20" class="pr-4" style="float:right;">Select all</mat-checkbox> -->
+            </div>
+            <br />
+            <!-- <div  style="text-align: center;padding:100px" *ngIf = "topcommentedpost.length === 0">No Records Found</div> -->
+            <!-- <div *ngIf="topcommentedpost.length !=0"> -->
+            <div class="cards">
+              <div
+                class="card"
+                *ngFor="let posts of topcommentedpost; let i = index"
+              >
+                <div (click)="setUserProfileStory(posts)">
+                  <div class="card-preview">
+                    <div class="fuse-cards">
+                      <div
+                        style="padding:5px"
+                        fxLayout="column"
+                        fxLayoutAlign="space-between start"
+                      >
+                        <div fxLayout="row" appearance="outline" class="pr-4">
+                          <h1 fxFlex="12">
+                            <b> # {{ i + 1 }} </b>
+                          </h1>
+
+                          <!-- <div appearance="outline"  class="pr-4" style="margin-left:25px;margin-right:35px;"> -->
+                          <!-- <img fxFlex="30" src="assets/images/cards/card2-medium.jpg" style="width:250px;height:125px;"> -->
+                          <div fxFlex="27" class="commentpost">
+                            <mat-carousel
+                              style="width:110px"
+                              timings="250ms ease-in"
+                              [autoplay]="false"
+                              interval="2000"
+                              color="warn"
+                              maxWidth="100"
+                              maxHeight="100"
+                              proportion="25"
+                              slides="5"
+                              [loop]="true"
+                              [hideArrows]="true"
+                              [hideIndicators]="true"
+                              [useKeyboard]="true"
+                              [useMouseWheel]="false"
+                              orientation="ltr"
+                            >
+                              <mat-carousel-slide
+                                #commentPostsSlide
+                                *ngFor="
+                                  let slide of posts.ImageURLs;
+                                  let i = index
+                                "
+                                [image]="slide"
+                                [hideOverlay]="true"
+                              >
+                              </mat-carousel-slide>
+                            </mat-carousel>
+                          </div>
+                          <!-- </div> -->
+                          <div
+                            fxFlex="60"
+                            class="pr-4"
+                            style="margin-top:11px;margin-left:25px;"
+                          >
+                            <img
+                              class="avatar mr-0 mr-sm-16"
+                              src="{{
+                                posts.ProfilePic ||
+                                  'assets/images/profile/default-avatar.png'
+                              }}"
+                              (error)="onImgError($event)"
+                            />
+                            <p class="name">
+                              <b> {{ posts.FirstName }} {{ posts.LastName }}</b
+                              ><br />
+                              <span style="color:#858585;">
+                                <mat-icon
+                                  aria-hidden="false"
+                                  aria-label="strength"
+                                  style="font-size:15px;color:#0000001f;"
+                                >
+                                  near_me </mat-icon
+                                >{{ posts.City }}
+                              </span>
+                            </p>
+                            <h6 style="margin-top:-10px;">
+                              <b>{{ posts.Caption }}</b>
+                            </h6>
+                            <div style="margin-top:-20px;">
+                              <div
+                                appearance="outline"
+                                fxFlex="50"
+                                class="pr-4"
+                                class="commenticons"
+                              >
+                                <mat-icon
+                                  aria-hidden="false"
+                                  aria-label="strength"
+                                >
+                                  favorite_border
+                                </mat-icon>
+                                <p class="numbering">{{ posts.LikesCount }}</p>
+                              </div>
+                              <div
+                                appearance="outline"
+                                fxFlex="50"
+                                class="pr-4"
+                                class="commenticons"
+                              >
+                                <mat-icon
+                                  aria-hidden="false"
+                                  aria-label="strength"
+                                >
+                                  comment
+                                </mat-icon>
+                                <p class="numbering">
+                                  {{ posts.CommentsCount }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- </div> -->
+            <br />
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

@@ -1,0 +1,54 @@
+
+body.theme-default .accent .mat-form-field-label {
+    color:#fff;
+}
+body.theme-default .mat-datepicker-toggle {
+    color:#fff;
+}
+.about .text-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial !important;
+    font-size:11px;
+}
+#adsPosted .mat-select-arrow {
+    color: #fff !important;
+}
+.mat-form-field-underline {
+    background-color:#fff !important;
+}
+body.theme-default .accent {
+    background-color: #f79726 !important;
+    color: white !important;
+}
+.material2 .nav .nav-item .nav-link {
+    height: 40px;
+    padding: 0 12px 0 24px;
+    border-radius: 0 0 0 0;
+    margin-right: 0px;
+}
+#adsPosted .image {
+    position: relative;
+    /* width: 100%; */
+    /* max-width: 400px; */
+  }
+
+  
+  #adsPosted  .image .btn {
+    position: absolute;
+    top: 75%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: black;
+    font-size: 15px;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+

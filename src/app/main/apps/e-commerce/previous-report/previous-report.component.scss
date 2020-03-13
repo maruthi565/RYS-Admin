@@ -1,0 +1,143 @@
+@import "src/@fuse/scss/fuse";
+@import "src/assets/css/app";
+@import "src/assets/css/previous-report";
+
+e-commerce-previous-report {
+
+    #previousReport {
+
+        .top-bg {
+
+            background-color:#000000 !important;
+
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                background-color:#000000 !important;
+
+                .search-wrapper {
+                    width: 50%;
+                    max-width: 215px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+
+                    }
+                    .search {
+                        width: 80%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+
+                        input {
+                            width: 80%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+                .fuse-white{
+                    background-color:#f79726 !important;
+                    color:#ffffff !important;
+                }
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+
+    .previous-report-table {
+        flex: 1 1 auto;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        max-height: 900px;
+
+        .mat-header-row {
+            min-height: 64px;
+
+        }
+
+        .product {
+            position: relative;
+            cursor: pointer;
+            height: 84px;
+        }
+
+        .mat-header-cell {
+            border-bottom-width: 0px !important;
+        }
+
+        .mat-cell {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            border-bottom-width: 0px !important;
+        }
+
+        .mat-column-id {
+            flex: 0 1 84px;
+        }
+
+        .mat-column-image {
+            flex: 0 1 84px;
+
+            .product-image {
+                width: 52px;
+                height: 52px;
+                border: 1px solid rgba(0, 0, 0, .12);
+            }
+        }
+
+        .mat-column-category {
+            flex: 0 1 240px;
+        }
+
+        .mat-column-price {
+            flex: 0 1 160px;
+        }
+
+        .mat-column-quantity {
+            flex: 0 1 160px;
+        }
+
+        .mat-column-active {
+            flex: 0 1 80px;
+        }
+
+        .quantity-indicator {
+            display: inline-block;
+            vertical-align: middle;
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+
+            & + span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        .active-icon {
+            border-radius: 50%;
+        }
+    }
+}

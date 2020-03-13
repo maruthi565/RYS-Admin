@@ -1,0 +1,217 @@
+<div id="addAdminUser" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          <b> Admin Users </b>
+        </span>
+        <p
+          style="margin-top:70px;margin-left:-130px;cursor:pointer;"
+          [routerLink]="'/apps/e-commerce/admin-users'"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          < Admin Users
+        </p>
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card" fusePerfectScrollbar>
+      <form name="addAdminUserForm" [formGroup]="addAdminUserForm">
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="space-between"
+          style="border-bottom:1px solid #EFEFEF !important;"
+        >
+          <div fxLayout="column" style="margin-left:20px;">
+            <p class="card-heading"><b>Add New Admin User </b></p>
+          </div>
+          <div fxLayout="column" style="margin-right: 20px;margin-top:19px;">
+            <button
+              mat-raised-button
+              (click)="onAddAdminUser()"
+              class="add-product-button fuse-white mt-24 mt-md-0"
+            >
+              <span> Submit</span>
+            </button>
+          </div>
+        </div>
+        <div class="tab-content p-24">
+          <div class="compose-form" fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="27">
+                <mat-label>First Name</mat-label>
+                <input
+                  matInput
+                  name="contact"
+                  formControlName="FirstName"
+                  type="text"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="27"
+                style="margin-right:30px;"
+              >
+                <mat-label>Last Name</mat-label>
+                <input
+                  matInput
+                  name="mail"
+                  formControlName="LastName"
+                  type="text"
+                  required
+                />
+              </mat-form-field>
+              <div fxFlex="30" style="margin-right: 80px;">
+                <mat-label style="margin-left:85px;color:#878795"
+                  >Profile Image</mat-label
+                >
+                <div class="file-upload">
+                  <div class="image-upload-wrap">
+                    <input
+                      class="file-upload-input"
+                      type="file"
+                      onchange="readURL(this);"
+                      accept="image/*"
+                    />
+                    <div class="drag-text">
+                      <h3 style="font-size:15px">+</h3>
+                    </div>
+                  </div>
+                  <!-- <div class="file-upload-content">
+                                  <img class="file-upload-image" src="#" alt="your image" />
+                                  <div class="image-title-wrap">
+                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                  </div>
+                                </div> -->
+                </div>
+              </div>
+            </div>
+            <!-- <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top:-80px">
+                        <mat-form-field appearance="outline" fxFlex="61">
+                            <mat-label>About</mat-label>
+                            <textarea matInput name="about" formControlName="about" rows="5"></textarea>
+                        </mat-form-field>
+                    </div> -->
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              fxFlex="60"
+              style="margin-top:-80px;"
+            >
+              <mat-form-field appearance="outline" fxFlex="27">
+                <mat-label>Email Id</mat-label>
+                <input
+                  matInput
+                  name="contact"
+                  formControlName="EmailID"
+                  type="email"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="27"
+                style="margin-right:110px;"
+              >
+                <mat-label>Mobile Number</mat-label>
+                <input
+                  matInput
+                  name="mail"
+                  formControlName="MobileNumber"
+                  type="tel"
+                  required
+                />
+              </mat-form-field>
+              <div
+                appearance="outline"
+                fxFlex="30"
+                style="color:#878795;margin-top:65px;"
+              >
+                <p>NOTE:</p>
+                <p>
+                  File type: Upload Image in (Jpeg,PNG format) of less than 2MB
+                </p>
+                <p>FileSize: 375*200 Px</p>
+
+                <!-- <p>NOTE:</p><br>
+                            <p>File type: Upload Image in (Jpeg,PNG format) of less than 2MB</p>
+                            <p>FileSize: 375*200 Px</p> -->
+                <!-- <div fxFlex="30" style="margin-right: 80px;">
+                                <mat-label style="margin-left:-15px;color:#878795">Store Images</mat-label>
+                                <div class="file-upload" style="margin-left:-52px">
+                                    <div class="image-upload-wrap">
+                                        <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                            accept="image/*" />
+                                        <div class="drag-text">
+                                            <h3 style="font-size:15px">+</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="file-upload" style="margin-top:-139px;margin-left:100px;">
+                                    <div class="image-upload-wrap">
+                                        <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                            accept="image/*" />
+                                        <div class="drag-text">
+                                            <h3 style="font-size:15px">+</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+              </div>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              fxFlex="60"
+              style="margin-top:-70px;"
+            >
+              <mat-form-field appearance="outline" fxFlex="27">
+                <mat-label>Password</mat-label>
+                <input
+                  matInput
+                  name="address"
+                  formControlName="Password"
+                  type="text"
+                  required
+                />
+              </mat-form-field>
+              <div
+                appearance="outline"
+                fxFlex="30"
+                style="margin-right:62px;"
+              ></div>
+              <div appearance="outline" fxFlex="30" style="color:#878795"></div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

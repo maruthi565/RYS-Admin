@@ -1,0 +1,300 @@
+<div id="images" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent first" fxLayout="col" fxLayoutAlign="start start" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-evenly center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Bikes & Images
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+            <!-- ADD BUTTON -->
+            <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW PRODUCT</span>
+            </button> -->
+            <!-- / ADD BUTTON -->
+            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" flex-md="33">
+                <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start"> -->
+                <!--Widget 1-->
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-98'"
+                        style="height:70% !important;width:95% !important;margin-top:25px !important;">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showCountBox">
+                                <div class="h3 secondary-text">Total Bike Brands</div>
+                                <div class="font-size-22 line-height-1 mt-8">
+                                    {{ infocountboxes.Total_Bike_Brands}}
+                                    <span id="icon" style="margin-left: 22px;">
+                                        <!-- <mat-icon aria-hidden="false" aria-label="strength" class="peopleicon">
+                                            directions_bike
+                                        </mat-icon> -->
+                                        <img src="assets/icons/motorcycle.svg" width="50" height="50">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-98'"
+                        style="height:70% !important;width:95% !important;margin-top:25px !important;">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showCountBox">
+                                <div class="h3 secondary-text">Total Images</div>
+                                <div class="font-size-22 line-height-1 mt-8">
+                                    {{infocountboxes.Total_Images}}
+                                    <span id="icon" style="margin-left: 22px;">
+                                        <!-- <mat-icon aria-hidden="false" aria-label="strength" class="peopleicon">
+                                            directions_bike
+                                        </mat-icon> -->
+                                        <img src="assets/icons/motorcycle.svg" width="50" height="50">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget col" fxFlex="30" fxFlex.gt-sm="33">
+
+
+
+                </div>
+                <!---  / Widget -->
+                <!-- Widget 2 -->
+                <div class="widget col" fxFlex="40" fxFlex.gt-sm="33">
+
+                </div>
+                <!-- / Widget 2 -->
+
+                <!-- Widget 3 -->
+                <div class="widget col" fxFlex="30" fxFlex.gt-sm="33">
+
+
+
+                </div>
+
+
+                <br>
+
+            </div>
+
+        </div>
+        <div class="row col-md-12">
+
+            <div class="center">
+                <div class="header accent" id="last" fxLayout="column" fxLayoutAlign="center center"
+                    fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center"
+                    style="background-color:black !important;">
+                    <!-- SEARCH -->
+                    <div class="search-wrapper mx-32 mx-md-0" style="margin-left:130px !important;">
+                        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                            <!-- <input [(ngModel)]="searchTerm" (input)="filterBrandByTitle()"
+                                placeholder="Search Bikes"> -->
+                                <input [(ngModel)]="searchTerm" (input)="filterBrandsByName($event)" placeholder="Search Brands">
+                        </div>
+                    </div>
+
+                    <div class="custom-wrapper mx-32 mx-md-0">
+                        <div class="custom-search" fxLayout="row" fxLayoutAlign="start center" class="btn">
+                            <button mat-raised-button (click)="addBikeBrandDialog()"
+                                class="add-product-button fuse-white mt-24 mt-md-0">
+                                <span>Add New Bike Brand</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+
+
+                <mat-tab-group #tabGroup (selectedTabChange)="onTabChanged($event);" [selectedIndex]="selectedIndex">
+
+                    <mat-tab label="Bike Brands">
+
+                        <!-- <div class="tab-content p-24" fusePerfectScrollbar>
+                            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                                fxLayoutAlign.gt-sm="space-between"></div>
+
+                            <div class="fuse-cards" fxLayout="column" fxFlex="20"
+                                *ngFor="let bikebrand of bikeBrandsData"
+                                style="cursor:pointer;margin-right: 5px;height:140px !important;border: 1px solid !important; border-color: rgba(0, 0, 0, 0.12) !important; border-radius:8px;">
+
+                                <div class="p-36" fxLayout="row" fxLayoutAlign="space-between start"
+                                    [routerLink]="'/apps/e-commerce/bike-brand-detail'">
+                                    <div class="w-120 h-120">
+                                        <img class="bikeImage" src="assets/images/cards/image.png">
+                                    </div>
+
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto"
+                                    style="margin-top:-110px;">
+                                    <div appearance="outline" fxFlex="60" class="pr-4"
+                                        [routerLink]="'/apps/e-commerce/bike-brand-detail'">
+                                        <h4><b>{{bikebrand.BrandName}}</b></h4>
+                                    </div>
+                                    <div appearance="outline" fxFlex="10" class="pr-4">
+                                        <mat-slide-toggle [(ngModel)]="bikebrand.isChecked">
+                                        </mat-slide-toggle>
+                                    </div>
+                                </div>
+
+                            </div>
+                          
+
+                        </div> -->
+                        <div class="content">
+
+                            <div class="cards">
+                                <!-- CARD 15 -->
+                                <div class="card" *ngFor="let bikebrand of bikeBrandsData">
+
+                                    <!-- PREVIEW -->
+                                    <div class="card-preview">
+
+                                        <div class="fuse-card">
+
+                                            <div class="p-16" fxLayout="column" fxLayoutAlign="space-between start">
+
+                                                <div class="w-120 moveLeft">
+                                                    <!-- <img class="bikeImage" src="assets/images/cards/image.png"> -->
+                                                    <img class="bikeImage" src="{{bikebrand.Image}}">
+                                                    <!-- <img class="bikeImage" #imgRef> -->
+                                                </div>
+                                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto"
+                                                    style="margin-top:-10px;margin-left: 30px;">
+                                                    <div appearance="outline" fxFlex="75" (click)="setSelectedBrand(bikebrand)"class="pr-4"
+                                                        style="margin-right:4px; cursor: pointer;"
+                                                        >
+                                                        <h4><b>{{bikebrand.BrandName | titlecase}}</b></h4>
+                                                      
+                                                    </div>
+                                                    <div appearance="outline" fxFlex="0" class="pr-4">
+                                                        <mat-slide-toggle *ngIf="bikebrand.Status === 1" [checked]="true" (change)="hideToUser($event, bikebrand)">
+                                                        </mat-slide-toggle>
+                                                        <mat-slide-toggle *ngIf="bikebrand.Status === 2" [checked]="false" (change)="hideToUser($event, bikebrand)">
+                                                        </mat-slide-toggle>
+                                                    </div>
+                                                    <div appearance="outline" fxFlex="0" class="pr-4">
+                                                        <!-- <mat-icon aria-hidden="true" aria-label="edit" class="actionicons" (click)="editBikeBrandDialog(bikebrand);selected(bikebrand)"> edit</mat-icon> -->
+                                                         <!-- <mat-icon aria-hidden="true" aria-label="delete" class="actionicons" (click)="deleteEvent(product)"> delete_outline   </mat-icon> -->
+                                                           <h4  style="cursor:pointer" (click)="editBikeBrandDialog(bikebrand);selected(bikebrand)"> <b>Edit</b></h4>
+                                                        </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- / PREVIEW -->
+
+
+                                </div>
+                    
+                                <!-- / CARD 15 -->
+
+
+
+
+                            </div>
+
+                        </div>
+
+                    </mat-tab>
+
+                    <mat-tab label="Images">
+
+                        <div class="tab-content p-24" fusePerfectScrollbar>
+                            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                                fxLayoutAlign.gt-sm="space-between"
+                                style="padding-left:10px;padding-right:10px;margin-top: 30px;">
+                             
+                                
+                                <div class="fuse-card mr-4" style="cursor:pointer" fxLayout="column" fxFlex="30"
+                                    [routerLink]="'/apps/e-commerce/event-image'">
+                                    <img class="eventImage" src="assets/images/events.png">
+
+                                    <div class="p-16">
+                                        <div appearance="outline" class="pr-4" fxLayout="row" style="margin-top:-20px;">
+                                            <h4><b>Events</b></h4>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="fuse-card mr-4" style="cursor:pointer" fxLayout="column" fxFlex="30"
+                                    [routerLink]="'/apps/e-commerce/ride-image'">
+                                    <img class="eventImage" src="assets/images/rides.png">
+
+                                    <div class="p-16">
+                                        <div appearance="outline" class="pr-4" fxLayout="row" style="margin-top:-20px;">
+                                            <h4><b>Rides</b> </h4>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div  fxLayout="column" fxFlex="30"
+                                  >
+                                    <!-- <img class="eventImage" src="assets/images/bikes.png">
+                                    <div class="p-16">
+                                        <div appearance="outline" class="pr-4" fxLayout="row" style="margin-top:-20px;">
+                                            <h4><b>Bikes</b></h4>
+                                        </div>
+
+                                    </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </mat-tab>
+
+                </mat-tab-group>
+
+
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

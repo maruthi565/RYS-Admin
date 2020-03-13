@@ -1,0 +1,257 @@
+<div id="merchandise" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent first" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                        shopping_basket
+                    </mat-icon> -->
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    {{firstname}} {{lastname}}
+                </span><br>
+                <p style="margin-top:70px;margin-left:-130px;cursor:pointer;" [routerLink]="'/apps/e-commerce/after-market'" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    < Merchandise</p> </div> <!-- / APP TITLE -->
+                        <!-- ADD BUTTON -->
+                        <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                    class="add-product-button fuse-white mt-24 mt-md-0">
+                    <span>ADD NEW PRODUCT</span>
+                </button> -->
+                        <!-- / ADD BUTTON -->
+
+
+            </div>
+
+            <!-- / HEADER -->
+
+            <!-- / SEARCH -->
+            <!-- CONTENT CARD -->
+            <div class="content-card" style="height: 350px; overflow-y: auto">
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                    <div fxLayout="column" style="margin-left:20px;">
+                        <p><b> Products</b></p>
+                    </div>
+                    <div fxLayout="column" style="margin-right: 20px;">
+                        <button mat-raised-button [routerLink]="'/apps/e-commerce/create-merchandise'"
+                            class="add-product-button fuse-white" style="margin-top:5px;">
+                            <span>Add Products</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="cards" class="page-layout simple fullwidth">
+
+                        <!-- CONTENT -->
+                        <div class="content">
+                            <div  style="text-align: center;padding:100px" *ngIf = "merchandiseData.length === 0">No Merchandise Found</div>
+                            <div class="cards" *ngIf="merchandiseData.length !=0 ">
+
+                                <!-- CARD 1 -->
+                                <div class="card" *ngFor="let merchandise of merchandiseData">
+
+                                    <!-- PREVIEW -->
+                                    <div class="card-preview">
+
+                                            <div class="fuse-card">
+                                                <div>
+                                                        <mat-carousel timings="250ms ease-in" [autoplay]="false"
+                                                        interval="2000" color="warn" maxWidth="100" maxHeight="200"
+                                                        proportion="25" slides="5" [loop]="true" [hideArrows]="true"
+                                                        [hideIndicators]="false" [useKeyboard]="true"
+                                                        [useMouseWheel]="false" orientation="ltr">
+                                                        <mat-carousel-slide #matCarouselSlide
+                                                            *ngFor="let slide of merchandise.ProductImages; let i = index"
+                                                            [image]="slide" [hideOverlay]="true">
+
+                                                        </mat-carousel-slide>
+                                                    </mat-carousel>
+                                                    <!-- <img src="assets/images/cards/berikjacket.png" class="couponImage"> -->
+                                                    <div *ngIf = "merchandise.Status == 2" class="top-right-orange">Pending</div>
+                                                    <div *ngIf = "merchandise.Status == 1" class="top-right-green">New</div>
+                                                </div>
+            
+                                                <div class="">
+                                                    <div fxLayout="row" fxLayoutAlign="start center"
+                                                        >
+                                                        <div fxFlex="70" style="margin-left:10px;">
+                                                            <p><b>{{merchandise.Title}}</b></p>
+                                                        </div>
+                                                    </div>
+                                                    <div fxLayout="row" fxLayoutAlign="start center"
+                                                        style="margin-top:-20px;margin-left:10px;">
+                                                        <div fxFlex="25" >
+                                                            <span>
+                                                                <span style="color:#ef5827 !important;" class="strikeline">
+                                                                    <span style="color:#000 !important;">&#x20b9; {{merchandise.Price}}</span>
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                        <div fxFlex="40">
+                                                            <h5>&#x20b9;{{merchandise.DiscountedPrice}}</h5>
+                                                        </div>
+                                                        <div fxFlex="30">
+                                                            <mat-slide-toggle *ngIf="merchandise.Status === 1" [checked]="true" (change)="hideToUser($event, merchandise)">
+                                                            </mat-slide-toggle>
+                                                            <mat-slide-toggle *ngIf="merchandise.Status === 3" [checked]="false"  (change)="hideToUser($event, merchandise)" fxFlex="20"></mat-slide-toggle>
+                                                        </div>
+                                                    </div>
+                                                    <div fxLayout="row" fxLayoutAlign="start center"
+                                                        style="margin-left:10px;margin-top:-25px;"
+                                                       >
+                                                        <!-- <p class="discountRed"> Upto {{(merchandise.Price - merchandise.DiscountedPrice)/merchandise.Price}}% Discount</p> -->
+                                                        <p class="discountRed" (click)="acceptDialog()"> Upto {{((merchandise.DiscountedPrice/merchandise.Price)*100).toFixed(2)}}% Discount</p>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div fxLayout="row" fxLayoutAlign="start center">
+                                                    <button mat-button class="actionBtns" fxFlex="30"
+                                                        (click)="modalDialog(merchandise)" style="color:#000 !important">View</button>
+                                                    <button mat-button class="actionBtns" fxFlex="30"
+                                                        (click)="editMerchandise(merchandise)" style="color:#000 !important">Edit</button>
+                                                    <button  (click)="deleteMerchandise(merchandise)"  style="color:#000 !important" mat-button class="actionBtns" fxFlex="30">Delete</button>
+                                                </div>
+            
+                                            </div>
+            
+                                        </div>
+                                    <!-- / PREVIEW -->
+
+                                </div>
+                                <!-- / CARD 1 -->
+
+
+                            </div>
+
+                        </div>
+                        <!-- / CONTENT -->
+
+                    </div>
+                <!-- <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="space-between" style="padding-left:10px;padding-right:10px;margin-top: 30px;">
+                    <div fxLayout="column">
+                        <mat-card class="example-card">
+                            <img mat-card-image src="assets/images/cards/berik.png" alt="Photo of a Shiba Inu">
+                            <div class="top-right-red">Pending</div>
+                            <mat-card-content style="margin-left: -12px; margin-right:-12px;">
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row"
+                                    style="margin-bottom:10px;margin-left:20px;">
+                                    <div class="col" fxLayout="column" style="margin-top: -15px;">
+                                        <p><b>One Piece Leather suit</b></p>
+                                    </div>
+                                </div>
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-40px;">
+                                    <div class="col" fxLayout="column"
+                                        style="margin-left:9px;margin-right:110px;font-size:10px;color: rgb(149, 149, 149) !important;">
+                                        <h6 style="display:inline-block"> <b><span
+                                                    style="color:#E8411F;text-decoration: line-through"> <span
+                                                        style="color:#000;">&#x20b9;
+                                                        24,000</span></span></b>&nbsp;&nbsp; <span> &#x20b9;
+                                                12,000</span>
+                                        </h6>
+                                    </div>
+                                    <div class="col" fxLayout="column" style="margin-top:25px;">
+                                        <mat-slide-toggle [(ngModel)]="isChecked1"></mat-slide-toggle>
+                                    </div>
+                                </div>
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row"
+                                    style="margin-left:7px;margin-top:-35px;margin-bottom: 24px;color:#E8411F;font-size:10px;">
+                                    <p>Upto 50% Discount</p>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button style="margin-left:-63px" (click)="acceptDialog()">View</button>
+                                <button mat-button [routerLink]="'/apps/e-commerce/edit-merchandise'">Edit</button>
+                                <button mat-button style="margin-right:-63px">Delete</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                    <div fxLayout="column">
+                        <mat-card class="example-card">
+                            <img mat-card-image src="assets/images/cards/berik.png" alt="Photo of a Shiba Inu">
+                            <div class="top-right-red">Pending</div>
+                            <mat-card-content style="margin-left: -12px; margin-right:-12px;">
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row"
+                                    style="margin-bottom:10px;margin-left:20px;">
+                                    <div class="col" fxLayout="column" style="margin-top: -15px;">
+                                        <p><b> Air Stadium Cross Helmet</b></p>
+                                    </div>
+                                </div>
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-40px;">
+                                    <div class="col" fxLayout="column"
+                                        style="margin-left:9px;margin-right:110px;font-size:10px;color: rgb(149, 149, 149) !important;">
+                                        <h6 style="display:inline-block"> <b><span
+                                                    style="color:#E8411F;text-decoration: line-through"> <span
+                                                        style="color:#000;">&#x20b9;
+                                                        24,000</span></span></b>&nbsp;&nbsp; <span> &#x20b9;
+                                                12,000</span>
+                                        </h6>
+                                    </div>
+                                    <div class="col" fxLayout="column" style="margin-top:25px;">
+                                        <mat-slide-toggle [(ngModel)]="isChecked2"></mat-slide-toggle>
+                                    </div>
+                                </div>
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row"
+                                    style="margin-left:7px;margin-top:-35px;margin-bottom: 24px;color:#E8411F;font-size:10px;">
+                                    <p>Upto 50% Discount</p>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button style="margin-left:-63px" (click)="acceptDialog()">View</button>
+                                <button mat-button [routerLink]="'/apps/e-commerce/edit-merchandise'">Edit</button>
+                                <button mat-button style="margin-right:-63px">Delete</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                    <div fxLayout="column">
+                        <mat-card class="example-card">
+                            <img mat-card-image src="assets/images/cards/berik.png" alt="Photo of a Shiba Inu">
+                            <div class="top-right-green">Newly Added</div>
+                            <mat-card-content style="margin-left: -12px; margin-right:-12px;">
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row"
+                                    style="margin-bottom:10px;margin-left:20px;">
+                                    <div class="col" fxLayout="column" style="margin-top: -15px;">
+                                        <p><b>One Piece Leather suit</b></p>
+                                    </div>
+                                </div>
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-40px;">
+                                    <div class="col" fxLayout="column"
+                                        style="margin-left:9px;margin-right:110px;font-size:10px;color: rgb(149, 149, 149) !important;">
+                                        <h6 style="display:inline-block"> <b><span
+                                                    style="color:#E8411F;text-decoration: line-through"> <span
+                                                        style="color:#000;">&#x20b9;
+                                                        24,000</span></span></b>&nbsp;&nbsp; <span> &#x20b9;
+                                                12,000</span>
+                                        </h6>
+                                    </div>
+                                    <div class="col" fxLayout="column" style="margin-top:25px;">
+                                        <mat-slide-toggle [(ngModel)]="isChecked3"></mat-slide-toggle>
+                                    </div>
+                                </div>
+                                <div class="row" fxLayout="row" fxLayout.gt-sm="row"
+                                    style="margin-left:7px;margin-top:-35px;margin-bottom: 24px;color:#E8411F;font-size:10px;">
+                                    <p>Upto 50% Discount</p>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button style="margin-left:-63px" (click)="modalDialog()">View</button>
+                                <button mat-button [routerLink]="'/apps/e-commerce/edit-merchandise'">Edit</button>
+                                <button mat-button style="margin-right:-63px" >Delete</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div> -->
+                <br>
+            </div>
+            <!-- / CONTENT CARD -->
+        </div>
+        <!-- / CENTER -->
+    </div>

@@ -1,0 +1,151 @@
+<div id="eventImage" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent first" fxLayout="col" fxLayoutAlign="start start" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="start center">
+
+            <!-- APP TITLE -->
+            <div class="logo imageHeading" fxLayout="row" fxLayoutAlign="start center">
+                
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                   Images
+                    <p style="font-size:12px;margin-top:0px;cursor:pointer" [routerLink] = "'/apps/e-commerce/images'" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        < Images</p> </span> </div> 
+                         
+                            <!-- / ADD BUTTON -->
+                            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" flex-md="33" style="margin-top:30px;margin-left:40px;">
+
+                                <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+
+                                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-98'"
+                                    style="height:70% !important;width:95% !important;margin-top:25px !important;">
+
+                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                                            <div class="pr-16" *ngIf="showCountBox">
+                                                <div class="h3 secondary-text">Total Bike Brands</div>
+                                                <div class="font-size-22 line-height-1 mt-8">
+                                                   {{infocountboxes.Total_Bike_Brands}}
+                                                    <span id="icon" style="margin-left: 22px;">
+                                                        <!-- <mat-icon aria-hidden="false" aria-label="strength"
+                                                            class="peopleicon">
+                                                            directions_bike
+                                                        </mat-icon> -->
+                                                        <img src="assets/icons/motorcycle.svg" width="50" height="50">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+
+                                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-98'"
+                                    style="height:70% !important;width:95% !important;margin-top:25px !important;">
+
+                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                                            <div class="pr-16" *ngIf="showCountBox">
+                                                <div class="h3 secondary-text">Total Images</div>
+                                                <div class="font-size-22 line-height-1 mt-8">
+                                                    {{infocountboxes.Total_Images}}
+                                                    <span id="icon" style="margin-left: 22px;">
+                                                        <!-- <mat-icon aria-hidden="false" aria-label="strength"
+                                                            class="peopleicon">
+                                                            directions_bike
+                                                        </mat-icon> -->
+                                                        <img src="assets/icons/motorcycle.svg" width="50" height="50">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            <div class="row col-md-12">
+                <div class="center">
+                    <div class="header accent" id="last" fxLayout="column" fxLayoutAlign="center center"
+                        fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start center"
+                        style="background-color:black !important;">
+                        <!-- SEARCH -->
+                        <!-- <div class="search-wrapper mx-32 mx-md-0 searchBox">
+                            <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                <input #filter placeholder="Search">
+                            </div>
+                        </div> -->
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- / SEARCH -->
+            <!-- CONTENT CARD -->
+            <div class="content-card">
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                    <div fxLayout="column" style="margin-left:20px;">
+                        <p class="card-heading"><b>Event - Images</b> </p>
+                    </div>
+                    <div fxLayout="column" style="margin-right: 20px;margin-top:5px;">
+                        <button mat-raised-button style="padding: 0 50px !important;"
+                            class="add-product-button fuse-white mt-24 mt-md-0" (click)="addNewImageDialog()">
+                            <span> Add New Event Image </span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content">
+
+                    <div class="cards">
+            
+                        <!-- CARD 1 -->
+                        <div class="card" *ngFor="let image of eventImageData">
+            
+                                <!-- PREVIEW -->
+                                <div class="card-preview">
+                
+                                    <div class="fuse-cards">
+                
+                                        <img class="bikeImage" src="{{image.ImageURL}}">
+                                        <br>
+                                        <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center" style="margin-top:5px;">
+                                            <div appearance="outline" fxFlex="30" class="pr-4">
+                                                <button mat-button (click)="editEventImageDialog(image)">Edit</button>
+                                            </div>
+                                            <div appearance="outline" fxFlex="30" class="pr-4">
+                                                <button mat-button (click)="deleteImage(image);"> Delete</button>
+                                            </div>
+                                            <div appearance="outline" fxFlex="30" class="pr-4" style="margin-left:30px;">
+                                                <!-- <mat-slide-toggle [checked]="Checked3"></mat-slide-toggle> -->
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                
+                                </div>
+                                <!-- / PREVIEW -->
+                
+                            </div>
+                        <!-- / CARD 1 -->
+        
+                    </div>
+            
+                </div>
+               
+
+            </div>
+            <!-- / CONTENT CARD -->
+        </div>
+        <!-- / CENTER -->
+    </div>

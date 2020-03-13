@@ -1,0 +1,273 @@
+@import "src/@fuse/scss/fuse";
+ @import "src/assets/css/app";
+ @import "src/assets/css/my-coupons";
+
+e-commerce-my-coupons {
+
+    #myCoupons {
+
+        .top-bg {
+
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                .search-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+
+    #cards {
+
+        .content {
+    
+            .cards {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: flex-start;
+    
+                .card {
+                    display: flex;
+                    align-items: flex-start;
+                    padding: 24px 5px 15px 24px;
+                    margin-bottom: 0px !important;
+    
+                    .card-preview {
+                        display: flex;
+                        min-width: 270px;
+                    }
+    
+                    .card-source {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// .fuse-green {
+//     background-color: #fff;
+//     color:#4d951f !important;;
+//     border:1px solid #4d951f;
+// }
+// .fuse-red {
+//     background-color: #fff;
+//     color:red !important;;
+//     border:1px solid red;
+// }
+// body.theme-default .mat-raised-button:not([class*=mat-elevation-z]) {
+//     box-shadow: none;
+// }
+// .test {
+//     width:35%;
+//     float:left;
+//     margin-right:20px
+// }
+
+// p span{
+//     display: list-item;
+//     list-style:none;
+// }
+//  .products-table {
+//     border-top: 1px solid rgba(0, 0, 0, 0.12);
+// }
+// body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+//     background-color: #f79726;
+// }
+// body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+//     background-color: #ffd29a;
+// }
+// .example-card {
+//     max-width: 310px;
+//   }
+  
+//   .example-header-image {
+//     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+//     background-size: cover;
+//   }
+//   .mat-card-image:first-child {
+//     margin-top: -16px;
+//     border-top-left-radius: inherit;
+//     border-top-right-radius: inherit;
+//     height: 145px;
+// }
+// body.theme-default .mat-card {
+//     border-radius: 10px;
+// }
+// .page-layout.carded.fullwidth > .center {
+//     display: -webkit-box;
+//     display: flex;
+//     -webkit-box-orient: vertical;
+//     -webkit-box-direction: normal;
+//     flex-direction: column;
+//     -webkit-box-flex: 1;
+//     flex: 1 0 auto;
+//     position: relative;
+//     z-index: 2;
+//     padding: 0 10px;
+//     width: 100%;
+//     min-width: 0;
+//     max-width: 100%;
+//     height: 100%;
+//     max-height: 100%;
+// }
+// .mat-card-actions {
+//     margin-left: 48px !important;
+//     margin-right: 0px !important;
+//     padding: 0px 0  !important;
+// }
+// .mat-card>.mat-card-actions:last-child {
+//     margin-bottom: -15px;
+//     padding-bottom: 0;
+//     margin-top: -38px;
+// }
+// .mat-button{
+//     min-width:100px;
+// }
+// .mat-card-actions .mat-button, .mat-card-actions .mat-raised-button {
+//     margin: 0 3px;
+// }
+// body.theme-default .page-layout.carded.fullwidth > .center > .content-card {
+//     background: white;
+//     border-radius: 8px 8px 0 0;
+//     margin-top: 20px;
+//     padding-bottom: 40px;
+// }
+// body.theme-default .mat-slide-toggle-thumb {
+//     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+//     background-color: #5b5a6d;
+// }
+// body.theme-default .mat-slide-toggle-bar {
+//     background-color: #B8B8C1;
+// }
+// .mat-card h6 span {
+//     color: #FCAA4D;
+// }
+// .pb-0{
+//     padding-bottom:15px !important;
+// }
+// @media screen and (max-width: 959px){
+//     e-commerce-my-coupons #products .top-bg {
+//         height: 323px !important;
+//         }
+//     }
+//     @media screen and (max-width: 959px){
+//       .center  .header {
+//     background-color: black !important;
+//     flex-direction: row;
+//     box-sizing: border-box;
+//     display: flex;
+//     place-content: center;
+//     align-items: center;
+//     flex-wrap: wrap;
+//         }
+//     }
+//     @media screen and (max-width: 959px){
+//         .center  #last{
+//       background-color: black !important;
+//       flex-direction: row !important;
+//       box-sizing: border-box !important;
+//       display: flex !important;
+//       place-content: center !important;
+//       align-items: center !important;
+//       flex-wrap: wrap !important;
+//         }
+//       }
+//       @media screen and (max-width:959px) {
+//           .example-card {
+//             margin-bottom: 10px;
+//           }
+//           body.theme-default .fuse-card {
+//             background: white;
+//             border-color: rgba(0, 0, 0, 0.12);
+//             width: 93%;
+//             height: 67%;
+//             margin-right: 10px;
+//         }
+//         .mobile{
+//             margin-top:10px !important;
+//         }
+//         .fuse-card .font-size-30 {
+//             font-size: 19px !important;
+//             color: #000 !important;
+//         }
+//         .count{
+//             margin-top:12px;
+//         }
+        
+       
+//       }
+//       .top-right-red {
+//         position: absolute;
+//         top: 0px;
+//         right: 0px;
+//         font-size: 14px;
+//         background-color: red;
+//         color: #fff;
+//         padding: 3px 25px 3px 25px;
+//         border-radius: 6px;
+//     }
+//     .top-right-green {
+//         position: absolute;
+//         top: 0px;
+//         right: 0px;
+//         font-size: 14px;
+//         background-color: #4d951f;
+//         color: #fff;
+//         padding: 3px 25px 3px 25px;
+//         border-radius: 6px;
+//     }
+//       .fuse-card .font-size-30 {
+//         font-size: 25px;
+//         color: #000 !important;
+//     }
+   
+//     .fuse-sky-blue {
+//         background-color: #2196f3 !important;
+//         color: #fff !important;
+//         border: 1px solid #2196f3;
+//     }
+    
+    

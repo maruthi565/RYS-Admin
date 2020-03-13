@@ -1,0 +1,428 @@
+<div id="createMerchandise" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                        shopping_basket
+                    </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          <b> MERCHANDISE </b>
+        </span>
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card" fusePerfectScrollbar>
+      <form name="addProductForm" [formGroup]="addProductForm">
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="space-between"
+          style="border-bottom:1px solid #EFEFEF !important;"
+        >
+          <div fxLayout="column" style="margin-left:20px;">
+            <p class="card-heading"><b>Add Product</b></p>
+          </div>
+          <div fxLayout="column" style="margin-right: 20px;margin-top:19px;">
+            <button
+              mat-raised-button
+              (click)="onAddMerchandise()"
+              class="add-product-button fuse-white mt-24 mt-md-0"
+            >
+              <span> Submit</span>
+            </button>
+          </div>
+        </div>
+        <div class="tab-content p-24">
+          <div class="compose-form" fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="85">
+                <mat-label>Title</mat-label>
+                <input
+                  matInput
+                  name="title"
+                  formControlName="Title"
+                  type="text"
+                />
+              </mat-form-field>
+              <div fxFlex="30" style="margin-right: 80px;">
+                <mat-label style="margin-left:85px;color:#878795"
+                  >Logo</mat-label
+                >
+                <div class="file-upload">
+                  <div class="image-upload-wrap">
+                    <input
+                      class="file-upload-input"
+                      type="file"
+                      name="Logo"
+                      (change)="onChange($event); fileProgress($event)"
+                      accept="image/*"
+                    />
+                    <div class="drag-text">
+                      <div
+                        class="image-preview mb-3"
+                        *ngIf="previewUrl"
+                        style="margin-top:20px;margin-bottom:20px;"
+                      >
+                        <img [src]="previewUrl" style="height: 50px;" />
+                      </div>
+                      <h3
+                        style="font-size:15px;cursor: pointer;"
+                        *ngIf="showId"
+                      >
+                        +
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              style="margin-top:-85px;"
+            >
+              <mat-form-field appearance="outline" fxFlex="61">
+                <mat-label>Description</mat-label>
+                <textarea
+                  matInput
+                  name="description"
+                  formControlName="Description"
+                  rows="5"
+                ></textarea>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Mail Id</mat-label>
+                <input
+                  matInput
+                  name="email"
+                  formControlName="EmailID"
+                  type="email"
+                />
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                style="margin-right:62px;"
+              >
+                <mat-label>Contact</mat-label>
+                <input
+                  matInput
+                  name="contact"
+                  formControlName="MobileNumber"
+                  type="tel"
+                />
+              </mat-form-field>
+              <div appearance="outline" fxFlex="30" style="color:#878795">
+                <!-- <p>NOTE:</p><br>
+                                    <p>File type: Upload Image in (Jpeg,PNG format) of less than 2MB</p>
+                                    <p>FileSize: 375*200 Px</p> -->
+                <div fxFlex="30" style="margin-right: 80px;">
+                  <mat-label style="margin-left:-20px;color:#878795"
+                    >Product Images</mat-label
+                  >
+                  <div class="file-upload" style="margin-left:-52px">
+                    <div class="image-upload-wrap">
+                      <input
+                        class="file-upload-input"
+                        type="file"
+                        name="ProductImages"
+                        (change)="onChangeProductImages($event)"
+                        accept="image/*"
+                        multiple
+                      />
+                      <div class="drag-text">
+                        <h3 style="font-size:15px;cursor: pointer;">+</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="file-upload" style="margin-top:-139px;margin-left:100px;">
+                                        <div class="image-upload-wrap">
+                                            <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                                accept="image/*" />
+                                            <div class="drag-text">
+                                                <h3 style="font-size:15px">+</h3>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                </div>
+              </div>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              style="margin-top:-80px;"
+            >
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Price</mat-label>
+                <input
+                  matInput
+                  name="price"
+                  formControlName="Price"
+                  type="text"
+                />
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                style="margin-right:62px;"
+              >
+                <mat-label>Discounted Price</mat-label>
+                <input
+                  matInput
+                  name="discountedPrice"
+                  formControlName="DiscountedPrice"
+                  type="text"
+                />
+              </mat-form-field>
+              <div appearance="outline" fxFlex="30" style="color:#878795">
+                <!-- <div fxFlex="30" style="margin-right: 80px;">
+                                    <div class="file-upload" style="margin-left:-52px">
+                                        <div class="image-upload-wrap">
+                                            <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                                accept="image/*" />
+                                            <div class="drag-text">
+                                                <h3 style="font-size:15px">+</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="file-upload" style="margin-top:-139px;margin-left:100px;">
+                                        <div class="image-upload-wrap">
+                                            <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                                accept="image/*" />
+                                            <div class="drag-text">
+                                                <h3 style="font-size:15px">+</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Merchandiser</mat-label>
+                <input
+                  matInput
+                  name="merchandisername"
+                  formControlName="MerchandiserName"
+                  type="text"
+                />
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                style="margin-right:40px;"
+              >
+                <mat-label>Vendor Address</mat-label>
+                <input
+                  matInput
+                  name="vendoraddress"
+                  formControlName="VendorAddress"
+                  type="text"
+                />
+              </mat-form-field>
+              <div
+                appearance="outline"
+                fxFlex="30"
+                style="color:#878795;margin-right:25px"
+              >
+                <p>NOTE:</p>
+                <p>Size chart image must be Uploaded</p>
+                <p>
+                  File type: Upload Image in (Jpeg,PNG format) of less than 2MB
+                </p>
+                <p>FileSize: 375*200 Px</p>
+              </div>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              style="margin-top:-85px;"
+            >
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Category</mat-label>
+                <mat-select
+                  formControlName="Catgegory"
+                  (ngModelChange)="onCategorySelection()"
+                  style="margin-right:10px;"
+                >
+                  <mat-option
+                    *ngFor="let category of categorieslist"
+                    [value]="category.CategoryName"
+                  >
+                    {{ category.CategoryName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                [style.display]="isJacket ? 'block' : 'none'"
+                style="margin-right:62px;"
+              >
+                <mat-label>Size</mat-label>
+                <mat-select formControlName="Size" multiple>
+                  <mat-option
+                    #allSelects
+                    (click)="toggleAllSelectionSize()"
+                    [value]="0"
+                  >
+                    Select All
+                  </mat-option>
+                  <mat-option
+                    *ngFor="let size of sizeList"
+                    [value]="size.key"
+                    (click)="tosslePerTwo(allSelects.viewValue)"
+                    >{{ size.value }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                [style.display]="isShoe ? 'block' : 'none'"
+                style="margin-right:62px;"
+              >
+                <mat-label>Size</mat-label>
+                <mat-select formControlName="Size" multiple>
+                  <mat-option
+                    #allSelectShoe
+                    (click)="toggleAllSelectionShoe()"
+                    [value]="0"
+                  >
+                    Select All
+                  </mat-option>
+                  <mat-option
+                    *ngFor="let sho of shoeList"
+                    [value]="sho.key"
+                    (click)="tosslePerFour(allSelectShoe.viewValue)"
+                    >{{ sho.value }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+              <div fxFlex="30"></div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>City</mat-label>
+                <mat-select formControlName="ProductAvailability" multiple>
+                  <mat-option
+                    #allSelect
+                    (click)="toggleAllSelectionCity()"
+                    [value]="0"
+                  >
+                    Select All
+                  </mat-option>
+                  <mat-option
+                    *ngFor="let city of cityList"
+                    [value]="city.key"
+                    (click)="tosslePerThree(allSelect.viewValue)"
+                    >{{ city.value }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                style="margin-right:62px;"
+              >
+                <mat-label>Select Country</mat-label>
+                <mat-select formControlName="CountryID">
+                  <mat-option
+                    *ngFor="let country of getcountries"
+                    [value]="country.CountryID"
+                  >
+                    {{ country.CountryName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div appearance="outline" fxFlex="30"></div>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              *ngIf="adminid != vendorid"
+            >
+              <mat-form-field
+                appearance="outline"
+                fxFlex="30"
+                style="margin-right:62px;"
+              >
+                <mat-label>Select Store</mat-label>
+                <mat-select formControlName="StoreID">
+                  <mat-option
+                    *ngFor="let store of stores"
+                    [value]="store.StoreID"
+                  >
+                    {{ store.StoreName }}
+                  </mat-option>
+                  <mat-option *ngIf="stores == undefined || stores == 0">
+                    No Stores Found</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+              <div appearance="outline" fxFlex="30"></div>
+              <div appearance="outline" fxFlex="30"></div>
+            </div>
+
+            <div
+              fxLayout="column"
+              fxLayoutAlign="space-between"
+              formArrayName="Terms_Conditions"
+              style="margin-right:385px;"
+            >
+              <mat-form-field
+                appearance="outline"
+                fxFlex="55"
+                fxLayout="column"
+                *ngFor="let term of Terms_Conditions.controls; index as i"
+              >
+                <mat-label>Terms & Conditions</mat-label>
+                <input
+                  matInput
+                  name="terms"
+                  formControlName="{{ i }}"
+                  type="text"
+                />
+              </mat-form-field>
+              <div appearance="outline" fxFlex="40"></div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <div appearance="outline" fxFlex="55"></div>
+              <div
+                appearance="outline"
+                fxFlex="40"
+                (click)="onAddTerms_Conditions()"
+              >
+                <h3 class="plus-sign" style="cursor:pointer;">+</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

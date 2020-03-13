@@ -1,0 +1,134 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar class="mat-accent m-0">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">Add Send Message Notifications</span>
+      <button
+        mat-icon-button
+        (click)="matDialogRef.close()"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <form
+      name="userReportForm"
+      [formGroup]="userReportForm"
+      class="compose-form"
+      fxLayout="column"
+      fxFlex
+    >
+      <div
+        fxLayout="column"
+        fxLayoutAlign="space-between"
+        formArrayName="UserReportTypes"
+      >
+        <div
+          *ngFor="
+            let report of userReportForm.get('UserReportTypes')['controls'];
+            index as i
+          "
+        >
+          <div [formGroupName]="i" style="margin-right: 30px">
+            <mat-form-field appearance="outline" class="pr-4">
+              <mat-label>Report Type </mat-label>
+              <input
+                matInput
+                name="types"
+                (keyup)="onKey($event)"
+                formControlName="UserReportTypeTitle"
+                type="text"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Report Message</mat-label>
+              <textarea
+                matInput
+                name="message"
+                formControlName="UserReportTypeMessage"
+                rows="5"
+                required
+              >
+              </textarea>
+            </mat-form-field>
+            <mat-icon
+              *ngIf="showDelete"
+              style="float: right;margin-top: -60px;margin-right: -30px;"
+              aria-hidden="true"
+              aria-label="delete"
+              class="actionicons"
+              (click)="deleteMessage(report.value, i)"
+            >
+              delete_outline
+            </mat-icon>
+          </div>
+        </div>
+
+        <div appearance="outline" fxFlex="50" class="pr-4">
+          <h1
+            class="plus"
+            *ngIf="showPlus"
+            (click)="onAddUserReportType()"
+            style="cursor:pointer;color:#f79726;"
+          >
+            +
+          </h1>
+        </div>
+      </div>
+      <!-- <mat-form-field appearance="outline">
+                <mat-label>Report Type</mat-label>
+                <input matInput name="to" formControlName="to" type="text" value="Wayne Jordan">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Report Message</mat-label>
+                <textarea matInput name="message" formControlName="message" rows="5"
+                    value=" It is a long establiched fact that a reader will be by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.">
+
+                </textarea>
+            </mat-form-field> -->
+
+      <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                <div appearance="outline" fxFlex="20" class="pr-4">
+                    <button mat-raised-button class="add-product-button fuse-black mt-24 mt-md-0">
+                        <span>Warning</span>
+                    </button>
+                </div>
+                <div appearance="outline" fxFlex="20" class="pr-4">
+                    <button mat-raised-button class="add-product-button fuse-orange mt-24 mt-md-0">
+                        <span>Suspend</span>
+                    </button>
+                </div>
+
+            </div> -->
+      <div
+        mat-dialog-actions
+        class="m-0 p-16"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
+        <!-- <div class="send">
+                    <button mat-raised-button style="padding: 0 50px !important;"
+                    (click)="onAddUserReport()" [disabled]="!reportForm.valid"
+                        class="add-product-button fuse-white mt-24 mt-md-0">
+                        <span>Send</span>
+                    </button>
+                </div> -->
+        <button
+          mat-raised-button
+          color="accent"
+          class="submit-button"
+          aria-label="Send"
+          (click)="onAddUserReport()"
+        >
+          Send
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

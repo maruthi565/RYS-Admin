@@ -1,0 +1,338 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent first "
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                        shopping_basket
+                    </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          PAYMENTS
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+      <!-- ADD BUTTON -->
+      <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                    class="add-product-button fuse-white mt-24 mt-md-0">
+                    <span>ADD NEW PRODUCT</span>
+                </button> -->
+      <!-- / ADD BUTTON -->
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="start start"
+      >
+        <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start"> -->
+        <!--Widget 1-->
+        <div
+          class="widget"
+          fxFlex="100"
+          fxFlex.gt-sm="33"
+          [routerLink]="'/apps/e-commerce/my-coupons'"
+        >
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16">
+                <div class="h3 secondary-text">Total Coupons Payment</div>
+                <div
+                  class="font-size-30 line-height-1 mt-5"
+                  style="margin-top:15px;"
+                >
+                  <span>&#x20b9;</span> 95,500
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---  / Widget -->
+        <!-- Widget 2 -->
+        <div
+          class="widget"
+          fxFlex="100"
+          fxFlex.gt-sm="28"
+          [routerLink]="'/apps/e-commerce/products'"
+        >
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16">
+                <div class="h3 secondary-text">Total Merchandise Payment</div>
+                <div class="font-size-30 line-height-1 mt-5">
+                  <span>&#x20b9;</span> 75,500
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Widget 2 -->
+
+        <!-- Widget 3 -->
+        <!-- <div class="widget" fxFlex="100" fxFlex.gt-sm="33" [routerLink]="'/apps/e-commerce/redeemed-coupons'">
+    
+                        <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+    
+                            <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+    
+                                <div class="pr-16">
+                                    <div class="h3 secondary-text">Total Coupons Redeemed</div>
+                                    <div class="font-size-30 line-height-1 mt-8">
+                                        170
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div> -->
+        <!-- / Widget 3 -->
+
+        <!-- Widget 4 -->
+        <!-- <div class="widget col" fxLayout="column" fxFlex="100" fxFlex.gt-sm="34">
+    
+                        <div class="fuse-card auto-width">
+    
+                            <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end"> -->
+        <div class="widget" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16">
+                <div class="h3 secondary-text">
+                  Total Pending Revenue from Admin
+                </div>
+                <div class="font-size-30 line-height-1 mt-5">
+                  <span>&#x20b9;</span> 35,500
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Widget 4 -->
+        <br />
+      </div>
+    </div>
+    <div class="row col-md-12">
+      <div class="center">
+        <div
+          class="header accent"
+          id="last"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="space-between center"
+          style="background-color:black !important;"
+        >
+          <!-- SEARCH -->
+          <div class="search-wrapper mx-32 mx-md-0">
+            <div
+              class="search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <input #filter placeholder="Search with Ref no/ Cheque no" />
+            </div>
+          </div>
+          <div fxLayout="column">
+            <mat-form-field>
+              <mat-select class="simplified" value="day">
+                <mat-option value="day">Day</mat-option>
+                <mat-option value="yesterday">1</mat-option>
+                <mat-option value="7days">2</mat-option>
+                <mat-option value="28days">3</mat-option>
+                <mat-option value="90days">4</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column">
+            <mat-form-field>
+              <mat-select class="simplified" value="week">
+                <mat-option value="week">This Week</mat-option>
+                <mat-option value="yesterday">1</mat-option>
+                <mat-option value="7days">2</mat-option>
+                <mat-option value="28days">3</mat-option>
+                <mat-option value="90days">4</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column">
+            <mat-form-field>
+              <mat-select class="simplified" value="month">
+                <mat-option value="month">Month</mat-option>
+                <mat-option value="yesterday">January</mat-option>
+                <mat-option value="7days">February</mat-option>
+                <mat-option value="28days">March</mat-option>
+                <mat-option value="90days">4</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column">
+            <!-- <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0"
+                                (click)="openAlertDialog()">
+                                <span>Request</span>
+                            </button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between"
+        style="border-bottom:1px solid #EFEFEF !important;"
+      >
+        <div fxLayout="column" style="margin-left:20px;">
+          <p><b>Transactions </b></p>
+        </div>
+      </div>
+
+      <mat-table
+        class="products-table"
+        #table
+        [dataSource]="dataSource"
+        matSort
+        [@animateStagger]="{ value: '50' }"
+        fusePerfectScrollbar
+      >
+        <!-- Checkbox Column -->
+        <!-- <ng-container matColumnDef="select">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <mat-checkbox (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                            </mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                            <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="id" style="display:none;">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;">ID</mat-header-cell>
+                        <mat-cell *matCellDef="let product" style="display:none;">
+                            <p class="text-truncate">{{product.id}}</p>
+                        </mat-cell>
+                    </ng-container> -->
+
+        <!-- UserName Column -->
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+          <mat-cell *matCellDef="let product">
+            <p class="text-truncate test">15 Aug 2019</p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Bike Column -->
+        <ng-container matColumnDef="details">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Details</mat-header-cell
+          >
+          <mat-cell *matCellDef="let product">
+            <p class="text-truncate">
+              TRANSFER FROM 31999411044308 - NEFT*UTIB0003385*BSGT566786REV TEAM
+            </p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- City Column -->
+        <ng-container matColumnDef="reference">
+          <mat-header-cell *matHeaderCellDef
+            >Reference No/Cheque No</mat-header-cell
+          >
+          <mat-cell *matCellDef="let product">
+            <p class="category text-truncate">
+              67Bxi78646787899
+            </p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="amount">
+          <mat-header-cell *matHeaderCellDef>Credit Amount</mat-header-cell>
+          <mat-cell *matCellDef="let product">
+            <p class="category text-truncate">
+              20,000.00
+            </p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <!-- <ng-container matColumnDef="quantity">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Quantity</mat-header-cell>
+                        <mat-cell *matCellDef="let product" fxHide fxShow.gt-sm>
+    
+                            <span class="quantity-indicator text-truncate"
+                                [ngClass]="{'red-500':product.quantity <= 5, 'amber-500':product.quantity > 5 && product.quantity <= 25,'green-600':product.quantity > 25}">
+                            </span>
+                            <span>
+                                {{product.quantity}}
+                            </span>
+    
+                        </mat-cell>
+                    </ng-container> -->
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          class="product"
+          (click)="selection.toggle(row)"
+        >
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator
+        #paginator
+        [length]="dataSource.filteredData.length"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      >
+      </mat-paginator>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

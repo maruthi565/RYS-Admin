@@ -1,0 +1,90 @@
+<style>
+  /* .zoom:hover {
+  -ms-transform: scale(1.5); 
+  -webkit-transform: scale(1.5); 
+  transform: scale(1.5); 
+} */
+</style>
+
+<div class="dialog-content-wrapper" id="viewCertificates">
+  <!-- <div class="top-right-orange">₹ 1,50,000/-</div> -->
+
+  <mat-toolbar class=" m-0">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title"></span>
+
+      <button
+        mat-icon-button
+        (click)="dialogRef.close()"
+        class="close"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class=" m-0">
+    <div class="compose-form" fxLayout="column" fxFlex style="width: 500px">
+      <div>
+        <mat-carousel
+          class="certificates"
+          timings="250ms ease-in"
+          [autoplay]="true"
+          interval="2000"
+          color="warn"
+          proportion="25"
+          slides="5"
+          [loop]="true"
+          [hideArrows]="true"
+          [hideIndicators]="false"
+          [useKeyboard]="true"
+          [useMouseWheel]="false"
+          orientation="ltr"
+        >
+          <mat-carousel-slide
+            #matCarouselSlide
+            *ngFor="let slide of fromPage; let i = index"
+            [image]="slide"
+            [hideOverlay]="true"
+          >
+          </mat-carousel-slide>
+        </mat-carousel>
+        <!-- <img src="assets/images/cards/berik.png"> -->
+        <!-- <div *ngFor="let slide of fromPage" style="margin-bottom:20px !important;">
+                <img class="" [src]="slide"><br>
+            </div> -->
+        <br />
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start end"
+        style="margin-top:15px;margin-left:190px;"
+        *ngIf="hideAcceptBtns"
+      >
+        <div appearance="outline" fxFlex="35" *ngIf="hideBtns">
+          <button
+            mat-raised-button
+            style="padding: 0px 50px !important;"
+            (click)="OnRejectBikeDocument()"
+            class="add-product-button fuse-decline"
+          >
+            <span>Decline</span>
+          </button>
+        </div>
+        <div appearance="outline" fxFlex="30" *ngIf="hideBtns">
+          <button
+            mat-raised-button
+            style="padding: 0px 50px !important;"
+            (click)="OnAcceptBikeDocument();toggleChild();"
+            class="add-product-button fuse-accept"
+          >
+            <span>Accept</span>
+          </button>
+          <!-- <e-commerce-profile [showMePartially]="showVar"></e-commerce-profile> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

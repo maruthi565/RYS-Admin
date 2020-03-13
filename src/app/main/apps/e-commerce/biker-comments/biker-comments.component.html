@@ -1,0 +1,56 @@
+<div id="bikerComments" class="page-layout carded fullwidth" fusePerfectScrollbar>
+    <div class="top-bg accent"></div>
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <b> Comments</b>
+                </span>
+                <p style="margin-top:90px;margin-left:-120px;cursor:pointer;" [routerLink]="'/apps/e-commerce/biker-stories'" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    < Stories Feed 
+                </p><br>
+            </div>
+        </div> <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                <div fxLayout="column" style="margin-left:20px;">
+                    <p class="card-heading">Comments </p>
+                </div>
+                <div fxLayout="column" style="margin-right: 20px;margin-top:19px;"></div>
+            </div>
+        
+              
+                    <div style="padding:20px;border-bottom:1px solid #988e8e !important;" *ngFor = "let comment of getcomments"> 
+                        <img class="avatar mr-0 mr-sm-16" src="{{comment.ProfilePic}}">
+                        <p class="name"><strong style="margin-right:15px;">{{comment.FirstName}} {{comment.LastName}}</strong> {{comment.Comment}}<br>
+                            <!-- <span style="margin-top:5px;">Wow Beautiful Bike and amazing view </span> -->
+                        </p>
+                        <p style="color:#c3bebe;margin-left:60px;">{{comment.CreatedAt | date: "dd MMM yyyy"}}</p>
+                    </div>
+                 
+                                <!-- <div style="padding:20px;"> 
+                                    <form name="addCommentForm" [formGroup]="addCommentForm">
+                                        <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
+                                        <div style="margin-left:65px;margin-top:-43px">
+                                            <textarea placeholder="Add a Comment" formControlName="Comment"></textarea>
+
+                                            <button (click)="onAddComment()" style="cursor:pointer;border:none;float:right;margin-top:-37px;margin-right:115px;color:#c3bebe">Post</button>
+                                        </div>
+                                        </form>
+                                    </div> -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+        <br>
+
+    </div>
+    <!-- / CENTER -->
+</div>

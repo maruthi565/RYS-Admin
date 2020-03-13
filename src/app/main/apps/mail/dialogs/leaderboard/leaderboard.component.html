@@ -1,0 +1,68 @@
+<div class="dialog-content-wrapper" id="leaderboard" style="overflow-x: hidden;">
+        <mat-toolbar class="mat-accent m-0">
+            <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+                <span class="title dialog-title">Leaderboard on Mobile Home Screen Stories</span>
+                <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    
+        <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    
+            <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
+    
+                <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    
+                    <div appearance="outline" fxFlex="50" class="pr-4" *ngFor="let rank  of getleaderboard;  let i = index">
+                        
+                       <mat-checkbox [checked]="selected === i" (change)="selected = i" class="leaderboard"> Rank {{i+1}}</mat-checkbox>
+                       <br>
+                       <p>{{rank.TypeName}}</p>
+                    </div>
+    
+                </div> -->
+                <div class="cards">
+                     
+                        <div class="card" *ngFor="let rank  of getleaderboard;  let i = index">
+
+                            
+                            <div class="card-preview">
+
+                                <div class="fuse-card">
+
+                                    <div class="p-16" fxLayout="column" fxLayoutAlign="space-between start">
+
+                                            <!-- <mat-checkbox  [checked]="selected === i"  (click) ="setLeaderboardId(rank)" (change)="selected = i" class="leaderboard"> Rank {{i+1}}</mat-checkbox> -->
+                                            
+                                            <mat-checkbox  [checked]="selected === i"
+                                            (change)="form.get('resolved').setValue(!$event.checked);selected = i"  (click) ="setLeaderboardId(rank)" class="leaderboard"> Rank {{i+1}}</mat-checkbox>
+                                            <!-- #ref [checked]="selected === i" (click) ="setLeaderboardId(rank,$event);" (change)="selected = i" class="leaderboard"> Rank {{i+1}}</mat-checkbox> -->
+                                            <br>
+                                            <p style="margin-top:-5px;">{{rank.TypeName}}</p>       
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                          
+
+
+                        </div>
+          
+                    </div>
+              
+                <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <button mat-raised-button (click)="onAddRank()"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span>Apply</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+    
+    </div>

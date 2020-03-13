@@ -1,0 +1,227 @@
+<div id="createVendor" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                            shopping_basket
+                        </mat-icon> -->
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <b> After Market</b>
+                </span>
+                <br>
+            </div>
+        </div> <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card" fusePerfectScrollbar>
+                <form name="addVendorForm" [formGroup]="addVendorForm">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                <div fxLayout="column" style="margin-left:20px;">
+                    <p class="card-heading"><b>Create Vendor</b> </p>
+                </div>
+                <div fxLayout="column" style="margin-right: 20px;margin-top:19px;">
+                    <button mat-raised-button (click)="onAddVendor()" class="add-product-button fuse-white mt-24 mt-md-0">
+                        <span> Save </span>
+                    </button>
+                </div>
+            </div>
+            <div class="tab-content p-24" >
+                <div class="compose-form" fxLayout="column" fxFlex>
+                    <p><b>General Details</b></p>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field appearance="outline" fxFlex="30">
+                            <mat-label>First Name</mat-label>
+                            <input matInput name="name" formControlName="FirstName" type="text" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="30" style="margin-right:-16px;">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput name="contact" formControlName="LastName" type="text" required>
+                        </mat-form-field>
+                        <div fxFlex="30" style="margin-right: 80px;">
+                            <mat-label style="margin-left:70px;color:#878795"><b>Profile Pic</b>
+                            </mat-label>
+                            <div class="create-vendor-file-upload">
+                                <div class="create-vendor-image-upload-wrap">
+                                    <input class="create-vendor-file-upload-input" type='file'
+                                    name="ProfilePic" (change)="onChange($event);fileProgress($event)" accept="image/*">
+                                    <div class="image-preview mb-3" *ngIf="previewUrl"
+                                    style="margin-top:20px;margin-bottom:20px;" >
+                                        <img [src]="previewUrl"   style="height: 50px;"/>
+                                    </div>
+                                    <div class="create-vendor-drag-text" style="height:80px">
+                                        <h3 style="font-size:20px !important;" *ngIf="showId">+</h3>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top:-75px;">
+                            <mat-form-field appearance="outline" fxFlex="30">
+                                <mat-label>Mobile Number</mat-label>
+                                <input matInput name="contact" formControlName="MobileNumber" type="text" (keypress)="numberOnly($event)" required>
+                            </mat-form-field>
+                            <!-- <mat-form-field appearance="outline" fxFlex="30" style="margin-right:-16px;">
+                                <mat-label>Country</mat-label>
+                                <input matInput name="country" formControlName="Country" type="text">
+                            </mat-form-field> -->
+
+                            <mat-form-field appearance="outline" fxFlex="30" style="margin-right:-16px;">
+                                <mat-label>Select Country</mat-label>
+                                <mat-select formControlName="Country" required>
+
+                                    <mat-option *ngFor="let country of getcountries" [value]="country.CountryID" required>
+                                        {{country.CountryName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <div fxFlex="30" style="margin-right: 80px;"> </div>
+                        </div>
+
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field appearance="outline" fxFlex="30">
+                            <mat-label>Mail Id</mat-label>
+                            <input matInput name="mail" formControlName="EmailID" type="email" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="30" style="margin-right:62px;">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" name="Password" formControlName="Password" required>
+                        </mat-form-field>
+                        <div appearance="outline" fxFlex="30" style="color:#878795;font-size:11px;margin-top:-8px">
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                            <mat-form-field appearance="outline" fxFlex="30">
+                                    <mat-label>No. Of Stores</mat-label>
+                                    <input matInput name="NoOfStores" type="text"  formControlName="NoOfStores" required>
+                                </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="30" >
+                            <mat-label>City</mat-label>
+                            <input matInput name="city" formControlName="City" type="text" required>
+                        </mat-form-field>
+                        <div appearance="outline" fxFlex="30" style="margin-right:62px;"> </div>
+                        
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top:-5px;" style="display:none">
+                        <mat-form-field appearance="outline" fxFlex="30">
+                            <mat-label>Registration Date</mat-label>
+                            <input matInput [matDatepicker]="pickerTo" formControlName="RegistrationDate"
+                            placeholder="Registration Date" required>
+                        <mat-datepicker-toggle matSuffix [for]="pickerTo"
+                            style="width:1.9em !important;color: #f79726 !important;">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #pickerTo></mat-datepicker>
+                        </mat-form-field>
+                        <div appearance="outline" fxFlex="30" >
+                        </div>
+                    </div>
+                    <p><b>Company Details</b></p>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field appearance="outline" fxFlex="45">
+                            <mat-label>Company Name</mat-label>
+                            <input matInput name="cname" formControlName="CompanyName" type="text" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="45" style="margin-right:-221px;">
+                            <mat-label>Website</mat-label>
+                            <input matInput name="website" formControlName="Website" type="text" required>
+                        </mat-form-field>
+                        <div appearance="outline" fxFlex="30">
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field appearance="outline" fxFlex="45">
+                            <mat-label>About</mat-label>
+                            <textarea matInput name="about" formControlName="About" rows="5" required></textarea>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="45" style="margin-right:-221px;">
+                            <mat-label>Company Since</mat-label>
+                            <input matInput name="since" formControlName="EstablishedOn" type="text" required>
+                        </mat-form-field>
+                        <div appearance="outline" fxFlex="30" style="color:#878795;font-size:11px;">
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field appearance="outline" fxFlex="45" style="margin-top: 5px">
+                            <mat-label>Type of Ownership</mat-label>
+                            <input matInput name="type" formControlName="OwnershipType" type="text" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="45" style="margin-right:-221px;margin-top:-68px;">
+                            <mat-label>Years in Business</mat-label>
+                            <input matInput name="years" formControlName="YearsInBusiness" type="text" required>
+                        </mat-form-field>
+                        <div appearance="outline" fxFlex="30">
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field appearance="outline" fxFlex="45" style="margin-top: 5px">
+                            <mat-label>CINN</mat-label>
+                            <input matInput name="cinn" formControlName="CINN" type="text" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="45" style="margin-right:-221px;margin-top:-78px;">
+                            <mat-label>Company Pan</mat-label>
+                            <input matInput name="pan" formControlName="PAN" type="text" required>
+                        </mat-form-field>
+                        <div appearance="outline" fxFlex="30">
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field appearance="outline" fxFlex="45" style="margin-top: 5px">
+                            <mat-label>GST</mat-label>
+                            <input matInput name="gst" formControlName="GST" type="text" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="45" style="margin-right:-221px;margin-top:-78px;">
+                            <mat-label>TIN</mat-label>
+                            <input matInput name="tin" formControlName="TIN" type="text" required>
+                        </mat-form-field>
+                        <div appearance="outline" fxFlex="30">
+                        </div>
+                    </div>
+                    <br>
+                    <p>Upload Company Registry Document</p>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <div class="create-vendor-file-upload2" >
+                            <div class="create-vendor-image-upload-wrap">
+                                <input class="create-vendor-file-upload-input" type='file' name="DocumentPath" (change)="selectFile($event);"
+                                    accept="application/pdf" required/>
+                                <div class="create-vendor-drag-text" style="height:80px">
+                                    <h3 style="font-size:20px !important;">+  </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                        <button (click)="upload()"  [disabled]="!selectedFiles"  mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0"   style="height:50px;padding:10px 30px 10px 30px;font-size:11px;color:#878795">
+                            Upload 
+                            
+                        </button>
+                        <p style="width: 300px; margin-top: 60px;margin-left: -80px;" *ngIf="showText"> Uploading {{progress}}%</p>
+                        
+                        <p style="width: 300px; margin-top: 60px;margin-left: -80px;" *ngIf="progress === 100">File Successfully Uploaded</p>
+                        
+                        <div appearance="outline" fxFlex="45" style="margin-right:-221px;margin-top:-78px;">
+                            
+                        </div>
+                        <div appearance="outline" fxFlex="30">
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

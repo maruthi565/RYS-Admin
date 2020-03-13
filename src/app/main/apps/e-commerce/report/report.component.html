@@ -1,0 +1,210 @@
+<div id="reports" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent first" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Report
+                </span>
+            </div>
+            <div class="search-wrapper mx-32 mx-md-0" width="50%">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <input  [(ngModel)]="searchTerm" (input)="filterReportByName($event)" placeholder="Search">
+                </div>
+            </div>
+            <!-- <mat-form-field style="width:110px" fxLayout="column">
+                <mat-select class="simplified" value="ride">
+                    <mat-option value="ride">Select Ride</mat-option>
+                    <mat-option value="yesterday">1</mat-option>
+                    <mat-option value="7days">2</mat-option>
+                    <mat-option value="28days">3</mat-option>
+                    <mat-option value="90days">4</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            <mat-form-field style="width:110px" fxLayout="column">
+                    <mat-label>Select Ride </mat-label>
+                    <mat-select class="simplified" [(ngModel)]="selectedRide" (selectionChange)="rideSelectionChange($event)">
+                      <mat-option *ngFor="let ride of rideDetails" [value]="ride.RideID">
+                        {{ride.RideName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            <!-- <mat-form-field style="width:100px" fxLayout="column">
+                <mat-select class="simplified" value="brand">
+                    <mat-option value="brand">Brand</mat-option>
+                    <mat-option value="yesterday">1</mat-option>
+                    <mat-option value="7days">2</mat-option>
+                    <mat-option value="28days">3</mat-option>
+                    <mat-option value="90days">4</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            <mat-form-field style="width:150px" fxLayout="column">
+                <!-- <mat-select class="simplified" value="City">
+                    <mat-option value="City">City</mat-option>
+                    <mat-option value="yesterday">1</mat-option>
+                    <mat-option value="7days">2</mat-option>
+                    <mat-option value="28days">3</mat-option>
+                    <mat-option value="90days">4</mat-option>
+                </mat-select> -->
+                <mat-label>Search city</mat-label>
+                <input matInput  [(ngModel)]="selectedCity" type="text" (keydown.enter)="$event.preventDefault()"
+                placeholder="Search city" autocorrect="off" autocapitalize="off" spellcheck="off"
+                type="text" #reportCitySearch>
+            </mat-form-field>
+            <mat-form-field style="width:100px" fxLayout="column">
+                <input matInput [(ngModel)]="selectedDate" (dateChange)="dateSelectionChange()" [matDatepicker]="picker" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div>
+            <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" style="margin-bottom:10px" (click)="addDialog()">
+                <span>Add Report Type</span>
+            </button> <br>
+            <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0"  (click)="addSendMessageDialog()">Add Send Message</button>
+        </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <div  style="text-align: center;padding:100px" *ngIf = "dataSource.data != undefined && dataSource.data.length == 0">No Records Found</div>
+            <mat-table class="reports-table" #table [dataSource]="dataSource" *ngIf = "dataSource.data != undefined && dataSource.data.length != 0" matSort [@animateStagger]="{value:'50'}"
+                fusePerfectScrollbar>
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                        </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="id" style="display:none;">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;">ID</mat-header-cell>
+                    <mat-cell *matCellDef="let product" style="display:none;">
+                        <p class="text-truncate">{{product.id}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- UserName Column -->
+                <ng-container matColumnDef="username">
+                    <mat-header-cell *matHeaderCellDef>User Name</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <img class="avatar mr-0 mr-sm-16" src="{{product.ProfilePic || 'assets/images/profile/default-avatar.png' }}"
+                        (error)="onImgError($event)">
+                        <b>
+                            <p class="text-truncate">{{product.FirstName}}<span>{{product.LastName}}</span></p>
+                        </b>
+
+                    </mat-cell>
+                </ng-container>
+                <!-- City Column -->
+                <ng-container matColumnDef="city">
+                    <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="category text-truncate">
+                            <b>{{product.City}}</b>
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+
+                <!-- Date Column -->
+                <ng-container matColumnDef="bike">
+                    <mat-header-cell *matHeaderCellDef>Bike</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="category text-truncate">
+                            <b>{{product.BrandName}}</b>
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Price Column -->
+                <ng-container matColumnDef="reports">
+                    <mat-header-cell *matHeaderCellDef> Previous Reports
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="price text-truncate">
+                            {{product.PreviousReportsCount}} <a href="" style="color:#f79726;text-decoration: none;"
+                                (click)="previousReports(product)"[routerLink]="'/apps/e-commerce/previous-report'">View History</a>
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Codes Column -->
+                <ng-container matColumnDef="reported">
+                    <mat-header-cell *matHeaderCellDef>Reported By</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+
+                        <img class="avatar mr-0 mr-sm-16" src="{{product.ReportByUserProfilePic || 'assets/images/profile/default-avatar.png' }}"
+                        (error)="onImgError($event)"> <b>{{product.ReportByFirstName}}</b>
+
+
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Codes Column -->
+                <ng-container matColumnDef="ride">
+                    <mat-header-cell *matHeaderCellDef>Ride Name</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="category">
+                            <b>{{product.RideName}}</b>
+                        </p>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="type">
+                    <mat-header-cell *matHeaderCellDef>Report Type</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="category ">
+                            <b>{{product.Comment}}</b>
+                        </p>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <button mat-raised-button class="add-product-button fuse-red mt-24 mt-md-0"
+                            (click)="modalDialog(product)">
+                            <span>Send Message</span>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+                <mat-row *matRowDef="let row; columns: displayedColumns;" class="product"
+                    (click)="selection.toggle(row)">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

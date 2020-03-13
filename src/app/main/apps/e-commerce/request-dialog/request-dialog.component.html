@@ -1,0 +1,16 @@
+<mat-dialog-content class="request" style="width:490px;height:280px;">
+    <button mat-icon-button (click)="matDialogRef.close()" mat-dialog-close aria-label="Close dialog" tabindex="-1"
+        style="float:right;">
+        <mat-icon>close</mat-icon>
+    </button>
+    <br>
+    <div class="text-center" style="text-align:center">
+        <mat-icon class="active-icon green-600 s-16"
+            style="background-color:#18BD0B !important;border-radius:50%;width: 65px !important;;height:65px !important;font-size:60px !important; margin-top:80px;line-height:60px !important;">
+            check
+        </mat-icon>
+    </div>
+    <div class="text-center" style="text-align:center;margin-top:30px;font-size:20px;">
+        {{message}}
+    </div>
+</mat-dialog-content>

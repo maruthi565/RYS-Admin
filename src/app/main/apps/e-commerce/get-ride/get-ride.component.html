@@ -1,0 +1,688 @@
+<div id="viewRide" class="page-layout carded fullwidth" fusePerfectScrollbar>
+    <div class="top-bg accent"></div>
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <b> {{selectedRideDetails.RideName}}</b>
+                </span>
+                <p style="margin-top:90px;margin-left:-135px" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    < Rides </p> <br>
+            </div>
+        </div> <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between">
+                <div fxLayout="column" style="padding:0 20px;">
+                    <p class="card-heading" ><b>{{selectedRideDetails.RideName}}</b>&nbsp;&nbsp;
+                        <button mat-raised-button class="add-product-button fuse-ride mt-24 mt-md-0" *ngIf="selectedRideDetails.TotalPrice > 0 ">
+                            <span >{{selectedRideDetails.TotalPrice}}</span>
+                                                
+                        </button>
+                        <button mat-raised-button class="add-product-button fuse-ride mt-24 mt-md-0" *ngIf="selectedRideDetails.TotalPrice == '' || selectedRideDetails.TotalPrice == null ||  
+                        selectedRideDetails.TotalPrice == 0 ">
+                            <span >Free</span>
+                                                
+                        </button>
+                        
+                           
+                    </p>
+                   
+                                                   
+                </div>
+            </div>
+            <div class="tab-content">
+                <mat-carousel timings="250ms ease-in"
+                [autoplay]="true"
+                interval="5000"
+                color="accent"
+                maxWidth="auto"
+                maxHeight="auto"
+                proportion="25"
+                slides="5"
+                [loop]="true"
+                [hideArrows]="false"
+                [hideIndicators]="false"
+                [useKeyboard]="true"
+                [useMouseWheel]="false"
+                orientation="ltr">
+                    <mat-carousel-slide #matCarouselSlide
+                    *ngFor="let slide of slides; let i = index"
+                    [image]="slide.image"
+                    [hideOverlay]="true"
+                    style="height:450px !important;"
+                    >
+                      
+                    </mat-carousel-slide>
+                </mat-carousel>
+            </div>
+        </div>
+        <div class="content-card">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between">
+                <div fxLayout="column" style="padding:5px 15px 5px 15px;">
+                    <p class="card-heading"><b>About</b> </p>
+                    <!-- <p style="margin-top:-10px;color:#6E6E81 !important;">We consider each project as an opportunity to
+                        leave a unique mark on the Visual and Technical anthropology of the digital world. We bring the
+                        client and User to centre-stage and hope to establish a lasting relationship through
+                        problem-solving, attention to detail, functionality and simplified User ExperienceWe consider
+                        each project as an opportunity to leave a unique mark on the Visual and Technical anthropology
+                        of the digital world. We bring the client and User to centre-stage and hope to establish a
+                        lasting relationship through problem-solving, attention to detail, functionality and simplified
+                        User Experience.
+                    </p> -->
+                    <p style="margin-top:-10px;color:#6E6E81 !important;">{{selectedRideDetails.Description}}
+                </div>
+            </div>
+        </div>
+        <div class="content-card">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between">
+                <div fxLayout="column" style="padding:5px 15px 5px 15px;">
+                    <p class="card-heading"><b>Ride Fee Inclusions</b> </p>
+                    <ul class="listStyle"
+                        style="list-style-type:none;margin-top:-10px !important;color:#6E6E81 !important">
+                        <li> Fuel for the tour</li>
+                        <li> Helmet for both rider and pillion</li>
+                        <li> Accommodation on Twin/Triple Sharing basis</li>
+                        <li> Daily Breakfasts</li>
+                        <li>Daily Breakfasts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:30px;">
+            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row">
+                    <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                            <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+                                <div class="pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="content" style="width:295px;padding:10px !important;">
+                                        <div style="position: relative; left: 0; top: 0;">
+                                            <img src="assets/icons/component.png" class="locates" style="width:65px;">
+                                            <img src="assets/icons/location.svg" class="locate" style="width:18px;">
+                                        </div>
+                                        <div style="margin-top:10px">
+                                            <h3><b>Start Location</b></h3>
+                                            <p>{{selectedRideDetails.StartLocationName}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" style="margin-left:-5px;">
+                                <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                                    style="width:80% !important;">
+                                    <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                        <div class="content" style="width:195px;padding:10px !important;">
+                                            <div style="position: relative; left: 0; top: 0;">
+                                                <img src="assets/icons/component.png" class="fishes" style="width:65px;">
+                                                <img src="assets/icons/kmicon.svg" class="fish" />
+                                            </div>
+                                            <div style="margin-top:10px">
+                                                <h3><b>{{selectedRideDetails.EstimatedDistance}}</b></h3>
+                                                <p>{{selectedRideDetails.HaltLocations.length}} Halts</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                        style="width:80% !important;">
+                        <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:200px;padding:10px !important;">
+                                <img src="assets/icons/date.svg" alt="" style="width:60px;">
+                                <div style="margin-top:10px;">
+                                    <h3><b>Start Date</b></h3>
+                                    <p>{{selectedRideDetails.StartDate | date : " d MMM yyyy"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" style="margin-left:-30px;">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+                        <div class="pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:295px;padding:10px !important;">
+                                <div style="position: relative; left: 0; top: 0;">
+                                    <img src="assets/icons/component.png" class="locates" style="width:65px;">
+                                    <img src="assets/icons/location.svg" class="locate" style="width:18px;">
+                                </div>
+                                <div style="margin-top:10px">
+                                    <h3><b>Start Location</b></h3>
+                                    <p>KPHB Phase 1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" style="margin-left:-20px;">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                        style="width:90% !important;">
+                        <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:245px !important;padding:10px !important;">
+                                <div style="position: relative; left: 0; top: 0;">
+                                    <img src="assets/icons/component.png" class="creates" style="width:65px;">
+                                    <img src="assets/icons/rideprofile.png" class="create" style="width:65px;">
+                                </div>
+                                <div style="margin-top:10px">
+                                    <h3><b>Created By</b></h3>
+                                    <p>Manish Surapaneni</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                        <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                            style="width:80% !important;">
+                            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                <div class="content" style="width:200px;padding:10px !important;">
+                                    <img src="assets/icons/date.svg" alt="" style="width:60px;">
+                                    <div style="margin-top:10px;">
+                                        <h3><b>Start Time</b></h3>
+                                        <p>{{this.StartTime}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row">
+                    <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                            <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+                                <div class="pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="content" style="width:295px;padding:10px !important;">
+                                        <div style="position: relative; left: 0; top: 0;">
+                                            <img src="assets/icons/component.png" class="locates" style="width:65px;">
+                                            <img src="assets/icons/location.svg" class="locate" style="width:18px;">
+                                        </div>
+                                        <div style="margin-top:10px">
+                                            <h3><b>End Location</b></h3>
+                                            <p>{{selectedRideDetails.DestinationLocationName}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row">
+                    <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                            <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+                                <div class="pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="content" style="width:295px;padding:10px !important;">
+                                        <div style="position: relative; left: 0; top: 0;">
+                                            <img src="assets/icons/component.png" class="locates" style="width:65px;">
+                                            <img src="assets/icons/location.svg" class="locate" style="width:18px;">
+                                        </div>
+                                        <div style="margin-top:10px">
+                                            <h3><b>Return Location</b></h3>
+                                            <p>{{selectedRideDetails.ReturnLocationName}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" style="margin-left:-5px;">
+                                <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                                    style="width:80% !important;">
+                                    <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                        <div class="content" style="width:195px;padding:10px !important;">
+                                            <div style="position: relative; left: 0; top: 0;">
+                                                <img src="assets/icons/component.png" class="fishes" style="width:65px;">
+                                                <img src="assets/icons/kmicon.svg" class="fish" />
+                                            </div>
+                                            <div style="margin-top:10px">
+                                                <h3><b>{{selectedRideDetails.ReturnEstimatedDistance}}</b></h3>
+                                                <p>{{selectedRideDetails.ReturnHaltLocations.length}} Halts</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                        style="width:80% !important;">
+                        <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:200px;padding:10px !important;">
+                                <img src="assets/icons/date.svg" alt="" style="width:60px;">
+                                <div style="margin-top:10px;">
+                                    <h3><b>End Date</b></h3>
+                                    <p>{{selectedRideDetails.EndDate  | date : " d MMM yyyy"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" style="margin-left:-30px;">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+                        <div class="pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:295px;padding:10px !important;">
+                                <div style="position: relative; left: 0; top: 0;">
+                                    <img src="assets/icons/component.png" class="locates" style="width:65px;">
+                                    <img src="assets/icons/location.svg" class="locate" style="width:18px;">
+                                </div>
+                                <div style="margin-top:10px">
+                                    <h3><b>Start Location</b></h3>
+                                    <p>KPHB Phase 1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" style="margin-left:-20px;">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                        style="width:90% !important;">
+                        <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:245px !important;padding:10px !important;">
+                                <div style="position: relative; left: 0; top: 0;">
+                                    <img src="assets/icons/component.png" class="creates" style="width:65px;">
+                                    <img src="assets/icons/rideprofile.png" class="create" style="width:65px;">
+                                </div>
+                                <div style="margin-top:10px">
+                                    <h3><b>Created By</b></h3>
+                                    <p>Manish Surapaneni</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                        <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                            style="width:80% !important;">
+                            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                <div class="content" style="width:200px;padding:10px !important;">
+                                    <img src="assets/icons/date.svg" alt="" style="width:60px;">
+                                    <div style="margin-top:10px;">
+                                        <h3><b>End Time</b></h3>
+                                        <p>{{this.EndTime}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row"> 
+                 <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'"
+                        style="width:90% !important;">
+                        <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:245px !important;padding:10px !important;">
+                                <div style="position: relative; left: 0; top: 0;">
+                                    <img src="assets/icons/component.png" class="creates" style="width:65px;">
+                                    <img src="assets/icons/rideprofile.png" class="create" style="width:65px;">
+                                </div>
+                                <div style="margin-top:10px">
+                                    <h3><b>Created By</b></h3>
+                                    <p>{{selectedRideDetails.CreatedBy}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+               
+            </div>
+        </div>
+        <div class="content-card">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between">
+                <div fxLayout="column" style="padding:5px 15px 5px 15px;">
+                    <p class="card-heading"><b>Co- Riders (60)</b> </p>
+                    <br>
+                    <div class="first" style="width:950px;">
+                        <div style="border:1px solid #0000001f;padding:15px 10px 0px 10px;border-radius:5px;">
+                            <div appearance="outline" fxFlex="40" class="pr-4" style="margin-top:11px;">
+                                <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
+                                <p class="name"> <b> Manish Surapaneni</b><br>
+                                    <span style="color:#e95130;">Kawasaki Ninja 1000</span>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#6E6E81;">
+                                            near_me
+                                        </mat-icon>
+                                        Hyderabad
+                                    </span>
+                                </p>
+                            </div>
+                            <div class=" border-right" appearance="outline" fxFlex="22" class="pr-4"
+                                style="margin-top:50px;">
+                                <p class="name" style="color:#858585;"> Total Kms<br>
+                                    <span style="color:#000000;"><b>1679</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">No Of Rides<br>
+                                    <span style="color:#000000;"><b>35</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">Rating<br>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#e95130;">
+                                            star
+                                        </mat-icon>
+                                        <b style="color:#000000;">3.5</b>
+                                    </span>
+                                </p>
+                            </div>
+                            <div appearance="outline" fxFlex="13" class="pr-4" style="margin-top:50px;"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="second" style="width:950px;">
+                        <div style="border:1px solid #0000001f;padding:15px 10px 0px 10px;border-radius:5px;">
+                            <div appearance="outline" fxFlex="40" class="pr-4" style="margin-top:11px;">
+                                <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
+                                <p class="name"> <b> Manish Surapaneni</b><br>
+                                    <span style="color:#e95130;">Kawasaki Ninja 1000</span>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#6E6E81;">
+                                            near_me
+                                        </mat-icon>
+                                        Hyderabad
+                                    </span>
+                                </p>
+                            </div>
+                            <div class=" border-right" appearance="outline" fxFlex="22" class="pr-4"
+                                style="margin-top:50px;">
+                                <p class="name" style="color:#858585;"> Total Kms<br>
+                                    <span style="color:#000000;"><b>1679</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">No Of Rides<br>
+                                    <span style="color:#000000;"><b>35</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">Rating<br>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#e95130;">
+                                            star
+                                        </mat-icon>
+                                        <b style="color:#000000;">3.5</b>
+                                    </span>
+                                </p>
+                            </div>
+                            <div appearance="outline" fxFlex="13" class="pr-4" style="margin-top:50px;"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="third" style="width:950px;">
+                        <div style="border:1px solid #0000001f;padding:15px 10px 0px 10px;border-radius:5px;">
+                            <div appearance="outline" fxFlex="40" class="pr-4" style="margin-top:11px;">
+                                <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
+                                <p class="name"> <b> Manish Surapaneni</b><br>
+                                    <span style="color:#e95130;">Kawasaki Ninja 1000</span>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#6E6E81;">
+                                            near_me
+                                        </mat-icon>
+                                        Hyderabad
+                                    </span>
+                                </p>
+                            </div>
+                            <div class=" border-right" appearance="outline" fxFlex="22" class="pr-4"
+                                style="margin-top:50px;">
+                                <p class="name" style="color:#858585;"> Total Kms<br>
+                                    <span style="color:#000000;"><b>1679</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">No Of Rides<br>
+                                    <span style="color:#000000;"><b>35</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">Rating<br>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#e95130;">
+                                            star
+                                        </mat-icon>
+                                        <b style="color:#000000;">3.5</b>
+                                    </span>
+                                </p>
+                            </div>
+                            <div appearance="outline" fxFlex="13" class="pr-4" style="margin-top:50px;"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="fourth" style="width:950px;">
+                        <div style="border:1px solid #0000001f;padding:15px 10px 0px 10px;border-radius:5px;">
+                            <div appearance="outline" fxFlex="40" class="pr-4" style="margin-top:11px;">
+                                <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
+                                <p class="name"> <b> Manish Surapaneni</b><br>
+                                    <span style="color:#e95130;">Kawasaki Ninja 1000</span>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#6E6E81;">
+                                            near_me
+                                        </mat-icon>
+                                        Hyderabad
+                                    </span>
+                                </p>
+                            </div>
+                            <div class=" border-right" appearance="outline" fxFlex="22" class="pr-4"
+                                style="margin-top:50px;">
+                                <p class="name" style="color:#858585;"> Total Kms<br>
+                                    <span style="color:#000000;"><b>1679</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">No Of Rides<br>
+                                    <span style="color:#000000;"><b>35</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">Rating<br>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#e95130;">
+                                            star
+                                        </mat-icon>
+                                        <b style="color:#000000;">3.5</b>
+                                    </span>
+                                </p>
+                            </div>
+                            <div appearance="outline" fxFlex="13" class="pr-4" style="margin-top:50px;"></div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="content-card">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="space-between">
+                <div fxLayout="column" style="padding:5px 15px 5px 15px;">
+                    <p class="card-heading"><b>Ride Map</b> </p>
+                    <div class="container-ride">
+                        <div class="timeline-block timeline-block-right">
+                            <div class="markers">
+                                <img src="assets/icons/road.svg" alt="" class="locationIco">
+                            </div>
+                            <div class="timeline-content" style="margin-top:-35px;">
+                                <span style="margin-left:15px;">Starting Point</span>
+                                <h3 style="margin-left:15px !important;font-size:18px;color:#000000;">
+                                    <b>Driven Cafe, Gachibowli, <br>
+                                        Hyderabad</b>
+                                </h3>
+                                <div style="margin-left:15px;margin-top:15px;margin-bottom:20px;">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487268.80122446903!2d78.0584466013432!3d17.421982249775688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9488fde35c89%3A0x8e23c060df7a001e!2sDriven%20Cafe!5e0!3m2!1sen!2sin!4v1569924979979!5m2!1sen!2sin"
+                                        width="500" height="250" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-block timeline-block-right">
+                            <div class="marker"></div>
+                            <div class="timeline-content">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="col-md-4">
+                                        <h3 style="font-size:18px;"> Halt Location 1</h3>
+                                    </div>
+                                    <div class="col-md-4" style="float:right;margin-top:-33px;margin-right:240px;">
+                                        <img src="assets/icons/location.svg">
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-left:15px !important;font-size:18px;color:#000000;">
+                                    <b>Delhi Public School</b>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right">
+                            <div class="marker"></div>
+                            <div class="timeline-content">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="col-md-4">
+                                        <h3 style="font-size:18px;"> Halt Location 2</h3>
+                                    </div>
+                                    <div class="col-md-4" style="float:right;margin-top:-33px;margin-right:240px;">
+                                        <img src="assets/icons/location.svg">
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-left:15px !important;font-size:18px;color:#000000;">
+                                    <b>Delhi Public School</b>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right">
+                            <div class="marker"></div>
+                            <div class="timeline-content">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="col-md-4">
+                                        <h3 style="font-size:18px;"> Halt Location 3</h3>
+                                    </div>
+                                    <div class="col-md-4" style="float:right;margin-top:-33px;margin-right:240px;">
+                                        <img src="assets/icons/location.svg">
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-left:15px !important;font-size:18px;color:#000000;">
+                                    <b>Delhi Public School</b>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right">
+                            <div class="marker"></div>
+                            <div class="timeline-content">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="col-md-4">
+                                        <h3 style="font-size:18px;"> Halt Location 4</h3>
+                                    </div>
+                                    <div class="col-md-4" style="float:right;margin-top:-33px;margin-right:240px;">
+                                        <img src="assets/icons/location.svg">
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-left:15px !important;font-size:18px;color:#000000;">
+                                    <b>Delhi Public School</b>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right">
+                            <div class="markers">
+                                <img src="assets/icons/flag.png"  alt="" class="endlocationIco">
+                            </div>
+                            <div class="timeline-content">
+                                <span>End Destination</span>
+                                <br>
+                                <p><b style="color:#000;font-size:18px;">Hill Park Restaurant, Bangalore Highway,<br>
+                                        Hyderabad</b>
+                                    <span style="color:#fff !important;"> adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud
+                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                        irure dolor in reprehenderit in voluptate.</span></p>
+
+                                <div style="margin-left:0px;margin-top:-57px;margin-bottom:20px;">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487268.80122446903!2d78.0584466013432!3d17.421982249775688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9488fde35c89%3A0x8e23c060df7a001e!2sDriven%20Cafe!5e0!3m2!1sen!2sin!4v1569924979979!5m2!1sen!2sin"
+                                        width="500" height="250" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="container-ride2">
+                        <div class="timeline-block timeline-block-right">
+                            <div class="marker"></div>
+                            <div class="timeline-content">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="col-md-4">
+                                        <h3 style="font-size:18px;">Return Halt Location 1</h3>
+                                    </div>
+                                    <div class="col-md-4" style="float:right;margin-top:-33px;margin-right:205px;">
+                                        <img src="assets/icons/location.svg">
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-left:15px !important;font-size:18px;color:#000000;">
+                                    <b>Delhi Public School</b>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="timeline-block timeline-block-right">
+                            <div class="markers">
+                                <img src="assets/icons/flag.png"  alt="" class="endlocationIco">
+                            </div>
+                            <div class="timeline-content">
+                                <span>Return  Destination</span>
+                                <br>
+                                <p><b style="color:#000;font-size:18px;">Hill Park Restaurant, Bangalore Highway,<br>
+                                        Hyderabad</b>
+                                    <span style="color:#fff !important;"> adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud
+                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                        irure dolor in reprehenderit in voluptate.</span></p>
+
+                                <div style="margin-left:0px;margin-top:-57px;margin-bottom:20px;">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487268.80122446903!2d78.0584466013432!3d17.421982249775688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9488fde35c89%3A0x8e23c060df7a001e!2sDriven%20Cafe!5e0!3m2!1sen!2sin!4v1569924979979!5m2!1sen!2sin"
+                                        width="500" height="250" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / CONTENT CARD -->
+        <br>
+
+    </div>
+    <!-- / CENTER -->
+</div>

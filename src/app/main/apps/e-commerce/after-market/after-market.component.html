@@ -1,0 +1,642 @@
+<div id="afterMarket" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent first" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                        shopping_basket
+                    </mat-icon> -->
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    After Market
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+            <!-- ADD BUTTON -->
+            <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                    class="add-product-button fuse-white mt-24 mt-md-0">
+                    <span>ADD NEW PRODUCT</span>
+                </button> -->
+            <!-- / ADD BUTTON -->
+            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" flex-md="33">
+                <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start"> -->
+                <!--Widget 1-->
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Vendors</div>
+                                <div class="font-size-16 line-height-1 mt-8">
+                                    {{vendorinfoboxes.Total_Vendors}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!---  / Widget -->
+                <!-- Widget 2 -->
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" *ngIf="totalCoupons">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Coupons</div>
+                                <div class="font-size-16 line-height-1 mt-8">
+                                    {{vendorinfoboxes.Total_Coupons}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- / Widget 2 -->
+
+                <!-- Widget 3 -->
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" *ngIf="showVendor">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Products</div>
+                                <div class="font-size-16 line-height-1 mt-8">
+                                    {{vendorinfoboxes.Total_Products}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" *ngIf="productsSold">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Products Sold</div>
+                                <div class="font-size-16 line-height-1 mt-8">
+                                    {{merchandiseinfoboxes.Total_Products_Sold}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" *ngIf="showCouponsPurchased">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Purchased</div>
+                                <div class="font-size-16 line-height-1 mt-8">
+                                    {{couponsinfoboxes.Total_Purchased}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- / Widget 3 -->
+
+                <!-- Widget 4 -->
+                <!-- <div class="widget col" fxLayout="column" fxFlex="100" fxFlex.gt-sm="34">
+    
+                        <div class="fuse-card auto-width">
+    
+                            <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end"> -->
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" *ngIf= "showCouponBox">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Redeemed Coupon Revenue</div>
+                                <div class="font-size-16 line-height-1 mt-5">
+                                    <span>&#x20b9;</span> {{couponsinfoboxes.Total_Redeemed_Coupon_Revenue}}&nbsp;&nbsp; | {{couponsinfoboxes.Total_Redeemed_Coupon_Count}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" *ngIf="showVendorBox">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Merchandise Revenue</div>
+                                <div class="font-size-16 line-height-1 mt-5" style="margin-top: 15px;">
+                                    <span>&#x20b9;</span>{{merchandiseinfoboxes.Total_Revenue}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" *ngIf="showRevenueBox">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Revenue</div>
+                                <div class="font-size-16 line-height-1 mt-5" style="margin-top: 15px;">
+                                    <span>&#x20b9;</span>{{couponsinfoboxes.Total_Revenue}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" *ngIf="showPaymentBox">
+
+                    <div class="fuse-card auto-width mb-32" style="width:98% !important;height:70% !important"
+                        [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16" *ngIf="showcountbox">
+                                <div class="h3 secondary-text">Total Amount Paid</div>
+                                <div class="font-size-16 line-height-1 mt-5" style="margin-top: 15px;">
+                                    <span>&#x20b9;</span>{{paymentinfoboxes}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- / Widget 4 -->
+                <br>
+
+            </div>
+
+        </div>
+        <div class="row col-md-12">
+
+            <div class="center">
+                <div class="header accent" id="last" fxLayout="column" fxLayoutAlign="center center"
+                    fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center"
+                    style="background-color:black !important;">
+                    <!-- SEARCH -->
+                    <div class="search-wrapper mx-32 mx-md-0">
+                        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                            <!-- <input #filter placeholder="Search"> -->
+                            <input [(ngModel)]="searchTerm" (input)="filterAfterMarketByName($event)" placeholder="Search">
+                        </div>
+                    </div>
+                    <div fxLayout="column">
+                        <!-- <mat-form-field style="width:100px">
+                            <mat-select class="simplified" value="Brand">
+                                <mat-option value="Brand">Brand</mat-option>
+                                <mat-option value="yesterday">1</mat-option>
+                                <mat-option value="7days">2</mat-option>
+                                <mat-option value="28days">3</mat-option>
+                                <mat-option value="90days">4</mat-option>
+                            </mat-select>
+                        </mat-form-field> -->
+                    </div>
+                    <div fxLayout="column">
+                        <!-- <mat-form-field style="width:100px">
+                            <mat-select class="simplified" value="City">
+                                <mat-option value="City">City</mat-option>
+                                <mat-option value="yesterday">1</mat-option>
+                                <mat-option value="7days">2</mat-option>
+                                <mat-option value="28days">3</mat-option>
+                                <mat-option value="90days">4</mat-option>
+                            </mat-select>
+                        </mat-form-field> -->
+                        <mat-form-field style="width:200px;" fxLayout="column">
+                                <mat-label style="color:#fff;">Search city</mat-label>
+                                <input matInput  [(ngModel)]="selectedCity" type="text" (keydown.enter)="$event.preventDefault()"
+                                placeholder="Search city" autocorrect="off" autocapitalize="off" spellcheck="off"
+                                type="text" #afterMarketCitySearch>
+                            </mat-form-field>
+                    </div>
+                    <div fxLayout="column">
+                        <mat-form-field style="width:100px" *ngIf="showDate">
+                            <input matInput  [(ngModel)]="selectedDate" (dateChange)="dateSelectionChange()" [matDatepicker]="picker" placeholder="Date" style="color:#fff !important;">
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" >
+                        <button style="margin-left:-10px"  (click)="exportToExcel()" mat-raised-button class="add-product-button fuse-black mt-24 mt-md-0">
+                            <span>Export</span>
+                        </button>
+                    </div>
+                    <div fxLayout="column" class="btn"  style="margin-left:10px;" >
+                        <button mat-raised-button *ngIf="isShow" class="add-product-button fuse-category mt-24 mt-md-0"
+                            (click)="addDialog()">
+                            <span>Add Category</span>
+                        </button>
+                    </div>
+                    <div fxLayout="column" class="btn">
+                        <button mat-raised-button *ngIf="isCoupon" [routerLink]="'/apps/e-commerce/add-coupon'"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span>Add Coupons</span>
+                            <!-- <p>{{selected.value}}</p> -->
+                        </button>
+                        <button mat-raised-button *ngIf="isVendor" [routerLink]="'/apps/e-commerce/create-vendor'"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span>Add Vendor</span>
+                            <!-- <p>{{selected.value}}</p> -->
+                        </button>
+                        <button mat-raised-button *ngIf="isMerchandise" [routerLink]="'/apps/e-commerce/add-merchandise'"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span>Add Merchandise</span>
+                            <!-- <p>{{selected.value}}</p> -->
+                        </button>
+                        <button mat-raised-button *ngIf="isPayment" [routerLink]="'/apps/e-commerce/add-payment'"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span>Add Payment</span>
+                            <!-- <p>{{selected.value}}</p> -->
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card" style="overflow:auto;">
+            <mat-tab-group #tabGroup (selectedIndexChange)="_setDataSource($event);selected.setValue($event)" [selectedIndex]="selectedIndex" [selectedIndex]="selected.value"
+            (selectedTabChange)="tabClick($event);"
+            >
+                <mat-tab label="Vendors">
+                    <div class="example-container mat-elevation-z8">
+                        <div  style="text-align: center;padding:100px" *ngIf = "dataSource1.data.length === 0">No Records Found</div>
+                        <mat-table [dataSource]="dataSource1" *ngIf = "dataSource1.data.length != 0" #sort="matSort" matSort>
+                            <ng-container matColumnDef="select">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <mat-checkbox (change)="$event ? masterToggle1() : null"
+                                        [checked]="selection1.hasValue() && isAllSelected1()"
+                                        [indeterminate]="selection1.hasValue() && !isAllSelected1()"
+                                        [aria-label]="checkboxLabel1()">
+                                    </mat-checkbox>
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <mat-checkbox (click)="$event.stopPropagation()"
+                                        (change)="$event ? selection1.toggle(row) : null"
+                                        [checked]="selection1.isSelected(row)" [aria-label]="checkboxLabel1(row)">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <!-- <ng-container matColumnDef="id" style="display:none;">
+                                                    <mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;">ID</mat-header-cell>
+                                                    <mat-cell *matCellDef="let product" style="display:none;">
+                                                        <p class="text-truncate">{{product.id}}</p>
+                                                    </mat-cell>
+                                                </ng-container> -->
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position" style="display:none;">
+                                <mat-header-cell *matHeaderCellDef style="display:none;"> No. </mat-header-cell>
+                                <mat-cell *matCellDef="let element" style="display:none;"> {{element.position}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef> Vendor Name </mat-header-cell>
+                                <mat-cell *matCellDef="let element" style="cursor:pointer;"
+                                    [routerLink]="'/apps/e-commerce/vendor-profile'" (click)= "setSelectedVendor(element)">
+                                    {{element.FirstName}}  {{element.LastName}}</mat-cell>
+                            </ng-container>
+                            <!-- -->
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="city">
+                                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.City}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="coupons">
+                                <mat-header-cell *matHeaderCellDef> Coupons </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CouponCount }}</mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="merchandise">
+                                <mat-header-cell *matHeaderCellDef> Merchandise </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.MerchandiseCount}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="active">
+                                <mat-header-cell *matHeaderCellDef>Active Coupons </mat-header-cell>
+                                <mat-cell *matCellDef="let element">  {{element.ActiveCoupons}}</mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="activemer">
+                                <mat-header-cell *matHeaderCellDef> Active Merchandise</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.ActiveMerchandise}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="action">
+                                <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    <mat-icon aria-hidden="false" aria-label="edit" *ngIf = "adminid != element.VendorID" class="actionicons"
+                                        (click)="editVendor(element)"> edit</mat-icon>
+                                    <!-- <mat-icon aria-hidden="false" aria-label="delete" class="actionicons" (click)="deleteVendor(element)">
+                                        delete_outline
+                                    </mat-icon> -->
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
+                        </mat-table>
+
+                        <mat-paginator #paginator [length]="dataSource1.data.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+                        </mat-paginator>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Coupons">
+                    <div class="example-container mat-elevation-z8">
+                        <div  style="text-align: center;padding:100px" *ngIf = "dataSource2.data.length === 0">No Records Found</div>
+                        <mat-table [dataSource]="dataSource2" *ngIf="dataSource2.data.length != 0" #sort="matSort" matSort>
+                            <ng-container matColumnDef="select">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <mat-checkbox (change)="$event ? masterToggle2() : null"
+                                        [checked]="selection2.hasValue() && isAllSelected2()"
+                                        [indeterminate]="selection2.hasValue() && !isAllSelected2()"
+                                        [aria-label]="checkboxLabel2()">
+                                    </mat-checkbox>
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <mat-checkbox (click)="$event.stopPropagation()"
+                                        (change)="$event ? selection2.toggle(row) : null"
+                                        [checked]="selection2.isSelected(row)" [aria-label]="checkboxLabel2(row)">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position" style="display:none;">
+                                <mat-header-cell *matHeaderCellDef style="display:none;"> No. </mat-header-cell>
+                                <mat-cell *matCellDef="let element" style="display:none;"> {{element.position}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef> Vendor Name </mat-header-cell>
+                                <mat-cell *matCellDef="let element" (click)="setSelectedCoupon(element)" [routerLink]="'/apps/e-commerce/my-coupons'"
+                                    style="cursor:pointer;">
+                                    {{element.FirstName}}  {{element.LastName}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="new">
+                                <mat-header-cell *matHeaderCellDef> Newly Added Coupons </mat-header-cell>
+                                <mat-cell *matCellDef="let element" style="color:#f79726;margin-left:50px;">
+                                  {{element.NewlyAddedCoupons}}</mat-cell>
+                            </ng-container>
+
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="location">
+                                <mat-header-cell *matHeaderCellDef style="margin-left:50px;"> Location
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.City}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="coupons">
+                                <mat-header-cell *matHeaderCellDef> Total Coupons </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.TotalCoupons}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="active">
+                                <mat-header-cell *matHeaderCellDef>Active Coupons </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.ActiveCoupons}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="sold">
+                                <mat-header-cell *matHeaderCellDef> Coupons Sold</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CouponsSold}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="action">
+                                <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    <mat-icon aria-hidden="true" aria-label="edit" class="actionicons"
+                                        (click)="setSelectedCoupon(element)"> edit</mat-icon>
+                                    <mat-icon aria-hidden="true" aria-label="delete" class="actionicons"
+                                    (click)="setSelectedCoupon(element)"> delete_outline
+                                    </mat-icon>
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns2;"></mat-row>
+                        </mat-table>
+
+                        <mat-paginator #paginator [length]="dataSource2.data.length" [pageSize]="10" [pageSizeOptions]="[5,10,20]"></mat-paginator>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Merchandise" >
+                    <div class="example-container mat-elevation-z8">
+                        <div  style="text-align: center;padding:100px" *ngIf = "dataSource3.data.length === 0">No Records Found</div>
+                        <mat-table #table3 [dataSource]="dataSource3" *ngIf="dataSource3.data.length != 0 ">
+                            <ng-container matColumnDef="select">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <mat-checkbox (change)="$event ? masterToggle3() : null"
+                                        [checked]="selection3.hasValue() && isAllSelected3()"
+                                        [indeterminate]="selection3.hasValue() && !isAllSelected3()"
+                                        [aria-label]="checkboxLabel3()">
+                                    </mat-checkbox>
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <mat-checkbox (click)="$event.stopPropagation()"
+                                        (change)="$event ? selection3.toggle(row) : null"
+                                        [checked]="selection3.isSelected(row)" [aria-label]="checkboxLabel3(row)">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <!-- <ng-container matColumnDef="id" style="display:none;">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;">ID</mat-header-cell>
+                                    <mat-cell *matCellDef="let product" style="display:none;">
+                                        <p class="text-truncate">{{product.id}}</p>
+                                    </mat-cell>
+                                </ng-container> -->
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position" style="display:none;">
+                                <mat-header-cell *matHeaderCellDef style="display:none;"> No. </mat-header-cell>
+                                <mat-cell *matCellDef="let element" style="display:none;"> {{element.position}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef> Vendor Name </mat-header-cell>
+                                <mat-cell *matCellDef="let element" (click)="setSelectedMerchandise(element)"
+                                style="cursor:pointer;">
+                                    {{element.FirstName}}  {{element.LastName}}</mat-cell>
+                            </ng-container>
+
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="new">
+                                <mat-header-cell *matHeaderCellDef> Newly Products </mat-header-cell>
+                                <mat-cell *matCellDef="let element" style="color:#f79726;"> {{element.NewlyAddedMerchandise}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="location">
+                                <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.City}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="sale">
+                                <mat-header-cell *matHeaderCellDef> Total Sale Revenue </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> &#x20b9; {{element.TotalRevenue}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="count">
+                                <mat-header-cell *matHeaderCellDef> Products Count </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.TotalMerchandise}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="active">
+                                <mat-header-cell *matHeaderCellDef>Active Products </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.ActiveMerchandise}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="sold">
+                                <mat-header-cell *matHeaderCellDef> Products Sold</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.MerchandiseSoldCount}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="action">
+                                <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                                <mat-cell *matCellDef="let element" style="cursor:pointer">
+                                    <mat-icon aria-hidden="false" aria-label="edit" class="actionicons"
+                                    (click)="setSelectedMerchandise(element)">edit</mat-icon>
+                                    <mat-icon aria-hidden="false" aria-label="delete" class="actionicons" (click)="setSelectedMerchandise(element)">
+                                        delete_outline
+                                    </mat-icon>
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns3"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns3;"></mat-row>
+                        </mat-table>
+
+                        <mat-paginator #paginator [length]="dataSource3.data.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+                        </mat-paginator>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Payments">
+                    <div class="example-container mat-elevation-z8">
+                        <div  style="text-align: center;padding:100px" *ngIf = "dataSource4.data.length === 0">No Records Found</div>
+                        <mat-table #table4 [dataSource]="dataSource4" *ngIf="dataSource4.data.length !=0">
+                            <ng-container matColumnDef="select">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <mat-checkbox (change)="$event ? masterToggle4() : null"
+                                        [checked]="selection4.hasValue() && isAllSelected4()"
+                                        [indeterminate]="selection4.hasValue() && !isAllSelected4()"
+                                        [aria-label]="checkboxLabel4()">
+                                    </mat-checkbox>
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <mat-checkbox (click)="$event.stopPropagation()"
+                                        (change)="$event ? selection4.toggle(row) : null"
+                                        [checked]="selection4.isSelected(row)" [aria-label]="checkboxLabel4(row)">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <!-- <ng-container matColumnDef="id" style="display:none;">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;">ID</mat-header-cell>
+                                        <mat-cell *matCellDef="let product" style="display:none;">
+                                            <p class="text-truncate">{{product.id}}</p>
+                                        </mat-cell>
+                                    </ng-container> -->
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position" style="display:none;">
+                                <mat-header-cell *matHeaderCellDef style="display:none;"> No. </mat-header-cell>
+                                <mat-cell *matCellDef="let element" style="display:none;"> {{element.position}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef> Vendor Name </mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    {{element.VendorName}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="vendorid">
+                                <mat-header-cell *matHeaderCellDef> Vendor ID</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.VendorID}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="location">
+                                <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.Location}}</mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="paid">
+                                <!-- <mat-header-cell *matHeaderCellDef> Amount Paid Till Date</mat-header-cell> -->
+                                <mat-header-cell *matHeaderCellDef> Amount To Pay</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CurrencySymbol}}&nbsp;{{element.AmountPaid}} </mat-cell>
+                            </ng-container>
+
+                            <!-- <ng-container matColumnDef="balance">
+                               
+                                <mat-header-cell *matHeaderCellDef>Action </mat-header-cell> 
+                                <mat-cell *matCellDef="let element"> 
+                              
+                                    <span style="margin-left:15px;">
+                                        <button mat-raised-button *ngIf="pay" (click)="showPaid()" class="add-product-button fuse-white mt-24 mt-md-0">
+                                            <span>Pay now</span>
+                                        </button>
+                                        <button mat-raised-button *ngIf="showPaidStatus" > Paid </button>
+                                    </span>
+                                </mat-cell>
+                            </ng-container> -->
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns4"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns4;"></mat-row>
+                        </mat-table>
+
+                        <mat-paginator #paginator [length]="dataSource4.data.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+                        </mat-paginator>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

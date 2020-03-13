@@ -1,0 +1,32 @@
+<!-- <h2 mat-dialog-title>Install Angular</h2>-->
+<mat-dialog-content class="mat-typography">
+    <div class="container">
+
+        <div class="form-group">
+            <mat-form-field appearance="outline" fxFlex="40">
+                <mat-label>Search Nearest Location</mat-label>
+                <input matInput  type="text" (keydown.enter)="$event.preventDefault()"
+                placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off"
+                type="text" #search>
+            </mat-form-field>
+           <!--  <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off"
+                type="text" #search> -->
+        </div>
+
+        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                (dragEnd)="markerDragEnd($event)"></agm-marker>
+        </agm-map>
+
+        <h5>Address: {{address}}</h5>
+        <div>Latitude: {{latitude}}</div>
+        <div>Longitude: {{longitude}}</div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="fullAddress" cdkFocusInitial>Done</button>
+</mat-dialog-actions>
+
+

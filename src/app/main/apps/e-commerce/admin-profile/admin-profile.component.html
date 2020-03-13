@@ -1,0 +1,143 @@
+<div id="adminProfile" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          <b>
+            {{ adminlogin.FirstName | uppercase }}
+            {{ adminlogin.LastName | uppercase }}
+          </b>
+          <br />
+        </span>
+        <p
+          style="margin-top:75px;margin-left:-110px;position: relative;float:left;"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          Admin
+        </p>
+      </div>
+    </div>
+
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <mat-grid-list cols="4" rowHeight="100px">
+        <mat-grid-tile [colspan]="1" [rowspan]="5" class="picture">
+          <div class="user" fxLayout="column">
+            <div class="avatar-container">
+              <img class="avatar" src="assets/images/profile/profile.png" />
+            </div>
+            <div class="h3 username" style="margin-top:175px;">
+              {{ adminlogin.FirstName }} {{ adminlogin.LastName }}
+            </div>
+            <div class="h5 email hint-text mt-8" style="color:#f79726;">
+              Admin
+            </div>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="name" [colspan]="3" [rowspan]="1">
+          <div class="content-card" style="width:100% !important;">
+            <div
+              fxLayout="column"
+              fxLayoutAlign="center center"
+              fxLayout.gt-sm="row"
+              fxLayoutAlign.gt-sm="space-between"
+              class="profiletop"
+              style=""
+            >
+              <div fxLayout="column" style="margin-left:20px;">
+                <p><b>Admin Details</b></p>
+              </div>
+              <div fxLayout="column" style="margin-right: 20px;">
+                <!-- <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">
+                                    <span>Save</span>
+                                </button> -->
+              </div>
+            </div>
+            <div class="content" style="padding:10px 0 10px 15px;">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                style="line-height:10px;"
+              >
+                <div fxFlex="80">
+                  <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                    First Name
+                  </p>
+                  <span>{{ adminlogin.FirstName }}</span>
+                </div>
+                <div fxFlex="40">
+                  <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                    Last Name
+                  </p>
+                  <span>{{ adminlogin.LastName }}</span>
+                </div>
+              </div>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                style="line-height:10px;margin-top:20px;"
+              >
+                <div fxFlex="80">
+                  <div>
+                    <div fxFlex="40">
+                      <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                        Mobile Number
+                      </p>
+                    </div>
+                    <!-- <div fxFlex="40" style="margin-top:10px;">
+                                            <img src="assets/icons/edit.svg" (click)="changeStatus()" width="20" height="20">
+                                        </div> -->
+                    <br />
+                  </div>
+                  <span *ngIf="inactive">{{ adminlogin.MobileNumber }}</span>
+                  <input
+                    type="text"
+                    value="{{ adminlogin.MobileNumber }}"
+                    *ngIf="!inactive"
+                    class="editable"
+                  />
+                </div>
+                <div fxFlex="40">
+                  <div>
+                    <div fxFlex="70">
+                      <p style="font-size:15px;color:rgba(0,0,0,0.54);">
+                        Email
+                      </p>
+                    </div>
+                    <!-- <div fxFlex="25" style="margin-top:10px;">
+                                            <img src="assets/icons/edit.svg" width="20" height="20">
+                                        </div> -->
+                    <br />
+                  </div>
+                  <span>{{ adminlogin.EmailID }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

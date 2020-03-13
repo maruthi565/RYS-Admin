@@ -1,0 +1,305 @@
+<div id="bikeBrandImage" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent first" fxLayout="col" fxLayoutAlign="start start" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="start center" style="margin-left:30px;">
+
+            <!-- APP TITLE -->
+            <div class="logo" fxLayout="row" fxLayoutAlign="start center" style="margin-right:185px;">
+                <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Images
+                    <p style="font-size:12px;" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        < Bike Images</p> </span> </div> <!-- / APP TITLE -->
+                            <!-- ADD BUTTON -->
+                            <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW PRODUCT</span>
+            </button> -->
+                            <!-- / ADD BUTTON -->
+                            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" flex-md="33" style="margin-top:30px;margin-left:30px;">
+                                <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start"> -->
+                                <!--Widget 1-->
+                                <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+
+                                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-98'"
+                                    style="height:70% !important;width:95% !important;margin-top:25px !important;">
+
+                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                                            <div class="pr-16">
+                                                <div class="h3 secondary-text">Total Bike Brands</div>
+                                                <div class="font-size-22 line-height-1 mt-8">
+                                                    12
+                                                    <span id="icon" style="margin-left: 22px;">
+                                                        <!-- <mat-icon aria-hidden="false" aria-label="strength"
+                                                            class="peopleicon">
+                                                            directions_bike
+                                                        </mat-icon> -->
+                                                        <img src="assets/icons/motorcycle.svg" width="50" height="50">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+
+                                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-98'"
+                                    style="height:70% !important;width:95% !important;margin-top:25px !important;">
+
+                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                                            <div class="pr-16">
+                                                <div class="h3 secondary-text">Total Images</div>
+                                                <div class="font-size-22 line-height-1 mt-8">
+                                                    16
+                                                    <span id="icon" style="margin-left: 22px;">
+                                                        <!-- <mat-icon aria-hidden="false" aria-label="strength"
+                                                            class="peopleicon">
+                                                            directions_bike
+                                                        </mat-icon> -->
+                                                        <img src="assets/icons/motorcycle.svg" width="50" height="50">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br>
+
+                            </div>
+
+            </div>
+            <div class="row col-md-12">
+
+                <div class="center">
+                    <div class="header accent" id="last" fxLayout="column" fxLayoutAlign="center center"
+                        fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start center"
+                        style="background-color:black !important;">
+                        <!-- SEARCH -->
+                        <div class="search-wrapper mx-32 mx-md-0" style="margin-left:30px !important;margin-top:-30px;">
+                            <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                <input #filter placeholder="Search">
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- / SEARCH -->
+            <!-- CONTENT CARD -->
+            <div class="content-card">
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                    <div fxLayout="column" style="margin-left:20px;">
+                        <p class="card-heading"><b>Kawasaki</b> </p>
+                    </div>
+                    <div fxLayout="column" style="margin-right: 20px;margin-top:5px;">
+                        <button mat-raised-button style="padding: 0 50px !important;"
+                            class="add-product-button fuse-white mt-24 mt-md-0" (click)="addNewImageDialog()">
+                            <span> Add New Image </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CONTENT -->
+                <!-- <div class="content" style="padding: 20px 30px 20px;">
+
+                    <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                        fxLayoutAlign.gt-sm="space-between"
+                        style="padding-left:10px;padding-right:10px;margin-top: 30px;">
+                        <div class="fuse-card mr-4" fxLayout="column" fxFlex="30">
+                            <img class="bikeImage" src="assets/images/cards/bike.png">
+                            <div class="p-16">
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                    <div appearance="outline" fxFlex="70" class="pr-4">
+                                        <h4><b>Ninja 300</b></h4>
+                                    </div>
+                                    <div appearance="outline" fxFlex="20" class="pr-4">
+                                        <mat-slide-toggle [checked]="Checked">
+                                        </mat-slide-toggle>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="fuse-card mr-4" fxLayout="column" fxFlex="30">
+                            <img class="bikeImage" src="assets/images/cards/bike.png">
+
+                            <div class="p-16">
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                    <div appearance="outline" fxFlex="70" class="pr-4">
+                                        <h4><b>Kawasaki Ninja 650R</b></h4>
+                                    </div>
+                                    <div appearance="outline" fxFlex="20" class="pr-4">
+                                        <mat-slide-toggle [checked]="Checked">
+                                        </mat-slide-toggle>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="fuse-card mr-4" fxLayout="column" fxFlex="30">
+                            <img class="bikeImage" src="assets/images/cards/bike.png">
+
+                            <div class="p-16">
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                    <div appearance="outline" fxFlex="70" class="pr-4">
+                                        <h4><b>Kawasaki Ninja Z1000</b></h4>
+                                    </div>
+                                    <div appearance="outline" fxFlex="20" class="pr-4">
+                                        <mat-slide-toggle [checked]="Checked">
+                                        </mat-slide-toggle>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <br>
+                    </div>
+
+
+
+                </div> -->
+                <!-- / CONTENT -->
+                <div class="content">
+
+                    <div class="cards">
+            
+                        <!-- CARD 1 -->
+                        <div class="card">
+            
+                                <!-- PREVIEW -->
+                                <div class="card-preview">
+                
+                                    <div class="fuse-cards">
+                
+                                        <img class="bikeImage" src="assets/images/cards/bike.png">
+                
+                                        <div class="p-16">
+                                            <div class="">Ninja 300</div>
+                                            
+                                        </div>
+                
+                                        <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
+                                            <div appearance="outline" fxFlex="30" class="pr-4">
+                                                <button mat-button (click)="editNewImageDialog()">Edit</button>
+                                            </div>
+                                            <div appearance="outline" fxFlex="30" class="pr-4">
+                                                <button mat-button > Delete</button>
+                                            </div>
+                                            <div appearance="outline" fxFlex="30" class="pr-4" style="margin-left:30px;">
+                                                <mat-slide-toggle [checked]="Checked3"></mat-slide-toggle>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                
+                                </div>
+                                <!-- / PREVIEW -->
+                
+                            </div>
+                        <!-- / CARD 1 -->
+            
+                        <!-- CARD 2 -->
+                        <div class="card">
+            
+                                <!-- PREVIEW -->
+                                <div class="card-preview">
+                
+                                    <div class="fuse-cards">
+                
+                                        <img class="bikeImage" src="assets/images/cards/bike.png">
+                
+                                        <div class="p-16">
+                                            <div class="">Kawasaki Ninja Z1000</div>
+                                            
+                                        </div>
+                
+                                        <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
+                                            <div appearance="outline" fxFlex="30" class="pr-4">
+                                                <button mat-button (click)="editNewImageDialog()">Edit</button>
+                                            </div>
+                                            <div appearance="outline" fxFlex="30" class="pr-4">
+                                                <button mat-button > Delete</button>
+                                            </div>
+                                            <div appearance="outline" fxFlex="30" class="pr-4" style="margin-left:30px;">
+                                                <mat-slide-toggle [checked]="Checked2"></mat-slide-toggle>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                
+                                </div>
+                                <!-- / PREVIEW -->
+                
+                            </div>
+                        <!-- / CARD 2 -->
+            
+                        <!-- CARD 3 -->
+                        <div class="card">
+            
+                            <!-- PREVIEW -->
+                            <div class="card-preview">
+            
+                                <div class="fuse-cards">
+            
+                                    <img class="bikeImage" src="assets/images/cards/bike.png">
+            
+                                    <div class="p-16">
+                                        <div class="">Ninja 300</div>
+                                        
+                                    </div>
+            
+                                    <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
+                                        <div appearance="outline" fxFlex="30" class="pr-4">
+                                            <button mat-button (click)="editNewImageDialog()">Edit</button>
+                                        </div>
+                                        <div appearance="outline" fxFlex="30" class="pr-4">
+                                            <button mat-button > Delete</button>
+                                        </div>
+                                        <div appearance="outline" fxFlex="30" class="pr-4" style="margin-left:30px;">
+                                            <mat-slide-toggle [checked]="Checked1"></mat-slide-toggle>
+                                        </div>
+                                    </div>
+            
+                                </div>
+            
+                            </div>
+                            <!-- / PREVIEW -->
+            
+                        </div>
+                        <!-- / CARD 3 -->
+        
+                    </div>
+            
+                </div>
+
+            </div>
+            <!-- / CONTENT CARD -->
+        </div>
+        <!-- / CENTER -->
+    </div>

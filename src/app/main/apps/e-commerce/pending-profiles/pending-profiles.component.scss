@@ -1,0 +1,331 @@
+@import "src/@fuse/scss/fuse";
+@import "src/assets/css/app";
+
+e-commerce-pending-profiles {
+
+    #products {
+
+        .top-bg {
+
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                .search-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+
+    .products-table {
+        flex: 1 1 auto;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+
+        .mat-header-row {
+            min-height: 64px;
+        }
+
+        .product {
+            position: relative;
+            cursor: pointer;
+            height: 84px;
+        }
+
+        .mat-cell {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .mat-column-id {
+            flex: 0 1 84px;
+        }
+
+        .mat-column-image {
+            flex: 0 1 84px;
+
+            .product-image {
+                width: 52px;
+                height: 52px;
+                border: 1px solid rgba(0, 0, 0, .12);
+            }
+        }
+
+        .mat-column-category {
+            flex: 0 1 240px;
+        }
+
+        .mat-column-price {
+            flex: 0 1 160px;
+        }
+
+        .mat-column-quantity {
+            flex: 0 1 160px;
+        }
+
+        .mat-column-active {
+            flex: 0 1 80px;
+        }
+
+        .quantity-indicator {
+            display: inline-block;
+            vertical-align: middle;
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+
+            & + span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        .active-icon {
+            border-radius: 50%;
+        }
+        .mt-5 {
+            margin-top:5px;
+        }
+
+    }
+}
+
+.fuse-green {
+    background-color: #fff;
+    color:#4d951f !important;;
+    border:1px solid #4d951f;
+}
+.fuse-red {
+    background-color: #e95130 !important;
+    color:#fff !important;;
+    border:1px solid #e95130;
+}
+body.theme-default .mat-raised-button:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+
+
+p span{
+    display: list-item;
+    list-style:none;
+}
+e-commerce-pending-profiles .products-table {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+th.mat-header-cell {
+    padding: 0;
+    border-bottom-width: 0px !important;
+    border-bottom-style: !important;
+}
+td.mat-cell{
+    padding: 0;
+    border-bottom-width: 0px !important;
+    border-bottom-style: !important;
+}
+.page-layout.carded.fullwidth > .center {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex: 1 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 0 10px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+// .mat-table {
+//     overflow: auto;
+//     max-height: 500px;
+//   }
+//   .mat-table{
+//     background-color: rgba(255, 255, 255, 0.959);
+//     height : 100vh;
+//     overflow: auto;   
+//     width: 100%;
+// }
+.mat-tab-body-content {
+    height: 100%;
+    overflow: auto;
+}
+.mat-row, .mat-header-row {
+    min-width: 117%;
+    width: 80%;
+}
+@media screen and (max-width: 959px){
+    e-commerce-pending-profiles #products .top-bg {
+        height: 323px !important;
+        }
+    }
+    @media screen and (max-width: 959px){
+      .center  .header {
+    background-color: black !important;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+        }
+    }
+    @media screen and (max-width: 959px){
+        .center  #last{
+      background-color: black !important;
+      flex-direction: row !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      place-content: center !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+        }
+      }
+      @media screen and (max-width:959px) {
+        body.theme-default .fuse-card {
+            background: white;
+            border-color: rgba(0, 0, 0, 0.12);
+            width: 93%;
+            height: 76%;
+            margin-right: 10px;
+        }
+      }
+      body.theme-default .fuse-card {
+        background: white;
+        border-color: rgba(0, 0, 0, 0.12);
+        width: 93%;
+        height: 72%;
+        margin-right: 10px;
+    }
+    body.theme-default .fuse-card {
+        background: white;
+        border-color: rgba(0, 0, 0, 0.12);
+        width: 98%;
+        height: 70%;
+        margin-right: 10px;
+    }
+    .fuse-card .font-size-16 {
+        font-size: 16px !important;
+        color: #000 !important;
+    }
+    .fuse-black {
+        background-color: #000;
+        color:#fff !important;;
+        border:1px solid #f79726;
+    }
+    .mat-header-cell, .mat-cell {
+        min-width: 65px;
+    }
+    .text-truncate {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+         white-space: normal; 
+    }
+    body.theme-default .mat-tab-group.mat-primary .mat-ink-bar{
+        background-color: #f79726;
+    }
+   
+    .mat-tab-label-active {
+        color: #f79726 !important;
+    } 
+    .icon{
+        color:red !important;
+    }
+    body.theme-default .mat-elevation-z8 {
+        box-shadow: 0px 5px 5px -3px rgb(255, 255, 255), 0px 8px 10px 1px rgb(255, 255, 255), 0px 3px 14px 2px rgb(255, 255, 255);
+    }
+    #state .mat-form-field-underline {
+        background-color: #0009 !important;
+    }
+    #state .mat-select-arrow {
+        color: #0009 !important;
+    }
+    #icon mat-icon {
+        font-size: 40px;
+    }
+    .peopleicon {
+        color: #f79726 !important;
+    }
+    .fuse-card .mt-8 {
+        margin-top: -9px !important;
+    }
+    .center > .header .search-wrapper .search input {
+        width: 100%;
+        height: 41px;
+        min-height: 41px;
+        max-height: 42px;
+        padding: 0 4px;
+    }
+    fuse-sidebar {
+        width: 230px;
+        min-width: 230px;
+        max-width: 230px;
+    }
+    .fuse-leader {
+        background-color: #fff;
+        color:#f79726 !important;;
+        border:1px solid #f79726;
+    }
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+        background-color: #f79726;
+    }
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color: #ffd29a;
+    }
+    mat-icon.s-16 {
+        font-size: 19px !important;
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
+        line-height: 22px !important;
+        border-radius: 10px;
+    }
+    .mat-cell {
+        font-size: 12px;
+    }

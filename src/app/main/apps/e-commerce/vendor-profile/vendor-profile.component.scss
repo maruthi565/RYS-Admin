@@ -1,0 +1,176 @@
+@import "src/@fuse/scss/fuse";
+ @import "src/assets/css/app";
+@import "src/assets/css/vendor-profile";
+
+e-commerce-vendor-profile {
+
+    #vendorProfile {
+
+        .top-bg {
+
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                .search-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+                .custom-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .custom-search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+                    }
+                }
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+
+    .contents {
+
+        .cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .card {
+                display: flex;
+                align-items: flex-start;
+                padding: 24px 0px 20px 15px;
+                // margin-bottom: 96px;
+
+                .card-preview {
+                    display: flex;
+                    min-width: 240px;
+                }
+
+                .card-source {
+                    display: none;
+                }
+            }
+        }
+
+        &.source {
+
+            .cards {
+                flex-direction: column;
+
+                .card {
+                    width: 100%;
+                    margin-bottom: 24px;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+    }
+    .user {
+
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        width: 100%;
+        height: 77%;
+        // min-height: 887px;
+        max-height: 158px;
+        padding: 24px 0 64px 0;
+    
+    
+    
+    .avatar-container {
+    position: absolute;
+    top: 100px;
+    border-radius: 50%;
+    padding: 8px;
+    transform: translateX(-50%);
+    left: 10%;
+    
+    .avatar {
+    width: 72px;
+    height: 72px;
+    margin: 0;
+    }
+    }
+    }
+    // #cards {
+
+    //     .content {
+    
+    //         .cards {
+    //             display: flex;
+    //             flex-direction: row;
+    //             flex-wrap: wrap;
+    //             justify-content: flex-start;
+    //             align-items: flex-start;
+    
+    //             .card {
+    //                 display: flex;
+    //                 align-items: flex-start;
+    //                 padding: 24px 5px 15px 24px;
+    //                 margin-bottom: 0px !important;
+    
+    //                 .card-preview {
+    //                     display: flex;
+    //                     min-width: 270px;
+    //                 }
+    
+    //                 .card-source {
+    //                     display: none;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+}
+

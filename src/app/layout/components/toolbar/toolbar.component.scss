@@ -1,0 +1,74 @@
+@import "src/@fuse/scss/fuse";
+
+toolbar {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    z-index: 4;
+
+    &.below {
+        z-index: 2;
+    }
+
+    .mat-toolbar {
+        position: relative;
+        background: inherit !important;
+        color: inherit !important;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        .logo-icon {
+            width: 38px;
+        }
+    }
+
+    .user-button,
+    fuse-search-bar,
+    .language-button,
+    .chat-panel-toggle-button,
+    .quick-panel-toggle-button {
+        min-width: 64px;
+        height: 64px;
+
+        @include media-breakpoint('xs') {
+            height: 56px;
+        }
+    }
+
+    .navbar-toggle-button {
+        min-width: 56px;
+        height: 56px;
+    }
+
+    .toolbar-separator {
+        height: 64px;
+        width: 1px;
+
+        @include media-breakpoint('xs') {
+            height: 56px;
+        }
+    }
+
+}
+body.theme-default .mat-badge-accent .mat-badge-content {
+    background-color: #f79726 !important;
+}
+body.theme-default .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: -10px;
+}
+body.theme-default .mat-badge-medium.mat-badge-above .mat-badge-content {
+    top: -10px;
+}
+
+body.theme-default .mat-badge-medium .mat-badge-content {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+.mat-badge-content {
+    font-size:10px;
+}
+

@@ -1,0 +1,133 @@
+<div id="myCoupons" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent first" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    {{firstname}} {{lastname}}
+                </span><br>
+                <p style="margin-top:70px;margin-left:-100px;cursor:pointer" [routerLink]="'/apps/e-commerce/after-market'" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    < Coupons</p> </div> </div> <!-- CONTENT CARD -->
+                        <div class="content-card" style="height: 350px; overflow-y: auto">
+                            <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                                fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                                <div fxLayout="column" style="margin-left:20px;">
+                                    <p><b>Coupons</b></p>
+                                </div>
+                                <div fxLayout="column" style="margin-right: 20px;">
+                                    <button mat-raised-button [routerLink]="'/apps/e-commerce/create-coupon'"
+                                        class="add-product-button fuse-white" style="margin-top:5px;">
+                                        <span>Add Coupon</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="cards" class="page-layout simple fullwidth">
+
+                                <!-- CONTENT -->
+                                <div class="content">
+                                    <div  style="text-align: center;padding:100px" *ngIf = "couponsData.length === 0">No Coupons Found</div>
+                                    <div class="cards" *ngIf="couponsData.length !=0 " >
+
+                                        <!-- CARD 1 -->
+                                        <div class="card" *ngFor="let coupon of couponsData">
+
+                                            <!-- PREVIEW -->
+                                            <div class="card-preview">
+
+                                                <div class="fuse-card" style="position:relative !important;">
+                                                    <div style="height:168px;">
+                                                        <!-- <img src="assets/images/cards/bike.png" class="couponImage"> -->
+                                                        <img src="{{coupon.Image}}" class="couponImage">
+                                                        <div *ngIf="coupon.CouponStatus == 2" class="top-right-orange">Pending</div>
+                                                     <div *ngIf="coupon.CouponStatus == 1" class="top-right-green">New</div> 
+                                                    </div>
+
+                                                    <div class="">
+                                                        <div fxLayout="row" fxLayoutAlign="start center">
+                                                            <!-- <div fxFlex="30">
+                                                                <img src="{{coupon.Logo}}" width="150" height="150">
+
+                                                            </div> -->
+                                                            <div fxFlex="70" style="margin-left:5px;">
+                                                                <!-- <p><b>Upto 80% Discount on any bike repairs + 10% cashback</b></p> -->
+                                                                <p><b>{{coupon.Title}}</b></p>
+                                                            </div>
+                                                            <div fxFlex="30" style="margin-top:12px;">
+                                                                    <p style="font-size:10px;margin-bottom:-10px;">Coupon
+                                                                        Price</p><br>
+                                                                    <button mat-raised-button
+                                                                        class="add-product-button fuse-sky-blue"
+                                                                        style="min-width:45px;line-height:18px;margin-left:12px;">
+                                                                        <span style="color:#fff !important;">{{coupon.CurrencySymbol}}{{coupon.Price}}</span>
+                                                                    </button>
+                                                                </div>
+                                                        </div>
+                                                        <div fxLayout="row" fxLayoutAlign="start center"
+                                                            style="margin-left:20px;">
+                                                            <span style="display:inline-block;color:#000 !important;"> Voucher Value
+                                                                &nbsp;&nbsp;<span style="color:#f79726;">
+                                                                    &#x20b9;{{coupon.VoucherValue}}</span></span>
+                                                        </div>
+                                                        <div fxLayout="row" fxLayoutAlign="start center"
+                                                            style="margin-left:22px;">
+                                                            <div fxFlex="80">
+                                                                <p class="validText">Valid upto
+                                                                    {{coupon.EndDate | date : "d MMM, yyyy"}}</p>
+                                                            </div>
+                                                            <div fxFlex="30">
+                                                                <mat-slide-toggle *ngIf="coupon.CouponStatus === 1" [checked]="true" (change)="hideToUser($event, coupon)">
+                                                                </mat-slide-toggle>
+                                                                <mat-slide-toggle *ngIf="coupon.CouponStatus === 3" [checked]="false"  (change)="hideToUser($event, coupon)" fxFlex="20"></mat-slide-toggle>
+                                                            </div>
+                                                        </div>
+                                                        <div fxLayout="row" fxLayoutAlign="start center"
+                                                            style="margin-left:23px;margin-top:-25px;">
+                                                            <h6> <b>Total Purchased : 39</b></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div fxLayout="row" fxLayoutAlign="start center">
+                                                        <button mat-button class="actionBtns" fxFlex="30"
+                                                            (click)="modalDialog(coupon)"
+                                                            style="color: #000 !important;">View</button>
+                                                        <button mat-button class="actionBtns" fxFlex="30"
+                                                            (click)="editCoupon(coupon)"
+                                                            style="color: #000 !important;">Edit</button>
+                                                        <button mat-button class="actionBtns"
+                                                            (click)="deleteCoupon(coupon)"
+                                                            style=" color: #000 !important;" fxFlex="30">Delete</button>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <!-- / PREVIEW -->
+
+                                        </div>
+                                        <!-- / CARD 1 -->
+
+
+                                    </div>
+
+                                </div>
+                                <!-- / CONTENT -->
+
+                            </div>
+
+                        </div>
+                        <!-- / CONTENT CARD -->
+            </div>
+            <!-- / CENTER -->
+        </div>

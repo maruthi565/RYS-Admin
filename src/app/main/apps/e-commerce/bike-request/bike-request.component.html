@@ -1,0 +1,459 @@
+<div id="bikeRequest" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent first"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div
+        class="logo mb-24"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        style="margin-top: -45px"
+      >
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          Requests
+        </span>
+        <p
+          style="margin-top:90px;margin-left:-100px;cursor:pointer;"
+          [routerLink]="'/apps/e-commerce/user-posted'"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          < UserPosted
+        </p>
+        <br />
+      </div>
+
+      <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" flex-md="33">
+               
+                <div class="col" fxFlex="100" fxFlex.gt-sm="43" style="margin-right:25px;margin-top: 15px;">
+                    <div class="search-wrapper mx-32 mx-md-0">
+                        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                            <input [(ngModel)]="searchTerm" (input)="filterBikeRequestByName($event)"  placeholder="Search User">
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="column" class="btn" fxFlex="10" style="margin-right:23px;margin-top: 15px">
+                   
+                </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" style="margin-right:-30px;margin-top: 13px;">
+
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16">
+                                <div class="h3 secondary-text">Total Bikes Post</div>
+                                <div class="font-size-25 line-height-1 mt-5">
+                                    600
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33" style="margin-right:-70px;margin-top: 13px;">
+
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+
+                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+
+                            <div class="pr-16">
+                                <div class="h3 secondary-text">Total Merchandise Post</div>
+                                <div class="font-size-25 line-height-1 mt-5">
+                                    120
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        
+                <br>
+
+            </div> -->
+    </div>
+    <!-- <div class="row col-md-12">
+
+            <div class="center">
+                <div class="header accent" id="last" fxLayout="column" fxLayoutAlign="center center"
+                    fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center"
+                    style="background-color:black !important;">
+                   
+                    <div fxLayout="column" style="margin-top:-78px;margin-left: -5px">
+                      
+                    </div>
+                    <div fxLayout="column" style="margin-top:-78px;margin-left: -235px"  *ngIf="isBrand">
+                        <mat-form-field  style="width:100px;">
+                                <mat-label style="color:#fff;">Brand </mat-label>
+                                <mat-select class="simplified" [(ngModel)]="selectedBrand" (selectionChange)="brandSelectionChange($event)">
+                                  <mat-option *ngFor="let brand of bikeBrands" [value]="brand.BrandID">
+                                    {{brand.BrandName}}
+                                  </mat-option>
+                                </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" style="margin-top:-78px;margin-left: -189px">
+                        <mat-form-field style="width:200px">
+                                <mat-label style="color:#fff;">Search city</mat-label>
+                                <input matInput  [(ngModel)]="selectedCity" type="text" (keydown.enter)="$event.preventDefault()"
+                                placeholder="Search city" autocorrect="off" autocapitalize="off" spellcheck="off"
+                                type="text" #bikeRequestCitySearch>
+                           
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" id="date" style="margin-top:-78px;margin-left:-252px;margin-right:-108px;">
+                        <mat-form-field >
+                            <input matInput [(ngModel)]="selectedDate" (dateChange)="dateSelectionChange()"  [matDatepicker]="picker" placeholder="Date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" style="margin-top: -78px;margin-left:-110px;margin-right:-237px;">
+                        <button mat-raised-button class="add-product-button fuse-black mt-24 mt-md-0"  (click)="exportToExcel()">
+                            <span>Export</span>
+                        </button>
+                    </div>
+                    <div fxLayout="column" class="btn" style="margin-top:-78px;margin-right:303px;">
+                       
+                    </div>
+                </div>
+
+            </div>
+
+        </div> -->
+
+    <div class="content-card" style="overflow:auto;">
+      <mat-tab-group
+        #tabGroup
+        (selectedIndexChange)="
+          _setDataSource($event); selected.setValue($event)
+        "
+        [selectedIndex]="selected.value"
+        (selectedTabChange)="tabClick($event)"
+      >
+        <mat-tab label="Bikes">
+          <div class="example-container mat-elevation-z8">
+            <div
+              style="text-align: center;padding:100px"
+              *ngIf="dataSource.data.length === 0"
+            >
+              No Record Found
+            </div>
+            <mat-table
+              #table
+              class="bike-request-table"
+              *ngIf="dataSource.data.length != 0"
+              [dataSource]="dataSource"
+              #sort="matSort"
+              matSort
+            >
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox
+                    (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()"
+                  >
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox
+                    (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)"
+                  >
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+              <!-- <ng-container matColumnDef="id" style="display:none;">
+                                                    <mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;">ID</mat-header-cell>
+                                                    <mat-cell *matCellDef="let product" style="display:none;">
+                                                        <p class="text-truncate">{{product.id}}</p>
+                                                    </mat-cell>
+                                                </ng-container> -->
+              <!-- Position Column -->
+              <ng-container matColumnDef="position" style="display:none;">
+                <mat-header-cell *matHeaderCellDef style="display:none;">
+                  No.
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="display:none;">
+                  {{ element.position }}
+                </mat-cell>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="posted">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Posted By
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <img
+                    class="avatar mr-0 mr-sm-16"
+                    src="{{
+                      element.ProfilePic ||
+                        'assets/images/profile/default-avatar.png'
+                    }}"
+                    (error)="onImgError($event)"
+                  />
+                  <b>
+                    <p class="text-truncate">
+                      {{ element.FirstName }}<span>{{ element.LastName }}</span>
+                    </p>
+                  </b>
+                </mat-cell>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="name">
+                <mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  style="margin-right:25px;"
+                >
+                  Bike Name
+                </mat-header-cell>
+                <mat-cell
+                  *matCellDef="let element"
+                  (click)="viewDialog(element)"
+                  style="margin-right:25px;cursor:pointer"
+                >
+                  <b>
+                    {{ element.BrandName | titlecase }}
+                    {{ element.ModelName | titlecase }}</b
+                  ></mat-cell
+                >
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="location">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Location
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <b> {{ element.Location }}</b>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Date Posted
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <b>
+                    {{ element.CreatedAt | date: "d MMM yyyy" }}
+                  </b></mat-cell
+                >
+              </ng-container>
+
+              <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                  >Price
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <b> {{ element.Currency }}{{ element.Price }}</b>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                  >Action</mat-header-cell
+                >
+                <mat-cell *matCellDef="let element">
+                  <button
+                    mat-raised-button
+                    class="add-product-button fuse-white mt-24 mt-md-0"
+                    style="margin-right: 5px;"
+                    (click)="OnAcceptBike(element)"
+                  >
+                    <span>Accept</span>
+                  </button>
+                  <button
+                    mat-raised-button
+                    class="add-product-button fuse-rejects mt-24 mt-md-0"
+                  >
+                    <span style="color:red" (click)="OnRejectBike(element)"
+                      >Reject</span
+                    >
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row
+                *matHeaderRowDef="displayedColumns"
+              ></mat-header-row>
+              <mat-row
+                *matRowDef="let row; columns: displayedColumns"
+              ></mat-row>
+            </mat-table>
+
+            <mat-paginator
+              #paginator
+              [length]="dataSource.data.length"
+              [pageSize]="10"
+              [pageIndex]="0"
+              [pageSizeOptions]="[3, 5, 10]"
+              showFirstLastButtons
+            ></mat-paginator>
+          </div>
+        </mat-tab>
+        <mat-tab label="Merchandise">
+          <div class="example-container mat-elevation-z8">
+            <div
+              style="text-align: center;padding:100px"
+              *ngIf="dataSource2.data.length === 0"
+            >
+              There is no data to show
+            </div>
+            <mat-table
+              #table
+              [dataSource]="dataSource2"
+              *ngIf="dataSource2.data.length != 0"
+              #sort2="matSort"
+              matSort
+            >
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox
+                    (change)="$event ? masterToggle2() : null"
+                    [checked]="selection2.hasValue() && isAllSelected2()"
+                    [indeterminate]="selection2.hasValue() && !isAllSelected2()"
+                    [aria-label]="checkboxLabel2()"
+                  >
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox
+                    (click)="$event.stopPropagation()"
+                    (change)="$event ? selection2.toggle(row) : null"
+                    [checked]="selection2.isSelected(row)"
+                    [aria-label]="checkboxLabel2(row)"
+                  >
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+              <!-- <ng-container matColumnDef="id" style="display:none;">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;">ID</mat-header-cell>
+                                            <mat-cell *matCellDef="let product" style="display:none;">
+                                                <p class="text-truncate">{{product.id}}</p>
+                                            </mat-cell>
+                                        </ng-container> -->
+              <!-- Position Column -->
+              <ng-container matColumnDef="position" style="display:none;">
+                <mat-header-cell *matHeaderCellDef style="display:none;">
+                  No.
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="display:none;">
+                  {{ element.position }}
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="posted">
+                <mat-header-cell *matHeaderCellDef> Posted By </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <img
+                    class="avatar mr-0 mr-sm-16"
+                    src="assets/images/avatars/Velazquez.jpg"
+                  />
+                  <b>
+                    <p class="text-truncate">Manish<span>Surapaneni</span></p>
+                  </b>
+                </mat-cell>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>
+                  Product Name
+                </mat-header-cell>
+                <mat-cell
+                  *matCellDef="let element"
+                  (click)="viewMerchandiseDialog(element)"
+                >
+                  <b> {{ element.Title }}</b></mat-cell
+                >
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="location">
+                <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <b> {{ element.Location }}</b>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef>
+                  Date Posted
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <b>
+                    {{ element.CreatedAt | date: "d MMM yyyy" }}
+                  </b></mat-cell
+                >
+              </ng-container>
+
+              <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef>Price </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <b> {{ element.Currency }} {{ element.Price }}</b>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <button
+                    (click)="OnAcceptMerchandise(element)"
+                    mat-raised-button
+                    class="add-product-button fuse-white mt-24 mt-md-0"
+                    style="margin-right:4px;"
+                  >
+                    <span>Accept</span>
+                  </button>
+                  <button
+                    (click)="OnRejectMerchandise(element)"
+                    mat-raised-button
+                    class="add-product-button fuse-rejects mt-24 mt-md-0"
+                  >
+                    <span>Reject</span>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row
+                *matHeaderRowDef="displayedColumns2"
+              ></mat-header-row>
+              <mat-row
+                *matRowDef="let row; columns: displayedColumns2"
+              ></mat-row>
+            </mat-table>
+
+            <mat-paginator
+              #paginator2
+              [length]="dataSource2.data.length"
+              [pageSize]="10"
+              [pageIndex]="0"
+              [pageSizeOptions]="[3, 5, 10]"
+              showFirstLastButtons
+            ></mat-paginator>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

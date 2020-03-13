@@ -1,0 +1,201 @@
+<div class="dialog-content-wrapper" id="viewModalCoupon">
+  <mat-toolbar class=" m-0">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center" style="margin-top:30px">
+      <span class="title dialog-title"></span>
+      <button mat-icon-button (click)="matDialogRef.close()" class="close" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+
+    <div name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
+        <div style="margin-top:-20px;">
+            <img src="{{fromCouponPage.Image}}" style="width: 800px;height: 220px;"/>
+            <!-- <mat-carousel timings="250ms ease-in" [autoplay]="false"
+            interval="2000" color="warn" maxWidth="100" maxHeight="200"
+            proportion="25" slides="5" [loop]="true" [hideArrows]="true"
+            [hideIndicators]="false" [useKeyboard]="true"
+            [useMouseWheel]="false" orientation="ltr">
+            <mat-carousel-slide #userBikematCarouselSlide
+                *ngFor="let slide of fromPage.ImageURLs; let i = index"
+                [image]="slide" [hideOverlay]="true">
+      
+            </mat-carousel-slide>
+        </mat-carousel> -->
+        </div>
+      <div class="row" fxLayout="row" fxLayout.gt-sm="row">
+        <div fxLayout="column" fxFlex.gt-sm="30" style="margin-left:-15px;">
+          <img src="{{fromCouponPage.Logo}}" width="80" height="80"> <span>
+
+          </span>
+        </div>
+        <div fxLayout="column" fxFlex.gt-sm="50" style="margin-top:10px;margin-left:-34px;">
+          <h4><b>{{fromCouponPage.VendorName}}</b></h4>
+        </div>
+        <div fxLayout="column" fxFlex.gt-sm="10"></div>
+      </div>
+      <div class="row" fxLayout="row" fxLayout.gt-sm="row">
+        <div fxLayout="column" fxFlex.gt-sm="10"></div>
+        <div fxLayout="column" fxFlex.gt-sm="60"></div>
+        <div fxLayout="column" fxFlex.gt-sm="30"
+          style="margin-top:-47px;margin-right:-50px;font-size:10px;color: rgb(149, 149, 149) !important;">
+          <p>Valid upto {{fromCouponPage.EndDate | date: "d MMM yyyy"}}</p>
+        </div>
+      </div>
+      <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-15px">
+        <p><b>{{fromCouponPage.Title}}</b></p>
+      </div>
+      <!-- <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-30px">
+              <h6 style="display:inline-block"> Voucher Value <span style="color:#FB8E0B"> &#x20b9;
+                      2,000</span>
+              </h6>
+          </div> -->
+      <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-15px;">
+        <div fxLayout="column" fxFlex.gt-sm="50" style="margin-top:-17px">
+          <h6 style="display:inline-block"> Voucher Value <span style="color:#FB8E0B"> {{fromCouponPage.CurrencySymbol}}
+              {{fromCouponPage.VoucherValue}}</span>
+          </h6>
+        </div>
+        <div fxLayout="column" fxFlex.gt-sm="50" style="margin-top:-15px;">
+          <h6 style="display:inline-block"> RYS Coupon Price <span style="color:#FB8E0B"> {{fromCouponPage.CurrencySymbol}}
+              {{fromCouponPage.Price}}</span>
+          </h6>
+        </div>
+      </div>
+      <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-15px;">
+        <div fxLayout="column" fxFlex.gt-sm="50" style="margin-top:-17px">
+          <h6 style="display:inline-block"> Coupon Quantity <span style="color:#FB8E0B">
+              {{fromCouponPage.Quantity}}</span>
+          </h6>
+        </div>
+        <div fxLayout="column" fxFlex.gt-sm="50" style="margin-top:-15px;">
+          <h6 style="display:inline-block"> Coupon Code <span style="color:#FB8E0B"> 
+              {{fromCouponPage.CouponPrefix}}</span>
+          </h6>
+        </div>
+      </div>
+      <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:-10px;">
+        <div fxLayout="column" fxFlex.gt-sm="50">
+          <div class="circle">
+            <mat-icon class="icon" style="color:#E8411F;">store</mat-icon>
+          </div>
+          <span style="margin-left:52px;margin-top:-58px;">
+            <h4><b>Store Address</b></h4>
+            <p style="margin-top: -18px;font-size:12px;color:#959595">{{fromCouponPage.StoreAddress}}</p>
+          </span>
+        </div>
+        <div fxLayout="column" fxFlex.gt-sm="50" >
+          <h4><b>Terms & Conditions</b></h4>
+          <!-- <ul style="font-size:13px;color:#959595;list-style-type: none; margin-top:-20px;">
+            <li *ngFor="let term of terms" style="margin-top:10px;">{{term}}</li>
+             
+        </ul> -->
+          <div style="font-size:13px;color:#959595;margin-top:-20px;">
+            <p *ngFor="let term of terms"> {{term}}</p>
+            <!-- <p> 2. Sizes Available (XS, S, M and L)</p>
+            <p> 3. please check size chart befor purchasing</p> -->
+          </div>
+        </div>
+      </div>
+      <div class="row" fxLayout="row" fxLayout.gt-sm="row">
+        <div fxLayout="column" fxFlex.gt-sm="50" style="margin-top:-55px;">
+          <div class="circle">
+            <mat-icon class="icon" style="color:#E8411F;">local_phone</mat-icon>
+          </div>
+          <span style="margin-left:52px;margin-top:-50px;">
+            <h4><b>Contact</b></h4>
+            <div style="margin-top: -18px;font-size:12px;color:#959595">
+              <p>{{fromCouponPage.ContactNo}}</p>
+              <p style="margin-top:-8px;">{{fromCouponPage.EmailID}}</p>
+            </div>
+
+          </span>
+        </div>
+      </div>
+      <div class="row" fxLayout="row" fxLayout.gt-sm="row" style="margin-top:15px;margin-bottom:15px;" *ngIf="fromCouponPage.CouponStatus == 2">
+        <div fxLayout="column" fxFlex.gt-sm="19"></div>
+        <div fxLayout="column" fxFlex.gt-sm="30" style="margin-right:50px;">
+          <button mat-raised-button class="add-product-button fuse-red mt-24 mt-md-0" style="border:1px solid #f79726 !important;">
+            <span style="color:black;">Reject</span>
+          </button>
+        </div>
+        <div fxLayout="column" fxFlex.gt-sm="30">
+          <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="onAcceptCoupon(fromCouponPage)">
+            <span>Accept</span>
+          </button>
+        </div>
+        <div fxLayout="column" fxFlex.gt-sm="20"></div>
+      </div>
+
+
+      <!-- 
+          <mat-form-field appearance="outline" [fxShow]="showExtraToFields">
+              <mat-label>Bcc</mat-label>
+              <input matInput name="bcc" formControlName="bcc" type="email">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+              <mat-label>Subject</mat-label>
+              <input matInput name="subject" formControlName="subject">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+              <mat-label>Message</mat-label>
+              <textarea matInput name="message" formControlName="message" rows="6">
+              </textarea>
+          </mat-form-field>
+
+          <div class="attachment-list">
+
+              <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
+                  <div>
+                      <span class="filename">attachment-2.doc</span>
+                      <span class="size ml-4">(12 Kb)</span>
+                  </div>
+
+                  <button mat-icon-button aria-label="Delete attachment">
+                      <mat-icon class="s-16">close</mat-icon>
+                  </button>
+              </div>
+
+              <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
+                  <div>
+                      <span class="filename">attachment-1.jpg</span>
+                      <span class="size ml-4">(350 Kb)</span>
+                  </div>
+
+                  <button mat-icon-button aria-label="Delete attachment">
+                      <mat-icon class="s-16">close</mat-icon>
+                  </button>
+              </div>
+          </div> -->
+        </div>
+
+  </div>
+
+  <!-- <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+          <button mat-raised-button
+                  color="accent"
+                  (click)="matDialogRef.close(['send',composeForm])"
+                  class="save-button"
+                  [disabled]="composeForm.invalid"
+                  aria-label="SAVE">
+              SEND
+          </button>
+
+          <button mat-icon-button matTooltip="Attach a file">
+              <mat-icon>attach_file</mat-icon>
+          </button>
+      </div>
+
+      <button mat-icon-button (click)="matDialogRef.close(['delete',composeForm])"
+              aria-label="Delete"
+              matTooltip="Delete">
+          <mat-icon>delete</mat-icon>
+      </button> 
+  </div> -->
+</div>

@@ -1,0 +1,86 @@
+import { Injectable } from "@angular/core";
+import {
+  ActivatedRouteSnapshot,
+  Resolve,
+  RouterStateSnapshot
+} from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject, Observable } from "rxjs";
+import { baseenvironment } from "config";
+
+@Injectable()
+export class EcommerceAddAddsService implements Resolve<any> {
+  // bikeBrands: any[];
+  onBikeBrandChanged: BehaviorSubject<any>;
+  //apiUrl = 'https://rhtvhdthuh.execute-api.ap-south-1.amazonaws.com/dev/';
+
+  /**
+   * Constructor
+   *
+   * @param {HttpClient} _httpClient
+   */
+  constructor(private _httpClient: HttpClient) {
+    // Set the defaults
+    this.onBikeBrandChanged = new BehaviorSubject({});
+  }
+
+  /**
+   * Resolver
+   *
+   * @param {ActivatedRouteSnapshot} route
+   * @param {RouterStateSnapshot} state
+   * @returns {Observable<any> | Promise<any> | any}
+   */
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<any> | Promise<any> | any {
+    return new Promise((resolve, reject) => {
+      Promise.all([
+        //this.getBikeBrands()
+      ]).then(() => {
+        resolve();
+      }, reject);
+    });
+  }
+
+  /**
+   * Get products
+   *  @param addAdds
+   * @returns {Promise<any>}
+   */
+
+  getBikeBrands(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._httpClient
+        .get(baseenvironment.baseUrl + "bikebrands")
+        .subscribe((response: any) => {
+          //this.bikeBrands = response;
+          // this.onBikeBrandChanged.next(this.bikeBrands);
+          //console.log(this.bikeBrands);
+          resolve(response);
+        }, reject);
+    });
+  }
+  getCountries(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._httpClient
+        .get(baseenvironment.baseUrl + "countries")
+        .subscribe((response: any) => {
+          //this.countriesModels = response;
+          //this.onCreateRideChanged.next(this.countriesModels);
+          // console.log(this.countriesModels);
+          resolve(response);
+        }, reject);
+    });
+  }
+  addAds(ads): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._httpClient
+        .post(baseenvironment.baseUrl + "adminads", JSON.stringify(ads))
+        .subscribe((response: any) => {
+          resolve(response);
+        }, reject);
+    });
+  }
+}

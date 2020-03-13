@@ -1,0 +1,648 @@
+<div id="viewEvent" class="page-layout carded fullwidth" fusePerfectScrollbar>
+  <div class="top-bg accent"></div>
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="col"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          <b> {{ selectedEventDetails.EventName }}</b>
+        </span>
+        <br />
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+        <!-- <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Events </span> -->
+        <p
+          style="margin-top:90px;margin-left:-65px;cursor:pointer;"
+          [routerLink]="'/apps/e-commerce/events'"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          < Events
+        </p>
+        <br />
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between"
+      >
+        <div fxLayout="column" style="padding:0 20px;">
+          <p class="card-heading">
+            <b>{{ selectedEventDetails.EventName }}</b
+            >&nbsp;&nbsp;
+            <button
+              mat-raised-button
+              *ngIf="selectedEventDetails.EventType === 'Paid'"
+              class="add-product-button fuse-ride mt-24 mt-md-0"
+            >
+              <span>Paid</span>
+            </button>
+            <button
+              mat-raised-button
+              class="add-product-button fuse-ride mt-24 mt-md-0"
+              *ngIf="selectedEventDetails.EventType === 'Free'"
+            >
+              <span>Free</span>
+            </button>
+          </p>
+        </div>
+      </div>
+      <div class="tab-content">
+        <!-- <img src="assets/images/cards/rideview.png"> -->
+        <mat-carousel
+          timings="250ms ease-in"
+          [autoplay]="true"
+          interval="2000"
+          color="warn"
+          maxWidth="auto"
+          maxHeight="auto"
+          proportion="25"
+          slides="5"
+          [loop]="true"
+          [hideArrows]="slides.length == 1 ? true : false"
+          [hideIndicators]="false"
+          [useKeyboard]="true"
+          [useMouseWheel]="false"
+          orientation="ltr"
+        >
+          <mat-carousel-slide
+            #matCarouselSlide
+            *ngFor="let slide of slides; let i = index"
+            [image]="slide"
+            [hideOverlay]="true"
+            style="height:450px !important;"
+          >
+          </mat-carousel-slide>
+        </mat-carousel>
+      </div>
+    </div>
+    <div class="content-card">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between"
+      >
+        <div fxLayout="column" style="padding:5px 15px 5px 15px;">
+          <p class="card-heading"><b>About</b></p>
+          <p style="margin-top:-10px;color:#6E6E81 !important;">
+            {{ selectedEventDetails.EventDescription }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between"
+      >
+        <div fxLayout="column" style="padding:5px 15px 5px 15px;">
+          <p class="card-heading"><b>Event Ticket Segments</b></p>
+          <ul
+            class="listStyle"
+            style="list-style-type:none;margin-top:-10px !important;color:#6E6E81 !important"
+          >
+            <!-- <li> Free Snacks and Drinks</li>
+                        <li> Includes Veg / Non-Veg Dinner</li> -->
+            <li *ngFor="let tickets of ticketSegments; let i = index">
+              {{ tickets.TicketClass }} Class - {{ tickets.Description }} :
+              &nbsp;&nbsp; &#x20b9;{{ tickets.Price }}/-
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:30px;">
+      <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row">
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+            style="width:80% !important;"
+          >
+            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+              <div class="content" style="width:200px;padding:10px !important;">
+                <img src="assets/icons/date.svg" alt="" style="width:60px;" />
+                <div style="margin-top:10px;">
+                  <h3><b>Start Date</b></h3>
+                  <p>
+                    {{
+                      selectedEventDetails.EventStartDate | date: "d MMM yyyy"
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+            style="width:80% !important;"
+          >
+            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+              <div class="content" style="width:200px;padding:10px !important;">
+                <img src="assets/icons/date.svg" alt="" style="width:60px;" />
+                <div style="margin-top:10px;">
+                  <h3><b>End Date</b></h3>
+                  <p>
+                    {{ selectedEventDetails.EventEndDate | date: "d MMM yyyy" }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+            style="width:80% !important;"
+          >
+            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+              <div class="content" style="width:200px;padding:10px !important;">
+                <img src="assets/icons/date.svg" alt="" style="width:60px;" />
+                <div style="margin-top:10px;">
+                  <h3><b>Start Time</b></h3>
+                  <p>
+                    {{
+                      selectedEventDetails.EventStartTime
+                        | converteventFrom24To12Format
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+            style="width:80% !important;"
+          >
+            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+              <div class="content" style="width:200px;padding:10px !important;">
+                <img src="assets/icons/date.svg" alt="" style="width:60px;" />
+                <div style="margin-top:10px;">
+                  <h3><b>End Time</b></h3>
+                  <p>
+                    {{
+                      selectedEventDetails.EventEndTime
+                        | converteventFrom24To12Format
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="40" style="margin-left:-30px;">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+                        <div class="pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:295px;padding:10px !important;">
+                                <div style="position: relative; left: 0; top: 0;">
+                                    <img src="assets/icons/component.png" class="locates" style="width:65px;">
+                                    <img src="assets/icons/location.svg" class="locate" style="width:18px;">
+                                </div>
+                                <div style="margin-top:10px"> 
+                                    <h3><b>Gachibowli, Hyd</b></h3>
+                                    <p>DriverCafe, ORR, Hyderabad</p>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div> -->
+        <!--                 
+                <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'" style="width:90% !important;">
+                        <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:245px !important;padding:10px !important;">
+                                <div style="position: relative; left: 0; top: 0;">
+                                    <img src="assets/icons/component.png" class="creates" style="width:65px;">
+                                    <img src="assets/icons/rideprofile.png" class="create" style="width:65px;">
+                                </div>
+                                <div style="margin-top:10px"> 
+                                    <h3><b>Created By</b></h3>
+                                    <p>Manish Surapaneni</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+      </div>
+    </div>
+    <div style="margin-top:30px;">
+      <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row">
+        <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+                        <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'" style="width:80% !important;">
+                            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                <div class="content" style="width:200px;padding:10px !important;">
+                                    <img src="assets/icons/date.svg" alt="" style="width:60px;">
+                                    <div style="margin-top:10px;">
+                                        <h3><b>Start Date</b></h3>
+                                        <p>{{selectedEventDetails.EventStartDate | date : "d MMM yyyy" }}</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div> -->
+        <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+                            <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'" style="width:80% !important;">
+                                <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="content" style="width:200px;padding:10px !important;">
+                                        <img src="assets/icons/date.svg" alt="" style="width:60px;">
+                                        <div style="margin-top:10px;">
+                                            <h3><b>End Date</b></h3>
+                                            <p>{{selectedEventDetails.EventEndDate | date: "d MMM yyyy"}}</p>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div> -->
+        <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+                                <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'" style="width:80% !important;">
+                                    <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                        <div class="content" style="width:200px;padding:10px !important;">
+                                            <img src="assets/icons/date.svg" alt="" style="width:60px;">
+                                            <div style="margin-top:10px;">
+                                                <h3><b>Start Time</b></h3>
+                                                <p>{{selectedEventDetails.EventStartTime}}</p>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div> -->
+        <!-- <div class="widget col" fxFlex="100" fxFlex.gt-sm="40" style="margin-right:25px;">
+                    <div class="fuse-card auto-width mb-32" [ngClass.gt-sm]="'mb-0 mr-32'">
+                        <div class="pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                            <div class="content" style="width:295px;padding:10px !important;">
+                                <div style="position: relative; left: 0; top: 0;">
+                                    <img src="assets/icons/component.png" class="locates" style="width:65px;">
+                                    <img src="assets/icons/location.svg" class="locate" style="width:18px;">
+                                </div>
+                                <div style="margin-top:10px">
+                                    <h3><b>Location</b></h3>
+                                    <p>DriverCafe, ORR, Hyderabad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+          >
+            <div class="pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+              <div class="content" style="width:295px;padding:10px !important;">
+                <div style="position: relative; left: 0; top: 0;">
+                  <img
+                    src="assets/icons/component.png"
+                    class="locates"
+                    style="width:65px;"
+                  />
+                  <img
+                    src="assets/icons/location.svg"
+                    class="locate"
+                    style="width:18px;"
+                  />
+                </div>
+                <div style="margin-top:10px">
+                  <h3><b>Venue</b></h3>
+                  <p>{{ selectedEventDetails.Venue }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+            style="width:90% !important;"
+          >
+            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+              <div
+                class="content"
+                style="width:245px !important;padding:10px !important;"
+              >
+                <div style="position: relative; left: 0; top: 0;">
+                  <!-- <img
+                    src="assets/icons/component.png"
+                    class="creates"
+                    style="width:65px;"
+                  />
+                  <img
+                    src="assets/images/logos/logo.png"
+                    class="create"
+                    style="width:65px;border-radius: 50%;"
+                  /> -->
+                </div>
+                <div style="margin-top:10px">
+                  <h3 style="margin-left: 15px;"><b>Created By</b></h3>
+                  <p style="margin-left: 15px;">
+                    {{ selectedEventDetails.OrganiserName }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between"
+      >
+        <div fxLayout="column" style="padding:5px 15px 5px 15px;">
+          <p class="card-heading">
+            <b>Co- Participants ({{ participantsCount }})</b>
+          </p>
+          <br />
+          <div
+            class="first"
+            style="width:950px;"
+            *ngFor="let participant of getCoparticipants"
+          >
+            <div
+              style="border:1px solid #0000001f;padding:15px 10px 0px 10px;border-radius:5px;"
+            >
+              <div
+                appearance="outline"
+                fxFlex="40"
+                class="pr-4"
+                style="margin-top:11px;"
+              >
+                <img
+                  class="avatar mr-0 mr-sm-16"
+                  src="assets/images/avatars/Velazquez.jpg"
+                />
+                <p class="name">
+                  <b> {{ participant.FirstName }} {{ participant.LastName }}</b
+                  ><br />
+                  <span style="color:#e95130;">{{
+                    participant.BrandName
+                  }}</span>
+                  <span>
+                    <mat-icon
+                      aria-hidden="false"
+                      aria-label="strength"
+                      style="font-size:15px;color:#6E6E81;"
+                    >
+                      near_me
+                    </mat-icon>
+                    {{ participant.Address }}
+                  </span>
+                </p>
+              </div>
+              <div
+                class=" border-right"
+                appearance="outline"
+                fxFlex="22"
+                class="pr-4"
+                style="margin-top:50px;"
+              >
+                <p class="name" style="color:#858585;">
+                  Total Kms<br />
+                  <span style="color:#000000;"
+                    ><b>{{ travelkms }}</b></span
+                  >
+                </p>
+              </div>
+              <mat-divider
+                style="height:55px !important;"
+                [vertical]="true"
+              ></mat-divider>
+              <div
+                appearance="outline"
+                fxFlex="20"
+                class="pr-4"
+                style="margin-top:50px;"
+              >
+                <p class="name" style="color:#858585;">
+                  No Of Rides<br />
+                  <span style="color:#000000;"
+                    ><b>{{ participant.RidesCount }}</b></span
+                  >
+                </p>
+              </div>
+              <mat-divider
+                style="height:55px !important;"
+                [vertical]="true"
+              ></mat-divider>
+              <div
+                appearance="outline"
+                fxFlex="20"
+                class="pr-4"
+                style="margin-top:50px;"
+              >
+                <p class="name" style="color:#858585;">
+                  Rating<br />
+                  <span>
+                    <mat-icon
+                      aria-hidden="false"
+                      aria-label="strength"
+                      style="font-size:15px;color:#e95130;"
+                    >
+                      star
+                    </mat-icon>
+                    <b style="color:#000000;">{{ participant.AvgRating }}</b>
+                  </span>
+                </p>
+              </div>
+              <div
+                appearance="outline"
+                fxFlex="13"
+                class="pr-4"
+                style="margin-top:50px;"
+              ></div>
+            </div>
+          </div>
+          <br />
+          <!-- <div class="second" style="width:950px;">
+                        <div style="border:1px solid #0000001f;padding:15px 10px 0px 10px;border-radius:5px;">
+                            <div appearance="outline" fxFlex="40" class="pr-4" style="margin-top:11px;">
+                                <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
+                                <p class="name"> <b> Manish Surapaneni</b><br>
+                                    <span style="color:#e95130;">Kawasaki Ninja 1000</span>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#6E6E81;">
+                                            near_me
+                                        </mat-icon>
+                                        Hyderabad
+                                    </span>
+                                </p>
+                            </div>
+                            <div class=" border-right" appearance="outline" fxFlex="22" class="pr-4"
+                                style="margin-top:50px;">
+                                <p class="name" style="color:#858585;"> Total Kms<br>
+                                    <span style="color:#000000;"><b>1679</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">No Of Rides<br>
+                                    <span style="color:#000000;"><b>35</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">Rating<br>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#e95130;">
+                                            star
+                                        </mat-icon>
+                                        <b style="color:#000000;">3.5</b>
+                                    </span>
+                                </p>
+                            </div>
+                            <div appearance="outline" fxFlex="13" class="pr-4" style="margin-top:50px;"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="third" style="width:950px;">
+                        <div style="border:1px solid #0000001f;padding:15px 10px 0px 10px;border-radius:5px;">
+                            <div appearance="outline" fxFlex="40" class="pr-4" style="margin-top:11px;">
+                                <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
+                                <p class="name"> <b> Manish Surapaneni</b><br>
+                                    <span style="color:#e95130;">Kawasaki Ninja 1000</span>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#6E6E81;">
+                                            near_me
+                                        </mat-icon>
+                                        Hyderabad
+                                    </span>
+                                </p>
+                            </div>
+                            <div class=" border-right" appearance="outline" fxFlex="22" class="pr-4"
+                                style="margin-top:50px;">
+                                <p class="name" style="color:#858585;"> Total Kms<br>
+                                    <span style="color:#000000;"><b>1679</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">No Of Rides<br>
+                                    <span style="color:#000000;"><b>35</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">Rating<br>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#e95130;">
+                                            star
+                                        </mat-icon>
+                                        <b style="color:#000000;">3.5</b>
+                                    </span>
+                                </p>
+                            </div>
+                            <div appearance="outline" fxFlex="13" class="pr-4" style="margin-top:50px;"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="fourth" style="width:950px;">
+                        <div style="border:1px solid #0000001f;padding:15px 10px 0px 10px;border-radius:5px;">
+                            <div appearance="outline" fxFlex="40" class="pr-4" style="margin-top:11px;">
+                                <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
+                                <p class="name"> <b> Manish Surapaneni</b><br>
+                                    <span style="color:#e95130;">Kawasaki Ninja 1000</span>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#6E6E81;">
+                                            near_me
+                                        </mat-icon>
+                                        Hyderabad
+                                    </span>
+                                </p>
+                            </div>
+                            <div class=" border-right" appearance="outline" fxFlex="22" class="pr-4"
+                                style="margin-top:50px;">
+                                <p class="name" style="color:#858585;"> Total Kms<br>
+                                    <span style="color:#000000;"><b>1679</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">No Of Rides<br>
+                                    <span style="color:#000000;"><b>35</b></span>
+                                </p>
+                            </div>
+                            <mat-divider style="height:55px !important;" [vertical]="true"></mat-divider>
+                            <div appearance="outline" fxFlex="20" class="pr-4" style="margin-top:50px;">
+                                <p class="name" style="color:#858585;">Rating<br>
+                                    <span>
+                                        <mat-icon aria-hidden="false" aria-label="strength"
+                                            style="font-size:15px;color:#e95130;">
+                                            star
+                                        </mat-icon>
+                                        <b style="color:#000000;">3.5</b>
+                                    </span>
+                                </p>
+                            </div>
+                            <div appearance="outline" fxFlex="13" class="pr-4" style="margin-top:50px;"></div>
+                        </div>
+                    </div>
+                    <br> -->
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between"
+      >
+        <div fxLayout="column" style="padding:5px 15px 5px 15px;">
+          <p class="card-heading"><b>Location</b></p>
+          <div class="content" style="width:300px;padding:10px !important;">
+            <img src="assets/icons/road.svg" alt="" style="width:35px;" />
+            <div style="margin-top:10px;margin-left:35px !important;">
+              <p style="color:#6E6E81;margin-left:35px !important;">Venue</p>
+              <h3 style="margin-left:35px !important;">
+                <b>{{ selectedEventDetails.Venue }}</b>
+              </h3>
+            </div>
+          </div>
+          <!-- <div style="margin-left:90px;margin-top:15px;margin-bottom:20px;">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487268.80122446903!2d78.0584466013432!3d17.421982249775688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9488fde35c89%3A0x8e23c060df7a001e!2sDriven%20Cafe!5e0!3m2!1sen!2sin!4v1569924979979!5m2!1sen!2sin" width="500" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                            </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- / CONTENT CARD -->
+    <br />
+  </div>
+  <!-- / CENTER -->
+</div>

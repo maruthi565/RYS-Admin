@@ -1,0 +1,21 @@
+@mixin e-commerce-dashboard-theme($theme) {
+
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    e-commerce-dashboard {
+        #dashboard {
+
+        > .center {
+
+            > .content {
+                @if ($is-dark) {
+                    background: map-get($background, background);
+                } @else {
+                    background: map-get($background, app-bar);
+                }
+            }
+        }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Add New Image - Kawasaki</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+        <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" class="pr-4">
+                    <mat-label>Brand Name</mat-label>
+                    <input matInput formControlName="brand" value="Kawasaki">
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" class="pr-4">
+                    <mat-label>Model Name</mat-label>
+                    <input matInput formControlName="model" value="Kawasaki Ninja Z1000">
+                </mat-form-field>
+            </div>
+            <p><b>Upload Brand Logo</b></p>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <div class="file-upload">
+                    <div class="image-upload-wrap">
+                        <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                        <div class="drag-text" style="height:110px">
+                            <h3 style="font-size:30px !important;">+</h3>
+                            <p style="font-size:12px;margin-top: -45px;color: rgba(0,0,0,0.54);">Upload 375 * 200 Px
+                                (jpeg, PNG format) of less than 2MB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+                <div>
+                    <button mat-raised-button style="padding: 0 50px !important;"
+                        (click)="matDialogRef.close(['send',composeForm])"
+                        class="add-product-button fuse-white mt-24 mt-md-0">
+                        <span>Save</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

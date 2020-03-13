@@ -1,0 +1,84 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Edit</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+        <form name="editMerchandiseDialogForm" [formGroup]="editMerchandiseDialogForm" class="compose-form" fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <div class="file-upload-edit-merch">
+                    <div class="image-upload-wrap-edit-merch">
+                        <input class="file-upload-input-edit-merch"  name="ImageURLs" type='file' (change)="onChange($event)" accept="image/*" multiple>
+                        <div class="drag-text-edit-merch" style="height:110px">
+                            <h3 style="font-size:30px !important;">+</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div><p> Note: You cannot edit Images</p></div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                        
+                    <img *ngFor='let url of images'  [src]="url" width="200" height="200"><br/>
+                    <!-- <img [src]="previewUrl"  /> -->
+                
+                </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" class="pr-4">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="Title">
+                </mat-form-field>
+            </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <mat-label>Purchased On</mat-label>
+                        <input matInput formControlName="PurchaseDate">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <mat-label>Price</mat-label>
+                        <input matInput formControlName="Price">
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <mat-label>Location</mat-label>
+                        <input matInput formControlName="Location"  name="location">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <mat-label>Select Country</mat-label>
+                        <mat-select formControlName="CountryID"  style="margin-right:10px;">
+                                <mat-option *ngFor="let country of countries" [value]="country.CountryID" required>
+                                    {{country.CountryName}}
+                                </mat-option>
+                            </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                            <mat-label>Contact</mat-label>
+                            <input matInput formControlName="Contact" name="location" type="tel">
+                        </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-label>Email ID</mat-label>
+                    <input matInput formControlName="Email" name="location" type="email">
+                </mat-form-field>
+               
+            </div>
+                <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <button mat-raised-button style="padding: 0 50px !important;"
+                            (click)="onEditUserPostedMerchandise()"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

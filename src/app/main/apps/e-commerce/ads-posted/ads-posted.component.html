@@ -1,0 +1,200 @@
+<div id="adsPosted" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent first"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          Ads Posted
+        </span>
+      </div>
+      <div class="search-wrapper mx-32 mx-md-0" width="40%">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <input
+            [(ngModel)]="searchTerm"
+            (input)="filterAdsByBrand($event)"
+            placeholder="Searchby Call To Action"
+          />
+        </div>
+      </div>
+
+      <mat-form-field style="width:100px" fxLayout="column">
+        <mat-label>Brand </mat-label>
+        <mat-select
+          class="simplified"
+          [(ngModel)]="selectedBrand"
+          (selectionChange)="brandSelectionChange($event)"
+        >
+          <mat-option
+            *ngFor="let brand of bikeBrands"
+            [value]="brand.BrandName"
+          >
+            {{ brand.BrandName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width:200px" fxLayout="column">
+        <mat-label>Search city</mat-label>
+        <input
+          matInput
+          [(ngModel)]="selectedCity"
+          type="text"
+          (keydown.enter)="$event.preventDefault()"
+          placeholder="Search city"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="off"
+          type="text"
+          #addPostedCitySearch
+        />
+      </mat-form-field>
+      <mat-form-field style="width:100px" fxLayout="column">
+        <input
+          matInput
+          [(ngModel)]="selectedDate"
+          (dateChange)="dateSelectionChange()"
+          [matDatepicker]="picker"
+          placeholder="Date"
+          disabled
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <!-- <button mat-raised-button class="add-product-button fuse-black mt-24 mt-md-0">
+                <span>Export</span>
+            </button> -->
+      <button
+        mat-raised-button
+        class="add-product-button fuse-white mt-24 mt-md-0"
+        (click)="addDialog()"
+      >
+        <span>Add New</span>
+      </button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <div class="content">
+        <div
+          style="text-align: center;padding:100px"
+          *ngIf="adsData.length === 0"
+        >
+          No Ads Found
+        </div>
+
+        <div class="cards" *ngIf="adsData.length != 0">
+          <!-- CARD 1 -->
+          <div class="card" *ngFor="let ads of adsData">
+            <!-- PREVIEW -->
+            <div class="card-preview">
+              <div class="fuse-card">
+                <!-- <a href="{{ads.WebsiteURL}}" target="_blank"> -->
+                <div class="image">
+                  <img
+                    src="{{ ads.ImageURL }}"
+                    style="width:100% !important; height:180px !important;"
+                  />
+                  <a href="{{ ads.WebsiteURL }}" target="_blank"
+                    ><button class="btn">{{ ads.CallToAction }}</button></a
+                  >
+                </div>
+                <!-- </a> -->
+                <!-- <img src="assets/images/cards/adsposted1.png"> -->
+
+                <div class="p-16">
+                  <div
+                    appearance="outline"
+                    class="pr-4"
+                    fxLayout="row"
+                    style="margin-top:-20px;"
+                  >
+                    <h4>Published On:</h4>
+                    <span
+                      style="margin-left:12px;margin-top:22px;color:rgba(0,0,0,0.54)"
+                      >{{ ads.CreatedAt | date: "d MMM yyyy" }}</span
+                    >
+                  </div>
+                  <div
+                    appearance="outline"
+                    class="pr-4"
+                    fxLayout="row"
+                    style="margin-top:-20px;"
+                  >
+                    <h4>Brand:</h4>
+                    <span
+                      style="margin-left:12px;margin-top:22px;color:rgba(0,0,0,0.54)"
+                      >{{ ads.Brand }}</span
+                    >
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <button
+                      mat-button
+                      class="actionBtns"
+                      fxFlex="30"
+                      (click)="viewDialog(ads)"
+                    >
+                      View
+                    </button>
+                    <button
+                      mat-button
+                      class="actionBtns"
+                      fxFlex="30"
+                      (click)="editDialog(ads)"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      mat-button
+                      class="actionBtns"
+                      fxFlex="40"
+                      (click)="deleteAdsPosted(ads)"
+                    >
+                      Delete
+                    </button>
+                    <mat-slide-toggle
+                      *ngIf="ads.Status === 1"
+                      [checked]="true"
+                      (change)="hideToUser($event, ads)"
+                      fxFlex="20"
+                    ></mat-slide-toggle>
+                    <mat-slide-toggle
+                      *ngIf="ads.Status === 2"
+                      [checked]="false"
+                      (change)="hideToUser($event, ads)"
+                      fxFlex="20"
+                    ></mat-slide-toggle>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / PREVIEW -->
+          </div>
+          <!-- / CARD 1 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

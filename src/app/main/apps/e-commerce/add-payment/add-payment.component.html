@@ -1,0 +1,85 @@
+<div id="addPayments" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="col" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24" fxLayout="row" fxLayoutAlign="start center">
+                <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <b> Vendor Payments </b>
+                </span>
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- / SEARCH -->
+        <!-- CONTENT CARD -->
+        <div class="content-card" fusePerfectScrollbar>
+            <form name="addPaymentForm" [formGroup]="addPaymentForm">
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="space-between" style="border-bottom:1px solid #EFEFEF !important;">
+                    <div fxLayout="column" style="margin-left:20px;">
+                        <p class="card-heading"><b>Add New Payment </b> </p>
+                    </div>
+                    <div fxLayout="column" style="margin-right: 20px;margin-top:19px;">
+                        <button mat-raised-button (click)="onAddVendorPayments()"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span> Submit</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="tab-content p-24">
+                    <div class="compose-form" fxLayout="column" fxFlex>
+                        <div fxLayout="row" fxLayoutAlign="space-between">
+                            <mat-form-field appearance="outline" fxFlex="30" style="margin-right:30px;">
+                                <mat-label>Vendor Name</mat-label>
+                                <mat-select formControlName="VendorID">
+                                    <mat-option *ngFor="let vendor of vendors" [value]="vendor.VendorID"
+                                        (click)="getInnerText(vendor.FirstName)">
+                                        {{vendor.FirstName}}
+                                    </mat-option>
+                                </mat-select>   
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="30">
+                                <mat-label>Location </mat-label>
+                                <input matInput name="contact" formControlName="Location" type="text">
+                            </mat-form-field>
+                            <div fxFlex="30" style="margin-right: 80px;"></div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="60">
+                            <mat-form-field appearance="outline" fxFlex="30" style="margin-right:30px;">
+                                <mat-label>Select Country</mat-label>
+                                <mat-select formControlName="CountryID">
+                                    <mat-option *ngFor="let country of getcountries" [value]="country.CountryID">
+                                        {{country.CountryName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="30" style="margin-right:62px;">
+                                <mat-label>Amount Paid</mat-label>
+                                <input matInput name="mail" (keypress)="numberOnly($event)" formControlName="AmountPaid" type="text">
+                            </mat-form-field>
+                            <div appearance="outline" fxFlex="30" style="color:#878795;margin-top:65px;">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

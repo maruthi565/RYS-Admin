@@ -1,0 +1,120 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar class="mat-accent m-0">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">Add Category</span>
+      <button
+        mat-icon-button
+        (click)="matDialogRef.close()"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <form
+      name="categoryForm"
+      [formGroup]="categoryForm"
+      class="compose-form"
+      fxLayout="column"
+      fxFlex
+    >
+      <div
+        fxLayout="column"
+        fxLayoutAlign="space-between"
+        formArrayName="MerchandiseCategories"
+      >
+        <div
+          *ngFor="
+            let category of categoryForm.get('MerchandiseCategories')[
+              'controls'
+            ];
+            index as i
+          "
+        >
+          <div [formGroupName]="i" style="margin-right: 30px">
+            <mat-form-field appearance="outline" class="pr-4">
+              <mat-label>Category </mat-label>
+              <input
+                matInput
+                name="category"
+                formControlName="CategoryName"
+                type="text"
+              />
+            </mat-form-field>
+            <mat-icon
+              *ngIf="showDelete"
+              style="cursor:pointer;float: right; margin-right: -20px;margin-top: -65px;"
+              aria-hidden="true"
+              aria-label="delete"
+              class="actionicons"
+              (click)="deleteCategoryType(category.value, i)"
+            >
+              delete_outline
+            </mat-icon>
+          </div>
+        </div>
+
+        <div appearance="outline" fxFlex="50" class="pr-4">
+          <h1 class="plus" (click)="onAddCategory()" style="cursor:pointer;">
+            +
+          </h1>
+        </div>
+      </div>
+      <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-label>Category 3</mat-label>
+                    <input matInput formControlName="category3" value="Rider Jackets">
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-label>Category 4</mat-label>
+                    <input matInput formControlName="category4" value="Helmet">
+                </mat-form-field>
+                
+            </div> -->
+      <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-label>Category 5</mat-label>
+                    <input matInput formControlName="category5" value="Shoes">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
+                    <mat-label>Category 6</mat-label>
+                    <input matInput formControlName="category6" value="Others">
+                </mat-form-field>
+
+            </div> -->
+      <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-label>Category 7</mat-label>
+                    <input matInput formControlName="category7">
+                </mat-form-field>
+                <div appearance="outline" fxFlex="50" class="pr-4">
+                    <h1 class="plus"> + </h1>
+                </div>
+
+            </div> -->
+      <div
+        mat-dialog-actions
+        class="m-0 p-16"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
+        <div>
+          <button
+            mat-raised-button
+            style="padding: 0 50px !important;"
+            (click)="AddCategory()"
+            class="add-product-button fuse-white mt-24 mt-md-0"
+          >
+            <span>Save</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

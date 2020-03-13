@@ -1,0 +1,103 @@
+<div class="dialog-content-wrapper edit-post">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Edit Merchandise</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+        <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <div class="file-upload">
+                    <div class="image-upload-wrap">
+                        <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                        <div class="drag-text" style="height:110px">
+                            <h3 style="font-size:30px !important;">+</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" class="pr-4">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="title" value="Kawasaki Ninja 650 R">
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-select class="simplified" value="Brand" [(value)]="selectedBrand">
+                        <mat-option value="Brand">Brand</mat-option>
+                        <mat-option selected value="Kawasaki">Kawasaki</mat-option>
+                        <mat-option value="7days">2</mat-option>
+                        <mat-option value="28days">3</mat-option>
+                        <mat-option value="90days">4</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-select class="simplified" value="Model" [(value)]="selected">
+                        <mat-option value="Model">Model</mat-option>
+                        <mat-option value="650 R">650 R</mat-option>
+                        <mat-option value="7days">2</mat-option>
+                        <mat-option value="28days">3</mat-option>
+                        <mat-option value="90days">4</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <mat-select class="simplified" value="MFG" [(value)]="selectedmfg">
+                            <mat-option value="MFG">MFG</mat-option>
+                            <mat-option value="2017">2017</mat-option>
+                            <mat-option value="7days">2</mat-option>
+                            <mat-option value="28days">3</mat-option>
+                            <mat-option value="90days">4</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <mat-select class="simplified" value="Registration" [(value)]="selectedreg">
+                            <mat-option value="Registration">Registration</mat-option>
+                            <mat-option value="yesterday">1</mat-option>
+                            <mat-option value="2018">2018</mat-option>
+                            <mat-option value="28days">3</mat-option>
+                            <mat-option value="90days">4</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <mat-label>Driven</mat-label>
+                        <input matInput formControlName="driven" value="25,000 Km">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                            <mat-label>Price</mat-label>
+                            <input matInput formControlName="price" name="price" value="₹ 3,50,000">
+                        </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                        <div fxLayout="column" fxFlex.gt-sm="50">
+                                <div class="circle">
+                                  <mat-icon class="icon" style="color:#E8411F;">store</mat-icon>
+                                </div>
+                                <span style="margin-left:52px;margin-top:-50px;">
+                                  <h4>Hyderabad</h4>
+                                  </span>
+                              </div>
+                    <div appearance="outline" fxFlex="50" class="pr-4"></div>
+                </div>
+                <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <button mat-raised-button style="padding: 0 50px !important;"
+                            (click)="matDialogRef.close(['send',composeForm])"
+                            class="add-product-button fuse-white mt-24 mt-md-0">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,426 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Custom color maps for Fuse
+// -----------------------------------------------------------------------------------------------------
+$fuse-white: (
+  500: white,
+  contrast: (
+    500: $dark-primary-text
+  )
+);
+
+$fuse-black: (
+  500: black,
+  contrast: (
+    500: $light-primary-text
+  )
+);
+
+$fuse-navy: (
+  50: #ececee,
+  100: #c5c6cb,
+  200: #9ea1a9,
+  300: #7d818c,
+  400: #5c616f,
+  500: #3c4252,
+  600: #353a48,
+  700: #2d323e,
+  800: #262933,
+  900: #1e2129,
+  A100: #c5c6cb,
+  A200: #9ea1a9,
+  A400: #5c616f,
+  A700: #2d323e,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+// Generate Fuse color classes for custom palettes
+$custom_palettes: (
+  fuse-white: $fuse-white,
+  fuse-black: $fuse-black,
+  fuse-navy: $fuse-navy
+);
+
+@include fuse-color-classes($custom_palettes);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Typography
+// -----------------------------------------------------------------------------------------------------
+
+// Angular Material typography
+$typography: mat-typography-config(
+  $font-family: "Muli, Helvetica Neue, Arial, sans-serif",
+  $title: mat-typography-level(20px, 32px, 600),
+  $body-2: mat-typography-level(14px, 24px, 600),
+  $button: mat-typography-level(14px, 14px, 600),
+  $input: mat-typography-level(16px, 1.125, 400)
+);
+
+// Setup the typography
+@include angular-material-typography($typography);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Component theming
+// -----------------------------------------------------------------------------------------------------
+
+// Import app and page component themes here to enable theming for them
+@import "src/app/layout/components/chat-panel/chat-panel.theme";
+@import "src/app/layout/components/toolbar/toolbar.theme";
+
+@import "src/app/main/apps/academy/academy.theme";
+@import "src/app/main/apps/calendar/calendar.theme";
+@import "src/app/main/apps/chat/chat.theme";
+@import "src/app/main/apps/contacts/contacts.theme";
+@import "src/app/main/apps/dashboards/project/project.theme";
+@import "src/app/main/apps/e-commerce/orders/orders.theme";
+@import "src/app/main/apps/e-commerce/products/products.theme";
+@import "src/app/main/apps/e-commerce/dashboard/dashboard.theme";
+@import "src/app/main/apps/e-commerce/add-merchandise/add-merchandise.theme";
+@import "src/app/main/apps/e-commerce/add-admin-user/add-admin-user.theme";
+@import "src/app/main/apps/e-commerce/edit-merchandise/edit-merchandise.theme";
+//@import "src/app/main/apps/e-commerce/purchased-merchandise/purchased-merchandise.theme";
+//@import "src/app/main/apps/e-commerce/redeemed-coupons/redeemed-coupons.theme";
+@import "src/app/main/apps/e-commerce/my-coupons/my-coupons.theme";
+@import "src/app/main/apps/e-commerce/add-coupon/add-coupon.theme";
+@import "src/app/main/apps/e-commerce/edit-coupon/edit-coupon.theme";
+@import "src/app/main/apps/e-commerce/payments/payments.theme";
+@import "src/app/main/apps/e-commerce/profile/profile.theme";
+@import "src/app/main/apps/e-commerce/vendor-profile/vendor-profile.theme";
+@import "src/app/main/apps/e-commerce/after-market/after-market.theme";
+@import "src/app/main/apps/e-commerce/merchandise-products/merchandise-products.theme";
+@import "src/app/main/apps/e-commerce/users/users.theme";
+@import "src/app/main/apps/e-commerce/add-payment/add-payment.theme";
+@import "src/app/main/apps/e-commerce/approve-requests/approve-requests.theme";
+@import "src/app/main/apps/e-commerce/pending-profiles/pending-profiles.theme";
+@import "src/app/main/apps/e-commerce/create-vendor/create-vendor.theme";
+@import "src/app/main/apps/e-commerce/edit-vendor/edit-vendor.theme";
+@import "src/app/main/apps/e-commerce/create-coupon/create-coupon.theme";
+@import "src/app/main/apps/e-commerce/user-posted/user-posted.theme";
+@import "src/app/main/apps/e-commerce/bike-request/bike-request.theme";
+@import "src/app/main/apps/e-commerce/business-query/business-query.theme";
+@import "src/app/main/apps/e-commerce/report/report.theme";
+@import "src/app/main/apps/e-commerce/previous-report/previous-report.theme";
+@import "src/app/main/apps/e-commerce/feedback/feedback.theme";
+@import "src/app/main/apps/e-commerce/notification/notification.theme";
+@import "src/app/main/apps/e-commerce/events/events.theme";
+@import "src/app/main/apps/e-commerce/create-event/create-event.theme";
+@import "src/app/main/apps/e-commerce/create-story/create-story.theme";
+@import "src/app/main/apps/e-commerce/create-ride/create-ride.theme";
+@import "src/app/main/apps/e-commerce/edit-event/edit-event.theme";
+@import "src/app/main/apps/e-commerce/edit-ride/edit-ride.theme";
+@import "src/app/main/apps/e-commerce/rides/rides.theme";
+@import "src/app/main/apps/e-commerce/ads-posted/ads-posted.theme";
+@import "src/app/main/apps/e-commerce/create-merchandise/create-merchandise.theme";
+@import "src/app/main/apps/e-commerce/images/images.theme";
+@import "src/app/main/apps/e-commerce/admin-profile/admin-profile.theme";
+@import "src/app/main/apps/e-commerce/admin-users/admin-users.theme";
+@import "src/app/main/apps/e-commerce/bike-images/bike-images.theme";
+@import "src/app/main/apps/e-commerce/bike-brand-detail/bike-brand-detail.theme";
+@import "src/app/main/apps/e-commerce/bike-brand-image/bike-brand-image.theme";
+@import "src/app/main/apps/e-commerce/event-image/event-image.theme";
+@import "src/app/main/apps/e-commerce/ride-image/ride-image.theme";
+@import "src/app/main/apps/e-commerce/biker-stories/biker-stories.theme";
+@import "src/app/main/apps/e-commerce/biker-post/biker-post.theme";
+@import "src/app/main/apps/e-commerce/biker-comments/biker-comments.theme";
+@import "src/app/main/apps/e-commerce/biker-profile/biker-profile.theme";
+@import "src/app/main/apps/e-commerce/sos/sos.theme";
+@import "src/app/main/apps/e-commerce/add-sos-countries/add-sos-countries.theme";
+@import "src/app/main/apps/e-commerce/sos-countries/sos-countries.theme";
+@import "src/app/main/apps/e-commerce/send-message/send-message.theme";
+@import "src/app/main/apps/e-commerce/view-ride/view-ride.theme";
+@import "src/app/main/apps/e-commerce/get-ride/get-ride.theme";
+@import "src/app/main/apps/e-commerce/view-event/view-event.theme";
+@import "src/app/main/apps/file-manager/file-manager.theme";
+
+@import "src/app/main/apps/mail/mail.theme";
+
+@import "src/app/main/pages/authentication/login/login.theme";
+@import "src/app/main/pages/authentication/login-2/login-2.theme";
+@import "src/app/main/pages/authentication/register/register.theme";
+@import "src/app/main/pages/authentication/register-2/register-2.theme";
+@import "src/app/main/pages/authentication/reset-password/reset-password.theme";
+@import "src/app/main/pages/authentication/reset-password-2/reset-password-2.theme";
+@import "src/app/main/pages/authentication/forgot-password/forgot-password.theme";
+@import "src/app/main/pages/authentication/forgot-password-2/forgot-password-2.theme";
+@import "src/app/main/pages/authentication/lock/lock.theme";
+@import "src/app/main/pages/authentication/mail-confirm/mail-confirm.theme";
+@import "src/app/main/pages/coming-soon/coming-soon.theme";
+@import "src/app/main/pages/errors/404/error-404.theme";
+@import "src/app/main/pages/errors/500/error-500.theme";
+@import "src/app/main/pages/maintenance/maintenance.theme";
+@import "src/app/main/pages/pricing/style-1/style-1.theme";
+@import "src/app/main/pages/pricing/style-2/style-2.theme";
+@import "src/app/main/pages/pricing/style-3/style-3.theme";
+@import "src/app/main/pages/profile/tabs/about/about.theme";
+@import "src/app/main/pages/profile/tabs/photos-videos/photos-videos.theme";
+@import "src/app/main/pages/profile/tabs/timeline/timeline.theme";
+@import "src/app/main/pages/search/classic/search-classic.theme";
+@import "src/app/main/pages/search/modern/search-modern.theme";
+@import "src/app/main/pages/faq/faq.theme";
+@import "src/app/main/pages/knowledge-base/knowledge-base.theme";
+
+// Define a mixin for easier access
+@mixin components-theme($theme) {
+  // Layout components
+  @include chat-panel-theme($theme);
+  @include toolbar-theme($theme);
+
+  // Apps
+  @include academy-theme($theme);
+  @include calendar-theme($theme);
+  @include chat-theme($theme);
+  @include contacts-theme($theme);
+  @include dashboards-project-theme($theme);
+  @include e-commerce-orders-theme($theme);
+  @include e-commerce-products-theme($theme);
+  @include e-commerce-add-merchandise-theme($theme);
+  @include e-commerce-edit-merchandise-theme($theme);
+  //@include e-commerce-purchased-merchandise-theme($theme);
+  //@include e-commerce-redeemed-coupons-theme($theme);
+  @include e-commerce-my-coupons-theme($theme);
+  @include e-commerce-add-coupon-theme($theme);
+  @include e-commerce-edit-coupon-theme($theme);
+  @include e-commerce-payments-theme($theme);
+  @include e-commerce-profile-theme($theme);
+  @include e-commerce-after-market-theme($theme);
+  @include e-commerce-merchandise-products-theme($theme);
+  @include e-commerce-users-theme($theme);
+  @include e-commerce-admin-users-theme($theme);
+  @include e-commerce-create-coupon-theme($theme);
+  @include e-commerce-approve-requests-theme($theme);
+  @include e-commerce-pending-profiles-theme($theme);
+  @include e-commerce-create-vendor-theme($theme);
+  @include e-commerce-edit-vendor-theme($theme);
+  @include e-commerce-user-posted-theme($theme);
+  @include e-commerce-bike-request-theme($theme);
+  @include e-commerce-business-query-theme($theme);
+  @include e-commerce-report-theme($theme);
+  @include e-commerce-previous-report-theme($theme);
+  @include e-commerce-feedback-theme($theme);
+  @include e-commerce-create-merchandise-theme($theme);
+  @include e-commerce-notification-theme($theme);
+  @include e-commerce-events-theme($theme);
+  @include e-commerce-add-payment-theme($theme);
+  @include e-commerce-dashboard-theme($theme);
+  @include e-commerce-create-event-theme($theme);
+  @include e-commerce-create-ride-theme($theme);
+  @include e-commerce-create-story-theme($theme);
+  @include e-commerce-add-admin-user-theme($theme);
+  @include e-commerce-edit-event-theme($theme);
+  @include e-commerce-admin-profile-theme($theme);
+  @include e-commerce-rides-theme($theme);
+  @include e-commerce-edit-ride-theme($theme);
+  @include e-commerce-ads-posted-theme($theme);
+  @include e-commerce-images-theme($theme);
+  @include e-commerce-bike-images-theme($theme);
+  @include e-commerce-bike-brand-detail-theme($theme);
+  @include e-commerce-bike-brand-image-theme($theme);
+  @include e-commerce-event-image-theme($theme);
+  @include e-commerce-ride-image-theme($theme);
+  @include e-commerce-sos-theme($theme);
+  @include e-commerce-send-message-theme($theme);
+  @include e-commerce-vendor-profile-theme($theme);
+  @include e-commerce-biker-stories-theme($theme);
+  @include e-commerce-biker-profile-theme($theme);
+  @include e-commerce-biker-post-theme($theme);
+  @include e-commerce-biker-comments-theme($theme);
+  @include e-commerce-view-ride-theme($theme);
+  @include e-commerce-get-ride-theme($theme);
+  @include e-commerce-view-event-theme($theme);
+  @include e-commerce-add-sos-countries-theme($theme);
+  @include e-commerce-sos-countries-theme($theme);
+  @include file-manager-theme($theme);
+  @include mail-theme($theme);
+
+  // Pages
+  @include login-theme($theme);
+  @include login-2-theme($theme);
+  @include register-theme($theme);
+  @include register-2-theme($theme);
+  @include reset-password-theme($theme);
+  @include reset-password-2-theme($theme);
+  @include forgot-password-theme($theme);
+  @include forgot-password-2-theme($theme);
+  @include lock-theme($theme);
+  @include mail-confirm-theme($theme);
+  @include coming-soon-theme($theme);
+  @include error-404-theme($theme);
+  @include error-500-theme($theme);
+  @include maintenance-theme($theme);
+  @include pricing-style-1-theme($theme);
+  @include pricing-style-2-theme($theme);
+  @include pricing-style-3-theme($theme);
+  @include profile-about-theme($theme);
+  @include profile-photos-videos-theme($theme);
+  @include profile-timeline-theme($theme);
+  @include search-classic-theme($theme);
+  @include search-modern-theme($theme);
+  @include faq-theme($theme);
+  @include knowledge-base-theme($theme);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define the default theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$default-primary-palette: mat-palette($fuse-navy);
+$default-accent-palette: mat-palette($mat-light-blue, 600, 400, 700);
+$default-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$theme: mat-light-theme(
+  $default-primary-palette,
+  $default-accent-palette,
+  $default-warn-palette
+);
+
+// Add ".theme-default" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-default {
+  // Create an Angular Material theme from the $theme map
+  @include angular-material-theme($theme);
+
+  // Apply the theme to the Fuse Core
+  @include fuse-core-theme($theme);
+
+  // Apply the theme to the user components
+  @include components-theme($theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $default-primary-palette,
+    accent: $default-accent-palette,
+    warn: $default-warn-palette
+  );
+
+  @include fuse-color-classes($palettes);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a yellow light theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$yellow-light-theme-primary-palette: mat-palette($fuse-navy, 600, 400, 700);
+$yellow-light-theme-accent-palette: mat-palette($mat-yellow, 600, 400, 700);
+$yellow-light-theme-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$yellow-light-theme: mat-light-theme(
+  $yellow-light-theme-primary-palette,
+  $yellow-light-theme-accent-palette,
+  $yellow-light-theme-warn-palette
+);
+
+// Add ".theme-yellow-light" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-yellow-light {
+  // Generate the Angular Material theme
+  @include angular-material-theme($yellow-light-theme);
+
+  // Apply the theme to the Fuse Core
+  @include fuse-core-theme($yellow-light-theme);
+
+  // Apply the theme to the user components
+  @include components-theme($yellow-light-theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $yellow-light-theme-primary-palette,
+    accent: $yellow-light-theme-accent-palette,
+    warn: $yellow-light-theme-warn-palette
+  );
+
+  @include fuse-color-classes($palettes);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a blue-gray dark theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$blue-gray-dark-theme-primary-palette: mat-palette($mat-blue);
+$blue-gray-dark-theme-accent-palette: mat-palette($mat-blue-gray);
+$blue-gray-dark-theme-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$blue-gray-dark-theme: mat-dark-theme(
+  $blue-gray-dark-theme-primary-palette,
+  $blue-gray-dark-theme-accent-palette,
+  $blue-gray-dark-theme-warn-palette
+);
+
+// Add ".theme-blue-gray-dark" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-blue-gray-dark {
+  // Generate the Angular Material theme
+  @include angular-material-theme($blue-gray-dark-theme);
+
+  // Apply the theme to the Fuse Core
+  @include fuse-core-theme($blue-gray-dark-theme);
+
+  // Apply the theme to the user components
+  @include components-theme($blue-gray-dark-theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $blue-gray-dark-theme-primary-palette,
+    accent: $blue-gray-dark-theme-accent-palette,
+    warn: $blue-gray-dark-theme-warn-palette
+  );
+
+  @include fuse-color-classes($palettes);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a pink dark theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$pink-dark-theme-primary-palette: mat-palette($mat-pink);
+$pink-dark-theme-accent-palette: mat-palette($mat-pink);
+$pink-dark-theme-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$pink-dark-theme: mat-dark-theme(
+  $pink-dark-theme-primary-palette,
+  $pink-dark-theme-accent-palette,
+  $pink-dark-theme-warn-palette
+);
+
+// Add ".theme-pink-dark" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-pink-dark {
+  // Generate the Angular Material theme
+  @include angular-material-theme($pink-dark-theme);
+
+  // Apply the theme to the Fuse Core
+  @include fuse-core-theme($pink-dark-theme);
+
+  // Apply the theme to the user components
+  @include components-theme($pink-dark-theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $pink-dark-theme-primary-palette,
+    accent: $pink-dark-theme-accent-palette,
+    warn: $pink-dark-theme-warn-palette
+  );
+
+  @include fuse-color-classes($palettes);
+}

@@ -1,0 +1,98 @@
+@import "src/@fuse/scss/fuse";
+@import "src/assets/css/view-ads-posted";
+
+.view-ads-posted {
+
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+
+    @include media-breakpoint('gt-xs') {
+        width: 640px;
+    }
+
+    .mat-dialog-container {
+        padding: 0;
+
+        .compose-form {
+
+            .mat-form-field {
+                width: 100%;
+            }
+            .show-hide-extra-fields {
+                text-align: right;
+                cursor: pointer;
+                font-size: 12px;
+            }
+            
+            .attachment-list {
+                font-size: 13px;
+
+                .attachment {
+                    border: 1px solid;
+                    border-radius: 20px;
+                    padding-left: 16px;
+                    margin-top: 8px;
+
+                    .filename {
+                        font-weight: 600;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .fuse-white {
+        background-color:#f79726 !important;
+        color:#ffffff !important;
+    }
+    .mat-toolbar{
+        background: #ffffff !important;
+        color: #000000 !important;
+        border-bottom: 1px solid #0000001f;
+    }
+    .mat-toolbar-row {
+        height: 64px !important;
+    }
+    .mat-icon {
+        color: #f79726 !important;
+    }
+    .plus {
+        color: #f79726 !important;
+        font-size: 30px;
+        margin-left:20px;
+    }
+    .pr-10{
+        padding-right:10px;
+    }
+    .top-left {
+        position: absolute;
+        top: 195px;
+        left: 80px;
+        font-weight: 900;
+        color: #ffffff;
+        display:block;
+        width:150px;
+        word-wrap:break-word;
+      }
+      .overlayImage {
+        position:relative;
+        background:rgba(0,0,0,0.6);
+        opacity: 1;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+        
+      }
+    
+    
+    
+}

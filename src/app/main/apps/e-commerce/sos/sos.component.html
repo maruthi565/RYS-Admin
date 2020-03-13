@@ -1,0 +1,442 @@
+<div id="sos" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent first"
+      fxLayout="col"
+      fxLayoutAlign="start start"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="start center"
+    >
+      <!-- APP TITLE -->
+      <div
+        class="logo mb-24"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        style="margin-top:60px;"
+      >
+        <!-- <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon> -->
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          SOS
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+      <!-- ADD BUTTON -->
+      <!-- <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'"
+                class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW PRODUCT</span>
+            </button> -->
+      <!-- / ADD BUTTON -->
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start"
+        fxLayout.gt-sm="row"
+        flex-md="33"
+        style="margin-left:30px;margin-top:60px;"
+      >
+        <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start"> -->
+        <!--Widget 1-->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="40">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-98'"
+            style="width:85% !important;height:90% !important"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16">
+                <div class="h3 secondary-text">Home Screen SOS Users</div>
+                <div class="font-size-22 line-height-1 mt-8">
+                  {{ infoboxescount.Home_Screen_SOS_Users }}
+                  <span id="icon" style="margin-left: 22px;">
+                    <!-- <mat-icon aria-hidden="false" aria-label="strength" class="peopleicon">
+                                            people_outline
+                                        </mat-icon> -->
+                    <img src="assets/icons/target.svg" width="40" height="40" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="widget col"
+          fxFlex="100"
+          fxFlex.gt-sm="40"
+          style="margin-left: -20px;"
+        >
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-98'"
+            style="width:85% !important;height:90% !important"
+          >
+            <div
+              class="p-16 pb-0"
+              fxLayout="row wrap"
+              fxLayoutAlign="start end"
+            >
+              <div class="pr-16">
+                <div class="h3 secondary-text">Ride Screen SOS Users</div>
+                <div class="font-size-22 line-height-1 mt-8">
+                  {{ infoboxescount.Ride_Screen_SOS_Users }}
+                  <span id="icon" style="margin-left: 22px;">
+                    <!-- <mat-icon aria-hidden="false" aria-label="strength" class="peopleicon">
+                                            people_outline
+                                        </mat-icon> -->
+                    <img src="assets/icons/target.svg" width="40" height="40" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="search-wrapper" style="margin-left:-120px;">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <input
+            [(ngModel)]="searchTerm"
+            (input)="filterSOSByName($event)"
+            placeholder="Search SOS"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row col-md-12">
+      <div class="center">
+        <div
+          class="header accent"
+          id="last"
+          fxLayout="column"
+          fxLayoutAlign="center end"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="space-between center"
+          style="background-color:black !important;"
+        >
+          <!-- SEARCH -->
+          <div
+            class="search-wrapper mx-32 mx-md-0"
+            style="margin-left:130px !important;"
+          >
+            <div
+              class="search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            ></div>
+          </div>
+          <div fxFlex="27%"></div>
+          <div class="custom-wrapper" style="margin-top:-30px">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <button
+                mat-raised-button
+                class="add-product-button fuse-black mt-24 mt-md-0"
+                (click)="exportToExcel()"
+              >
+                <span>Export</span>
+              </button>
+            </div>
+          </div>
+          <div class="custom-wrapper" style="margin-top:-30px">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-form-field style="width:150px;">
+                <mat-label style="color:#fff;">Search city</mat-label>
+                <input
+                  matInput
+                  [(ngModel)]="selectedCity"
+                  type="text"
+                  (keydown.enter)="$event.preventDefault()"
+                  placeholder="Search city"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="off"
+                  type="text"
+                  #SOSCitySearch
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="custom-wrapper" style="margin-top:-30px">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-form-field style="width:100px;">
+                <mat-label style="color:#fff;">Brand </mat-label>
+                <mat-select
+                  class="simplified"
+                  [(ngModel)]="selectedBrand"
+                  (selectionChange)="brandSelectionChange($event)"
+                >
+                  <mat-option
+                    *ngFor="let brand of bikeBrands"
+                    [value]="brand.BrandID"
+                  >
+                    {{ brand.BrandName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="custom-wrapper" style="margin-top:-30px">
+            <div
+              class="custom-search"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="btn"
+            >
+              <button
+                mat-raised-button
+                class="add-product-button fuse-white mt-24 mt-md-0"
+                (click)="modalDialog()"
+              >
+                <span>Send Message</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- / SEARCH -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <!-- CONTENT -->
+      <div class="content">
+        <mat-tab-group
+          #tabGroup
+          (selectedIndexChange)="
+            _setDataSource($event); selected.setValue($event)
+          "
+          [selectedIndex]="selected.value"
+        >
+          <mat-tab label="Home Screen SOS Users">
+            <div class="example-container mat-elevation-z8">
+              <mat-table
+                #table
+                [dataSource]="dataSource"
+                #sort="matSort"
+                matSort
+              >
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox
+                      (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()"
+                    >
+                    </mat-checkbox>
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <mat-checkbox
+                      (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)"
+                    >
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="position" style="display:none;">
+                  <mat-header-cell *matHeaderCellDef style="display:none;">
+                    No.
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let element" style="display:none;">
+                    {{ element.position }}
+                  </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                    <img
+                      class="avatar mr-0 mr-sm-16"
+                      src="{{
+                        element.ProfilePic ||
+                          'assets/images/profile/default-avatar.png'
+                      }}"
+                      (error)="onImgError($event)"
+                    />
+
+                    <p class="text-truncate">
+                      {{ element.FirstName }} {{ element.LastName }}
+                    </p>
+                  </mat-cell>
+                </ng-container>
+                <!-- -->
+
+                <ng-container matColumnDef="type">
+                  <mat-header-cell *matHeaderCellDef>
+                    Type Of SOS</mat-header-cell
+                  >
+                  <mat-cell *matCellDef="let element">
+                    <p
+                      style="color:#e95130;cursor:pointer;"
+                      (click)="view_Home_RideDialog(element, 'Home')"
+                    >
+                      View
+                    </p>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="used">
+                  <mat-header-cell *matHeaderCellDef>SOS Used</mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                    {{ element.SOSActivityCount }}
+                  </mat-cell>
+                </ng-container>
+
+                <mat-header-row
+                  *matHeaderRowDef="displayedColumns"
+                ></mat-header-row>
+                <mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></mat-row>
+              </mat-table>
+
+              <mat-paginator
+                #paginator
+                [length]="dataSource.data.length"
+                [pageSize]="3"
+                [pageIndex]="0"
+                [pageSizeOptions]="[1, 3, 5, 10]"
+                showFirstLastButtons
+              ></mat-paginator>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Ride Screen SOS Users">
+            <div class="example-container mat-elevation-z8">
+              <mat-table
+                #table
+                [dataSource]="dataSource2"
+                #sort2="matSort"
+                matSort
+              >
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox
+                      (change)="$event ? masterToggle2() : null"
+                      [checked]="selection2.hasValue() && isAllSelected2()"
+                      [indeterminate]="
+                        selection2.hasValue() && !isAllSelected2()
+                      "
+                      [aria-label]="checkboxLabel2()"
+                    >
+                    </mat-checkbox>
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <mat-checkbox
+                      (click)="$event.stopPropagation()"
+                      (change)="$event ? selection2.toggle(row) : null"
+                      [checked]="selection2.isSelected(row)"
+                      [aria-label]="checkboxLabel2(row)"
+                    >
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="position" style="display:none;">
+                  <mat-header-cell *matHeaderCellDef style="display:none;">
+                    No.
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let element" style="display:none;">
+                    {{ element.position }}
+                  </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                  <mat-cell
+                    *matCellDef="let element"
+                    [routerLink]="'/apps/e-commerce/my-coupons'"
+                    style="cursor:pointer;"
+                  >
+                    <img
+                      class="avatar mr-0 mr-sm-16"
+                      src="{{
+                        element.ProfilePic ||
+                          'assets/images/profile/default-avatar.png'
+                      }}"
+                      (error)="onImgError($event)"
+                    />
+
+                    <p class="text-truncate">
+                      {{ element.FirstName }} {{ element.LastName }}
+                    </p>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                  <mat-header-cell *matHeaderCellDef>
+                    Type Of SOS</mat-header-cell
+                  >
+                  <mat-cell *matCellDef="let element">
+                    <p
+                      style="color:#e95130;cursor:pointer;"
+                      (click)="view_Home_RideDialog(element, 'Ride')"
+                    >
+                      View
+                    </p>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="used">
+                  <mat-header-cell *matHeaderCellDef>SOS Used</mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                    {{ element.SOSActivityCount }}
+                  </mat-cell>
+                </ng-container>
+
+                <mat-header-row
+                  *matHeaderRowDef="displayedColumns2"
+                ></mat-header-row>
+                <mat-row
+                  *matRowDef="let row; columns: displayedColumns2"
+                ></mat-row>
+              </mat-table>
+
+              <mat-paginator
+                #paginator2
+                [length]="dataSource2.data.length"
+                [pageSize]="3"
+                [pageIndex]="0"
+                [pageSizeOptions]="[1, 3, 5, 10]"
+                showFirstLastButtons
+              ></mat-paginator>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

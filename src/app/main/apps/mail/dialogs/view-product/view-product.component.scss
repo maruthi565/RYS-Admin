@@ -1,0 +1,99 @@
+@import "src/@fuse/scss/fuse";
+
+.view-product {
+
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+
+    @include media-breakpoint('gt-xs') {
+        width: 640px;
+    }
+
+    .mat-dialog-container {
+        padding: 0;
+
+        .compose-form {
+
+            .mat-form-field {
+                width: 100%;
+            }
+
+            .show-hide-extra-fields {
+                text-align: right;
+                cursor: pointer;
+                font-size: 12px;
+            }
+
+            .attachment-list {
+                font-size: 13px;
+
+                .attachment {
+                    border: 1px solid;
+                    border-radius: 20px;
+                    padding-left: 16px;
+                    margin-top: 8px;
+
+                    .filename {
+                        font-weight: 600;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#viewProduct .mat-toolbar-row {
+    height: 60px;
+}
+#viewProduct .close {
+//    margin-top:15px;
+    color: #FB8E0B !important;
+}
+// body.theme-default .mat-toolbar  {
+//     background-image : url('assets/images/cards/newbike.png');
+// }
+#viewProduct .circle {
+    background: #eee;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border-radius: 100%;
+    // box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+
+#viewProduct .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    display: block;
+    
+}
+#viewProduct .view-product .dialog-content-wrapper {
+    margin-top:-21px;
+} 
+#viewProduct .strikeline {
+    color:#ef5827;
+    text-decoration: line-through;
+}
+#viewProduct .carousel-slide {
+    width: 100%;
+    height: 210px !important;
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+}

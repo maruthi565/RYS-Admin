@@ -1,0 +1,138 @@
+@import "src/@fuse/scss/fuse";
+@import "src/assets/css/app";
+@import "src/assets/css/notification";
+
+e-commerce-notification {
+
+    #notification {
+
+        .top-bg {
+
+            background-color:#000000 !important;
+
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                background-color:#000000 !important;
+
+                .search-wrapper {
+                    width: 50%;
+                    max-width: 215px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+
+                    }
+                    .search {
+                        width: 80%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+
+                        input {
+                            width: 80%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+                .fuse-white{
+                    background-color:#f79726 !important;
+                    color:#ffffff !important;
+                }
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+        .fuse-black {
+            background-color: #000000 !important;
+            color:#ffffff !important;
+            border:1px solid #f79726;
+        }
+        .fuse-orange {
+            background-color: #ffffff !important;
+            color:#f79726 !important;
+            border:1px solid #f79726;
+        }
+        .peopleicon {
+            color: #e95130 !important;
+        }
+        .content {
+            flex: 1;
+    
+            .file-details {
+    
+                .title {
+                    padding: 16px 0;
+                }
+    
+                table {
+                    width: 40%;
+                    text-align: left;
+    
+                    tr {
+    
+                        th, td {
+                            padding: 10px 0;
+                        }
+    
+                        &.type {
+                            text-transform: capitalize;
+                        }
+                        &.owner {
+                            text-transform: capitalize;
+                        }
+                    }
+                }
+            }
+        }
+        .type {
+            th{
+                font-size:25px;
+            }
+            mat-icon{
+                font-size:18px;
+                color:#e95130;
+            }
+        }
+        .size{
+            th{
+                font-weight:300;
+            }
+        }
+        .location {
+            th{
+                font-weight: 300;
+            }
+        }
+        .owner {
+            th{
+                font-weight: 300;
+            }
+        }
+         .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+            background-color: #f79726;
+        }
+        .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+            background-color: #ffd29a;
+        }
+    } 
+   
+}

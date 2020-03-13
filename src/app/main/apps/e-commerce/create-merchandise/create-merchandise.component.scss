@@ -1,0 +1,199 @@
+@import "src/@fuse/scss/fuse";
+@import "src/assets/css/app";
+
+e-commerce-create-merchandise {
+
+    #createMerchandise {
+
+        .top-bg {
+
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                .search-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+        .active-icon {
+            border-radius: 50%;
+        }
+        .mt-5 {
+            margin-top:5px;
+        }
+    }
+
+}
+
+.fuse-green {
+    background-color: #fff;
+    color:#4d951f !important;;
+    border:1px solid #4d951f;
+}
+.fuse-red {
+    background-color: #fff;
+    color:red !important;;
+    border:1px solid red;
+}
+body.theme-default .mat-raised-button:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+.test {
+    width:35%;
+    float:left;
+    margin-right:20px
+}
+
+p span{
+    display: list-item;
+    list-style:none;
+}
+
+
+body.theme-default .page-layout.carded.fullwidth > .center > .content-card {
+    background: white;
+    border-radius: 8px 8px 0 0;
+   
+}
+#createMerchandise .content-card .card-heading{
+    font-size:20px !important;
+    font-weight:400 !important;
+}
+#createMerchandise .file-upload {
+    background-color: #ffffff;
+    width: 275px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-left: 30px;
+  }
+  
+  #createMerchandise .file-upload-btn {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    background: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #15824B;
+    transition: all .2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  
+  #createMerchandise  .file-upload-btn:hover {
+    color: #f79726;
+    transition: all .2s ease;
+    cursor: pointer;
+  }
+  
+  #createMerchandise .file-upload-btn:active {
+    border: 0;
+    transition: all .2s ease;
+  }
+  
+  #createMerchandise .file-upload-content {
+    display: none;
+    text-align: center;
+  }
+  
+  #createMerchandise .file-upload-input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  #createMerchandise .image-upload-wrap {
+    margin-top: 0px;
+    border: 2px dashed #f79726;
+    position: relative;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+  
+  #createMerchandise .image-dropping,
+  .image-upload-wrap:hover {
+    border: 2px dashed #f79726;
+  }
+  
+  #createMerchandise  .image-title-wrap {
+    padding: 0 15px 15px 15px;
+    color: #222;
+  }
+  
+  #createMerchandise .drag-text {
+    text-align: center;
+  }
+  
+  #createMerchandise .drag-text h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #f79726;
+    padding: 22px 0;
+  }
+  
+  #createMerchandise  .file-upload-image {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
+  }
+  body.theme-default .mat-datepicker-toggle{
+      color:#f79726;
+  }
+  #createMerchandise .mat-form-field {
+      font-size:14px;
+  }
+  #addMerchandise .mat-select-panel {
+    min-width: calc(83% + 64px) !important;
+    margin-left:30px;
+    margin-top:42px;
+  }
+  body.theme-default .page-layout.carded.fullwidth > .center > .content-card {
+    background: white;
+    border-radius: 8px 8px 0 0;
+    margin-top: 40px;
+}
