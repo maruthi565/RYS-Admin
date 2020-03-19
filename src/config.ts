@@ -1,6 +1,7 @@
 export const baseenvironment = {
   //production: false,
-  baseUrl: "https://api.revyoursoul.com/dev/"
+  baseUrl: "https://api.revyoursoul.com/dev/",
+  xapikey: "pEnt2cTuXgKa4zf8FNTSapMmNGXuQbo8jJW0EXec"
 };
 
 export const firebaseenvironment = {

@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { baseenvironment } from "config";
+
+const headers = new HttpHeaders({
+    "Content-Type": "application/json",
+    "X-Api-Key":"pEnt2cTuXgKa4zf8FNTSapMmNGXuQbo8jJW0EXec"
+  });
 
 @Injectable()
 export class LoginService implements Resolve<any>
@@ -48,7 +54,7 @@ export class LoginService implements Resolve<any>
     authenticate(login): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.post(this.apiUrl + 'adminusers' ,JSON.stringify(login))
+            this._httpClient.post(`${this.apiUrl}adminusers` ,JSON.stringify(login),{headers})
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

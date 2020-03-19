@@ -6,10 +6,13 @@ import {
 } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
-import { baseenvironment } from "config";
+import * as config from "config";
+
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":"pEnt2cTuXgKa4zf8FNTSapMmNGXuQbo8jJW0EXec"
 });
+
 @Injectable()
 export class LeaderboardService implements Resolve<any> {
   products: any[];
@@ -48,7 +51,7 @@ export class LeaderboardService implements Resolve<any> {
   getLeaderboardTypes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "leaderboardmessagetype")
+        .get(config.baseenvironment.baseUrl + "leaderboardmessagetype",{headers})
         .subscribe((response: any) => {
           // this.leaderboardTypesList = response.LeaderboardMessageTypes;
           this.leaderboardTypesList = response;
@@ -65,7 +68,7 @@ export class LeaderboardService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
         .put(
-          baseenvironment.baseUrl + "leaderboardmessagetype/" + id,
+          config.baseenvironment.baseUrl + "leaderboardmessagetype/" + id,
           JSON.stringify(data),
           {
             headers

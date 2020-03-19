@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         });
         this.loginForm.patchValue({
             EmailID: 'naresh@gmail.com',
-            Password: 'naresh@123'
+            Password: 'RYS@123!'
         });
     }
 

@@ -9,7 +9,8 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":"pEnt2cTuXgKa4zf8FNTSapMmNGXuQbo8jJW0EXec"
 });
 @Injectable()
 export class UsersService implements Resolve<any> {
@@ -56,7 +57,7 @@ export class UsersService implements Resolve<any> {
   getUsers(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,{headers})
         .subscribe((response: any) => {
           //this.usersData = response.Users;
           //this.onUsersChanged.next(this.usersData);
@@ -99,7 +100,7 @@ export class UsersService implements Resolve<any> {
   getInfoBoxes(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,{headers})
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -108,7 +109,7 @@ export class UsersService implements Resolve<any> {
   getBikeBrandInfoBoxes(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "usersbybikebrand-count?BrandID=" + url)
+        .get(baseenvironment.baseUrl + "usersbybikebrand-count?BrandID=" + url,{headers})
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -117,7 +118,7 @@ export class UsersService implements Resolve<any> {
   getUserProfiles(UserID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "users?UserID=" + UserID)
+        .get(baseenvironment.baseUrl + "users?UserID=" + UserID,{headers})
         .subscribe((response: any) => {
           //  this.profileData = response.Users;
           // this.onProfileChanged.next(this.profileData);
