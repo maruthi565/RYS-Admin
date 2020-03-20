@@ -10,7 +10,7 @@ import * as config from "config";
 
 const headers = new HttpHeaders({
   "Content-Type": "application/json",
-  "X-Api-Key":"pEnt2cTuXgKa4zf8FNTSapMmNGXuQbo8jJW0EXec"
+  "X-Api-Key":config.baseenvironment.xapikey
 });
 
 @Injectable()

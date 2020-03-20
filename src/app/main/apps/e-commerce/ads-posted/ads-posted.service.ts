@@ -8,7 +8,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
 });
 @Injectable()
 export class EcommerceAdsService implements Resolve<any> {
@@ -45,7 +46,7 @@ export class EcommerceAdsService implements Resolve<any> {
   getAdsPosted(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,{headers})
         .subscribe((response: any) => {
           this.adsData = response;
           this.myadsChanged.next(this.adsData);
@@ -57,7 +58,7 @@ export class EcommerceAdsService implements Resolve<any> {
   getBikeBrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrands")
+        .get(baseenvironment.baseUrl + "bikebrands",{headers})
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -66,7 +67,7 @@ export class EcommerceAdsService implements Resolve<any> {
   deleteAdsPosted(AdminAdID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "adminads/" + AdminAdID)
+        .delete(baseenvironment.baseUrl + "adminads/" + AdminAdID,{headers})
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);

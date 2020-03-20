@@ -4,11 +4,17 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse ,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable, throwError } from "rxjs";
 import { MatDialog, MatDialogRef } from "@angular/material";
 import { catchError, map } from "rxjs/operators";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
+
 
 @Injectable()
 export class RidesService implements Resolve<any> {
@@ -60,7 +66,7 @@ export class RidesService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       // this._httpClient.get(this.apiUrl + 'gethomerides?UserID='+localStorage.getItem('AdminUserID'))
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,{headers})
         .subscribe((response: any) => {
           this.ridesData = response;
           // this.ridesChanged.next(this.ridesData);
@@ -73,7 +79,7 @@ export class RidesService implements Resolve<any> {
   deleteRide(rideID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "rides/" + rideID)
+        .delete(baseenvironment.baseUrl + "rides/" + rideID,{headers})
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
@@ -83,7 +89,7 @@ export class RidesService implements Resolve<any> {
   getInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "ridesinfoboxes")
+        .get(baseenvironment.baseUrl + "ridesinfoboxes",{headers})
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -92,7 +98,7 @@ export class RidesService implements Resolve<any> {
   getrideCities(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "rides-cities")
+        .get(baseenvironment.baseUrl + "rides-cities",{headers})
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
