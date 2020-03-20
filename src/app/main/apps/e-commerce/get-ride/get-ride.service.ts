@@ -20,7 +20,7 @@ export class EcommerceProductsService implements Resolve<any>
         // Set the defaults
         this.onProductsChanged = new BehaviorSubject({});
     }
-
+    
     /**
      * Resolver
      *
