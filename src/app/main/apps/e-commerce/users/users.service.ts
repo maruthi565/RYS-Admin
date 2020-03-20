@@ -12,6 +12,7 @@ const headers = new HttpHeaders({
   "Content-Type": "application/json",
   "X-Api-Key":baseenvironment.xapikey
 });
+
 @Injectable()
 export class UsersService implements Resolve<any> {
   usersData: any[];

@@ -8,6 +8,11 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
 
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":"pEnt2cTuXgKa4zf8FNTSapMmNGXuQbo8jJW0EXec"
+});
+
 @Injectable()
 export class EcommerceAdddLeaderboardMessageTypeService
   implements Resolve<any> {
@@ -55,7 +60,8 @@ export class EcommerceAdddLeaderboardMessageTypeService
       this._httpClient
         .post(
           baseenvironment.baseUrl + "leaderboardmessagetype",
-          JSON.stringify(leaderboardtype)
+          JSON.stringify(leaderboardtype),
+          {headers}
         )
         .subscribe((response: any) => {
           resolve(response);
@@ -65,7 +71,7 @@ export class EcommerceAdddLeaderboardMessageTypeService
   getLeaderboardTypes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "leaderboardmessagetype")
+        .get(baseenvironment.baseUrl + "leaderboardmessagetype",{headers})
         .subscribe((response: any) => {
           this.leaderboardTypesList = response.LeaderboardMessageTypes;
           this.onLeaderboardTypeChanged.next(this.leaderboardTypesList);

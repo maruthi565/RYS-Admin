@@ -4,7 +4,11 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
+<<<<<<< HEAD
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+=======
+import { HttpClient,HttpHeaders } from "@angular/common/http";
+>>>>>>> b960a8a9568062102503960ed8a17a1d8454ebd0
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 

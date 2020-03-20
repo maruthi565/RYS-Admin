@@ -4,15 +4,26 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
+<<<<<<< HEAD
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+=======
+import { HttpClient,HttpHeaders } from "@angular/common/http";
+>>>>>>> b960a8a9568062102503960ed8a17a1d8454ebd0
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
 const headers = new HttpHeaders({
   "Content-Type": "application/json",
+<<<<<<< HEAD
   "X-Api-Key":baseenvironment.xapikey
 });
 
+=======
+  "X-Api-Key": baseenvironment.xapikey
+});
+
+
+>>>>>>> b960a8a9568062102503960ed8a17a1d8454ebd0
 @Injectable()
 export class EcommerceUserPostedService implements Resolve<any> {
   products: any[];
