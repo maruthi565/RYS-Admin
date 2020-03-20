@@ -4,12 +4,17 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import { MatTableDataSource } from "@angular/material";
 import { baseenvironment } from "../../../../../config";
 import { basename } from "path";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EventsService implements Resolve<any> {
@@ -58,7 +63,10 @@ export class EventsService implements Resolve<any> {
 
     return new Promise((resolve, reject) => {
       this._httpClient
-        .post(baseenvironment.baseUrl + "events", JSON.stringify(event))
+        .post(baseenvironment.baseUrl + "events", JSON.stringify(event),
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
@@ -67,13 +75,19 @@ export class EventsService implements Resolve<any> {
   }
 
   getBikesAndModels(): any {
-    return this._httpClient.get(baseenvironment.baseUrl + "bikebrandmodels");
+    return this._httpClient.get(baseenvironment.baseUrl + "bikebrandmodels",
+    {
+      headers
+    });
   }
 
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "countries")
+        .get(baseenvironment.baseUrl + "countries",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -82,7 +96,10 @@ export class EventsService implements Resolve<any> {
   deleteEvent(EventID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "events/" + EventID)
+        .delete(baseenvironment.baseUrl + "events/" + EventID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
@@ -93,7 +110,10 @@ export class EventsService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       // this._httpClient.get(this.apiUrl + 'gethomerides?UserID='+localStorage.getItem('AdminUserID'))
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           this.eventData = response;
           // this.onEventChanged.next(this.eventData);
@@ -114,7 +134,10 @@ export class EventsService implements Resolve<any> {
   getBikeBrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrands")
+        .get(baseenvironment.baseUrl + "bikebrands",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

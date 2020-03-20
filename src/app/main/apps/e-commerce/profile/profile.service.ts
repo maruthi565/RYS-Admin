@@ -96,12 +96,7 @@ export class EcommerceUserProfileService implements Resolve<any> {
         .get(
           baseenvironment.baseUrl +
             "subscriptionpurchasedetails?UserID=" +
-<<<<<<< HEAD
             UserID,{headers}
-=======
-            UserID,
-            {headers}
->>>>>>> b960a8a9568062102503960ed8a17a1d8454ebd0
         )
         .subscribe((response: any) => {
           // this.profileData = response.Users;
