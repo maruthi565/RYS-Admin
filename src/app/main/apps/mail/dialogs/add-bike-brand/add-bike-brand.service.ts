@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":"pEnt2cTuXgKa4zf8FNTSapMmNGXuQbo8jJW0EXec"
+});
 
 @Injectable()
 export class EcommerceAddBikeBrandService implements Resolve<any> {
@@ -62,7 +67,10 @@ export class EcommerceAddBikeBrandService implements Resolve<any> {
   addBikeBrand(bikebrand): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .post(baseenvironment.baseUrl + "bikebrands", JSON.stringify(bikebrand))
+        .post(baseenvironment.baseUrl + "bikebrands", JSON.stringify(bikebrand),
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
