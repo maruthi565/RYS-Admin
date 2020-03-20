@@ -8,7 +8,10 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
-const headers = new HttpHeaders({ "Content-Type": "Application/json" });
+
+
+const headers = new HttpHeaders({ "Content-Type": "Application/json", 
+"X-Api-Key":baseenvironment.xapikey});
 const httpOptions = {
   headers: new HttpHeaders({
     "Access-Control-Allow-Origin": "*"
@@ -58,7 +61,10 @@ export class CreateRideService implements Resolve<any> {
   getBrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrandmodels")
+        .get(baseenvironment.baseUrl + "bikebrandmodels",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.bikeBrandModels = response;
           this.onCreateRideChanged.next(this.bikeBrandModels);
@@ -71,7 +77,11 @@ export class CreateRideService implements Resolve<any> {
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "countries")
+        .get(baseenvironment.baseUrl + "countries",
+        
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //this.countriesModels = response;
           //this.onCreateRideChanged.next(this.countriesModels);
@@ -159,7 +169,10 @@ export class CreateRideService implements Resolve<any> {
 
     return new Promise((resolve, reject) => {
       this._httpClient
-        .post(baseenvironment.baseUrl + "rides", JSON.stringify(ride))
+        .post(baseenvironment.baseUrl + "rides", JSON.stringify(ride),
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
