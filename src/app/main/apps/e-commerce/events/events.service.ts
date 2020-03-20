@@ -125,7 +125,10 @@ export class EventsService implements Resolve<any> {
   getInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "eventsinfoboxes")
+        .get(baseenvironment.baseUrl + "eventsinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

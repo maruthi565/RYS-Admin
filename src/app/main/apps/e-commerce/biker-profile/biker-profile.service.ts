@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceBikerProfileService implements Resolve<any> {
@@ -47,7 +52,10 @@ export class EcommerceBikerProfileService implements Resolve<any> {
   getStoryByUserID(UserID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "stories?UserID=" + UserID + "&Offset=0")
+        .get(baseenvironment.baseUrl + "stories?UserID=" + UserID + "&Offset=0",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //this.commentsData = response.Comments;
           // this.oncommentsChanged.next(this.commentsData);

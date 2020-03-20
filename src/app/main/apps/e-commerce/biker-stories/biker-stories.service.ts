@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders} from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceBikerStories implements Resolve<any> {
@@ -47,7 +52,10 @@ export class EcommerceBikerStories implements Resolve<any> {
   getStories(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           this.storiesData = response;
           this.myStoriesChanged.next(this.storiesData);
@@ -59,7 +67,10 @@ export class EcommerceBikerStories implements Resolve<any> {
   getMaximumPostedUser(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           // this.maxPostedUserData = response;
           // this.maxPostedUserChanged.next(this.maxPostedUserData);
@@ -70,7 +81,10 @@ export class EcommerceBikerStories implements Resolve<any> {
   getTopCommentedPosts(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -79,7 +93,10 @@ export class EcommerceBikerStories implements Resolve<any> {
   getTopLikedPosts(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -88,7 +105,10 @@ export class EcommerceBikerStories implements Resolve<any> {
   deleteStory(StoryID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "stories/" + StoryID)
+        .delete(baseenvironment.baseUrl + "stories/" + StoryID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
@@ -102,7 +122,10 @@ export class EcommerceBikerStories implements Resolve<any> {
           baseenvironment.baseUrl +
             "stories?" +
             Number(localStorage.getItem("LikeStoryID")) +
-            "&Liked=1"
+            "&Liked=1" ,
+            {
+              headers
+            }
         )
         .subscribe((response: any) => {
           resolve(response);
@@ -112,7 +135,10 @@ export class EcommerceBikerStories implements Resolve<any> {
   getInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikerstories-infoboxes")
+        .get(baseenvironment.baseUrl + "bikerstories-infoboxes" ,
+        {
+          
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
