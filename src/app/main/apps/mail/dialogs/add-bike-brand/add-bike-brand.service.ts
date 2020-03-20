@@ -4,7 +4,7 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
 
@@ -67,10 +67,7 @@ export class EcommerceAddBikeBrandService implements Resolve<any> {
   addBikeBrand(bikebrand): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .post(baseenvironment.baseUrl + "bikebrands", JSON.stringify(bikebrand),
-        {
-          headers
-        })
+        .post(baseenvironment.baseUrl + "bikebrands", JSON.stringify(bikebrand),{headers})
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

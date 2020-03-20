@@ -4,7 +4,7 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient, HttpHeaders,HttpErrorResponse } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
