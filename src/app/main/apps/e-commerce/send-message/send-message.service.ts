@@ -10,7 +10,8 @@ import { baseenvironment } from "../../../../../config";
 
 const headers = new HttpHeaders({
   // "Access-Control-Allow-Origin": "*",
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
   // cors: "true",
   // Authorization:
   //   "key=AAAAF6GP9HY:APA91bEhAfF11EB0i9O2Y-2h0zsNGWI5WbL8icxvdgLdi5j1GNDvxAqmfr72NPM0MFbCN3Qu16jfonykboy0X7pw-3GQUIvd6GEQixFTtLik5Hm3pfKWQRil5VbyKxhU5GZiB64oHGDu"

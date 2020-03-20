@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import {
   ActivatedRouteSnapshot,
   Resolve,
@@ -7,6 +7,11 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class DashboardService implements Resolve<any> {
@@ -51,7 +56,7 @@ export class DashboardService implements Resolve<any> {
   getProjects(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get("api/project-dashboard-projects")
+        .get("api/project-dashboard-projects",{headers})
         .subscribe((response: any) => {
           this.projects = response;
           resolve(response);
@@ -62,7 +67,7 @@ export class DashboardService implements Resolve<any> {
   getDashboard(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "dashboard")
+        .get(baseenvironment.baseUrl + "dashboard",{headers})
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -76,7 +81,7 @@ export class DashboardService implements Resolve<any> {
   getWidgets(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get("api/project-dashboard-widgets")
+        .get("api/project-dashboard-widgets",{headers})
         .subscribe((response: any) => {
           this.widgets = response;
           resolve(response);
