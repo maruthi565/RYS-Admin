@@ -9,12 +9,6 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
 
-<<<<<<< HEAD
-=======
-
-const headers = new HttpHeaders({ "Content-Type": "Application/json", 
-"X-Api-Key":baseenvironment.xapikey});
->>>>>>> 078ab9417e8a4f41f6fc102d9f3d4a7bbfb770a7
 const httpOptions = {
   headers: new HttpHeaders({
     "Access-Control-Allow-Origin": "*",
@@ -66,14 +60,7 @@ export class CreateRideService implements Resolve<any> {
   getBrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-<<<<<<< HEAD
         .get(baseenvironment.baseUrl + "bikebrandmodels",httpOptions)
-=======
-        .get(baseenvironment.baseUrl + "bikebrandmodels",
-        {
-          headers
-        })
->>>>>>> 078ab9417e8a4f41f6fc102d9f3d4a7bbfb770a7
         .subscribe((response: any) => {
           this.bikeBrandModels = response;
           this.onCreateRideChanged.next(this.bikeBrandModels);
@@ -86,15 +73,7 @@ export class CreateRideService implements Resolve<any> {
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-<<<<<<< HEAD
         .get(baseenvironment.baseUrl + "countries",httpOptions)
-=======
-        .get(baseenvironment.baseUrl + "countries",
-        
-        {
-          headers
-        })
->>>>>>> 078ab9417e8a4f41f6fc102d9f3d4a7bbfb770a7
         .subscribe((response: any) => {
           //this.countriesModels = response;
           //this.onCreateRideChanged.next(this.countriesModels);
@@ -182,14 +161,7 @@ export class CreateRideService implements Resolve<any> {
 
     return new Promise((resolve, reject) => {
       this._httpClient
-<<<<<<< HEAD
         .post(baseenvironment.baseUrl + "rides", JSON.stringify(ride),httpOptions)
-=======
-        .post(baseenvironment.baseUrl + "rides", JSON.stringify(ride),
-        {
-          headers
-        })
->>>>>>> 078ab9417e8a4f41f6fc102d9f3d4a7bbfb770a7
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
