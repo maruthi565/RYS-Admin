@@ -137,7 +137,7 @@ export class EcommerceBikerStories implements Resolve<any> {
       this._httpClient
         .get(baseenvironment.baseUrl + "bikerstories-infoboxes" ,
         {
-          
+          headers
         })
         .subscribe((response: any) => {
           resolve(response);

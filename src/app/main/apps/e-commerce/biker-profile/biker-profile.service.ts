@@ -10,7 +10,7 @@ import { baseenvironment } from "../../../../../config";
 
 const headers = new HttpHeaders({
   "Content-Type": "application/json",
-  "X-Api-Key":baseenvironment.xapikey
+  "X-Api-Key":baseenvironment.xapikey      
 });
 
 @Injectable()
