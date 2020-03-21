@@ -10,7 +10,8 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
 });
 @Injectable()
 export class MyCouponsService implements Resolve<any> {
@@ -59,7 +60,10 @@ export class MyCouponsService implements Resolve<any> {
     //console.log("service" ,this.VendorID);
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "/couponsfilters-vendor?VendorID=" + id)
+        .get(baseenvironment.baseUrl + "/couponsfilters-vendor?VendorID=" + id,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.couponsData = response;
           this.myCouponsChanged.next(this.couponsData);
@@ -70,7 +74,10 @@ export class MyCouponsService implements Resolve<any> {
   deleteCoupons(CouponID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "coupons/" + CouponID)
+        .delete(baseenvironment.baseUrl + "coupons/" + CouponID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -81,7 +88,10 @@ export class MyCouponsService implements Resolve<any> {
     //console.log("service" ,this.VendorID);
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "/vendors")
+        .get(baseenvironment.baseUrl + "/vendors",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //this.couponsData = response;
           // this.myCouponsChanged.next(this.couponsData);

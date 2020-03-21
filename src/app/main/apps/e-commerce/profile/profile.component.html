@@ -464,9 +464,17 @@
                   <div class="cards">
                     <!-- CARD 1 -->
                     <div class="card" *ngFor="let profile of getuserprofile">
+                     
                       <!-- PREVIEW -->
                       <div class="card-preview">
+                        
                         <div class="fuse-cards">
+                          <div (click)=" openDialog(
+                            profile.Images,
+                            profile
+                          );
+                          getBikeID(profile)
+                        ">
                           <!-- <img class="bikeImage" src="assets/images/cards/bike.png"> -->
                           <mat-carousel
                             timings="250ms ease-in"
@@ -495,7 +503,7 @@
                             >
                             </mat-carousel-slide>
                           </mat-carousel>
-
+                          </div>
                           <div class="p-16">
                             <div
                               class=""
