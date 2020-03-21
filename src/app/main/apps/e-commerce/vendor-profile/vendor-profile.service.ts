@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders,HttpErrorResponse } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey      
+});
 
 @Injectable()
 export class EcommerceVendorProfileService implements Resolve<any> {
@@ -67,6 +72,7 @@ export class EcommerceVendorProfileService implements Resolve<any> {
           baseenvironment.baseUrl +
             "/couponsfilters-vendor?VendorID=" +
             Number(localStorage.getItem("VendorID"))
+           
         )
         .subscribe((response: any) => {
           this.couponsData = response;
@@ -99,7 +105,10 @@ export class EcommerceVendorProfileService implements Resolve<any> {
   getVendors(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "vendors")
+        .get(baseenvironment.baseUrl + "vendors",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.vendorData = response;
           this.vendorChanged.next(this.vendorData);

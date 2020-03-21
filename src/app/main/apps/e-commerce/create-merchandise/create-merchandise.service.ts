@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({ 
+  "Content-Type": "Application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceCreateMerchandiseService implements Resolve<any> {
@@ -51,7 +56,10 @@ export class EcommerceCreateMerchandiseService implements Resolve<any> {
       this._httpClient
         .post(
           baseenvironment.baseUrl + "merchandise",
-          JSON.stringify(merchandise)
+          JSON.stringify(merchandise),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           resolve(response);
@@ -61,7 +69,10 @@ export class EcommerceCreateMerchandiseService implements Resolve<any> {
   getCategories(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "merchandisecategories")
+        .get(baseenvironment.baseUrl + "merchandisecategories",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -70,7 +81,10 @@ export class EcommerceCreateMerchandiseService implements Resolve<any> {
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "countries")
+        .get(baseenvironment.baseUrl + "countries",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -82,7 +96,10 @@ export class EcommerceCreateMerchandiseService implements Resolve<any> {
         .get(
           baseenvironment.baseUrl +
             "stores?VendorID=" +
-            JSON.parse(localStorage.getItem("VendorID"))
+            JSON.parse(localStorage.getItem("VendorID")),
+            {
+              headers
+            }
         )
         .subscribe((response: any) => {
           resolve(response);

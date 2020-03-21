@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({ 
+  "Content-Type": "Application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceAfterMarketService implements Resolve<any> {
@@ -49,7 +54,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getVendorInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "aftermarketvendorinfoboxes")
+        .get(baseenvironment.baseUrl + "aftermarketvendorinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -58,7 +66,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getCouponsInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "aftermarketcouponsinfoboxes")
+        .get(baseenvironment.baseUrl + "aftermarketcouponsinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -67,7 +78,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getMerchandiseInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "aftermarketmerchandiseinfoboxes")
+        .get(baseenvironment.baseUrl + "aftermarketmerchandiseinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -76,7 +90,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getPaymentInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "aftermarketpaymentinfoboxes")
+        .get(baseenvironment.baseUrl + "aftermarketpaymentinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -85,7 +102,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getVendors(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -94,7 +114,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getVendorsList(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "vendors")
+        .get(baseenvironment.baseUrl + "vendors",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.vendorData = response;
           this.vendorChanged.next(this.vendorData);
@@ -105,7 +128,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getCouponsList(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -114,7 +140,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getMerchandiseList(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -124,7 +153,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   getPayments(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "vendorpayments")
+        .get(baseenvironment.baseUrl + "vendorpayments",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -134,7 +166,10 @@ export class EcommerceAfterMarketService implements Resolve<any> {
   deleteVendor(vendorID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "vendors/" + vendorID)
+        .delete(baseenvironment.baseUrl + "vendors/" + vendorID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);

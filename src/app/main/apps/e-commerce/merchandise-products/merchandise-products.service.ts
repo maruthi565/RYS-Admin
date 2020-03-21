@@ -9,7 +9,8 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
 });
 
 @Injectable()
@@ -69,7 +70,10 @@ export class EcommerceMerchandiseService implements Resolve<any> {
     //console.log("service" ,this.VendorID);
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "/merchandise?VendorID=" + id)
+        .get(baseenvironment.baseUrl + "/merchandise?VendorID=" + id,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.merchandiseData = response;
           this.myMerchandiseChanged.next(this.merchandiseData);
@@ -80,7 +84,10 @@ export class EcommerceMerchandiseService implements Resolve<any> {
   deleteMerchandise(MerchandiseID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "merchandise/" + MerchandiseID)
+        .delete(baseenvironment.baseUrl + "merchandise/" + MerchandiseID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

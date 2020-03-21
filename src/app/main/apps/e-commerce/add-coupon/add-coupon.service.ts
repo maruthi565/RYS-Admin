@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceAddCouponService implements Resolve<any> {
@@ -51,7 +56,10 @@ export class EcommerceAddCouponService implements Resolve<any> {
   addCoupon(coupon): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .post(baseenvironment.baseUrl + "coupons", JSON.stringify(coupon))
+        .post(baseenvironment.baseUrl + "coupons", JSON.stringify(coupon),
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

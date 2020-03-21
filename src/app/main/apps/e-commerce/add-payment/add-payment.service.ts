@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceAddPaymentService implements Resolve<any> {
@@ -63,7 +68,10 @@ export class EcommerceAddPaymentService implements Resolve<any> {
       this._httpClient
         .post(
           baseenvironment.baseUrl + "vendorpayments",
-          JSON.stringify(payment)
+          JSON.stringify(payment),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           resolve(response);
@@ -73,7 +81,10 @@ export class EcommerceAddPaymentService implements Resolve<any> {
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "countries")
+        .get(baseenvironment.baseUrl + "countries",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -82,7 +93,10 @@ export class EcommerceAddPaymentService implements Resolve<any> {
   getVendors(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "vendors")
+        .get(baseenvironment.baseUrl + "vendors",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
