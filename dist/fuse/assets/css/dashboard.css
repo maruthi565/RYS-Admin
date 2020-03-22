@@ -1,0 +1,10 @@
+body.theme-default .accent {
+    background-color: #fba731 !important;
+    color: white !important;
+} 
+.material2 .nav .nav-item .nav-link {
+    height: 40px;
+    padding: 0 12px 0 24px;
+    border-radius: 0 0 0 0;
+    margin-right: 0px;
+}

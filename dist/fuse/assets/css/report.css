@@ -1,0 +1,53 @@
+
+#reports p span{
+    display: list-item;
+    list-style:none;
+}
+
+ #reports .mat-table {
+    overflow: auto;
+    max-height: 900px;
+}
+ #reports .mat-table{
+    background-color: rgba(255, 255, 255, 0.959);
+    height : 100vh;
+    overflow: auto;   
+    width: 103%;
+}
+/* #report th.mat-header-cell {
+    padding: 0;
+    border-bottom-width: 0px !important;
+    text-align:center;
+   
+}
+#report td.mat-cell{
+    padding: 0;
+    border-bottom-width: 0px !important;
+    text-align:center;
+   
+} */
+#reports .mat-row, .mat-header-row {
+    min-width: 140%;
+    width: 80%;
+}
+body.theme-default .accent .mat-form-field-label {
+    color:#fff;
+}
+body.theme-default .mat-datepicker-toggle {
+    color:#fff;
+}
+#reports .about .text-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial !important;
+    font-size:11px;
+}
+#reports .fuse-red {
+    background-color: #fff;
+    color:#e95130 !important;;
+    border:1px solid #e95130;
+}
+#reports b {
+    font-weight:600;
+}

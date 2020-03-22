@@ -1,0 +1,77 @@
+.file-upload {
+    background-color: #ffffff;
+    width: 220px !important;
+    margin: 0 auto !important;
+    padding: 4px !important;
+    margin-left: 0px !important;
+    margin-top: -68px !important;
+}
+.drag-text h3 {
+    font-weight: 100;
+    text-transform: capitalize;
+    color: #f79726;
+    padding: 0px 0;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #f79726 !important;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #f79726 !important;   
+}
+.radio-btn {
+    margin-right: 33px;
+}
+.startTime {
+    margin-top:-60px;
+    margin-right:33px;
+}
+    .endTime {
+        margin-top:-60px;
+        margin-right:0px;
+    }
+    .mat-radio-button ~ .mat-radio-button {
+        margin-left: 25px;
+    }
+    .events{
+        font-size:14px;
+
+    }
+    body.theme-default .mat-radio-outer-circle {
+        border-color:#f79726 !important;
+    }
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+        background-color: #f79726;
+    }
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color:#ffd29a;
+    }
+    .slideToggle {
+        margin-top:10px;
+    }
+    #sendMessage .mat-form-field-underline {
+        background-color: #eee !important;
+    }
+    #sendMessage textarea {
+      resize: none;
+      padding:10px;
+    }
+    /* label underline focus color */
+    #sendMessage .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+      background-color: #fff !important;
+    }
+    #sendMessage textarea {
+      display: flex;
+      flex: 1 0 auto;
+      font-size: 18px;
+      width: 100%;
+      height: 340px;
+      border: none;
+      padding: 16px;
+      resize: none;
+      font-weight:200;
+    }
+    #sendMessage .send-btn {
+      padding: 0 50px 0 50px;
+      border-radius:20px;
+    }
+ 

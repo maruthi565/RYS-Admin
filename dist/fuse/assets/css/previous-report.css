@@ -1,0 +1,45 @@
+
+p span{
+    display: list-item;
+    list-style:none;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 900px;
+}
+  .mat-table{
+    background-color: rgba(255, 255, 255, 0.959);
+    height : 100vh;
+    overflow: auto;   
+    width: 100%;
+}
+
+.mat-row, .mat-header-row {
+    min-width: 117%;
+    width: 80%;
+}
+body.theme-default .accent .mat-form-field-label {
+    color:#fff;
+}
+body.theme-default .mat-datepicker-toggle {
+    color:#fff;
+}
+.about .text-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial !important;
+    font-size:11px;
+}
+.fuse-grey {
+    background-color: #fff;
+    color:#b1afaf !important;
+    border:1px solid #b1afaf !important;
+}
+b {
+    font-weight:600 !important;
+}
+.report-btn {
+    box-shadow: 0px 3px 1px -2px rgb(255, 255, 255), 0px 2px 2px 0px rgb(255, 255, 255), 0px 1px 5px 0px rgb(255, 255, 255) !important;
+}

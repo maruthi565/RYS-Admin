@@ -1,0 +1,75 @@
+#editEvent .file-upload {
+    background-color: #ffffff;
+    width: 220px !important;
+    margin: 0 auto !important;
+    padding: 4px !important;
+    margin-left: 0px !important;
+    margin-top: -68px !important;
+}
+#editEvent  .drag-text h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #f79726;
+    padding: 0px 0;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #f79726 !important;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #f79726 !important;   
+}
+#editEvent  .radio-btn {
+    margin-right: 33px;
+}
+#editEvent  .startTime {
+    margin-top:-60px;
+    margin-right:33px;
+}
+#editEvent  .endTime {
+        margin-top:-60px;
+        margin-right:0px;
+    }
+    .mat-radio-button ~ .mat-radio-button {
+        margin-left: 25px;
+    }
+    #editEvent   .events{
+        font-size:14px;
+
+    }
+    body.theme-default .mat-radio-outer-circle {
+        border-color:#f79726 !important;
+    }
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+        background-color: #f79726;
+    }
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color:#ffd29a;
+    }
+    #editEvent  .slideToggle {
+        margin-top:10px;
+    }
+
+    #editEvent .theme-default .fuse-card {
+        background: white;
+        border-color: rgba(0, 0, 0, 0.12);
+        /* width: 180px;
+        height: 80px; */
+        width:60%;
+        height:95% !important;
+        margin-right: 10px;
+    }
+    #editEvent  .tickets{
+         padding-left:10px;
+    }
+    #editEvent  .description {
+        padding:0 10px;
+        margin-top:-13px;
+        padding-bottom:10px;
+    }
+    #editEvent   .plusbtn {
+        font-size:20px;
+        color:#f79726;
+    }
+    agm-map {
+        height: 300px;
+    }
