@@ -7,8 +7,10 @@ import {
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
+
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
 });
 @Injectable()
 export class EcommerceAddReasonTypeService implements Resolve<any> {
@@ -56,7 +58,10 @@ export class EcommerceAddReasonTypeService implements Resolve<any> {
       this._httpClient
         .post(
           baseenvironment.baseUrl + "reasontype",
-          JSON.stringify(reasontype)
+          JSON.stringify(reasontype),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           resolve(response);
@@ -66,7 +71,10 @@ export class EcommerceAddReasonTypeService implements Resolve<any> {
   getReasonTypes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "reasontype")
+        .get(baseenvironment.baseUrl + "reasontype",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.reasonTypeData = response.ReasonType;
           //console.log( 'response' ,this.eventData);

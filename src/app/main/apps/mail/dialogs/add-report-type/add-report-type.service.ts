@@ -8,6 +8,11 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
 
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
+
 @Injectable()
 export class EcommerceAddReportTypeService implements Resolve<any> {
   products: any[];
@@ -54,7 +59,10 @@ export class EcommerceAddReportTypeService implements Resolve<any> {
       this._httpClient
         .post(
           baseenvironment.baseUrl + "reporttypes",
-          JSON.stringify(reporttype)
+          JSON.stringify(reporttype),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           resolve(response);
@@ -75,7 +83,10 @@ export class EcommerceAddReportTypeService implements Resolve<any> {
   getTypes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "reporttypes")
+        .get(baseenvironment.baseUrl + "reporttypes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -84,7 +95,10 @@ export class EcommerceAddReportTypeService implements Resolve<any> {
   deleteReportType(reportID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "reporttypes/" + reportID)
+        .delete(baseenvironment.baseUrl + "reporttypes/" + reportID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

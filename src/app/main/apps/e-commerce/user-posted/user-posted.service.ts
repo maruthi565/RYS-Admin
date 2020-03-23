@@ -4,7 +4,7 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders,HttpErrorResponse } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
@@ -55,7 +55,10 @@ export class EcommerceUserPostedService implements Resolve<any> {
   getUserPostedBikes(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url,{headers})
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         // this._httpClient.get(this.apiUrl + 'rides')
         .subscribe((response: any) => {
           // this.userpostedbikesData = response;
@@ -68,7 +71,10 @@ export class EcommerceUserPostedService implements Resolve<any> {
   getUserPostedMerchandise(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url,{headers})
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         // this._httpClient.get(this.apiUrl + 'rides')
         .subscribe((response: any) => {
           // this.userpostedbikesData = response;
@@ -81,7 +87,10 @@ export class EcommerceUserPostedService implements Resolve<any> {
   deleteUserPostedBike(ID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "userpostedbikes/" + ID,{headers})
+        .delete(baseenvironment.baseUrl + "userpostedbikes/" + ID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
@@ -94,7 +103,10 @@ export class EcommerceUserPostedService implements Resolve<any> {
         .delete(
           baseenvironment.baseUrl +
             "userpostedmerchandise/" +
-            UserPostedMerchandiseID,{headers}
+            UserPostedMerchandiseID,
+            {
+              headers
+            }
         )
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
@@ -105,7 +117,10 @@ export class EcommerceUserPostedService implements Resolve<any> {
   getBikeBrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrands",{headers})
+        .get(baseenvironment.baseUrl + "bikebrands",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -114,7 +129,10 @@ export class EcommerceUserPostedService implements Resolve<any> {
   getInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "userpostedinfoboxes",{headers})
+        .get(baseenvironment.baseUrl + "userpostedinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

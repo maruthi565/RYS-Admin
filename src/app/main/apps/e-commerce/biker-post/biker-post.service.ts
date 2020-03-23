@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+
+const headers = new HttpHeaders({
+    "Content-Type": "application/json",
+   
+  });
 
 @Injectable()
 export class EcommerceProductsService implements Resolve<any>
