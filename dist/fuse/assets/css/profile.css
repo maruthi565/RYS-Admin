@@ -1,0 +1,204 @@
+#profile .theme-default .fuse-card {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.12);
+  width: 93%;
+  height: 80% !important;
+  margin-right: 10px;
+}
+
+.font-size-22 {
+  font-size: 22px;
+  color: #000000 !important;
+}
+#profile .fuse-card .font-size-30 {
+  font-size: 30px !important;
+  color: #000 !important;
+}
+#profile .fuse-card .mt-8 {
+  margin-top: 16px !important;
+}
+#profile .fuse-card span {
+  color: #f79726 !important;
+}
+#profile .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 450px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+#profile .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#profile .mat-tab-label {
+  color: #f79726 !important;
+}
+#profile .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: #f79726;
+}
+#profile
+  .mat-tab-header-pagination.mat-tab-header-pagination-before.mat-elevation-z4.mat-ripple.mat-tab-header-pagination-disabled {
+  display: none;
+}
+#profile
+  .mat-tab-header-pagination.mat-tab-header-pagination-after.mat-elevation-z4.mat-ripple {
+  display: none;
+}
+#profile .mat-tab-label {
+  height: 48px;
+  padding: 0px 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  min-width: 145px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+}
+#profile tr.mat-header-row {
+  height: 60px;
+}
+#profile .theme-default .fuse-card {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.12);
+  width: 93%;
+  height: 80% !important;
+  margin-right: 10px;
+}
+#profile .fuse-card .font-size-30 {
+  font-size: 30px !important;
+  color: #000 !important;
+}
+#profile .fuse-card .mt-8 {
+  margin-top: 16px !important;
+}
+#profile .fuse-card span {
+  color: #f79726 !important;
+}
+#profile .fuse-card {
+  min-width: 190px !important;
+  border-color: #f79726 !important;
+}
+#profile .p-24 {
+  padding: 5px !important;
+}
+#profile .fuse-cards {
+  max-width: 300px !important;
+  min-width: 300px !important;
+  border-radius: 8px !important;
+  border: 1px solid !important;
+  background: white !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+#profile .btnmainDiv {
+  margin-top: 15px;
+  margin-left: -5px;
+  width: 298px;
+  border-top: 2px solid #eee;
+  padding: 5px 5px 5px 5px;
+}
+#profile .editiconDiv {
+  text-align: center;
+  margin-bottom: -10px;
+  margin-top: -5px;
+  height: 35px;
+  border-right: 2px solid #eee;
+}
+#profile .topright-bike {
+  position: absolute;
+  top: 16px;
+  left: 207px;
+  font-size: 14px;
+  background-color: #f79726;
+  color: #fff;
+  padding: 3px 25px 3px 25px;
+  border-radius: 6px;
+}
+#profile .topright-product {
+  position: absolute;
+  top: 16px;
+  right: 235px;
+  font-size: 14px;
+  background-color: #f79726;
+  color: #fff;
+  padding: 3px 25px 3px 25px;
+  border-radius: 6px;
+}
+#profile .pendingbtn {
+  background-color: #ef5827;
+  color: #ffffff;
+  border-radius: 15px;
+  padding: 5px 20px 5px 20px;
+  font-size: 12px;
+  border: 1px solid #ef5827;
+}
+#profile textarea {
+  display: flex;
+  flex: 1 0 auto;
+  font-size: 13px;
+  width: 100%;
+  height: 140px;
+  border: 1px solid #eee;
+  padding: 16px;
+  resize: none;
+  font-weight: 200;
+  background-color: #fff;
+  border-radius: 10px;
+}
+#profile .fuse-card-g {
+  min-width: 190px !important;
+  border-color: #f79726 !important;
+}
+/* #viewCertificates .mat-toolbar-row {
+    height: 225px;
+} */
+#viewCertificates .close {
+  /* margin-bottom: 135px; */
+  color: #fb8e0b !important;
+}
+#viewCertificates .mat-toolbar {
+  background: #fff !important;
+}
+#viewCertificates .fuse-decline {
+  background-color: #e4e0e0 !important;
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+#viewCertificates .fuse-accept {
+  background-color: #f79726 !important;
+  color: #ffffff !important;
+}
+#profile .tickbg {
+  content: "\00a0";
+  border: solid 8px #00cd00;
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  height: 0;
+  width: 0;
+  display: block;
+}
+#profile .tick {
+  height: 8px;
+  width: 5px;
+  border: solid #ffffff;
+  border-width: 0px 2px 2px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  display: block;
+  margin-top: -5px;
+  margin-left: -2px;
+}
+
+#viewCertificates .certificates .carousel-slide.ng-star-inserted {
+  width: 100%;
+  height: 450px !important;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+}

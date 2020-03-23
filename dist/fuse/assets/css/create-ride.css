@@ -1,0 +1,160 @@
+#createRide .file-upload {
+  background-color: #ffffff;
+  width: 220px !important;
+  margin: 0 auto !important;
+  padding: 4px !important;
+  margin-left: 0px !important;
+  margin-top: -68px !important;
+}
+#createRide .drag-text h3 {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #f79726;
+  padding: 0px 0;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #f79726 !important;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #f79726 !important;
+}
+#createRide .radio-btn {
+  margin-right: 33px;
+}
+#createRide .startTime {
+  margin-top: -60px;
+  margin-right: 33px;
+}
+#createRide .endTime {
+  margin-top: -60px;
+  margin-right: 0px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 25px;
+}
+#createRide .rides {
+  font-size: 14px;
+}
+body.theme-default .mat-radio-outer-circle {
+  border-color: #f79726 !important;
+}
+body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #f79726;
+}
+body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #ffd29a;
+}
+#createRide .slideToggle {
+  margin-top: 10px;
+}
+
+#createRide .fuse-card {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.12);
+  /* width: 180px;
+        height: 80px; */
+  width: 65%;
+  height: 90% !important;
+  margin-right: 10px;
+}
+#createRide .tickets {
+  padding-left: 10px;
+}
+#createRide .description {
+  padding: 0 10px;
+  margin-top: -13px;
+  padding-bottom: 10px;
+}
+#createRide .plusbtn {
+  font-size: 20px;
+  color: #f79726;
+}
+#createRide .theme-default .mat-checkbox-frame {
+  border-color: #f79726 !important;
+}
+#createRide
+  .theme-default
+  .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent
+  .mat-ripple-element {
+  background: #f79726 !important;
+}
+#createRide
+  .theme-default
+  .mat-checkbox-checked.mat-accent
+  .mat-checkbox-background {
+  background-color: #f79726 !important;
+}
+agm-map {
+  height: 300px;
+}
+/* #createRide .mat-form-field-appearance-outline .mat-form-field-suffix {
+        top: -0.75em;
+    } */
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    #createRide .safarirideUploadImage {
+      margin-top: 80px !important;
+    }
+    #createRide .ridebordersafari {
+      margin-top: 60px;
+    }
+    #createRide .rideheading {
+      margin-top: -60px;
+    }
+    #createRide .rideCreateButton {
+      margin-top: -45px !important;
+    }
+    #createRide .radio-btn {
+      margin-top: 140px !important;
+    }
+    #createRide .startTime {
+      margin-top: 65px !important;
+    }
+    #createRide .endTime {
+      margin-top: 65px !important;
+    }
+    #createRide .rideCountrySafari {
+      margin-top: 160px;
+    }
+    #createRide .ridelocationSafari {
+      margin-top: 80px;
+    }
+    #createRide .haltRideSafari {
+      margin-top: 65px;
+    }
+    #createRide .distnceRideSafari {
+      margin-top: 80px;
+    }
+    #createRide .returnrideSafari {
+      margin-top: 50px;
+    }
+    #createRide .returnhaltSafari {
+      margin-top: 70px;
+    }
+    #createRide .returndistSafari {
+      margin-top: 70px;
+    }
+    #createRide .paidRideSafari {
+      margin-top: 60px;
+    }
+    #createRide .priceSafari {
+      margin-top: 30px !important;
+    }
+    #createRide .ridefeesafari {
+      margin-top: 90px;
+    }
+    #createRide .infoSafari {
+      margin-top: 210px !important;
+    }
+    #createRide .rideInviteSafari {
+        margin-top:135px;
+    }
+    #createRide .rideBrandsSafari {
+        margin-top:20px;
+    }
+    #createRide .allSafari {
+        margin-top:90px;
+    }
+  }
+}

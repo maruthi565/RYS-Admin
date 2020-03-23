@@ -1,0 +1,160 @@
+.file-upload {
+    background-color: #ffffff;
+    width: 220px !important;
+    margin: 0 auto !important;
+    padding: 4px !important;
+    margin-left: 0px !important;
+    margin-top: -68px !important;
+}
+.drag-text h3 {
+    font-weight: 100;
+    text-transform: capitalize;
+    color: #f79726;
+    padding: 0px 0;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #f79726 !important;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #f79726 !important;   
+}
+.radio-btn {
+    margin-right: 33px;
+}
+.startTime {
+    margin-top:-60px;
+    margin-right:33px;
+}
+    .endTime {
+        margin-top:-60px;
+        margin-right:0px;
+    }
+    .mat-radio-button ~ .mat-radio-button {
+        margin-left: 25px;
+    }
+    .events{
+        font-size:14px;
+
+    }
+    body.theme-default .mat-radio-outer-circle {
+        border-color:#f79726 !important;
+    }
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+        background-color: #f79726;
+    }
+    body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color:#ffd29a;
+    }
+    .slideToggle {
+        margin-top:10px;
+    }
+
+     .fuse-card {
+        background: white;
+        border-color: rgba(0, 0, 0, 0.12);
+        /* width: 180px;
+        height: 80px; */
+        /* width:93%; */
+        height:65% !important;
+        margin-right: 10px;
+    }
+    .tickets{
+         padding-left:10px;
+    }
+    .description {
+        padding:0 10px;
+        margin-top:-13px;
+        padding-bottom:10px;
+    }
+    .plusbtn {
+        font-size:20px;
+        color:#f79726;
+    }
+    .fuse-category {
+        color:#ffffff;
+        background-color: #e95130;
+    }
+    .fishes
+    {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .fish
+    {
+      position: absolute;
+      top: 20px;
+      left: 17px;
+    }
+    .locates
+    {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .locate
+    {
+      position: absolute;
+      top: 17px;
+      left: 22px;
+    }
+    .creates
+    {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .create
+    {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    .content {
+         /* width: 195px; */
+        padding: 5px;
+        overflow: hidden;
+    }
+    
+    .content img {
+        margin-right: 15px;
+        float: left;
+    }
+    
+    .content h3,
+    .content p{
+        margin-left: 15px;
+        display: block;
+        margin: 2px 0 0 0;
+    }
+    .name {
+        margin-left:60px;
+        margin-top:-40px;
+    }
+    .shareicon{
+        color: #f79726;
+        cursor:pointer;
+    }
+    .commenticons{
+        color:rgba(0,0,0,0.54);
+    }
+    .numbering {
+        margin-top:-25px;
+        margin-left:30px;
+    }
+    
+    #bikerComments textarea {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-flex: 1;
+      flex: 1 0 auto;
+      font-size: 13px;
+      width: 90%;
+      height: 55px;
+      border: 1px solid #988e8e;
+      padding: 16px;
+      resize: none;
+      font-weight: 200;
+      background-color: #fff;
+      border-radius: 30px;
+  }

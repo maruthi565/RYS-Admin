@@ -1,0 +1,9 @@
+.leaderboard .mat-checkbox-frame {
+    border-color: #f79726 !important;
+}
+.leaderboard .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element{
+    background:#f79726 !important;
+}
+.leaderboard .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+    background-color:#f79726 !important;
+}

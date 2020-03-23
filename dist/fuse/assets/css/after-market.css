@@ -1,0 +1,173 @@
+#afterMarket .fuse-green {
+    background-color: #fff;
+    color:#4d951f !important;;
+    border:1px solid #4d951f;
+}
+#afterMarket .fuse-red {
+    background-color: #fff;
+    color:red !important;
+    border:1px solid red;
+}
+#afterMarket .fuse-category {
+    background-color: #e95130 !important;
+    color:#ffffff !important;
+    border:1px solid  #e95130;
+}
+body.theme-default .mat-raised-button:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+#afterMarket .test {
+    width:35%;
+    float:left;
+    margin-right:20px
+}
+
+#afterMarket p span{
+    display: list-item;
+    list-style:none;
+}
+
+#afterMarket th.mat-header-cell {
+    padding: 0;
+    border-bottom-width: 0px !important;
+    text-align:center;
+}
+#afterMarket td.mat-cell{
+    padding: 0;
+    border-bottom-width: 0px !important;
+    text-align:center;
+}
+.page-layout.carded.fullwidth > .center {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex: 1 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 0 10px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+#afterMarket .mat-table {
+    overflow: auto !important;
+    max-height: 900px;
+  }
+  #afterMarket  .mat-table{
+    background-color: rgba(255, 255, 255, 0.959);
+    height : 900px;
+    overflow: auto !important;   
+    width: 100%;
+}
+#afterMarket .mat-tab-body-content {
+    height: 100%;
+    overflow: auto;
+}
+#afterMarket .mat-row, .mat-header-row {
+    min-width: 117%;
+    width: 80%;
+}
+@media screen and (max-width: 959px){
+    e-commerce-after-market #afterMarket .top-bg {
+        height: 323px !important;
+        }
+    }
+    @media screen and (max-width: 959px){
+        #afterMarket .center  .header {
+    background-color: black !important;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+        }
+    }
+    @media screen and (max-width: 959px){
+        #afterMarket  .center  #last{
+      background-color: black !important;
+      flex-direction: row !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      place-content: center !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+        }
+      }
+      @media screen and (max-width:959px) {
+        #afterMarket body.theme-default .fuse-card {
+            background: white;
+            border-color: rgba(0, 0, 0, 0.12);
+            width: 93%;
+            height: 76%;
+            margin-right: 10px;
+        }
+      }
+      #afterMarket body.theme-default .fuse-card {
+        background: white;
+        border-color: rgba(0, 0, 0, 0.12);
+        width: 93%;
+        height: 72%;
+        margin-right: 10px;
+    }
+    /* body.theme-default .fuse-card {
+        background: white;
+        border-color: rgba(0, 0, 0, 0.12);
+        width: 98%;
+        height: 70%;
+        margin-right: 10px;
+    } */
+    #afterMarket .fuse-card .font-size-16 {
+        font-size: 16px !important;
+        color: #000 !important;
+    }
+    #afterMarket .fuse-black {
+        background-color: #000;
+        color:#fff !important;;
+        border:1px solid #f79726;
+    }
+    #afterMarket .mat-header-cell, .mat-cell {
+        min-width: 65px;
+    }
+    #afterMarket .text-truncate {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+         white-space: normal; 
+    }
+    body.theme-default .mat-tab-group.mat-primary .mat-ink-bar{
+        background-color: #f79726;
+    }
+   
+    #afterMarket .mat-tab-label-active {
+        color: #f79726 !important;
+    } 
+    #afterMarket .actionicons{
+        color:#E94624 !important;
+        cursor: pointer;
+    }
+    #afterMarket .mat-table{
+        display:contents;
+    }
+    body.theme-default .mat-elevation-z8 {
+        box-shadow: 0px 5px 5px -3px rgb(255, 255, 255), 0px 8px 10px 1px rgb(255, 255, 255), 0px 3px 14px 2px rgb(255, 255, 255);
+    }
+    #afterMarket .mat-datepicker-toggle{
+        color:#ffffff;
+    }
+    #afterMarket .mat-form-field-label {
+        color:#ffffff;
+    }
+    #afterMarket .mat-row {
+        min-height:65px !important;
+    }
+    #afterMarket .fuse-card span {
+        color:#f79726;
+    }
+   
+     

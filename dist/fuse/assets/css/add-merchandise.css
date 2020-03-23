@@ -1,0 +1,84 @@
+.file-upload-userpost-merchandise{
+    background-color: #ffffff;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    margin-left: 0;
+}
+  
+  .file-upload-btn-userpost-merchandise {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    background: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #15824B;
+    transition: all .2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  
+  .file-upload-btn:hover {
+    color: #f79726;
+    transition: all .2s ease;
+    cursor: pointer;
+  }
+  
+  .file-upload-btn:active {
+    border: 0;
+    transition: all .2s ease;
+  }
+  
+  .file-upload-content-userpost-merchandise {
+    display: none;
+    text-align: center;
+  }
+  
+  .file-upload-input-userpost-merchandise {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .image-upload-wrap-userpost-merchandise {
+    margin-top: 0px;
+    border: 2px dashed #f79726;
+    position: relative;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+  
+  .image-dropping,
+  .image-upload-wrap-userpost-merchandise:hover {
+    border: 2px dashed #f79726;
+  }
+  
+  .image-title-wrap-userpost-merchandise {
+    padding: 0 15px 15px 15px;
+    color: #222;
+  }
+  
+  .drag-text-userpost-merchandise {
+    text-align: center;
+  }
+  
+  .drag-text-userpost-merchandise h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #f79726;
+    padding: 22px 0;
+  }
+  
+  .file-upload-image-userpost-merchandise {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
+  }

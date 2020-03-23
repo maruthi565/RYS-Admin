@@ -1,0 +1,139 @@
+/* .file-upload {
+    background-color: #ffffff;
+    width: 220px !important;
+    margin: 0 auto !important;
+    padding: 4px !important;
+    margin-left: 0px !important;
+    margin-top: -68px !important;
+}
+.drag-text h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #f79726;
+    padding: 0px 0;
+} */
+#viewEvent
+  .mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: #f79726 !important;
+}
+#viewEvent .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #f79726 !important;
+}
+#viewEvent .radio-btn {
+  margin-right: 33px;
+}
+#viewEvent .startTime {
+  margin-top: -60px;
+  margin-right: 33px;
+}
+#viewEvent .endTime {
+  margin-top: -60px;
+  margin-right: 0px;
+}
+#viewEvent .mat-radio-button ~ .mat-radio-button {
+  margin-left: 25px;
+}
+#viewEvent .events {
+  font-size: 14px;
+}
+body.theme-default .mat-radio-outer-circle {
+  border-color: #f79726 !important;
+}
+body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #f79726;
+}
+body.theme-default .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #ffd29a;
+}
+#viewEvent .slideToggle {
+  margin-top: 10px;
+}
+
+#viewEvent .fuse-card {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.12);
+  /* width: 180px;
+        height: 80px; */
+  /* width:93%; */
+  height: 80% !important;
+  margin-right: 10px;
+}
+#viewEvent .tickets {
+  padding-left: 10px;
+}
+#viewEvent .description {
+  padding: 0 10px;
+  margin-top: -13px;
+  padding-bottom: 10px;
+}
+#viewEvent .plusbtn {
+  font-size: 20px;
+  color: #f79726;
+}
+#viewEvent .fuse-category {
+  color: #ffffff;
+  background-color: #e95130;
+}
+#viewEvent .fishes {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#viewEvent .fish {
+  position: absolute;
+  top: 20px;
+  left: 17px;
+}
+#viewEvent .locates {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#viewEvent .locate {
+  position: absolute;
+  top: 17px;
+  left: 22px;
+}
+#viewEvent .creates {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#viewEvent .create {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#viewEvent .content {
+  /* width: 195px; */
+  padding: 5px;
+  overflow: hidden;
+}
+
+#viewEvent .content img {
+  /* margin-right: 15px; */
+  float: left;
+}
+
+#viewEvent .content h3,
+#viewEvent .content p {
+  margin-left: 15px;
+  display: block;
+  margin: 2px 0 0 0;
+}
+#viewEvent .name {
+  margin-left: 60px;
+  margin-top: -40px;
+}
+#viewEvent .shareicon {
+  color: #f79726;
+  cursor: pointer;
+}
+#viewEvent .commenticons {
+  color: rgba(0, 0, 0, 0.54);
+}
+#viewEvent .numbering {
+  margin-top: -25px;
+  margin-left: 30px;
+}
