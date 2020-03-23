@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceReportsService implements Resolve<any> {
@@ -47,7 +52,10 @@ export class EcommerceReportsService implements Resolve<any> {
   getReports(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           this.reportData = response;
           //this.onReportsChanged.next(this.reports);
@@ -58,7 +66,10 @@ export class EcommerceReportsService implements Resolve<any> {
   getRides(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "rides")
+        .get(baseenvironment.baseUrl + "rides",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

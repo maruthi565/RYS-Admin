@@ -83,7 +83,10 @@ export class EcommerceAddAddsService implements Resolve<any> {
   addAds(ads): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .post(baseenvironment.baseUrl + "adminads", JSON.stringify(ads))
+        .post(baseenvironment.baseUrl + "adminads", JSON.stringify(ads),
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

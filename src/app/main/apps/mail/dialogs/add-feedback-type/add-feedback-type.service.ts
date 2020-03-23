@@ -8,6 +8,11 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
 
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
+
 // const headers = new HttpHeaders({
 //      'Content-Type': 'Application/json',
 //      'Access-Control-Allow-Origin': '*'
@@ -60,7 +65,10 @@ export class EcommerceAddFeedbackService implements Resolve<any> {
       this._httpClient
         .post(
           baseenvironment.baseUrl + "feedbacktypes",
-          JSON.stringify(feedbacktype)
+          JSON.stringify(feedbacktype),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           resolve(response);
@@ -71,7 +79,10 @@ export class EcommerceAddFeedbackService implements Resolve<any> {
   getFeedbackTypes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "feedbacktypes")
+        .get(baseenvironment.baseUrl + "feedbacktypes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -81,7 +92,10 @@ export class EcommerceAddFeedbackService implements Resolve<any> {
   deleteFeedback(typeID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "feedbacktypes/" + typeID)
+        .delete(baseenvironment.baseUrl + "feedbacktypes/" + typeID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

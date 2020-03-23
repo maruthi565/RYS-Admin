@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EditRideService implements Resolve<any> {
@@ -57,7 +62,10 @@ export class EditRideService implements Resolve<any> {
   getBrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrandmodels")
+        .get(baseenvironment.baseUrl + "bikebrandmodels",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.bikeBrandModels = response;
           this.onEditRideChanged.next(this.bikeBrandModels);
@@ -76,7 +84,10 @@ export class EditRideService implements Resolve<any> {
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "countries")
+        .get(baseenvironment.baseUrl + "countries",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //this.countriesModels = response;
           //this.onCreateRideChanged.next(this.countriesModels);
@@ -97,7 +108,10 @@ export class EditRideService implements Resolve<any> {
       this._httpClient
         .put(
           baseenvironment.baseUrl + "rides/" + ride.RideID,
-          JSON.stringify(ride)
+          JSON.stringify(ride),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');

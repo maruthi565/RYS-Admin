@@ -8,6 +8,11 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
 
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
+
 @Injectable()
 export class EcommerceAddUserReportTypeService implements Resolve<any> {
   products: any[];
@@ -54,7 +59,10 @@ export class EcommerceAddUserReportTypeService implements Resolve<any> {
       this._httpClient
         .post(
           baseenvironment.baseUrl + "userreporttypes",
-          JSON.stringify(userreporttype)
+          JSON.stringify(userreporttype),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           resolve(response);
@@ -64,7 +72,10 @@ export class EcommerceAddUserReportTypeService implements Resolve<any> {
   getUserReportTypes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "userreporttypes")
+        .get(baseenvironment.baseUrl + "userreporttypes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.userreportTypesList = response.UserReportTypes;
           this.onUserReportTypeChanged.next(this.userreportTypesList);
@@ -76,7 +87,10 @@ export class EcommerceAddUserReportTypeService implements Resolve<any> {
   getReportTypes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "userreporttypes")
+        .get(baseenvironment.baseUrl + "userreporttypes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -85,7 +99,10 @@ export class EcommerceAddUserReportTypeService implements Resolve<any> {
   deleteSendMessage(messageID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "userreporttypes/" + messageID)
+        .delete(baseenvironment.baseUrl + "userreporttypes/" + messageID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);

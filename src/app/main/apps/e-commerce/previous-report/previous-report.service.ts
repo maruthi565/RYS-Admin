@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders} from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommercePreviousReportsService implements Resolve<any> {
@@ -66,7 +71,10 @@ export class EcommercePreviousReportsService implements Resolve<any> {
             "userreportsfilter?ReportToUserID=" +
             localStorage.getItem("ReportToUserID") +
             "&ReportByUserID=" +
-            localStorage.getItem("ReportByUserID")
+            localStorage.getItem("ReportByUserID"),
+            {
+              headers
+            }
         )
         .subscribe((response: any) => {
           // this.previousData = response;
