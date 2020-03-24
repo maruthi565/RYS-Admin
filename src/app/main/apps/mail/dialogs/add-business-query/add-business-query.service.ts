@@ -7,8 +7,10 @@ import {
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
+
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
 });
 
 @Injectable()
@@ -50,7 +52,10 @@ export class EcommerceAddBusinessQueryService implements Resolve<any> {
   getBusinessQueryTypes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "businessquerytypes")
+        .get(baseenvironment.baseUrl + "businessquerytypes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.queryTypeData = response.BusinessQueryTypes;
           //console.log( 'response' ,this.eventData);

@@ -56,7 +56,10 @@ export class EcommercegetBikeModelsService implements Resolve<any> {
   getBikeModels(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrandmodels",{headers})
+        .get(baseenvironment.baseUrl + "bikebrandmodels",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.getbikeModelsData = response;
           this.onbikeModelsChanged.next(this.getbikeModelsData);
@@ -67,7 +70,10 @@ export class EcommercegetBikeModelsService implements Resolve<any> {
   deleteBikeModels(BikeModelID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "bikemodels/" + BikeModelID,{headers})
+        .delete(baseenvironment.baseUrl + "bikemodels/" + BikeModelID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
@@ -77,7 +83,10 @@ export class EcommercegetBikeModelsService implements Resolve<any> {
   getInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikesimagesinfoboxes",{headers})
+        .get(baseenvironment.baseUrl + "bikesimagesinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

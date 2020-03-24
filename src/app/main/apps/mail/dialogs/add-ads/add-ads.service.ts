@@ -59,7 +59,10 @@ export class EcommerceAddAddsService implements Resolve<any> {
   getBikeBrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrands",{headers})
+        .get(baseenvironment.baseUrl + "bikebrands",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //this.bikeBrands = response;
           // this.onBikeBrandChanged.next(this.bikeBrands);
@@ -71,7 +74,10 @@ export class EcommerceAddAddsService implements Resolve<any> {
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "countries",{headers})
+        .get(baseenvironment.baseUrl + "countries",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //this.countriesModels = response;
           //this.onCreateRideChanged.next(this.countriesModels);

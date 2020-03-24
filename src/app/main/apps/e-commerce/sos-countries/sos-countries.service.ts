@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceSOSContactsService implements Resolve<any> {
@@ -50,7 +55,10 @@ export class EcommerceSOSContactsService implements Resolve<any> {
   getSOSContacts(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "/soscontacts")
+        .get(baseenvironment.baseUrl + "/soscontacts",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.soscontactsData = response.SOSContacts;
           this.onsosContactsChanged.next(this.soscontactsData);

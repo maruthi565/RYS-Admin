@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceAddRideImageService implements Resolve<any> {
@@ -49,7 +54,10 @@ export class EcommerceAddRideImageService implements Resolve<any> {
       this._httpClient
         .post(
           baseenvironment.baseUrl + "defaultimages",
-          JSON.stringify(rideimage)
+          JSON.stringify(rideimage),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           resolve(response);

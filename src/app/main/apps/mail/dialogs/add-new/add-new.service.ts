@@ -4,9 +4,15 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
+
 
 @Injectable()
 export class EcommerceAddAdminUserPostedBikeService implements Resolve<any> {
@@ -53,7 +59,10 @@ export class EcommerceAddAdminUserPostedBikeService implements Resolve<any> {
   getBikebrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrands")
+        .get(baseenvironment.baseUrl + "bikebrands",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -62,7 +71,10 @@ export class EcommerceAddAdminUserPostedBikeService implements Resolve<any> {
   getBikemodels(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikemodels")
+        .get(baseenvironment.baseUrl + "bikemodels",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -71,7 +83,10 @@ export class EcommerceAddAdminUserPostedBikeService implements Resolve<any> {
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "countries")
+        .get(baseenvironment.baseUrl + "countries",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -82,7 +97,10 @@ export class EcommerceAddAdminUserPostedBikeService implements Resolve<any> {
       this._httpClient
         .post(
           baseenvironment.baseUrl + "userpostedbikes",
-          JSON.stringify(userPostedBike)
+          JSON.stringify(userPostedBike),
+          {
+            headers
+          }
         )
         .subscribe((response: any) => {
           resolve(response);

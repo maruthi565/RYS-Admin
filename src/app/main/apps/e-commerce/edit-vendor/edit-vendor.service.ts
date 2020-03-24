@@ -8,7 +8,10 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
-const headers = new HttpHeaders({ "Content-Type": "Application/json" });
+const headers = new HttpHeaders({
+   "Content-Type": "Application/json",
+   "X-Api-Key":baseenvironment.xapikey
+  });
 
 @Injectable()
 export class EcommerceEditVendorService implements Resolve<any> {
