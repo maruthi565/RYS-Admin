@@ -56,7 +56,7 @@ export class DashboardService implements Resolve<any> {
   getProjects(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get("api/project-dashboard-projects")
+        .get("api/project-dashboard-projects",{headers})
         .subscribe((response: any) => {
           this.projects = response;
           resolve(response);
