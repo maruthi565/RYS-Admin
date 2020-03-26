@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceRideImagesService implements Resolve<any> {
@@ -45,7 +50,10 @@ export class EcommerceRideImagesService implements Resolve<any> {
   getRideImages(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "/defaultimages?Type=1")
+        .get(baseenvironment.baseUrl + "/defaultimages?Type=1",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.rideImageData = response;
           this.onrideImageChanged.next(this.rideImageData);
@@ -57,7 +65,10 @@ export class EcommerceRideImagesService implements Resolve<any> {
   deleteRideImage(data): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "defaultimages/" + data.ID)
+        .delete(baseenvironment.baseUrl + "defaultimages/" + data.ID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

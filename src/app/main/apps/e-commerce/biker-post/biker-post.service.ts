@@ -4,8 +4,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 const headers = new HttpHeaders({
-    "Content-Type": "application/json",
-   
+    "Content-Type": "application/json"
   });
 
 @Injectable()

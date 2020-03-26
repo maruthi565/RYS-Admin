@@ -67,7 +67,10 @@ export class DashboardService implements Resolve<any> {
   getDashboard(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "dashboard",{headers})
+        .get(baseenvironment.baseUrl + "dashboard",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

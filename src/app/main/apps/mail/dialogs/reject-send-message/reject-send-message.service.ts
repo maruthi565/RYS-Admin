@@ -9,7 +9,8 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../../config";
 
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
 });
 @Injectable()
 export class EcommerceSendRejectMessageService implements Resolve<any> {

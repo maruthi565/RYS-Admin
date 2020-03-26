@@ -7,7 +7,10 @@ import {
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
-const headers = new HttpHeaders({ "Content-Type": "Application/json" });
+const headers = new HttpHeaders({ 
+  "Content-Type": "Application/json",
+  "X-Api-Key":baseenvironment.xapikey
+ });
 
 @Injectable()
 export class EcommerceEventImagesService implements Resolve<any> {
@@ -54,7 +57,10 @@ export class EcommerceEventImagesService implements Resolve<any> {
   getEventImages(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "/defaultimages?Type=0")
+        .get(baseenvironment.baseUrl + "/defaultimages?Type=0",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.eventImageData = response;
           this.oneventImageChanged.next(this.eventImageData);
@@ -66,7 +72,10 @@ export class EcommerceEventImagesService implements Resolve<any> {
   deleteEventImage(data): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "defaultimages/" + data.ID)
+        .delete(baseenvironment.baseUrl + "defaultimages/" + data.ID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

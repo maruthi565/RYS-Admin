@@ -4,9 +4,14 @@ import {
   Resolve,
   RouterStateSnapshot
 } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key": baseenvironment.xapikey
+});
 
 @Injectable()
 export class EcommerceBikerCommentsService implements Resolve<any> {
@@ -49,7 +54,10 @@ export class EcommerceBikerCommentsService implements Resolve<any> {
   getStoryComments(StoryID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "comments?StoryID=" + StoryID)
+        .get(baseenvironment.baseUrl + "comments?StoryID=" + StoryID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           this.commentsData = response.Comments;
           this.oncommentsChanged.next(this.commentsData);
@@ -66,7 +74,10 @@ export class EcommerceBikerCommentsService implements Resolve<any> {
   addComments(comments): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .post(baseenvironment.baseUrl + "comments", JSON.stringify(comments))
+        .post(baseenvironment.baseUrl + "comments", JSON.stringify(comments),
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
