@@ -7,8 +7,10 @@ import {
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
+
 const headers = new HttpHeaders({
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
 });
 
 @Injectable()
@@ -53,7 +55,10 @@ export class EcommerceBikeBrandService implements Resolve<any> {
   getBikeBrands(url): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + url)
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           this.bikeBrandsData = response;
           this.onbikeBrandsChanged.next(this.bikeBrandsData);
@@ -81,7 +86,10 @@ export class EcommerceBikeBrandService implements Resolve<any> {
   getInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikesimagesinfoboxes")
+        .get(baseenvironment.baseUrl + "bikesimagesinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

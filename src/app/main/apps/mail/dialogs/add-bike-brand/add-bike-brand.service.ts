@@ -64,7 +64,7 @@ export class EcommerceAddBikeBrandService implements Resolve<any> {
   //             }, reject);
   //     });
   // }
-  addBikeBrand(bikebrand): Promise<any> {
+  addBikeBrand(bikebrand): Promise<any> {  0
     return new Promise((resolve, reject) => {
       this._httpClient
         .post(baseenvironment.baseUrl + "bikebrands", JSON.stringify(bikebrand),
