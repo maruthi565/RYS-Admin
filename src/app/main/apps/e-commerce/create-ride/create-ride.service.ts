@@ -8,14 +8,19 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { baseenvironment } from "../../../../../config";
 
+const headers = new HttpHeaders({
+  "Content-Type": "application/json",
+  "X-Api-Key":baseenvironment.xapikey
+});
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "Application/json",
-    "X-Api-Key":baseenvironment.xapikey
-  })
-};
+
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     "Access-Control-Allow-Origin": "*",
+//     "Content-Type": "Application/json",
+//     "X-Api-Key":baseenvironment.xapikey
+//   })
+// };
 @Injectable()
 export class CreateRideService implements Resolve<any> {
   ride: any[];
@@ -60,7 +65,11 @@ export class CreateRideService implements Resolve<any> {
   getBrands(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "bikebrandmodels",httpOptions)
+        .get(baseenvironment.baseUrl + "bikebrandmodels",
+        {
+          headers//httpOptions
+        }
+        )
         .subscribe((response: any) => {
           this.bikeBrandModels = response;
           this.onCreateRideChanged.next(this.bikeBrandModels);
@@ -73,7 +82,10 @@ export class CreateRideService implements Resolve<any> {
   getCountries(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "countries",httpOptions)
+        .get(baseenvironment.baseUrl + "countries",
+        {
+          headers
+        })//httpOptions)
         .subscribe((response: any) => {
           //this.countriesModels = response;
           //this.onCreateRideChanged.next(this.countriesModels);
@@ -161,7 +173,10 @@ export class CreateRideService implements Resolve<any> {
 
     return new Promise((resolve, reject) => {
       this._httpClient
-        .post(baseenvironment.baseUrl + "rides", JSON.stringify(ride),httpOptions)
+        .post(baseenvironment.baseUrl + "rides", JSON.stringify(ride),
+        {
+          headers
+        })//httpOptions)
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
