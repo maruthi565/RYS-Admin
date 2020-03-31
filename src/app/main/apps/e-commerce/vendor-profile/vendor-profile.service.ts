@@ -71,7 +71,10 @@ export class EcommerceVendorProfileService implements Resolve<any> {
         .get(
           baseenvironment.baseUrl +
             "/couponsfilters-vendor?VendorID=" +
-            Number(localStorage.getItem("VendorID"))
+            Number(localStorage.getItem("VendorID")),
+            {
+              headers
+            }
            
         )
         .subscribe((response: any) => {
@@ -93,7 +96,10 @@ export class EcommerceVendorProfileService implements Resolve<any> {
         .get(
           baseenvironment.baseUrl +
             "merchandisefilters-vendor?VendorID=" +
-            Number(localStorage.getItem("VendorID"))
+            Number(localStorage.getItem("VendorID")),
+            {
+              headers
+            }
         )
         .subscribe((response: any) => {
           this.merchandiseData = response;

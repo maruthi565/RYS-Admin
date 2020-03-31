@@ -6,7 +6,8 @@ import {
 } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
-import { baseenvironment } from "../../../../../config";
+//import { baseenvironment } from "../../../../../config";
+import { baseenvironment } from "config";
 
 const headers = new HttpHeaders({ 
   "Content-Type": "Application/json",
@@ -17,7 +18,7 @@ const headers = new HttpHeaders({
 export class EcommerceEditEventService implements Resolve<any> {
   onEditEventChanged: BehaviorSubject<any>;
   bikeBrandModels: any[];
-  // apiUrl = "https://rhtvhdthuh.execute-api.ap-south-1.amazonaws.com/dev/";
+  //apiUrl = "https://rhtvhdthuh.execute-api.ap-south-1.amazonaws.com/dev/";
   /**
    * Constructor
    *
