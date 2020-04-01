@@ -568,11 +568,11 @@
         <!-- Codes Column -->
         <ng-container matColumnDef="subscription">
           <mat-header-cell *matHeaderCellDef mat-sort-header>
-            Subscription</mat-header-cell
+            Subscription Expiry Date</mat-header-cell
           >
           <mat-cell *matCellDef="let product">
             <p class="category text-truncate">
-              <b>{{ product.Tenure }} months </b>
+              <b>{{ product.SubscriptionEndDate }} </b>
             </p>
           </mat-cell>
         </ng-container>
@@ -625,7 +625,7 @@
             >
             <button
               mat-raised-button
-              *ngIf="(product.UserStatus!=1 || product.UserStatus!=0) && (product.BrandNames=='NA'||(product.IsBikeLicencevalid==2 || product.IsRCvalid==2))"
+              *ngIf="(product.UserStatus!=1 || product.UserStatus!=0 || product.UserStatus!=6) && (product.BrandNames=='NA'||(product.IsBikeLicencevalid==2 || product.IsRCvalid==2))"
               class="add-product-button fuse-red mt-24 mt-md-0"
             >
               <span>Pending</span>
