@@ -505,15 +505,14 @@
                           </mat-carousel>
                           </div>
                           <div class="p-16">
-                            <div
-                              class=""
-                              style="cursor:pointer"
+                            <div>
+                              <b>{{ profile.BikeBrand }} {{ profile.Model }} &nbsp;&nbsp;&nbsp;&nbsp;
+                              <span class=""
+                              style="line-height: 20px;color:#f79726;cursor:pointer;"
                               (click)="
                                 getBikeID(profile);
                                 profile.isShow = !profile.isShow
-                              "
-                            >
-                              <b>{{ profile.BikeBrand }} {{ profile.Model }}</b>
+                              ">View</span></b>
                             </div>
                           </div>
                         </div>
