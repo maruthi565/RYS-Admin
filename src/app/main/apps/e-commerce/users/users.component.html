@@ -600,7 +600,7 @@
           <mat-cell *matCellDef="let product">
             <button
               mat-raised-button
-              *ngIf="product.UserStatus == 6 && product.BrandNames!='NA' && (product.IsBikeLicencevalid==2 || product.IsRCvalid==2)"
+              *ngIf="product.UserStatus == 6 && (product.IsBikeLicencevalid!=0 && product.IsRCvalid!=0)"
               class="add-product-button fuse-accept mt-24 mt-md-0"
               style="margin-right: 5px;"
               (click)="OnAcceptUser(product)"
@@ -609,7 +609,7 @@
             </button>
             <button
               mat-raised-button
-              *ngIf="product.UserStatus == 6 && product.BrandNames!=NA && (product.IsBikeLicencevalid==2 || product.IsRCvalid==2)"
+              *ngIf="product.UserStatus == 6 && (product.IsBikeLicencevalid!=0 && product.IsRCvalid!=0)"
               class="add-product-button fuse-reject mt-24 mt-md-0"
               (click)="rejectmodalDialog()"
             >
@@ -625,7 +625,7 @@
             >
             <button
               mat-raised-button
-              *ngIf="product.UserStatus>1 || (product.UserStatus==6 && product.BrandNames==NA && product.IsBikeLicencevalid==2 && product.IsRCvalid==2)"
+              *ngIf="product.UserStatus>1 || (product.UserStatus==6 && product.BrandNames==NA && product.IsBikeLicencevalid==0 && product.IsRCvalid==0)"
               class="add-product-button fuse-red mt-24 mt-md-0"
             >
               <span>Pending</span>
