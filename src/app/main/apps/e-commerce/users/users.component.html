@@ -625,7 +625,7 @@
             >
             <button
               mat-raised-button
-              *ngIf="(product.Tenure!=0 && product.IsBikeLicencevalid==0 && product.IsRCvalid==0) || product.UserStatus > 1"
+              *ngIf="(product.Tenure!=0 && product.IsBikeLicencevalid==0 && product.IsRCvalid==0) && product.UserStatus > 1"
               class="add-product-button fuse-red mt-24 mt-md-0"
             >
               <span>Pending</span>
