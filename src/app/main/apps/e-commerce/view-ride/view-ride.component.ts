@@ -104,6 +104,7 @@ export class EcommerceViewRideComponent {
     //     "assets/images/backgrounds/event.jpeg" ,
     // ];
     this.slides = this.selectedRideDetails.Images;
+    //this.slides = this.selectedRideDetails.ProfilePic;
     console.log(this.slides);
     this.rideFeeBreakup = this.selectedRideDetails.Price;
     this.ridersCount = this.selectedRideDetails.RidersCount;

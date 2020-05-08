@@ -192,7 +192,9 @@
                     <div fxLayout="row" fxLayoutAlign="space-between">
                         <div appearance="outline" fxFlex="30">
                             <p style="float:left">Estimated Distance</p>
-                            <p style="float:right;color:#e95130;">{{editRideForm.get('EstimatedDistance').value}} </p>
+                            <p style="float:right;color:#e95130;">
+                                {{ editRideForm.get('EstimatedDistance').value }}
+                            </p>
 
                         </div>
                         <div appearance="outline" fxFlex="30"></div>
@@ -244,7 +246,8 @@
                     <div fxLayout="row" fxLayoutAlign="space-between">
                         <div appearance="outline" fxFlex="30">
                             <p style="float:left">Return Estimated Distance</p>
-                            <p style="float:right;color:#e95130;">{{editRideForm.get('ReturnEstimatedDistance').value}}
+                            <p style="float:right;color:#e95130;">
+                                {{ editRideForm.get('ReturnEstimatedDistance').value }}
                             </p>
 
                         </div>
@@ -252,6 +255,9 @@
                         <div appearance="outline" fxFlex="30"></div>
                     </div>
                     <br>
+        
+
+                    
                     <p><b>Paid/Free Ride</b></p>
                     <div fxLayout="row" fxLayoutAlign="space-between">
                         <mat-radio-group aria-label="Select an option" formControlName="RideType">

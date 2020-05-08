@@ -108,7 +108,7 @@ export class EditRideService implements Resolve<any> {
       this._httpClient
         .put(
           baseenvironment.baseUrl + "rides/" + ride.RideID,
-          JSON.stringify(ride),
+          // JSON.stringify(ride),
           {
             headers
           }

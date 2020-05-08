@@ -66,7 +66,10 @@ export class RidesService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       // this._httpClient.get(this.apiUrl + 'gethomerides?UserID='+localStorage.getItem('AdminUserID'))
       this._httpClient
-        .get(baseenvironment.baseUrl + url,{headers})
+        .get(baseenvironment.baseUrl + url,
+          {
+            headers
+          })
         .subscribe((response: any) => {
           this.ridesData = response;
           // this.ridesChanged.next(this.ridesData);
@@ -79,7 +82,10 @@ export class RidesService implements Resolve<any> {
   deleteRide(rideID): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .delete(baseenvironment.baseUrl + "rides/" + rideID,{headers})
+        .delete(baseenvironment.baseUrl + "rides/" + rideID,
+        {
+          headers
+        })
         .subscribe((response: any) => {
           //alert('Ride Created Succesfully');
           resolve(response);
@@ -89,7 +95,10 @@ export class RidesService implements Resolve<any> {
   getInfoBoxes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "ridesinfoboxes",{headers})
+        .get(baseenvironment.baseUrl + "ridesinfoboxes",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -98,7 +107,10 @@ export class RidesService implements Resolve<any> {
   getrideCities(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient
-        .get(baseenvironment.baseUrl + "rides-cities",{headers})
+        .get(baseenvironment.baseUrl + "rides-cities",
+        {
+          headers
+        })
         .subscribe((response: any) => {
           resolve(response);
         }, reject);

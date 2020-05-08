@@ -206,9 +206,10 @@ export class EcommerceCreateRideComponent {
       InviteType: new FormControl(""),
       Price: this.fb.array([]),
       BrandModels: new FormControl(),
+      bikeFilterCtrl:new FormControl(),
       Groups: this.fb.array([]),
       Contacts: this.fb.array([]),
-      CreatedBy: new FormControl(""),
+      CreatedBy: new FormControl("",Validators.required),
       RidersCount: new FormControl(""),
       ShareLink: new FormControl(""),
       City: new FormControl(""),
@@ -555,14 +556,15 @@ export class EcommerceCreateRideComponent {
         EstimatedDistance: totalDist + " km"
       });
 
-      //this.EstimatedDistanceVal = totalDist;
+      // this.EstimatedDistanceVal = totalDist;
     }
+    
     if (fromLocation == "RetHalts") {
       this.createRideForm.patchValue({
         ReturnEstimatedDistance: totalDist + " km"
       });
 
-      //this.ReturnEstimatedDistanceVal = totalDist;
+      // this.ReturnEstimatedDistanceVal = totalDist;
     }
   }
 

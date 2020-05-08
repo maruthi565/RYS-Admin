@@ -131,6 +131,8 @@
                 >Not valid</small
               >
             </mat-form-field>
+
+            
             <!-- <div fxFlex="30">
                             <div class="file-upload">
                                 <div class="image-upload-wrap">
@@ -144,11 +146,24 @@
                             </div>
                         </div> -->
           </div>
-
-          <div fxLayout="row" fxLayoutAlign="space-between">
+          <div  fxLayout="row" fxLayoutAlign="space-between" style="margin-top:-90px;">
+            <mat-form-field appearance="outline" fxFlex="30">
+              <mat-label>CreatedBy</mat-label>
+              <input
+                matInput
+                name="createdby"
+                formControlName="CreatedBy"
+                type="text"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <br>
+          <br><br>
+          <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top:65px;">
             <div
               class="file-upload safarirideUploadImage"
-              style="margin-top:-55px;"
+              style="margin-top: 55px;"
               fxFlex="30"
             >
               <div class="image-upload-wrap">
@@ -177,7 +192,7 @@
                 >
               </mat-radio-group>
             </div>
-            <mat-form-field appearance="outline" fxFlex="15" class="startTime">
+            <mat-form-field appearance="outline" fxFlex="15" class="startTime" style="margin-top:-120px;">
               <mat-label>Start Time</mat-label>
               <input
                 matInput
@@ -189,7 +204,7 @@
                 required
               />
             </mat-form-field>
-            <mat-form-field appearance="outline" fxFlex="15" class="endTime">
+            <mat-form-field appearance="outline" fxFlex="15" class="endTime" style="margin-top:-120px;">
               <mat-label>End Time</mat-label>
               <input
                 matInput
@@ -441,7 +456,7 @@
             <div appearance="outline" fxFlex="30">
               <p style="float:left">Return Estimated Distance</p>
               <p style="float:right;color:#e95130;">
-                {{ createRideForm.get("ReturnEstimatedDistance").value }}
+                {{ createRideForm.get("ReturnEstimatedDistance").value }} 
               </p>
             </div>
             <div appearance="outline" fxFlex="30"></div>

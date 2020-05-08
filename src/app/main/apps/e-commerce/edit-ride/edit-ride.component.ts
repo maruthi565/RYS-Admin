@@ -228,6 +228,7 @@ export class EcommerceEditRideComponent {
             HaltLocations: this.fb.array([]),
             ReturnHaltLocations: this.fb.array([]),
             EstimatedDistance: new FormControl(''),
+            EstimatedDistanceVal:new FormControl(''),
             RideType: new FormControl({value : '', disabled : true}),
             InviteType: new FormControl({value : '', disabled : true}),
             Price: this.fb.array([]),
@@ -618,19 +619,23 @@ export class EcommerceEditRideComponent {
       totalDist += myroute.legs[i].distance.value;
       totalTime += myroute.legs[i].duration.value;
     }
-    totalDist = totalDist / 1000.
-    console.log( "total distance is: " + totalDist + " km<br>total time is: " + (totalTime / 60).toFixed(2) + " minutes");
+    totalDist = totalDist / 1000;
+    console.log( "total distance is: " +
+     totalDist +
+      " km<br>total time is: " 
+      + (totalTime / 60).toFixed(2) +
+       " minutes");
     if(fromLocation == 'DestHalts'){
       this.editRideForm.patchValue({
-
-            EstimatedDistance: totalDist + " km"
+            EstimatedDistance:totalDist + " km",
+            EstimatedDistanceVal: totalDist + "km"
       });
 
       //this.EstimatedDistanceVal = totalDist;
     }
     if(fromLocation == 'RetHalts'){
         this.editRideForm.patchValue({
-            ReturnEstimatedDistance: totalDist + " km"
+            ReturnEstimatedDistance:totalDist + " km"
         });
 
         //this.ReturnEstimatedDistanceVal = totalDist;

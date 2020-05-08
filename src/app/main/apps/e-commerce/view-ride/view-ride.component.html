@@ -90,6 +90,8 @@
           [autoplay]="true"
           interval="2000"
           color="warn"
+          margin="auto"
+          text-align="center"
           maxWidth="auto"
           maxHeight="auto"
           proportion="25"
@@ -103,11 +105,17 @@
         >
           <mat-carousel-slide
             #matCarouselSlide
-            *ngFor="let slide of slides; let i = index"
-            [image]="slide"
+           
             [hideOverlay]="true"
-            style="height:450px !important;"
+            style="height:450px; width: auto; text-align: center !important;"
           >
+          <!-- *ngFor="let slide of slides; let i = index"
+          [image]="slide" -->
+          <img  style="margin: auto;"
+          src="{{
+            selectedRideDetails.ProfilePic ||
+              'assets/images/profile/default-avatar.png'
+          }}"/>
           </mat-carousel-slide>
         </mat-carousel>
       </div>
@@ -489,6 +497,39 @@
             </div>
           </div>
         </div>
+        <!-- <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label style="font-weight: bold;">CommentBox</mat-label>
+          <textarea
+            matInput
+            name="comment"
+            formControlName="CommentBox"
+            rows="2"
+            
+          ></textarea>
+        </mat-form-field> -->
+        <div class="widget col" fxFlex="100" fxFlex.gt-sm="33">
+          <div
+            class="fuse-card auto-width mb-32"
+            [ngClass.gt-sm]="'mb-0 mr-32'"
+            style="width:90% !important;"
+          >
+            <div class=" pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+              <div
+                class="content"
+                style="width:245px !important;padding:10px !important;"
+              >
+              
+                <div style="margin-top:10px">
+                  <h3 align="center"><b>CommentBox</b></h3>
+                  <!-- <p>{{selectedRideDetails.CreatedBy == "" ?  selectedRideDetails.FirstName + ' '+   selectedRideDetails.LastName : selectedRideDetails.CreatedBy}} -->
+                  <p>
+                   
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="content-card">
@@ -520,7 +561,10 @@
               >
                 <img
                   class="avatar mr-0 mr-sm-16"
-                  src="assets/images/avatars/Velazquez.jpg"
+                  src="{{
+                    selectedRideDetails.ProfilePic ||
+                      'assets/images/profile/default-avatar.png'
+                  }}"
                 />
                 <p class="name">
                   <b> {{ corider.FirstName }}{{ corider.LastName }}</b
