@@ -272,7 +272,6 @@
                 <mat-label style="color:#fff;">Search city</mat-label>
                 <input
                   matInput
-                  (keyup)="keyPress($event)"
                   [(ngModel)]="selectedCity"
                   type="text"
                   (keydown.enter)="$event.preventDefault()"

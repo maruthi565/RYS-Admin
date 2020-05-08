@@ -12,6 +12,7 @@ import { EcommerceSendRejectMessageService } from "./reject-send-message.service
 export class RejectSendMessageDialog {
   showExtraToFields: boolean;
   sendFeedbackForm: FormGroup;
+  sendRejectForm:FormGroup;
   fromPage: any[];
   result: any;
   usersids: any[];

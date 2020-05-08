@@ -56,10 +56,6 @@ export class LoginComponent implements OnInit {
             EmailID: ['', [Validators.required, Validators.email]],
             Password: ['', Validators.required]
         });
-        this.loginForm.patchValue({
-            EmailID: 'naresh@gmail.com',
-            Password: 'RYS@123!'
-        });
     }
 
     authenticate() {

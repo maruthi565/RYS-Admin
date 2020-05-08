@@ -146,7 +146,8 @@ export class EcommerceEventsComponent implements OnInit {
     this._eventsService.getInfoBoxes().then(data => {
       this.infocountboxes = data.Events;
     });
-
+    
+    
     this.eventsrefresh.subscribe(updateDB => {
       if (updateDB) {
         this._eventsService.getEvents("eventsfilter").then(data => {
