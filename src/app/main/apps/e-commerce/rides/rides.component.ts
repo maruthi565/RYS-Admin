@@ -136,8 +136,14 @@ export class EcommerceRidesComponent implements OnInit {
           //get the place result
 
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          this.selectedCity = place.name;
+          console.log("search place",place.address_components);
+          for (var i = 0; i < place.address_components.length; i++) {
+            if (place.address_components[i].types[0] === "administrative_area_level_1") {
+              this.selectedCity = place.address_components[i].long_name;
+              console.log("state:" + this.selectedCity);
+            }
+          }
+          // this.selectedCity = place.name;
           this.citySelectionChange(this.selectedCity);
         });
       });
@@ -196,9 +202,9 @@ export class EcommerceRidesComponent implements OnInit {
     }
     if (this.selectedCity != undefined && this.selectedCity != "") {
       if (url == undefined || url == "") {
-        url = "ridesfilter?City=" + this.selectedCity;
+        url = "ridesfilter?State=" + this.selectedCity;
       } else {
-        url = url + "&City=" + this.selectedCity;
+        url = url + "&State=" + this.selectedCity;
       }
     }
 
@@ -210,9 +216,9 @@ export class EcommerceRidesComponent implements OnInit {
     var url = "";
     if (this.selectedCity != undefined && this.selectedCity != "") {
       if (url == undefined || url == "") {
-        url = "ridesfilter?City=" + this.selectedCity;
+        url = "ridesfilter?State=" + this.selectedCity;
       } else {
-        url = url + "&City=" + this.selectedCity;
+        url = url + "&State=" + this.selectedCity;
       }
       if (this.selectedDate != undefined && this.selectedDate != "") {
         url = url + "&Date=" + this.selectedDate;

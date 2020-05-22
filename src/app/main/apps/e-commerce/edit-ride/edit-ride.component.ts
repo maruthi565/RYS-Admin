@@ -247,8 +247,8 @@ export class EcommerceEditRideComponent {
             City: new FormControl(''),
             CountryID: new FormControl(''),
             TotalPrice: new FormControl({value : '', disabled : true}),
-            isSelected: new FormControl(false)
-
+            isSelected: new FormControl(false),
+            State:new FormControl('')
         });
     }
 
@@ -453,9 +453,9 @@ export class EcommerceEditRideComponent {
                 StartLocationName: result.address,
                 StartLocationLat: result.latitude,
                 StartLocationLong: result.longitude,
-    
+                State:localStorage.getItem("RideState")
               });
-    
+              console.log("Ride created State:",localStorage.getItem("RideState"));
             }
             if (targetPath == 'returnLocation') {
     

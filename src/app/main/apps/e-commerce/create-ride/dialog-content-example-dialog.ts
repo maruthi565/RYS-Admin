@@ -14,6 +14,7 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
     zoom: number;
     address: string;
     city: string;
+    state:string
     private geoCoder; fullAddress: any;
   
     @ViewChild('search', { static: true }) private searchElementRef: ElementRef;
@@ -87,7 +88,16 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
               longitude: longitude
             };
             this.fullAddress = data;
+            var State: string;
             this.address = address || results[0].formatted_address;
+            for (var i = 0; i < results.length; i++) {
+              if (results[i].types[0] === "administrative_area_level_1") {
+                this.state = results[i].address_components[0].long_name;
+                console.log("state:" + this.state);
+                localStorage.setItem("RideState",this.state);
+              }
+            }
+                       
 
             for (var i = 0; i < results.length; i++) {
               if (results[i].types[0] === "locality") {

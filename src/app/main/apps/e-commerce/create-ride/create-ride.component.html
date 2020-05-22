@@ -246,18 +246,21 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" fxFlex="30" style="float: left;">
-              <mat-label>State</mat-label>
-              <input
-                matInput
-                name="state"
-                formControlName="State"
-                type="text"
-                readonly
-              />
-            </mat-form-field>
             <div appearance="outline" fxFlex="30"></div>
           </div>
+          <p class="rideCountrySafari"><b>State</b></p>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+          <mat-form-field appearance="outline" fxFlex="30" style="float: left;">
+            <input
+              matInput
+              name="state"
+              formControlName="State"
+              type="text"
+              readonly
+            />
+          </mat-form-field>
+          <div appearance="outline" fxFlex="30"></div>
+        </div>
           <p class="ridelocationSafari"><b>Location & Halts</b></p>
           <div fxLayout="row" fxLayoutAlign="space-between">
             <mat-form-field appearance="outline" fxFlex="30">

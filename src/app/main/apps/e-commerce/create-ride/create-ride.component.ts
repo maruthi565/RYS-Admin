@@ -215,7 +215,8 @@ export class EcommerceCreateRideComponent {
       City: new FormControl(""),
       CountryID: new FormControl("", Validators.required),
       TotalPrice: new FormControl(""),
-      isSelected: new FormControl(false)
+      isSelected: new FormControl(false),
+      State: new FormControl("")
     });
   }
 
@@ -669,8 +670,10 @@ export class EcommerceCreateRideComponent {
           this.createRideForm.patchValue({
             StartLocationName: result.address,
             StartLocationLat: result.latitude,
-            StartLocationLong: result.longitude
+            StartLocationLong: result.longitude,
+            State:localStorage.getItem("RideState")
           });
+          console.log("Ride created State:",localStorage.getItem("RideState"));
         }
         if (targetPath == "returnLocation") {
           if (
@@ -680,6 +683,8 @@ export class EcommerceCreateRideComponent {
             alert("Please select location");
             return;
           }
+          // else
+          //   this.createRideForm.value.State=localStorage.getItem("RideState");
 
           this.createRideForm.patchValue({
             ReturnLocationName: result.address,
@@ -1018,7 +1023,7 @@ export class EcommerceCreateRideComponent {
 
       this.createRideForm.value.InviteType = 0;
       this.createRideForm.value.City = localStorage.getItem("RideCity");
-
+      this.createRideForm.value.State = localStorage.getItem("RideState");
       this._createRideService
         .createRide(this.createRideForm.value)
         .then(data => {
